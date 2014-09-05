@@ -1,0 +1,195 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5226,        186]
+NotebookOptionsPosition[      4337,        149]
+NotebookOutlinePosition[      4720,        166]
+CellTagsIndexPosition[      4677,        163]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.61867088211089*^9, 3.618670890880967*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Metric", "Title",
+ CellChangeTimes->{{3.6186709009365683`*^9, 3.6186709017277822`*^9}}],
+
+Cell["Exploring some metric stuff", "Text",
+ CellChangeTimes->{{3.618670906865809*^9, 3.6186709121120663`*^9}}],
+
+Cell["Cartesian metric:", "Text",
+ CellChangeTimes->{{3.618670920146071*^9, 3.618670923448263*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"m_c", " ", "=", " ", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Cartesian\>\"", ",", " ", "\"\<Metric\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6186709282497263`*^9, 3.618670980775364*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.618670958855576*^9, 3.618670982302594*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.618670984465323*^9, 3.618670988735132*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "0", "0"},
+    {"0", "1", "0"},
+    {"0", "0", "1"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.61867098953347*^9}]
+}, Open  ]],
+
+Cell["Spherical metric:", "Text",
+ CellChangeTimes->{{3.618670995702503*^9, 3.618671010204515*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"m_sp", " ", "=", " ", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Spherical\>\"", ",", " ", "\"\<Metric\>\"", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", " ", "theta", ",", " ", "phi"}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.61867101206638*^9, 3.618671045413206*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     SuperscriptBox["r", "2"], ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{
+      SuperscriptBox["r", "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "theta", "]"}], "2"]}]}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.6186710458186283`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.61867104979254*^9, 3.6186710542311773`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "0", "0"},
+    {"0", 
+     SuperscriptBox["r", "2"], "0"},
+    {"0", "0", 
+     RowBox[{
+      SuperscriptBox["r", "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "theta", "]"}], "2"]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.618671054841484*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 138, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[721, 26, 93, 1, 114, "Title"],
+Cell[817, 29, 111, 1, 37, "Text"],
+Cell[931, 32, 99, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1055, 37, 304, 6, 57, "Input"],
+Cell[1362, 45, 326, 9, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1725, 59, 128, 2, 35, "Input"],
+Cell[1856, 63, 606, 18, 94, "Output"]
+}, Open  ]],
+Cell[2477, 84, 99, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2601, 89, 327, 7, 57, "Input"],
+Cell[2931, 98, 454, 15, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3422, 118, 129, 2, 35, "Input"],
+Cell[3554, 122, 755, 23, 100, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

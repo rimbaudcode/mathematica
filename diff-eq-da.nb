@@ -1,0 +1,252 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8020,        243]
+NotebookOptionsPosition[      7005,        204]
+NotebookOutlinePosition[      7388,        221]
+CellTagsIndexPosition[      7345,        218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6186638695579147`*^9, 3.6186638800274982`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Differential equations and DA", "Title",
+ CellChangeTimes->{{3.618663424833736*^9, 3.618663432631686*^9}}],
+
+Cell["\<\
+When analyzing error propagation, it is important to find a function that \
+yields the maximum error; ie, the partial derivatives with respect to all of \
+the variables must be positive. When analyzing the influence of variables on \
+a functions, term signs of the partials are important, since they point to \
+where a function increases or decreases.
+
+This analysis can be supplemented by DA, in order to have universe friendly \
+equations :)
+
+* Consider a math pendulum. It\[CloseCurlyQuote]s period is given by\
+\>", "Text",
+ CellChangeTimes->{{3.618663454936429*^9, 3.618663676661055*^9}, {
+  3.618663794689711*^9, 3.618663826567506*^9}, {3.618666143748002*^9, 
+  3.618666146291829*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"t", "[", 
+   RowBox[{"l", ",", "g"}], "]"}], ":=", 
+  RowBox[{"2", "Pi", 
+   SqrtBox[
+    RowBox[{"l", "/", "g"}]]}]}]], "Input",
+ CellChangeTimes->{{3.618664783797367*^9, 3.618664797824733*^9}}],
+
+Cell["Find how l and g influence on t.", "Text",
+ CellChangeTimes->{{3.61866550086622*^9, 3.618665508810763*^9}}],
+
+Cell["\<\
+Solution:
+Since we want to focus only on the effects of the variables, we use DA to \
+remove complexity from the math pendulum formula.
+
+Find a dimensionless number that contains the variables:\
+\>", "Text",
+ CellChangeTimes->{{3.6186653465203667`*^9, 3.618665420118503*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pqs", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"QuantityVariable", "[", "\"\<Time\>\"", "]"}], ",", " ", 
+    RowBox[{"QuantityVariable", "[", "\"\<Length\>\"", "]"}], ",", " ", 
+    RowBox[{"QuantityVariable", "[", "\"\<Acceleration\>\"", "]"}]}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.618665020541753*^9, 3.6186650686502037`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{"\"Time\"","\"Time\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " time"}], TooltipStyle -> 
+      "TextStyling"]& )], ",", 
+   TemplateBox[{"\"Length\"","\"Length\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " length"}], TooltipStyle -> 
+      "TextStyling"]& )], ",", 
+   TemplateBox[{"\"Acceleration\"","\"Acceleration\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " acceleration"}], TooltipStyle -> 
+      "TextStyling"]& )]}], "}"}]], "Output",
+ CellChangeTimes->{3.618665070499752*^9, 3.618665753072537*^9}]
+}, Open  ]],
+
+Cell["\<\
+Where pqs stands for physical quantity system.
+
+Then, find the dimless number among the vars in pqs:\
+\>", "Text",
+ CellChangeTimes->{{3.618665437373617*^9, 3.618665469181559*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dimless", " ", "=", " ", 
+  RowBox[{"DimensionalCombinations", "[", "pqs", "]"}]}]], "Input",
+ CellChangeTimes->{{3.618665081800125*^9, 3.6186650886344624`*^9}, {
+  3.618665472285551*^9, 3.6186654741022253`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  FractionBox[
+   TemplateBox[{"\"Length\"","\"Length\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " length"}], TooltipStyle -> 
+      "TextStyling"]& )], 
+   RowBox[{
+    TemplateBox[{"\"Acceleration\"","\"Acceleration\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " acceleration"}], TooltipStyle -> 
+       "TextStyling"]& )], " ", 
+    SuperscriptBox[
+     TemplateBox[{"\"Time\"","\"Time\""},
+      "QuantityVariable",
+      DisplayFunction->(TooltipBox[
+        StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+         False], 
+        RowBox[{"Quantity variable:", " time"}], TooltipStyle -> 
+        "TextStyling"]& )], "2"]}]], "}"}]], "Output",
+ CellChangeTimes->{3.6186650907920923`*^9, 3.6186654755417843`*^9, 
+  3.6186657530972977`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Since we want to know the influence of l and g on t, we begin by finding the \
+partial derivatives signs.
+
+From the dimless number, we define a function of t wrt the other variables:\
+\>", "Text",
+ CellChangeTimes->{{3.618665483428248*^9, 3.618665541293082*^9}, {
+  3.618665790830241*^9, 3.618665828082847*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"t", "[", 
+   RowBox[{"l_", ",", "g_"}], "]"}], ":=", 
+  RowBox[{"Sqrt", "[", 
+   RowBox[{"l", "/", "g"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.618665831673944*^9, 3.618665864228415*^9}}],
+
+Cell["Now we find the fractional change of t:", "Text",
+ CellChangeTimes->{{3.61866586943552*^9, 3.618665882442197*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dt_fc", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Dt", "[", 
+     RowBox[{"t", "[", 
+      RowBox[{"l", ",", "g"}], "]"}], "]"}], "/", 
+    RowBox[{"t", "[", 
+     RowBox[{"l", ",", "g"}], "]"}]}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.618665887986558*^9, 3.618665915596211*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"Dt", "[", "g", "]"}], "g"]}], "+", 
+    FractionBox[
+     RowBox[{"Dt", "[", "l", "]"}], "l"]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.6186659165245934`*^9}]
+}, Open  ]],
+
+Cell["\<\
+As we can see in the last equation, since the sign of the partial wrt to g is \
+negative, we conclude that \[OpenCurlyDoubleQuote]when gravity increases, the \
+period decreases\[CloseCurlyDoubleQuote] and, from the sign of the partial \
+wrt length, \[OpenCurlyDoubleQuote]when length increases, so does the period\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.618665921617188*^9, 3.6186659804480352`*^9}, {
+  3.618666065003879*^9, 3.618666088489407*^9}, {3.6186663886383657`*^9, 
+  3.6186663896501493`*^9}}]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 143, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[726, 26, 112, 1, 183, "Title"],
+Cell[841, 29, 701, 14, 275, "Text"],
+Cell[1545, 45, 230, 7, 49, "Input"],
+Cell[1778, 54, 113, 1, 37, "Text"],
+Cell[1894, 57, 285, 7, 132, "Text"],
+Cell[CellGroupData[{
+Cell[2204, 68, 378, 8, 78, "Input"],
+Cell[2585, 78, 969, 21, 36, "Output"]
+}, Open  ]],
+Cell[3569, 102, 190, 5, 85, "Text"],
+Cell[CellGroupData[{
+Cell[3784, 111, 236, 4, 36, "Input"],
+Cell[4023, 117, 1075, 26, 58, "Output"]
+}, Open  ]],
+Cell[5113, 146, 321, 7, 132, "Text"],
+Cell[5437, 155, 225, 6, 36, "Input"],
+Cell[5665, 163, 120, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5810, 168, 333, 9, 36, "Input"],
+Cell[6146, 179, 294, 10, 59, "Output"]
+}, Open  ]],
+Cell[6455, 192, 534, 9, 109, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

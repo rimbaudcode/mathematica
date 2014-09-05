@@ -1,0 +1,260 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7788,        251]
+NotebookOptionsPosition[      6367,        197]
+NotebookOutlinePosition[      6981,        222]
+CellTagsIndexPosition[      6897,        217]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Extracting values from functions", "Title",
+ CellChangeTimes->{{3.618810332022895*^9, 3.618810341637697*^9}}],
+
+Cell["\<\
+Begining with the math pendulum eqn for the period, we want to isolate g and \
+then assign it to a function. Here\[CloseCurlyQuote]s how:
+
+1. Solve the eqn for g:\
+\>", "Text",
+ CellChangeTimes->{{3.618810350269743*^9, 3.618810411332513*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", 
+  RowBox[{"t", ",", "l", ",", "g", ",", " ", "sln"}], "]"}]], "Input",
+ CellChangeTimes->{{3.618809621147088*^9, 3.618809639775422*^9}, {
+  3.618810393309127*^9, 3.618810399576507*^9}, {3.6188106280478*^9, 
+  3.618810629263145*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sln", " ", "=", " ", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"t", "\[Equal]", 
+     RowBox[{"2", " ", "Pi", " ", 
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"l", "/", "g"}], "]"}]}]}], ",", "g"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6188096630140343`*^9, 3.618809709470784*^9}, {
+  3.6188105790983458`*^9, 3.618810581094697*^9}, {3.618810624340307*^9, 
+  3.618810625598597*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"g", "\[Rule]", 
+    FractionBox[
+     RowBox[{"4", " ", "l", " ", 
+      SuperscriptBox["\[Pi]", "2"]}], 
+     SuperscriptBox["t", "2"]]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.61880967529008*^9, 3.618809709925552*^9}, 
+   3.61880993893274*^9, 3.618809991091193*^9, 3.618810114140716*^9, 
+   3.618810191504837*^9, 3.618810450591016*^9, 3.618810491796823*^9, 
+   3.618810590574369*^9, 3.6188106315755033`*^9, 3.618810662175967*^9, {
+   3.6188107238735456`*^9, 3.6188107556404657`*^9}}]
+}, Open  ]],
+
+Cell["2. Extract g from the solution:", "Text",
+ CellChangeTimes->{{3.618810422945382*^9, 3.618810435753511*^9}, {
+  3.6188109328849087`*^9, 3.618810933819562*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"l_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{"g", "/.", 
+   RowBox[{"sln", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.618809727445472*^9, 3.618809744988762*^9}, {
+   3.618809918650846*^9, 3.618809924707172*^9}, 3.618809983305662*^9, {
+   3.618810052109758*^9, 3.618810106501182*^9}, 3.618810153621133*^9, {
+   3.618810211222703*^9, 3.6188102148963337`*^9}, {3.618810287306385*^9, 
+   3.6188102880719213`*^9}, {3.618810583410602*^9, 3.6188105856784897`*^9}, {
+   3.6188106351287603`*^9, 3.618810648302202*^9}, {3.618810685914257*^9, 
+   3.618810713551033*^9}, {3.618810841259924*^9, 3.618810886050128*^9}, 
+   3.61881123045712*^9, {3.618811288334318*^9, 3.618811290238564*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"l_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{"4", " ", "l", " ", 
+   RowBox[{
+    RowBox[{"Pi", "^", "2"}], "/", 
+    RowBox[{"t", "^", "2"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.618811233696105*^9, 3.618811249309572*^9}}],
+
+Cell["3. Test the function:", "Text",
+ CellChangeTimes->{{3.6188104581307087`*^9, 3.6188104678805647`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "g"}]], "Input",
+ CellChangeTimes->{{3.618810086989607*^9, 3.6188100928248053`*^9}, {
+  3.618810537905376*^9, 3.618810566775835*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`g", "Print", "PrintUsage",
+ CellChangeTimes->{3.61881138365602*^9},
+ CellTags->"Info3618818583-8517094"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"g", "[", 
+          RowBox[{"l_", ",", "t_"}], "]"}], ":=", 
+         FractionBox[
+          RowBox[{"4", " ", "l", " ", 
+           SuperscriptBox["\[Pi]", "2"]}], 
+          SuperscriptBox["t", "2"]]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`g],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6188113836828938`*^9},
+ CellTags->"Info3618818583-8517094"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["4. Work with the function:", "Text",
+ CellChangeTimes->{{3.618811065168569*^9, 3.6188110701746597`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Dt", "[", 
+    RowBox[{"g", "[", 
+     RowBox[{"l", ",", "t"}], "]"}], "]"}], "/", 
+   RowBox[{"g", "[", 
+    RowBox[{"l", ",", "t"}], "]"}]}], "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.618810765904217*^9, 3.618810777417781*^9}, {
+  3.618810990102993*^9, 3.618811019583168*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"Dt", "[", "l", "]"}], "l"], "-", 
+  FractionBox[
+   RowBox[{"2", " ", 
+    RowBox[{"Dt", "[", "t", "]"}]}], "t"]}]], "Output",
+ CellChangeTimes->{{3.6188107712252483`*^9, 3.6188107780562983`*^9}, {
+   3.618810853616238*^9, 3.6188108910807123`*^9}, {3.618810997374064*^9, 
+   3.618811020678215*^9}, 3.6188112564439583`*^9, 3.6188112951258698`*^9, 
+   3.6188113866517467`*^9}]
+}, Open  ]],
+
+Cell["5. Perform calculations with the function:", "Text",
+ CellChangeTimes->{{3.618811577732946*^9, 3.6188115988702593`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"l", ",", "t"}], "]"}], "/.", 
+   RowBox[{"(", 
+    RowBox[{"l", "\[Rule]", "1"}], ")"}]}], "/.", 
+  RowBox[{"(", 
+   RowBox[{"t", "\[Rule]", "2"}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.618811602942148*^9, 3.618811658265503*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox["\[Pi]", "2"]], "Output",
+ CellChangeTimes->{3.618811659540187*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3618818583-8517094"->{
+  Cell[3771, 111, 117, 2, 49, "Print",
+   CellTags->"Info3618818583-8517094"],
+  Cell[3891, 115, 951, 27, 42, "Print",
+   CellTags->"Info3618818583-8517094"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3618818583-8517094", 6714, 209}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 115, 1, 183, "Title"],
+Cell[698, 25, 252, 6, 109, "Text"],
+Cell[953, 33, 273, 5, 36, "Input"],
+Cell[CellGroupData[{
+Cell[1251, 42, 417, 10, 36, "Input"],
+Cell[1671, 54, 551, 12, 60, "Output"]
+}, Open  ]],
+Cell[2237, 69, 164, 2, 37, "Text"],
+Cell[2404, 73, 765, 14, 36, "Input"],
+Cell[3172, 89, 278, 8, 36, "Input"],
+Cell[3453, 99, 107, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3585, 104, 161, 3, 36, "Input"],
+Cell[CellGroupData[{
+Cell[3771, 111, 117, 2, 49, "Print",
+ CellTags->"Info3618818583-8517094"],
+Cell[3891, 115, 951, 27, 42, "Print",
+ CellTags->"Info3618818583-8517094"]
+}, Open  ]]
+}, Open  ]],
+Cell[4869, 146, 110, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5004, 151, 339, 9, 36, "Input"],
+Cell[5346, 162, 425, 10, 55, "Output"]
+}, Open  ]],
+Cell[5786, 175, 126, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5937, 180, 302, 9, 36, "Input"],
+Cell[6242, 191, 97, 2, 38, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
