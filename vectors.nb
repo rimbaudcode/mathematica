@@ -1,0 +1,335 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11633,        326]
+NotebookOptionsPosition[     10122,        270]
+NotebookOutlinePosition[     10505,        287]
+CellTagsIndexPosition[     10462,        284]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619525618466514*^9, 3.6195256298722467`*^9}}],
+
+Cell["Math types:", "Text",
+ CellChangeTimes->{{3.619525653371915*^9, 3.6195256578826733`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{"mass", " ", "\[Element]", "Reals"}]}]], "Input",
+ CellChangeTimes->{{3.619525662740205*^9, 3.619525671477049*^9}, {
+  3.6195266082101316`*^9, 3.6195266177421217`*^9}, {3.619526809634676*^9, 
+  3.619526821512444*^9}}],
+
+Cell[BoxData[
+ RowBox[{"mass", "\[Element]", "Reals"}]], "Output",
+ CellChangeTimes->{
+  3.619525673036654*^9, {3.619526618267373*^9, 3.6195266228231287`*^9}, 
+   3.619526669645067*^9, 3.619526702503742*^9, 3.619526838119741*^9, 
+   3.6195269003414907`*^9, {3.6195269311683607`*^9, 3.6195269504396276`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"acc", "|", "force"}], ")"}], "\[Element]", 
+   RowBox[{"Vectors", "[", 
+    RowBox[{"3", ",", "Reals"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.619525677501567*^9, 3.619525730013122*^9}, 
+   3.619526825353253*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"acc", "|", "force"}], ")"}], "\[Element]", 
+  RowBox[{"Vectors", "[", 
+   RowBox[{"3", ",", "Reals"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.619525730488171*^9, 3.619526626005762*^9, {3.619526664877005*^9, 
+   3.6195267041674147`*^9}, 3.6195267642453403`*^9, {3.6195268268610077`*^9, 
+   3.619526900360094*^9}, {3.619526931198822*^9, 3.619526950474937*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"force", " ", "=", " ", 
+  RowBox[{"mass", " ", "acc"}]}]], "Input",
+ CellChangeTimes->{{3.6195257329205513`*^9, 3.619525737611415*^9}, {
+  3.619526546401545*^9, 3.6195265467540417`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"acc", " ", "mass"}]], "Output",
+ CellChangeTimes->{
+  3.619525738433626*^9, 3.6195265477866087`*^9, 3.61952662824212*^9, 
+   3.6195266737601233`*^9, {3.619526829290818*^9, 3.61952686189532*^9}, 
+   3.619526900400137*^9, {3.619526931231737*^9, 3.619526950509183*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"force", "\[Cross]", "acc"}], "//", "TensorReduce"}]], "Input",
+ CellChangeTimes->{{3.619525740608883*^9, 3.619525764047287*^9}, {
+  3.619525831185244*^9, 3.6195258507900457`*^9}, {3.619526550939682*^9, 
+  3.619526551250845*^9}, {3.61952664228505*^9, 3.61952664426709*^9}, {
+  3.619526852995647*^9, 3.6195268536921864`*^9}, {3.619526941644395*^9, 
+  3.619526942255415*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.6195268319761887`*^9, 3.619526863547619*^9}, 
+   3.6195269004674597`*^9, {3.619526931350301*^9, 3.619526950585126*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.6195268319761887`*^9, 3.619526863547619*^9}, 
+   3.6195269004674597`*^9, {3.619526931350301*^9, 3.619526950645896*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.6195268319761887`*^9, 3.619526863547619*^9}, 
+   3.6195269004674597`*^9, {3.619526931350301*^9, 3.619526950701597*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[\\($IterationLimit :: itlim\\), \\\"MessageName\\\
+\"]\\)\[NoBreak] will be suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.6195268319761887`*^9, 3.619526863547619*^9}, 
+   3.6195269004674597`*^9, {3.619526931350301*^9, 3.619526950724206*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.619525754090123*^9, 3.619525764677189*^9}, {
+   3.619525835173627*^9, 3.619525853373498*^9}, 3.6195265517747803`*^9, {
+   3.6195266308280993`*^9, 3.6195266460075407`*^9}, 3.619526676705061*^9, {
+   3.619526832495431*^9, 3.619526864066577*^9}, 3.6195269009536324`*^9, {
+   3.619526931827873*^9, 3.619526951081643*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ExpandAll", "[", 
+  RowBox[{"force", "\[Cross]", "acc"}], "]"}]], "Input",
+ CellChangeTimes->{{3.619526028327277*^9, 3.619526043387227*^9}, {
+  3.619526074024373*^9, 3.619526077603598*^9}, {3.61952627008342*^9, 
+  3.6195262880590973`*^9}, {3.6195265549071293`*^9, 3.6195265554256773`*^9}, {
+  3.619526648198772*^9, 3.619526648335904*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"acc", " ", "mass"}], ")"}], "\[Cross]", "acc"}]], "Output",
+ CellChangeTimes->{
+  3.619526043883904*^9, 3.619526079033202*^9, {3.6195262768462753`*^9, 
+   3.619526288705377*^9}, 3.61952655616784*^9, {3.619526632769314*^9, 
+   3.619526678478506*^9}, {3.619526871577791*^9, 3.619526900970398*^9}, {
+   3.619526931869184*^9, 3.619526951109777*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "force", "]"}]], "Input",
+ CellChangeTimes->{{3.61952652260268*^9, 3.61952653886624*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "2", "}"}]], "Output",
+ CellChangeTimes->{{3.619526528561541*^9, 3.61952655916024*^9}, {
+  3.619526634491164*^9, 3.619526680297489*^9}, {3.619526873449811*^9, 
+  3.619526901004498*^9}, {3.619526931900463*^9, 3.619526951141221*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "acc", "]"}]], "Input",
+ CellChangeTimes->{{3.619526656735469*^9, 3.619526660013279*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.619526660494707*^9, 3.6195266819064302`*^9}, {
+  3.619526875131687*^9, 3.6195269010346537`*^9}, {3.6195269319336853`*^9, 
+  3.6195269511747017`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"acc", "\[Cross]", "acc"}], "//", "TensorReduce"}]], "Input",
+ CellChangeTimes->{{3.619526743026046*^9, 3.619526779088732*^9}, {
+  3.619526936996026*^9, 3.619526937640196*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.619526901103669*^9, {3.619526931993867*^9, 3.619526951232417*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.619526901103669*^9, {3.619526931993867*^9, 3.6195269512823544`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.619526901103669*^9, {3.619526931993867*^9, 3.619526951341147*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[\\($IterationLimit :: itlim\\), \\\"MessageName\\\
+\"]\\)\[NoBreak] will be suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.619526901103669*^9, {3.619526931993867*^9, 3.619526951370386*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.6195267523582783`*^9, 3.619526779573657*^9}, {
+  3.619526878186174*^9, 3.619526901358061*^9}, {3.6195269322667217`*^9, 
+  3.619526951491057*^9}}]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 141, 2, 35, "Input"],
+Cell[702, 24, 95, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[822, 29, 272, 5, 36, "Input"],
+Cell[1097, 36, 307, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1441, 46, 303, 8, 37, "Input"],
+Cell[1747, 56, 415, 9, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2199, 70, 210, 4, 35, "Input"],
+Cell[2412, 76, 290, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2739, 86, 407, 7, 35, "Input"],
+Cell[3149, 95, 571, 11, 29, "Message"],
+Cell[3723, 108, 571, 11, 29, "Message"],
+Cell[4297, 121, 571, 11, 29, "Message"],
+Cell[4871, 134, 639, 12, 50, "Message"],
+Cell[5513, 148, 368, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5918, 158, 362, 6, 36, "Input"],
+Cell[6283, 166, 397, 8, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6717, 179, 131, 2, 35, "Input"],
+Cell[6851, 183, 259, 4, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7147, 192, 131, 2, 35, "Input"],
+Cell[7281, 196, 217, 4, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7535, 205, 210, 4, 35, "Input"],
+Cell[7748, 211, 520, 11, 29, "Message"],
+Cell[8271, 224, 522, 11, 29, "Message"],
+Cell[8796, 237, 520, 11, 29, "Message"],
+Cell[9319, 250, 588, 12, 50, "Message"],
+Cell[9910, 264, 196, 3, 35, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

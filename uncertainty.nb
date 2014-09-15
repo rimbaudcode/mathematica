@@ -1,0 +1,95 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2763,         86]
+NotebookOptionsPosition[      2272,         63]
+NotebookOutlinePosition[      2655,         80]
+CellTagsIndexPosition[      2612,         77]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Uncertainty", "Title",
+ CellChangeTimes->{{3.619364643983232*^9, 3.619364646741254*^9}}],
+
+Cell["\<\
+Herein, we exemplified the calculation of uncertainty of measurements.\
+\>", "Text",
+ CellChangeTimes->{{3.6193646579758463`*^9, 3.619364682431712*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Eight steps to uncertainty", "Chapter",
+ CellChangeTimes->{{3.619364691703637*^9, 3.6193646983590107`*^9}}],
+
+Cell["\<\
+Taken from \[OpenCurlyDoubleQuote]A beginner\[CloseCurlyQuote]s guide to \
+uncertainty of measurement\[CloseCurlyDoubleQuote], Stephanie Bell.\
+\>", "Text",
+ CellChangeTimes->{{3.6193647231916237`*^9, 3.6193647572685833`*^9}}],
+
+Cell["\<\
+1. Decide what you need to find out from your measurements. Decide what \
+actual measurements and calculations are needed to produce the final result.
+2. Carry out the measurements needed.
+3. Estimate the uncertainty of each input quantity that feeds into the final \
+result. Express all uncertainties in similar terms.
+4. Decide whether the errors of the input quantities are independent of each \
+other. If you think not, then some extra calculations or information are \
+needed.
+5. Calculate the result of your measurement (including any known corrections \
+for things such as calibration).
+6. Find the combined standard uncertainty from all the individual aspects.
+7. Express the uncertainty in terms of a coverage factor, together with a \
+size of the uncertainty interval, and state a level of confidence.
+8. Write down the measurement result and the uncertainty, and state how you \
+got both of these.\
+\>", "Text",
+ CellChangeTimes->{
+  3.6193647170006104`*^9, {3.619364767498982*^9, 3.619364799052039*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 94, 1, 114, "Title"],
+Cell[677, 25, 162, 3, 61, "Text"],
+Cell[CellGroupData[{
+Cell[864, 32, 113, 1, 81, "Chapter"],
+Cell[980, 35, 236, 4, 61, "Text"],
+Cell[1219, 41, 1025, 18, 441, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

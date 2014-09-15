@@ -1,0 +1,255 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9057,        246]
+NotebookOptionsPosition[      7950,        205]
+NotebookOutlinePosition[      8387,        224]
+CellTagsIndexPosition[      8344,        221]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619259520786708*^9, 3.6192595339836283`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\[OpenCurlyDoubleQuote]Supermoon\[CloseCurlyDoubleQuote]", "Title",
+ CellChangeTimes->{{3.619258820979579*^9, 3.6192588259867973`*^9}}],
+
+Cell["Hypothesis: \[OpenCurlyDoubleQuote]Moon gets bigger because of thermal \
+expansion\[CloseCurlyDoubleQuote].", "Text",
+ CellChangeTimes->{3.619262195154738*^9}],
+
+Cell["\<\
+Hypothesis test: back-of-the-envelope calculation, ball-park figures\
+\>", "Text",
+ CellChangeTimes->{{3.619262234520391*^9, 3.619262327380275*^9}}],
+
+Cell["\<\
+Data:
+Supermoon: 20% \[OpenCurlyDoubleQuote]bigger\[CloseCurlyDoubleQuote] than \
+full moon (wiki)
+Moon main rock: basalt (Apollo 11 info)
+Basalt linear coefficient of thermal expansion: 5*10^(-6)/Celsius \
+(encyclopedia britannica)
+
+Calculation:
+Let v be the volume of full moon and \[CapitalDelta]v the volume increase due \
+to thermal expansion (supermoon stuff). Then, the fractional change of volume \
+due to thermal expansion is\
+\>", "Text",
+ CellChangeTimes->{{3.6192588407638893`*^9, 3.619258877671163*^9}, {
+   3.6192589466661587`*^9, 3.619259100005439*^9}, {3.619259300134692*^9, 
+   3.619259309634451*^9}, {3.619260064449613*^9, 3.619260071693331*^9}, {
+   3.619260184303986*^9, 3.619260202947112*^9}, {3.619260252393763*^9, 
+   3.619260266526443*^9}, 3.6192619340851307`*^9, 3.619262170811263*^9, 
+   3.619262205416522*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalDelta]v", "/", "v"}], "=", 
+  RowBox[{"\[Alpha]", " ", "\[CapitalDelta]T"}]}]], "Input",
+ CellChangeTimes->{{3.619259107876767*^9, 3.6192591429396467`*^9}, {
+  3.619259182395033*^9, 3.61925918813579*^9}, {3.619259360656958*^9, 
+  3.619259362999709*^9}, {3.619260383206593*^9, 3.6192603855493727`*^9}}],
+
+Cell["\<\
+where \[Alpha] represents the volumetric coefficient of thermal expansion and \
+\[CapitalDelta]T the change of temperature to produce such a volumetric \
+fractional change. Then, isolating \[CapitalDelta]T, we have\
+\>", "Text",
+ CellChangeTimes->{{3.6192591466524763`*^9, 3.619259171551279*^9}, {
+  3.619259204192513*^9, 3.619259222677491*^9}, {3.6192620252421827`*^9, 
+  3.619262069087529*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalDelta]T", " ", "[", 
+   RowBox[{"v_", ",", "\[CapitalDelta]v_", ",", "\[Alpha]_"}], "]"}], ":=", 
+  RowBox[{"\[CapitalDelta]v", "/", 
+   RowBox[{"(", 
+    RowBox[{"\[Alpha]", " ", "v"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.619259231533042*^9, 3.6192592564634447`*^9}, {
+  3.61925935253552*^9, 3.6192593927433357`*^9}, {3.619259426608951*^9, 
+  3.619259510682325*^9}}],
+
+Cell["Replacing data into the last equation, one finds that", "Text",
+ CellChangeTimes->{{3.619259542931706*^9, 3.619259556877368*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[CapitalDelta]T", "[", 
+  RowBox[{"1.0", ",", "1.20", ",", 
+   RowBox[{"3.0", " ", "*", " ", "5.0", "*", 
+    RowBox[{"10", "^", 
+     RowBox[{"(", 
+      RowBox[{"-", "6"}], ")"}]}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.619259578727167*^9, 3.6192595988959513`*^9}, {
+  3.6192596787055883`*^9, 3.619259704178384*^9}, {3.619261846640256*^9, 
+  3.619261854092971*^9}, {3.6192623747916107`*^9, 3.6192624189942102`*^9}}],
+
+Cell[BoxData["80000.`"], "Output",
+ CellChangeTimes->{
+  3.6192597051033297`*^9, {3.6192618567150507`*^9, 3.6192618633903637`*^9}, {
+   3.6192623817005177`*^9, 3.619262419508438*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Discussion:
+For the full moon to thermally expand to supermoon, the moon temperature \
+should change by 80000 Celsius!!! That is, the moon surface temperature \
+should be at least 80000 Celsius!!! Basalt melts at 984 Celsius, thus a \
+thermal expanded moon would have a melted surface during supermoon and solid \
+surface during full moon!!! The temperature of Sun\[CloseCurlyQuote]s corona \
+is only 6000 Celsius, thus a thermal expanded moon would be as bright as the \
+Sun!!! There would be no eclipses!!! Americans would have never landed on the \
+moon!!! (Latter statement open to discussion :)
+
+Conclusion: 
+\[OpenCurlyDoubleQuote]Moon gets bigger because of thermal expansion\
+\[CloseCurlyDoubleQuote] hypothesis, REJECTED!!!\
+\>", "Text",
+ CellChangeTimes->{{3.619259717809264*^9, 3.6192599154439907`*^9}, {
+  3.619260605062417*^9, 3.6192606424804153`*^9}, {3.619261023987409*^9, 
+  3.619261070119635*^9}, {3.619261531321685*^9, 3.619261543711767*^9}, {
+  3.619261896886402*^9, 3.619261974600752*^9}, {3.619262098911475*^9, 
+  3.619262104127048*^9}, {3.6192621373032417`*^9, 3.619262144186596*^9}}],
+
+Cell[TextData[{
+ "Check :)\nSolving instead of function definition: another way to calculate \
+stuff in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.619262685639471*^9, 3.619262701255*^9}, {
+  3.619262731794541*^9, 3.619262740506384*^9}, {3.619262786782483*^9, 
+  3.619262856050252*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", " ", "=", " ", "1"}], ";"}]], "Input",
+ CellChangeTimes->{{3.619262609410266*^9, 3.619262612771557*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalDelta]v", " ", "=", " ", "1.20"}], ";"}]], "Input",
+ CellChangeTimes->{{3.619262626149042*^9, 3.6192626322110777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Alpha]", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{
+     RowBox[{"3.0", " ", "*", " ", "5.0", " ", "*", " ", 
+      RowBox[{"10", "^", 
+       RowBox[{"(", 
+        RowBox[{"-", "6"}], ")"}]}]}], ",", " ", 
+     RowBox[{"1", "/", "\"\<Celsius\>\""}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6192626472444983`*^9, 3.6192626720847387`*^9}, {
+  3.619262877102631*^9, 3.619262917489608*^9}, {3.619262949051931*^9, 
+  3.619262974923223*^9}, {3.6192630074346457`*^9, 3.61926302078986*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[CapitalDelta]T", " ", "=", 
+  RowBox[{"\[CapitalDelta]T", "/.", " ", 
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"\[CapitalDelta]v", "/", "v"}], "==", 
+       RowBox[{"\[Alpha]", " ", "\[CapitalDelta]T"}]}], ",", 
+      "\[CapitalDelta]T"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.619262674618286*^9, 3.619262677570695*^9}, {
+  3.6192627139172707`*^9, 3.619262723223626*^9}, {3.6192631598282213`*^9, 
+  3.619263161088193*^9}, {3.61926322435252*^9, 3.619263225257043*^9}, {
+  3.619275623543131*^9, 3.619275624908733*^9}, {3.619275814663795*^9, 
+  3.6192758276944513`*^9}, {3.6192758911393747`*^9, 3.6192759009739113`*^9}, {
+  3.619275996127862*^9, 3.6192760193161583`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  TemplateBox[{"80000.`"},
+   "QuantityUnit",
+   DisplayFunction->(TooltipBox[
+     StyleBox[
+      RowBox[{#, "\[InvisibleSpace]", 
+        StyleBox[
+         RowBox[{" ", "\"K\""}], "QuantityUnitTraditionalLabel"]}], 
+      ShowStringCharacters -> False], "Unit: kelvins"]& ),
+   InterpretationFunction->(RowBox[{"Quantity", "[", 
+      RowBox[{#, ",", "\"Kelvins\""}], "]"}]& )], "}"}]], "Output",
+ CellChangeTimes->{
+  3.619263226006867*^9, {3.619275617611413*^9, 3.6192756267242613`*^9}, 
+   3.619275683684588*^9, 3.6192758293763237`*^9, {3.61927591704303*^9, 
+   3.619275925090149*^9}, 3.6192760130713387`*^9}]
+}, Open  ]],
+
+Cell["Same stuff as in Celsius (temperature difference!!!)", "Text",
+ CellChangeTimes->{{3.619263229533999*^9, 3.619263249028747*^9}}]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 141, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[724, 26, 141, 1, 114, "Title"],
+Cell[868, 29, 165, 2, 37, "Text"],
+Cell[1036, 33, 158, 3, 61, "Text"],
+Cell[1197, 38, 846, 18, 251, "Text"],
+Cell[2046, 58, 345, 6, 35, "Input"],
+Cell[2394, 66, 406, 7, 85, "Text"],
+Cell[2803, 75, 418, 9, 36, "Input"],
+Cell[3224, 86, 135, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3384, 91, 447, 9, 35, "Input"],
+Cell[3834, 102, 183, 3, 35, "Output"]
+}, Open  ]],
+Cell[4032, 108, 1116, 19, 370, "Text"],
+Cell[5151, 129, 327, 8, 85, "Text"],
+Cell[5481, 139, 143, 3, 35, "Input"],
+Cell[5627, 144, 163, 3, 35, "Input"],
+Cell[5793, 149, 535, 12, 36, "Input"],
+Cell[CellGroupData[{
+Cell[6353, 165, 784, 16, 35, "Input"],
+Cell[7140, 183, 645, 15, 35, "Output"]
+}, Open  ]],
+Cell[7800, 201, 134, 1, 37, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

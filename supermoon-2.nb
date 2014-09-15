@@ -1,0 +1,362 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11171,        353]
+NotebookOptionsPosition[      9420,        293]
+NotebookOutlinePosition[      9803,        310]
+CellTagsIndexPosition[      9760,        307]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global1`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619267517962928*^9, 3.619267526964501*^9}, {
+  3.619269240417261*^9, 3.619269245321014*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\[OpenCurlyDoubleQuote]Supermoon\[CloseCurlyDoubleQuote]", "Title",
+ CellChangeTimes->{{3.619269249413869*^9, 3.619269252404846*^9}}],
+
+Cell["Hypothesis: \[OpenCurlyDoubleQuote]Moon gets bigger because it gains \
+mass\[CloseCurlyDoubleQuote].", "Text",
+ CellChangeTimes->{{3.6192692622225447`*^9, 3.619269275301862*^9}}],
+
+Cell["Hypothesis test: back-of-the-envelope calculations", "Text",
+ CellChangeTimes->{{3.619269291865563*^9, 3.619269300069316*^9}}],
+
+Cell["Calculation:", "Text",
+ CellChangeTimes->{{3.619269314058194*^9, 3.619269315858253*^9}}],
+
+Cell["\<\
+We falsify the hypothesis by proving that the period of full moon and super \
+moon are different :)
+
+According to Newton\[CloseCurlyQuote]s law of universal gravitation, a \
+satellite orbiting a planet experiences a force given by\
+\>", "Text",
+ CellChangeTimes->{{3.619267562532312*^9, 3.619267595010161*^9}, 
+   3.619267697954134*^9, {3.6192682535776777`*^9, 3.619268283408703*^9}}],
+
+Cell[BoxData[
+ RowBox[{"f", "=", 
+  RowBox[{"G", " ", "m", " ", 
+   RowBox[{"M", "/", 
+    RowBox[{"r", "^", "2"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.619267597336684*^9, 3.619267605315393*^9}}],
+
+Cell["\<\
+where f represents force, G Newton\[CloseCurlyQuote]s universal gravitational \
+constant, m mass of satellite, M mass of planet and r the distance between \
+these celestial bodies.
+
+Then, the force that full moon experiences while orbiting Earth is\
+\>", "Text",
+ CellChangeTimes->{{3.619267653475739*^9, 3.619267733282507*^9}, {
+  3.619267815023314*^9, 3.6192678203990307`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ffull", " ", "=", " ", 
+  RowBox[{"G", " ", "mfull", " ", 
+   RowBox[{"Mearth", " ", "/", " ", 
+    RowBox[{"rfull", "^", "2"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.619267737648555*^9, 3.619267762850501*^9}, {
+  3.619267807593183*^9, 3.619267808607787*^9}}],
+
+Cell["\<\
+where mfull is full moon mass, Mearth mass of earth and rfull the distance \
+between full moon and Earth.\
+\>", "Text",
+ CellChangeTimes->{{3.619268111104843*^9, 3.619268148637697*^9}}],
+
+Cell["\<\
+On the other hand, the force that \[OpenCurlyDoubleQuote]supermoon\
+\[CloseCurlyDoubleQuote] experiences while orbiting Earth would be\
+\>", "Text",
+ CellChangeTimes->{{3.619267776306469*^9, 3.6192677888324957`*^9}, {
+  3.619267825087824*^9, 3.619267829398438*^9}, {3.619268151637991*^9, 
+  3.619268157789584*^9}}],
+
+Cell[BoxData[
+ RowBox[{"fsuper", " ", "=", " ", 
+  RowBox[{"G", " ", "msuper", " ", 
+   RowBox[{"Mearth", " ", "/", " ", 
+    RowBox[{"rsuper", "^", "2"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.619267791023616*^9, 3.619267812090609*^9}, {
+   3.619267896283187*^9, 3.6192678986617537`*^9}, 3.619268209447871*^9}],
+
+Cell["\<\
+where mspuer is the super moon mass and rsuper the distance between super \
+moon and Earth.\
+\>", "Text",
+ CellChangeTimes->{{3.619268168910288*^9, 3.619268191412071*^9}}],
+
+Cell["Then, the ratio of the forces gives", "Text",
+ CellChangeTimes->{{3.619267833112096*^9, 3.619267844614402*^9}, {
+  3.619268194892564*^9, 3.61926819929213*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"G", " ", "mfull", " ", 
+     RowBox[{"Mearth", " ", "/", " ", 
+      RowBox[{"rfull", "^", "2"}]}]}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"G", " ", "msuper", " ", 
+     RowBox[{"Mearth", " ", "/", " ", 
+      RowBox[{"rsuper", "^", "2"}]}]}], ")"}]}], "//", 
+  "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.619268206494864*^9, 3.619268230156184*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"mfull", " ", 
+   SuperscriptBox["rsuper", "2"]}], 
+  RowBox[{"msuper", " ", 
+   SuperscriptBox["rfull", "2"]}]]], "Output",
+ CellChangeTimes->{3.619268230902483*^9}]
+}, Open  ]],
+
+Cell["\<\
+Kepler\[CloseCurlyQuote]s second law of planetary motion states that the \
+period of satellite that orbits a planet is given by\
+\>", "Text",
+ CellChangeTimes->{{3.619268241795887*^9, 3.619268250433563*^9}, {
+  3.619268344355769*^9, 3.6192683618644733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"T", "^", "2"}], "/", 
+   RowBox[{"r", "^", "3"}]}], " ", "4", " ", 
+  RowBox[{"Pi", "/", "G"}], " ", "M"}]], "Input",
+ CellChangeTimes->{{3.6192683653545437`*^9, 3.619268377001416*^9}, {
+  3.619268524857685*^9, 3.619268526927434*^9}}],
+
+Cell["The ratio of periods is thus", "Text",
+ CellChangeTimes->{{3.619268380503811*^9, 3.6192683898790092`*^9}, {
+  3.619268456340129*^9, 3.6192684621480207`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Tfull", "^", "2"}], "/", 
+    RowBox[{"rfull", "^", "3"}]}], ")"}], "/", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Tsuper", "^", "2"}], "/", 
+    RowBox[{"rsuper", "^", "3"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.619268487753791*^9, 3.619268538366457*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["rsuper", "3"], " ", 
+   SuperscriptBox["Tfull", "2"]}], 
+  RowBox[{
+   SuperscriptBox["rfull", "3"], " ", 
+   SuperscriptBox["Tsuper", "2"]}]]], "Output",
+ CellChangeTimes->{3.6192685390790663`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Assuming (magical) super moon orbit around Earth doesn\[CloseCurlyQuote]t \
+change while changing its mass, then\
+\>", "Text",
+ CellChangeTimes->{{3.619268654432279*^9, 3.619268668733041*^9}, {
+  3.61926872837574*^9, 3.6192687841684647`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mfull", "/", "msuper"}], "=", " ", 
+  RowBox[{
+   RowBox[{"Tfull", "^", "2"}], "/", 
+   RowBox[{"Tsuper", "^", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.619268811318098*^9, 3.6192688315045433`*^9}}],
+
+Cell["\<\
+Last equation states that any change in moon mass should influence its period \
+around Earth!! Or\
+\>", "Text",
+ CellChangeTimes->{{3.619268852254507*^9, 3.619268907962658*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mfull", "/", "msuper"}], "==", " ", 
+    RowBox[{
+     RowBox[{"Tfull", "^", "2"}], "/", 
+     RowBox[{"Tsuper", "^", "2"}]}]}], ",", " ", "Tsuper"}], "]"}]], "Input",
+ CellChangeTimes->{{3.619268910480833*^9, 3.619268926372898*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"Tsuper", "\[Rule]", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        SqrtBox["msuper"], " ", "Tfull"}], 
+       SqrtBox["mfull"]]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Tsuper", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       SqrtBox["msuper"], " ", "Tfull"}], 
+      SqrtBox["mfull"]]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.61926892764977*^9}]
+}, Open  ]],
+
+Cell["Since periods are strictly positive, then", "Text",
+ CellChangeTimes->{{3.6192689329227667`*^9, 3.619268966842989*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Tsuper", "=", 
+   FractionBox[
+    RowBox[{
+     SqrtBox["msuper"], " ", "Tfull"}], 
+    SqrtBox["mfull"]]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619268978886504*^9, 3.619268987074481*^9}}],
+
+Cell["Plugging in the numbers and cranking the wheel, one finds", "Text",
+ CellChangeTimes->{{3.619268995401881*^9, 3.6192690118410597`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"msuper", " ", "=", " ", 
+   RowBox[{"1.20", " ", "*", " ", "mfull"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619269014844681*^9, 3.619269023290976*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mfull", " ", "=", " ", "1"}], ";"}]], "Input",
+ CellChangeTimes->{{3.619269025248246*^9, 3.61926903071357*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Tfull", " ", "=", " ", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{"30", ",", "\"\<Days\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619269033800694*^9, 3.61926905326083*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Tsuper"], "Input",
+ CellChangeTimes->{{3.619269056490366*^9, 3.619269058291057*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"32.863353450309965`"},
+  "QuantityUnit",
+  DisplayFunction->(TooltipBox[
+    StyleBox[
+     RowBox[{#, "\[InvisibleSpace]", 
+       StyleBox[
+        RowBox[{" ", "\"days\""}], "QuantityUnitTraditionalLabel"]}], 
+     ShowStringCharacters -> False], "Unit: days"]& ),
+  InterpretationFunction->(RowBox[{"Quantity", "[", 
+     RowBox[{#, ",", "\"Days\""}], "]"}]& )]], "Output",
+ CellChangeTimes->{3.619269058872712*^9}]
+}, Open  ]],
+
+Cell["Conclusion:", "Text",
+ CellChangeTimes->{{3.619269326716501*^9, 3.6192693303452387`*^9}}],
+
+Cell["\<\
+In words, during (magical) supermoon conditions, months would last 33 days \
+rather than 30!!! Years would be longer too :)\
+\>", "Text",
+ CellChangeTimes->{{3.6192690620228043`*^9, 3.6192690945825777`*^9}, {
+  3.6192692036891623`*^9, 3.619269230158317*^9}, {3.61926934061911*^9, 
+  3.61926935877535*^9}, {3.619275508536006*^9, 3.619275509116654*^9}}]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 189, 3, 35, "Input"],
+Cell[CellGroupData[{
+Cell[772, 27, 139, 1, 114, "Title"],
+Cell[914, 30, 184, 2, 37, "Text"],
+Cell[1101, 34, 132, 1, 37, "Text"],
+Cell[1236, 37, 94, 1, 37, "Text"],
+Cell[1333, 40, 394, 8, 132, "Text"],
+Cell[1730, 50, 197, 5, 35, "Input"],
+Cell[1930, 57, 389, 8, 132, "Text"],
+Cell[2322, 67, 283, 6, 35, "Input"],
+Cell[2608, 75, 195, 4, 61, "Text"],
+Cell[2806, 81, 324, 6, 61, "Text"],
+Cell[3133, 89, 311, 6, 36, "Input"],
+Cell[3447, 97, 181, 4, 61, "Text"],
+Cell[3631, 103, 165, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3821, 109, 425, 12, 57, "Input"],
+Cell[4249, 123, 204, 6, 64, "Output"]
+}, Open  ]],
+Cell[4468, 132, 268, 5, 61, "Text"],
+Cell[4739, 139, 281, 7, 35, "Input"],
+Cell[5023, 148, 163, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5211, 154, 327, 10, 36, "Input"],
+Cell[5541, 166, 256, 8, 64, "Output"]
+}, Open  ]],
+Cell[5812, 177, 252, 5, 61, "Text"],
+Cell[6067, 184, 234, 6, 36, "Input"],
+Cell[6304, 192, 187, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[6516, 200, 307, 8, 57, "Input"],
+Cell[6826, 210, 453, 16, 119, "Output"]
+}, Open  ]],
+Cell[7294, 229, 125, 1, 37, "Text"],
+Cell[7422, 232, 227, 7, 70, "Input"],
+Cell[7652, 241, 141, 1, 37, "Text"],
+Cell[7796, 244, 189, 4, 36, "Input"],
+Cell[7988, 250, 146, 3, 35, "Input"],
+Cell[8137, 255, 219, 5, 36, "Input"],
+Cell[CellGroupData[{
+Cell[8381, 264, 98, 1, 36, "Input"],
+Cell[8482, 267, 448, 11, 36, "Output"]
+}, Open  ]],
+Cell[8945, 281, 95, 1, 37, "Text"],
+Cell[9043, 284, 361, 6, 61, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
