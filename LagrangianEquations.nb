@@ -1,0 +1,670 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17890,        660]
+NotebookOptionsPosition[     14323,        532]
+NotebookOutlinePosition[     14998,        556]
+CellTagsIndexPosition[     14955,        553]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Lagrangian Equations", "Title",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["Jeff Adams, Wolfram Research Inc.,  October 1992", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[TextData[{
+ "This notebook illustrates one way of using ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to solve some advanced theoretical mechanics problems using Lagrangian \
+Mechanics.  The example problems are taken from ",
+ StyleBox["Analytical Mechanics",
+  FontSlant->"Italic"],
+ ", Grant R. Fowles,  Fourth Edition, Saunders College Publishing, 1986."
+}], "Text",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Function", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+The function LagrangianEquations[T, V, Q, genCoords] takes four arguments:  \
+the kinetic energy, T, of the system, the potential energy, V, of the system, \
+the non-conservative forces of the system, Q, and a list of the generalized \
+coordinates of the system.
+The function returns a list of the lagrangian equations for this system.
+
+Note, it is very important to explicitly declare all dependencies of T,V, and \
+Q on the generalized coordinates, as well as the explicit time dependence of \
+the generalized coordinates.\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+LagrangianEquations[T_,V_,Q_:0,genCoords_List] :=
+\tModule[{L=T-V},
+\t(D[D[L,D[#,t]],t] == Q + D[L,#])& /@ genCoords
+\t]\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Example 1 : Harmonic Oscillator", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {x[t]};
+T = 1/2 m x'[t]^2;
+V = 1/2 K x[t]^2;
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{m*Derivative[2][x][t] == -(K*x[t])}\
+\>", "\<\
+{m x''[t] == -(K x[t])}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DSolve[%,genCoords,t]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{x[t] -> E^((-I*K^(1/2)*t)/m^(1/2))*C[1] +
+     E^((I*K^(1/2)*t)/m^(1/2))*C[2]}}\
+\>", "\<\
+           (-I Sqrt[K] t)/Sqrt[m]
+{{x[t] -> E                       C[1] +
+
+      (I Sqrt[K] t)/Sqrt[m]
+     E                      C[2]}}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 2 :  Harmonic Oscillator with velocity damping", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {x[t]};
+T = 1/2 m x'[t]^2;
+V = 1/2 K x[t]^2;
+Q = -c x'[t];\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{m*Derivative[2][x][t] == -(K*x[t]) - c*Derivative[1][x][t]}\
+\>", "\<\
+{m x''[t] == -(K x[t]) - c x'[t]}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DSolve[%,genCoords,t]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{x[t] -> C[1]/E^(((c + (c^2 - 4*K*m)^(1/2))*t)/(2*m)) +
+     E^(((-c + (c^2 - 4*K*m)^(1/2))*t)/(2*m))*C[2]}}\
+\>", "\<\
+                        C[1]
+{{x[t] -> --------------------------------- +
+                       2
+           ((c + Sqrt[c  - 4 K m]) t)/(2 m)
+          E
+
+                   2
+      ((-c + Sqrt[c  - 4 K m]) t)/(2 m)
+     E                                  C[2]}}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 3 : Single Particle in a Central Field", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["Using polar coordinates", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {r[t],theta[t]};
+T = 1/2 m ( r'[t]^2 + r[t]^2 theta'[t]^2   );
+V = v[r[t]];
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{m*Derivative[2][r][t] ==
+   m*r[t]*Derivative[1][theta][t]^2 - Derivative[1][v][r[t]],
+  2*m*r[t]*Derivative[1][r][t]*Derivative[1][theta][t] +
+    m*r[t]^2*Derivative[2][theta][t] == 0}\
+\>", "\<\
+                             2
+{m r''[t] == m r[t] theta'[t]  - v'[r[t]],
+
+                                   2
+  2 m r[t] r'[t] theta'[t] + m r[t]  theta''[t] == 0}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 4 :  Atwood's Machine", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+A mechanical system known as Atwood's machine consists of two weights of mass \
+m1 and m2 , respectively, connected by a light inextensible cord of length l \
+which passes over a pulley.  The system has one degree of freedom.  Let x \
+represent the configuration of the system, where x is the vertical distance \
+from the pulley to m1.  I is the moment of inertia of the pulley with radius \
+a.\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {x[t]};
+T = 1/2 m1 x'[t]^2 + 1/2 m2 x'[t]^2 + 1/2 I x'[t]^2/ a^2;
+V = -m1 q x[t] - m2 q (l - x[t]);
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{(I*Derivative[2][x][t])/a^2 + m1*Derivative[2][x][t] +
+    m2*Derivative[2][x][t] == m1*q - m2*q}\
+\>", "\<\
+ I x''[t]
+{-------- + m1 x''[t] + m2 x''[t] == m1 q - m2 q}
+     2
+    a\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solve[%, x''[t]]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{Derivative[2][x][t] ->
+    -((-(a^2*m1*q) + a^2*m2*q)/(I + a^2*m1 + a^2*m2))}}\
+\>", "\<\
+                 2          2
+              -(a  m1 q) + a  m2 q
+{{x''[t] -> -(--------------------)}}
+                    2       2
+               I + a  m1 + a  m2\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 5 :  Double Atwood  Machine", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+Replace one of the weights in the atwood machine by another pulley supporting \
+two weights connected by another cord.  The system now has two degrees of \
+freedom.  We shall specify the coordinates x1 and x2.  For simplicity we \
+shall neglect the masses of the pulleys in this case.\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {x1[t],x2[t]};
+T = 1/2 m1 x1'[t]^2 + 1/2 m2 (-x1'[t] + x2'[t])^2 +
+\t 1/2 m3 ( -x1'[t] - x2'[t])^2;
+V = -m1 q x1[t] - m2 q (l1 - x1[t] + x2[t]) -
+\tm3 g (l1 - x1[t] + l2 - x2[t]);
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{m1*Derivative[2][x1][t] -
+    m3*(-Derivative[2][x1][t] - Derivative[2][x2][t]) -
+    m2*(-Derivative[2][x1][t] + Derivative[2][x2][t]) ==
+   -(g*m3) + m1*q - m2*q,
+  -(m3*(-Derivative[2][x1][t] - Derivative[2][x2][t])) +
+    m2*(-Derivative[2][x1][t] + Derivative[2][x2][t]) ==
+   -(g*m3) + m2*q}\
+\>", "\<\
+{m1 x1''[t] - m3 (-x1''[t] - x2''[t]) -
+
+    m2 (-x1''[t] + x2''[t]) == -(g m3) + m1 q - m2 q,
+
+  -(m3 (-x1''[t] - x2''[t])) + m2 (-x1''[t] + x2''[t]) ==
+
+   -(g m3) + m2 q}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Simplify[ Solve[%, {x1''[t],x2''[t]}] ]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{Derivative[2][x1][t] ->
+    (-2*g*m2*m3 + m1*m2*q + m1*m3*q - 2*m2*m3*q)/
+     (m1*m2 + m1*m3 + 4*m2*m3),
+   Derivative[2][x2][t] ->
+    (-(g*m1*m3) - 2*g*m2*m3 + 2*m1*m2*q - m1*m3*q +
+       2*m2*m3*q)/(m1*m2 + m1*m3 + 4*m2*m3)}}\
+\>", "\<\
+             -2 g m2 m3 + m1 m2 q + m1 m3 q - 2 m2 m3 q
+{{x1''[t] -> ------------------------------------------,
+                      m1 m2 + m1 m3 + 4 m2 m3
+
+   x2''[t] ->
+
+    -(g m1 m3) - 2 g m2 m3 + 2 m1 m2 q - m1 m3 q + 2 m2 m3 q
+    --------------------------------------------------------}}
+                    m1 m2 + m1 m3 + 4 m2 m3\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 6 :  Particle Sliding on a Movable Inclined Plane", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+Consider a particle sliding on a smooth inclined plane which itself, is free \
+to slide on a smooth horizontal surface. There are two degrees of freedom x1 \
+and x2, the horizontal displacement of the plane from some reference point \
+and the displacement of the particle from some reference point on the plane.  \
+Using the law of cosines for the velocity of the particle, we have:\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {x1[t],x2[t]};
+T = 1/2 m (x1'[t]^2 + x2'[t]^2+2 x1'[t] x2'[t] Cos[theta]) +
+\t\t1/2 M x1'[t]^2;
+V = - m q x2[t] Sin[theta] + cons;
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{M*Derivative[2][x1][t] +
+    (m*(2*Derivative[2][x1][t] +
+         2*Cos[theta]*Derivative[2][x2][t]))/2 == 0,
+  (m*(2*Cos[theta]*Derivative[2][x1][t] +
+        2*Derivative[2][x2][t]))/2 == m*q*Sin[theta]}\
+\>", "\<\
+             m (2 x1''[t] + 2 Cos[theta] x2''[t])
+{M x1''[t] + ------------------------------------ == 0,
+                              2
+
+  m (2 Cos[theta] x1''[t] + 2 x2''[t])
+  ------------------------------------ == m q Sin[theta]}
+                   2\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Simplify[ Solve[%, {x1''[t],x2''[t]}] ]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{Derivative[2][x1][t] ->
+    (m*q*Sin[2*theta])/(-m - 2*M + m*Cos[2*theta]),
+   Derivative[2][x2][t] ->
+    (2*(m + M)*q*Sin[theta])/(m + 2*M - m*Cos[2*theta])}}\
+\>", "\<\
+                 m q Sin[2 theta]
+{{x1''[t] -> -------------------------,
+             -m - 2 M + m Cos[2 theta]
+
+               2 (m + M) q Sin[theta]
+   x2''[t] -> ------------------------}}
+              m + 2 M - m Cos[2 theta]\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 7 :  Spherical pendulum, or bar of soap in a bowl", "Subsection",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell["\<\
+genCoords = {theta[t],phi[t]};
+T = 1/2 m l^2 (theta'[t]^2 + Sin[theta[t]]^2 phi'[t]^2);
+V = m g l (1 - Cos[theta[t]]);
+Q = 0;\
+\>", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["LagrangianEquations[T, V, Q, genCoords]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{l^2*m*Derivative[2][theta][t] ==
+   -(g*l*m*Sin[theta[t]]) +
+    l^2*m*Cos[theta[t]]*Sin[theta[t]]*Derivative[1][phi][t]^2\\
+   , 2*l^2*m*Cos[theta[t]]*Sin[theta[t]]*
+     Derivative[1][phi][t]*Derivative[1][theta][t] +
+    l^2*m*Sin[theta[t]]^2*Derivative[2][phi][t] == 0}\
+\>", "\<\
+  2
+{l  m theta''[t] == -(g l m Sin[theta[t]]) +
+
+     2                                      2
+    l  m Cos[theta[t]] Sin[theta[t]] phi'[t] ,
+
+     2
+  2 l  m Cos[theta[t]] Sin[theta[t]] phi'[t] theta'[t] +
+
+     2                2
+    l  m Sin[theta[t]]  phi''[t] == 0}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell["\<\
+Given that phi is an ignorable coordinate then  m l^2 Sin[theta[t]]^2  \
+phi'[t] = constant\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[CellGroupData[{
+
+Cell["%  /.  phi'[t] -> h1/ (m l^2 Sin[theta[t]]^2 )", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{l^2*m*Derivative[2][theta][t] ==
+   (h1^2*Cot[theta[t]]*Csc[theta[t]]^2)/(l^2*m) -
+    g*l*m*Sin[theta[t]],
+  2*h1*Cot[theta[t]]*Derivative[1][theta][t] +
+    l^2*m*Sin[theta[t]]^2*Derivative[2][phi][t] == 0}\
+\>", "\<\
+                      2                            2
+  2                 h1  Cot[theta[t]] Csc[theta[t]]
+{l  m theta''[t] == -------------------------------- -
+                                   2
+                                  l  m
+
+    g l m Sin[theta[t]],
+
+  2 h1 Cot[theta[t]] theta'[t] +
+
+     2                2
+    l  m Sin[theta[t]]  phi''[t] == 0}\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solve[%,theta''[t]]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{Derivative[2][theta][t] ->
+    ((h1^2*Cot[theta[t]]*Csc[theta[t]]^2)/(l^2*m) -
+       g*l*m*Sin[theta[t]])/(l^2*m)}}\
+\>", "\<\
+{{theta''[t] ->
+
+      2                            2
+    h1  Cot[theta[t]] Csc[theta[t]]
+    -------------------------------- - g l m Sin[theta[t]]
+                   2
+                  l  m
+    ------------------------------------------------------}}
+                              2
+                             l  m\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["thetaEqu = Simplify[ % /. {h1 -> h l^2 m}]", "Input",
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[OutputFormData["\<\
+{{Derivative[2][theta][t] ->
+    h^2*Cot[theta[t]]*Csc[theta[t]]^2 - (g*Sin[theta[t]])/l}}\
+\>", "\<\
+{{theta''[t] ->
+
+     2                            2   g Sin[theta[t]]
+    h  Cot[theta[t]] Csc[theta[t]]  - ---------------}}
+                                             l\
+\>"], "Output",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell["\<\
+In one special case, if phi = constant then phi' is zero and so h=0 and we \
+have the simple pendulum case.\
+\>", "Text",
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Closed]]
+}, Open  ]]
+},
+WindowToolbars->{},
+CellGrouping->Manual,
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowCellLabel->True,
+ShowCellTags->False,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb",
+PrivateNotebookOptions -> {"ColorPalette" -> {RGBColor, -1}},
+RenderingOptions -> {"ObjectDithering" -> True},
+RenderingOptions -> {"RasterDithering" -> False}
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 69, 1, 92, "Title"],
+Cell[652, 25, 96, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[773, 30, 66, 1, 44, "Subsection"],
+Cell[842, 33, 415, 10, 87, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1294, 48, 62, 1, 44, "Subsection"],
+Cell[1359, 51, 580, 11, 182, "Text"],
+Cell[1942, 64, 177, 6, 74, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2156, 75, 85, 1, 44, "Subsection"],
+Cell[2244, 78, 120, 6, 70, "Input"],
+Cell[CellGroupData[{
+Cell[2389, 88, 88, 1, 70, "Input"],
+Cell[2480, 91, 145, 5, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2662, 101, 70, 1, 70, "Input"],
+Cell[2735, 104, 305, 10, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3089, 120, 108, 1, 36, "Subsection"],
+Cell[3200, 123, 127, 6, 70, "Input"],
+Cell[CellGroupData[{
+Cell[3352, 133, 88, 1, 70, "Input"],
+Cell[3443, 136, 179, 5, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3659, 146, 70, 1, 70, "Input"],
+Cell[3732, 149, 459, 14, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4240, 169, 100, 1, 36, "Subsection"],
+Cell[4343, 172, 71, 1, 70, "Text"],
+Cell[4417, 175, 151, 6, 70, "Input"],
+Cell[CellGroupData[{
+Cell[4593, 185, 88, 1, 70, "Input"],
+Cell[4684, 188, 438, 12, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5171, 206, 83, 1, 36, "Subsection"],
+Cell[5257, 209, 450, 8, 70, "Text"],
+Cell[5710, 219, 175, 6, 70, "Input"],
+Cell[CellGroupData[{
+Cell[5910, 229, 88, 1, 70, "Input"],
+Cell[6001, 232, 256, 9, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6294, 246, 65, 1, 70, "Input"],
+Cell[6362, 249, 331, 10, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6742, 265, 89, 1, 36, "Subsection"],
+Cell[6834, 268, 340, 6, 70, "Text"],
+Cell[7177, 276, 255, 8, 70, "Input"],
+Cell[CellGroupData[{
+Cell[7457, 288, 88, 1, 70, "Input"],
+Cell[7548, 291, 557, 17, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8142, 313, 88, 1, 70, "Input"],
+Cell[8233, 316, 660, 18, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8942, 340, 111, 1, 36, "Subsection"],
+Cell[9056, 343, 438, 7, 70, "Text"],
+Cell[9497, 352, 206, 7, 70, "Input"],
+Cell[CellGroupData[{
+Cell[9728, 363, 88, 1, 70, "Input"],
+Cell[9819, 366, 549, 15, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10405, 386, 88, 1, 70, "Input"],
+Cell[10496, 389, 479, 14, 70, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11024, 409, 111, 1, 36, "Subsection"],
+Cell[11138, 412, 182, 6, 70, "Input"],
+Cell[CellGroupData[{
+Cell[11345, 422, 88, 1, 70, "Input"],
+Cell[11436, 425, 631, 20, 70, "Output"]
+}, Open  ]],
+Cell[12082, 448, 147, 4, 70, "Text"],
+Cell[CellGroupData[{
+Cell[12254, 456, 95, 1, 70, "Input"],
+Cell[12352, 459, 654, 20, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13043, 484, 68, 1, 70, "Input"],
+Cell[13114, 487, 523, 16, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13674, 508, 91, 1, 70, "Input"],
+Cell[13768, 511, 349, 10, 70, "Output"]
+}, Open  ]],
+Cell[14132, 524, 163, 4, 70, "Text"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

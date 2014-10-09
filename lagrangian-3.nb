@@ -1,0 +1,181 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5347,        172]
+NotebookOptionsPosition[      4698,        145]
+NotebookOutlinePosition[      5050,        161]
+CellTagsIndexPosition[      5007,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6199308987114687`*^9, 3.619930905215802*^9}, {
+  3.6199311434252043`*^9, 3.619931149385207*^9}, {3.619931202654976*^9, 
+  3.619931210080245*^9}}],
+
+Cell["Lagrangian mechanics", "Text",
+ CellChangeTimes->{{3.619935856632452*^9, 3.619935861190138*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<VariationalMethods`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619936058220582*^9, 3.619936059416626*^9}, {
+  3.619945846337903*^9, 3.619945849769549*^9}}],
+
+Cell["Assume a lagrangian:", "Text",
+ CellChangeTimes->{{3.61995040011415*^9, 3.619950403280129*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"l", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"1", "/", "2"}], " ", "m", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "'"}], "[", "t", "]"}], "^", "2"}], "+", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"y", "'"}], "[", "t", "]"}], "^", "2"}], "+", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"z", "'"}], "[", "t", "]"}], "^", "2"}]}], ")"}]}]}]], "Input",\
+
+ CellChangeTimes->{{3.6199504053295527`*^9, 3.6199504422957*^9}, 
+   3.619950616045879*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "m", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["x", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["y", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["z", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.6199504440544853`*^9, 3.619950616611861*^9, 3.619950708257847*^9, {
+   3.619950758978631*^9, 3.619950773601852*^9}}]
+}, Open  ]],
+
+Cell["Transform to spherical coordinates:", "Text",
+ CellChangeTimes->{{3.619950451431842*^9, 3.6199504600378304`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"TransformedField", "[", 
+      RowBox[{
+       RowBox[{"\"\<Cartesian\>\"", "\[Rule]", "\"\<Spherical\>\""}], ",", 
+       RowBox[{"l", "[", "t", "]"}], ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"x", ",", "y", ",", "z"}], "}"}], "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]}], "]"}], "//",
+      "Expand"}], "//", "TrigExpand"}], "//", "TrigReduce"}], "//", 
+  "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.6199504629382467`*^9, 3.619950465590178*^9}, {
+  3.619950502789381*^9, 3.619950595343001*^9}, {3.6199507417892523`*^9, 
+  3.6199507541207523`*^9}, {3.619950791615142*^9, 3.61995090172254*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "m", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ")"}], "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ")"}], "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"r", " ", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], " ", 
+         RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ")"}], "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.6199505963074427`*^9, 3.619950619202471*^9}, 
+   3.6199507082909*^9, {3.619950743957605*^9, 3.619950773639703*^9}, {
+   3.619950818162112*^9, 3.619950834497816*^9}, {3.619950875169957*^9, 
+   3.6199509025879583`*^9}}]
+}, Open  ]],
+
+Cell["Nope! Wrong solution!", "Text",
+ CellChangeTimes->{{3.6199509310353527`*^9, 3.6199509380891037`*^9}}]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 325, 6, 46, "Input"],
+Cell[886, 28, 102, 1, 30, "Text"],
+Cell[991, 31, 199, 3, 28, "Input"],
+Cell[1193, 36, 101, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1319, 41, 531, 18, 28, "Input"],
+Cell[1853, 61, 651, 19, 47, "Output"]
+}, Open  ]],
+Cell[2519, 83, 119, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2663, 88, 749, 18, 63, "Input"],
+Cell[3415, 108, 1157, 31, 47, "Output"]
+}, Open  ]],
+Cell[4587, 142, 107, 1, 30, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,225 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7357,        216]
+NotebookOptionsPosition[      6487,        183]
+NotebookOutlinePosition[      6839,        199]
+CellTagsIndexPosition[      6796,        196]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619848572906513*^9, 3.619848581917406*^9}}],
+
+Cell["Find dimensionless combinations of physical quantities.", "Text",
+ CellChangeTimes->{{3.61984876787055*^9, 3.619848791341834*^9}, {
+  3.619848843012924*^9, 3.619848850690608*^9}}],
+
+Cell["* Solution:", "Text",
+ CellChangeTimes->{{3.619848794860965*^9, 3.619848802668404*^9}, {
+  3.619849309680181*^9, 3.619849309907607*^9}}],
+
+Cell["Input the physical quantity system (pqs):", "Text",
+ CellChangeTimes->{{3.619848804724553*^9, 3.619848837220961*^9}, {
+  3.619848939231916*^9, 3.619848940647667*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pqs", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Force\>\"", ",", "\"\<Mass\>\"", ",", "\"\<Acceleration\>\""}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619848593164747*^9, 3.619848678513397*^9}, {
+   3.619848731824877*^9, 3.619848742658163*^9}, 3.619849354571496*^9}],
+
+Cell["Find dimensionless combinations:", "Text",
+ CellChangeTimes->{{3.61984881894872*^9, 3.619848831980386*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DimensionalCombinations", "[", "pqs", "]"}]], "Input",
+ CellChangeTimes->{{3.619848681093193*^9, 3.619848685586253*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  FractionBox[
+   RowBox[{
+    TemplateBox[{"\"Acceleration\"","\"Acceleration\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " acceleration"}], TooltipStyle -> 
+       "TextStyling"]& )], " ", 
+    TemplateBox[{"\"Mass\"","\"Mass\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " mass"}], TooltipStyle -> 
+       "TextStyling"]& )]}], 
+   TemplateBox[{"\"Force\"","\"Force\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " force"}], TooltipStyle -> 
+      "TextStyling"]& )]], "}"}]], "Output",
+ CellChangeTimes->{{3.619848685943177*^9, 3.619848694320963*^9}, {
+   3.6198487456481533`*^9, 3.619848751184189*^9}, 3.619849109386332*^9, 
+   3.619849364861845*^9, 3.6198494935151453`*^9}]
+}, Open  ]],
+
+Cell["* Solution:", "Text",
+ CellChangeTimes->{{3.6198489206845627`*^9, 3.61984892470448*^9}, {
+  3.619849311843536*^9, 3.619849312043909*^9}}],
+
+Cell[TextData[{
+ "Input the pqs (",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "-aware quantities):"
+}], "Text",
+ CellChangeTimes->{{3.61984892881988*^9, 3.6198489356968527`*^9}, {
+  3.619849251943387*^9, 3.619849262293889*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pqs", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Force\>\"", ",", "\"\<Mass\>\""}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619848944891819*^9, 3.619848952928941*^9}, {
+   3.619848987722314*^9, 3.6198490983647747`*^9}, {3.619849139857819*^9, 
+   3.6198491627020903`*^9}, 3.619849352150155*^9, {3.6198494818846397`*^9, 
+   3.619849488177287*^9}, {3.619855222503125*^9, 3.619855233032037*^9}}],
+
+Cell[TextData[{
+ "Define non-",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "-aware quantities:"
+}], "Text",
+ CellChangeTimes->{{3.619849266237405*^9, 3.619849277132468*^9}, {
+  3.619849524445209*^9, 3.6198495253163433`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"myacceleration", " ", "=", " ", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{"\"\<myAcceleration\>\"", ",", 
+     RowBox[{"(", 
+      RowBox[{"\"\<Meters\>\"", "/", 
+       RowBox[{"\"\<Seconds\>\"", "^", "2"}]}], ")"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6198492306686373`*^9, 3.619849234713175*^9}, 
+   3.6198493583328867`*^9}],
+
+Cell["Find dimensionless combinations:", "Text",
+ CellChangeTimes->{{3.619849280589572*^9, 3.6198492855082607`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DimensionalCombinations", "[", 
+  RowBox[{"pqs", ",", " ", 
+   RowBox[{"IncludeQuantities", "->", 
+    RowBox[{"{", "myacceleration", "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.619849063480188*^9, 3.619849067837068*^9}, {
+  3.6198491672196283`*^9, 3.619849169282172*^9}, {3.619849243214361*^9, 
+  3.61984924430834*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"(", 
+     TemplateBox[{"\"myAcceleration\""},
+      "QuantityUnit",
+      DisplayFunction->(TooltipBox[
+        StyleBox[
+         RowBox[{#, "\[InvisibleSpace]", 
+           StyleBox[
+            RowBox[{" ", 
+              
+              RowBox[{"\"m\"", "\[InvisibleSpace]", "\"/\"", 
+                "\[InvisibleSpace]", 
+                SuperscriptBox["\"s\"", "2"]}]}], 
+            "QuantityUnitTraditionalLabel"]}], ShowStringCharacters -> False],
+         "Unit: meters per second squared"]& ),
+      InterpretationFunction->(RowBox[{"Quantity", "[", 
+         RowBox[{#, ",", 
+           FractionBox["\"Meters\"", 
+            SuperscriptBox["\"Seconds\"", "2"]]}], "]"}]& )], ")"}], " ", 
+    TemplateBox[{"\"Mass\"","\"Mass\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " mass"}], TooltipStyle -> 
+       "TextStyling"]& )]}], 
+   TemplateBox[{"\"Force\"","\"Force\""},
+    "QuantityVariable",
+    DisplayFunction->(TooltipBox[
+      StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
+      RowBox[{"Quantity variable:", " force"}], TooltipStyle -> 
+      "TextStyling"]& )]], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6198490683176003`*^9, {3.6198491018469963`*^9, 3.619849109585918*^9}, {
+   3.6198491447396097`*^9, 3.619849172684997*^9}, 3.61984924564342*^9, 
+   3.619849364940998*^9, 3.619849493565201*^9}]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 139, 2, 28, "Input"],
+Cell[700, 24, 185, 2, 30, "Text"],
+Cell[888, 28, 142, 2, 30, "Text"],
+Cell[1033, 32, 172, 2, 30, "Text"],
+Cell[1208, 36, 328, 8, 28, "Input"],
+Cell[1539, 46, 113, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1677, 51, 144, 2, 28, "Input"],
+Cell[1824, 55, 1134, 26, 48, "Output"]
+}, Open  ]],
+Cell[2973, 84, 143, 2, 30, "Text"],
+Cell[3119, 88, 235, 7, 30, "Text"],
+Cell[3357, 97, 441, 8, 28, "Input"],
+Cell[3801, 107, 231, 7, 30, "Text"],
+Cell[4035, 116, 379, 10, 46, "Input"],
+Cell[4417, 128, 116, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4558, 133, 350, 7, 28, "Input"],
+Cell[4911, 142, 1560, 38, 52, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

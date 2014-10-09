@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8020,        243]
-NotebookOptionsPosition[      7005,        204]
-NotebookOutlinePosition[      7388,        221]
-CellTagsIndexPosition[      7345,        218]
+NotebookDataLength[      8162,        246]
+NotebookOptionsPosition[      7146,        207]
+NotebookOutlinePosition[      7529,        224]
+CellTagsIndexPosition[      7486,        221]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -97,7 +97,8 @@ Cell[BoxData[
       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> False], 
       RowBox[{"Quantity variable:", " acceleration"}], TooltipStyle -> 
       "TextStyling"]& )]}], "}"}]], "Output",
- CellChangeTimes->{3.618665070499752*^9, 3.618665753072537*^9}]
+ CellChangeTimes->{3.618665070499752*^9, 3.618665753072537*^9, 
+  3.619843628928417*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -141,7 +142,7 @@ Cell[BoxData[
         RowBox[{"Quantity variable:", " time"}], TooltipStyle -> 
         "TextStyling"]& )], "2"]}]], "}"}]], "Output",
  CellChangeTimes->{3.6186650907920923`*^9, 3.6186654755417843`*^9, 
-  3.6186657530972977`*^9}]
+  3.6186657530972977`*^9, 3.619843628955068*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -167,7 +168,7 @@ Cell["Now we find the fractional change of t:", "Text",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"dt_fc", " ", "=", " ", 
+ RowBox[{"dtfc", " ", "=", " ", 
   RowBox[{
    RowBox[{
     RowBox[{"Dt", "[", 
@@ -175,7 +176,8 @@ Cell[BoxData[
       RowBox[{"l", ",", "g"}], "]"}], "]"}], "/", 
     RowBox[{"t", "[", 
      RowBox[{"l", ",", "g"}], "]"}]}], "//", "FullSimplify"}]}]], "Input",
- CellChangeTimes->{{3.618665887986558*^9, 3.618665915596211*^9}}],
+ CellChangeTimes->{{3.618665887986558*^9, 3.618665915596211*^9}, {
+  3.61984363388802*^9, 3.619843637694479*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -187,7 +189,8 @@ Cell[BoxData[
       RowBox[{"Dt", "[", "g", "]"}], "g"]}], "+", 
     FractionBox[
      RowBox[{"Dt", "[", "l", "]"}], "l"]}], ")"}]}]], "Output",
- CellChangeTimes->{3.6186659165245934`*^9}]
+ CellChangeTimes->{
+  3.6186659165245934`*^9, {3.619843629137747*^9, 3.6198436390993*^9}}]
 }, Open  ]],
 
 Cell["\<\
@@ -229,21 +232,21 @@ Cell[1778, 54, 113, 1, 37, "Text"],
 Cell[1894, 57, 285, 7, 132, "Text"],
 Cell[CellGroupData[{
 Cell[2204, 68, 378, 8, 78, "Input"],
-Cell[2585, 78, 969, 21, 36, "Output"]
+Cell[2585, 78, 994, 22, 36, "Output"]
 }, Open  ]],
-Cell[3569, 102, 190, 5, 85, "Text"],
+Cell[3594, 103, 190, 5, 85, "Text"],
 Cell[CellGroupData[{
-Cell[3784, 111, 236, 4, 36, "Input"],
-Cell[4023, 117, 1075, 26, 58, "Output"]
+Cell[3809, 112, 236, 4, 36, "Input"],
+Cell[4048, 118, 1097, 26, 58, "Output"]
 }, Open  ]],
-Cell[5113, 146, 321, 7, 132, "Text"],
-Cell[5437, 155, 225, 6, 36, "Input"],
-Cell[5665, 163, 120, 1, 37, "Text"],
+Cell[5160, 147, 321, 7, 132, "Text"],
+Cell[5484, 156, 225, 6, 36, "Input"],
+Cell[5712, 164, 120, 1, 37, "Text"],
 Cell[CellGroupData[{
-Cell[5810, 168, 333, 9, 36, "Input"],
-Cell[6146, 179, 294, 10, 59, "Output"]
+Cell[5857, 169, 380, 10, 36, "Input"],
+Cell[6240, 181, 341, 11, 59, "Output"]
 }, Open  ]],
-Cell[6455, 192, 534, 9, 109, "Text"]
+Cell[6596, 195, 534, 9, 109, "Text"]
 }, Open  ]]
 }
 ]

@@ -1,0 +1,457 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13614,        448]
+NotebookOptionsPosition[     11554,        377]
+NotebookOutlinePosition[     11906,        393]
+CellTagsIndexPosition[     11863,        390]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6199477358730183`*^9, 3.619947735874042*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Lagrangian of a math pendulum", "Title",
+ CellChangeTimes->{{3.619948910100366*^9, 3.619948917091275*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Cartesians", "Chapter",
+ CellChangeTimes->{{3.619947581099606*^9, 3.619947592176435*^9}, {
+  3.6199487766534452`*^9, 3.6199487805934772`*^9}, {3.619948919749916*^9, 
+  3.6199489220507727`*^9}}],
+
+Cell[TextData[{
+ "Load the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " package:"
+}], "Text",
+ CellChangeTimes->{{3.619948800788053*^9, 3.619948808442686*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<VariationalMethods`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619947779093464*^9, 3.6199477790946712`*^9}}],
+
+Cell["Define the position vector in Cartesian coordinates:", "Text",
+ CellChangeTimes->{{3.619948811993832*^9, 3.6199488227703648`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", "t_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", 
+     RowBox[{"y", "[", "t", "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619947631517015*^9, 3.619947650724779*^9}, 
+   3.61994882585983*^9}],
+
+Cell["Find the velocity, the kinetic energy and the lagrangian:", "Text",
+ CellChangeTimes->{{3.619948828697626*^9, 3.619948856395812*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"v", "[", "t_", "]"}], "=", 
+   RowBox[{"Dt", "[", 
+    RowBox[{
+     RowBox[{"p", "[", "t", "]"}], ",", "t"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6199476542513933`*^9, 3.6199476659645147`*^9}, 
+   3.619948838691991*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"k", "[", "t_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"1", "/", "2"}], " ", "m", " ", 
+    RowBox[{
+     RowBox[{"v", "[", "t", "]"}], ".", 
+     RowBox[{"v", "[", "t", "]"}]}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619947619851494*^9, 3.6199476258071117`*^9}, {
+   3.619947689185296*^9, 3.619947707882004*^9}, 3.619948840579694*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"l", "[", "t_", "]"}], "=", 
+  RowBox[{"k", "[", "t", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6199477488811703`*^9, 3.6199477561322737`*^9}, {
+  3.619948859310418*^9, 3.619948860292115*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "m", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["x", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["y", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.619947756518847*^9, 3.619947929197299*^9, 
+  3.6199488606191998`*^9, 3.6199494644834137`*^9}]
+}, Open  ]],
+
+Cell["Assume constant mass:", "Text",
+ CellChangeTimes->{{3.619948863500708*^9, 3.619948870451373*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{"m", ">", "0"}]}], ";"}], "\n", 
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"m", ",", "Constant"}], "]"}]}], "Input"],
+
+Cell["Find the eqns of motion for the x and y coordinates:", "Text",
+ CellChangeTimes->{{3.6199488753467484`*^9, 3.619948886754929*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqmx", "=", 
+  RowBox[{
+   RowBox[{"EulerEquations", "[", 
+    RowBox[{
+     RowBox[{"l", "[", "t", "]"}], ",", 
+     RowBox[{"x", "[", "t", "]"}], ",", "t"}], "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.619947794697394*^9, 3.619947805762783*^9}, 
+   3.619947836671125*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["x", "\[Prime]\[Prime]",
+    MultilineFunction->None], "[", "t", "]"}], "\[Equal]", "0"}]], "Output",
+ CellChangeTimes->{{3.619947797050893*^9, 3.6199478061521063`*^9}, 
+   3.619947897897312*^9, 3.619947929246409*^9, 3.619949464535974*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqmy", "=", 
+  RowBox[{
+   RowBox[{"EulerEquations", "[", 
+    RowBox[{
+     RowBox[{"l", "[", "t", "]"}], ",", 
+     RowBox[{"y", "[", "t", "]"}], ",", "t"}], "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.61994783269899*^9, 3.619947844870659*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["y", "\[Prime]\[Prime]",
+    MultilineFunction->None], "[", "t", "]"}], "\[Equal]", "0"}]], "Output",
+ CellChangeTimes->{3.619947845386443*^9, 3.619947929279849*^9, 
+  3.619949464566286*^9}]
+}, Open  ]],
+
+Cell["End", "Text",
+ CellChangeTimes->{{3.619947944789545*^9, 3.619947945252264*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generalized coordinates", "Chapter",
+ CellChangeTimes->{{3.61994893099527*^9, 3.619948935419147*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input"],
+
+Cell["Write down the position in Cartesians:", "Text",
+ CellChangeTimes->{{3.619948940315238*^9, 3.6199489534258957`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", "t_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", 
+     RowBox[{"y", "[", "t", "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619948007071834*^9, 3.619948017144701*^9}, 
+   3.619948955364792*^9}],
+
+Cell["\<\
+Parametrize the position coordinates with the pendulum length and its angle \
+with the vertical:\
+\>", "Text",
+ CellChangeTimes->{{3.619948972579483*^9, 3.619949006632766*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", "t_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"p", "[", "t", "]"}], "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], "\[Rule]", 
+       RowBox[{"l", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "t", "]"}], "\[Rule]", 
+       RowBox[{"l", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}]}], "}"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6199486100017157`*^9, 3.619948665403049*^9}, 
+   3.619949013465963*^9}],
+
+Cell["Find its velocity and kinetic energy:", "Text",
+ CellChangeTimes->{{3.619949016983555*^9, 3.6199490247841253`*^9}, {
+  3.619949082713262*^9, 3.619949087287528*^9}, {3.619949277641995*^9, 
+  3.619949281213585*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"v", "[", "t_", "]"}], "=", 
+   RowBox[{"Dt", "[", 
+    RowBox[{
+     RowBox[{"p", "[", "t", "]"}], ",", "t"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619948672390646*^9, 3.6199486817113733`*^9}, 
+   3.619949029394094*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"k", "[", "t_", "]"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "/", "2"}], " ", "m", " ", 
+     RowBox[{
+      RowBox[{"v", "[", "t", "]"}], ".", 
+      RowBox[{"v", "[", "t", "]"}]}]}], "//", "FullSimplify"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.619948736384536*^9, 3.6199487572476*^9}, {
+  3.619949092116047*^9, 3.619949092681178*^9}}],
+
+Cell["Find the potential energy:", "Text",
+ CellChangeTimes->{{3.619949284876987*^9, 3.6199492905727453`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"pot", "[", "t_", "]"}], "=", 
+   RowBox[{"m", " ", "g", " ", 
+    RowBox[{"y", "[", "t", "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.619949292630457*^9, 3.619949309334249*^9}, {
+  3.619949346823968*^9, 3.6199493609964046`*^9}}],
+
+Cell["Apply the parametrization:", "Text",
+ CellChangeTimes->{{3.619949316067819*^9, 3.619949326107332*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"pot", "[", "t_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"pot", "[", "t", "]"}], "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], "\[Rule]", 
+       RowBox[{"l", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "t", "]"}], "\[Rule]", 
+       RowBox[{"l", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}]}], "}"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.61994932842129*^9, 3.619949381006863*^9}}],
+
+Cell["Find the lagrangian:", "Text",
+ CellChangeTimes->{{3.619949368867735*^9, 3.6199493723618793`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"l", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{"k", "[", "t", "]"}], "-", 
+   RowBox[{"pot", "[", "t", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.619949094496625*^9, 3.6199491062575283`*^9}, {
+  3.619949374507637*^9, 3.619949377845708*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "g"}], " ", "l", " ", "m", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}], "+", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   SuperscriptBox["l", "2"], " ", "m", " ", 
+   SuperscriptBox[
+    RowBox[{
+     SuperscriptBox["\[Theta]", "\[Prime]",
+      MultilineFunction->None], "[", "t", "]"}], "2"]}]}]], "Output",
+ CellChangeTimes->{{3.619948748093688*^9, 3.6199487577151327`*^9}, 
+   3.619949034287404*^9, 3.619949107441128*^9, {3.619949378206362*^9, 
+   3.6199493842361917`*^9}, 3.6199494646821632`*^9}]
+}, Open  ]],
+
+Cell["Assume constant mass and constant pendulum length:", "Text",
+ CellChangeTimes->{{3.61994903597679*^9, 3.619949047846964*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{"g", ">", "0"}], "&&", 
+    RowBox[{"l", ">", "0"}], "&&", 
+    RowBox[{"m", ">", "0"}]}]}], ";"}], "\n", 
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"g", ",", "Constant"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"l", ",", "Constant"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"m", ",", "Constant"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.619948706178244*^9, 3.619948720456415*^9}, {
+  3.619949388342226*^9, 3.61994939848281*^9}}],
+
+Cell["Find the eqn of motion:", "Text",
+ CellChangeTimes->{{3.6199490532406263`*^9, 3.619949057574967*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqm", "=", 
+  RowBox[{
+   RowBox[{"EulerEquations", "[", 
+    RowBox[{
+     RowBox[{"l", "[", "t", "]"}], ",", 
+     RowBox[{"\[Theta]", "[", "t", "]"}], ",", "t"}], "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.619949067998204*^9, 3.619949074522674*^9}, {
+  3.619949114920767*^9, 3.6199491300413218`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g", " ", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}], "\[Equal]", 
+  RowBox[{"l", " ", 
+   RowBox[{
+    SuperscriptBox["\[Theta]", "\[Prime]\[Prime]",
+     MultilineFunction->None], "[", "t", "]"}]}]}]], "Output",
+ CellChangeTimes->{{3.6199491235112267`*^9, 3.6199491304929857`*^9}, 
+   3.619949403322618*^9, 3.619949464764009*^9}]
+}, Open  ]],
+
+Cell["End.", "Text",
+ CellChangeTimes->{{3.619949173207945*^9, 3.619949173694718*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 208, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[791, 28, 112, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[928, 33, 199, 3, 65, "Chapter"],
+Cell[1130, 38, 169, 6, 30, "Text"],
+Cell[1302, 46, 152, 2, 28, "Input"],
+Cell[1457, 50, 136, 1, 30, "Text"],
+Cell[1596, 53, 299, 9, 28, "Input"],
+Cell[1898, 64, 139, 1, 30, "Text"],
+Cell[2040, 67, 279, 8, 28, "Input"],
+Cell[2322, 77, 383, 10, 28, "Input"],
+Cell[CellGroupData[{
+Cell[2730, 91, 225, 5, 28, "Input"],
+Cell[2958, 98, 491, 14, 47, "Output"]
+}, Open  ]],
+Cell[3464, 115, 103, 1, 30, "Text"],
+Cell[3570, 118, 184, 5, 46, "Input"],
+Cell[3757, 125, 136, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3918, 130, 322, 9, 28, "Input"],
+Cell[4243, 141, 292, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4572, 152, 295, 8, 28, "Input"],
+Cell[4870, 162, 243, 6, 30, "Output"]
+}, Open  ]],
+Cell[5128, 171, 85, 1, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5250, 177, 107, 1, 65, "Chapter"],
+Cell[5360, 180, 140, 3, 46, "Input"],
+Cell[5503, 185, 122, 1, 30, "Text"],
+Cell[5628, 188, 300, 9, 28, "Input"],
+Cell[5931, 199, 186, 4, 49, "Text"],
+Cell[6120, 205, 649, 20, 28, "Input"],
+Cell[6772, 227, 219, 3, 30, "Text"],
+Cell[6994, 232, 277, 8, 28, "Input"],
+Cell[7274, 242, 400, 12, 28, "Input"],
+Cell[7677, 256, 110, 1, 30, "Text"],
+Cell[7790, 259, 280, 7, 28, "Input"],
+Cell[8073, 268, 108, 1, 30, "Text"],
+Cell[8184, 271, 624, 19, 28, "Input"],
+Cell[8811, 292, 104, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[8940, 297, 278, 7, 28, "Input"],
+Cell[9221, 306, 589, 15, 47, "Output"]
+}, Open  ]],
+Cell[9825, 324, 131, 1, 30, "Text"],
+Cell[9959, 327, 579, 14, 80, "Input"],
+Cell[10541, 343, 107, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[10673, 348, 353, 9, 28, "Input"],
+Cell[11029, 359, 396, 10, 30, "Output"]
+}, Open  ]],
+Cell[11440, 372, 86, 1, 30, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

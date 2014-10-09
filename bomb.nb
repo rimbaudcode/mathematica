@@ -1,0 +1,205 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6144,        196]
+NotebookOptionsPosition[      5354,        163]
+NotebookOutlinePosition[      5737,        180]
+CellTagsIndexPosition[      5694,        177]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.619843339511333*^9, 3.619843347283558*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Use Dimensional Analysis to Determine the Explosive Force of a Bomb\
+\>", "Title",
+ CellChangeTimes->{3.619843331666916*^9}],
+
+Cell["\<\
+Find an expression for the energy of an explosion in terms of mass density, \
+radius, and time.\
+\>", "Text",
+ CellChangeTimes->{3.6198433562877197`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"energyExpression", "=", 
+  RowBox[{"DimensionalCombinations", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"QuantityVariable", "[", "\"\<MassDensity\>\"", "]"}], ",", 
+      RowBox[{"QuantityVariable", "[", "\"\<Radius\>\"", "]"}], ",", 
+      RowBox[{"QuantityVariable", "[", "\"\<Time\>\"", "]"}]}], "}"}], ",", 
+    RowBox[{"QuantityVariable", "[", "\"\<Energy\>\"", "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.619843375602737*^9, 3.6198433756037607`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  FractionBox[
+   RowBox[{
+    TemplateBox[{"\"MassDensity\"","\"MassDensity\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " mass density"}], TooltipStyle -> 
+       "TextStyling"]& )], " ", 
+    SuperscriptBox[
+     TemplateBox[{"\"Radius\"","\"Radius\""},
+      "QuantityVariable",
+      DisplayFunction->(TooltipBox[
+        StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+         False], 
+        RowBox[{"Quantity variable:", " radius"}], TooltipStyle -> 
+        "TextStyling"]& )], "5"]}], 
+   SuperscriptBox[
+    TemplateBox[{"\"Time\"","\"Time\""},
+     "QuantityVariable",
+     DisplayFunction->(TooltipBox[
+       StyleBox[#, FontColor -> GrayLevel[0.4], ShowStringCharacters -> 
+        False], 
+       RowBox[{"Quantity variable:", " time"}], TooltipStyle -> 
+       "TextStyling"]& )], "2"]], "}"}]], "Output",
+ CellChangeTimes->{3.6198433783241787`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Find the energy of an explosion for particular values of mass density, \
+radius, and time.\
+\>", "Text",
+ CellChangeTimes->{3.619843429108427*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"energy", "=", 
+  RowBox[{
+   RowBox[{"energyExpression", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"QuantityVariable", "[", "\"\<MassDensity\>\"", "]"}], 
+       "\[Rule]", 
+       RowBox[{"Quantity", "[", 
+        RowBox[{"1", ",", 
+         RowBox[{"\"\<Kilograms\>\"", "/", 
+          RowBox[{"\"\<Meters\>\"", "^", "3"}]}]}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"QuantityVariable", "[", "\"\<Radius\>\"", "]"}], "\[Rule]", 
+       RowBox[{"Quantity", "[", 
+        RowBox[{"140", ",", "\"\<Meters\>\""}], "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"QuantityVariable", "[", "\"\<Time\>\"", "]"}], "\[Rule]", 
+       RowBox[{"Quantity", "[", 
+        RowBox[{"0.025", ",", "\"\<Seconds\>\""}], "]"}]}]}], "}"}]}], "//", 
+   "First"}]}]], "Input",
+ CellChangeTimes->{{3.61984343751891*^9, 3.6198434375199747`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"8.605183999999998`*^13"},
+  "QuantityUnit",
+  DisplayFunction->(TooltipBox[
+    StyleBox[
+     RowBox[{#, "\[InvisibleSpace]", 
+       StyleBox[
+        RowBox[{" ", 
+          RowBox[{"\"kg\"", "\[ThinSpace]", 
+            SuperscriptBox["\"m\"", "2"], "\[InvisibleSpace]", "\"/\"", 
+            "\[InvisibleSpace]", 
+            SuperscriptBox["\"s\"", "2"]}]}], 
+        "QuantityUnitTraditionalLabel"]}], ShowStringCharacters -> False], 
+    "Unit: kilogram meters squared per second squared"]& ),
+  InterpretationFunction->(RowBox[{"Quantity", "[", 
+     RowBox[{#, ",", 
+       FractionBox[
+        RowBox[{"\"Kilograms\"", " ", 
+          SuperscriptBox["\"Meters\"", "2"]}], 
+        SuperscriptBox["\"Seconds\"", "2"]]}], "]"}]& )]], "Output",
+ CellChangeTimes->{3.619843438619532*^9}]
+}, Open  ]],
+
+Cell["Convert the energy to kilotons of TNT.", "Text",
+ CellChangeTimes->{3.619843451071251*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitConvert", "[", 
+  RowBox[{"energy", ",", "\"\<KilotonsOfTNT\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.619843457763297*^9, 3.619843457764415*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{"20.566883365200763`"},
+  "QuantityUnit",
+  DisplayFunction->(TooltipBox[
+    StyleBox[
+     RowBox[{#, "\[InvisibleSpace]", 
+       StyleBox[
+        RowBox[{" ", "\"kilotons of TNT\""}], 
+        "QuantityUnitTraditionalLabel"]}], ShowStringCharacters -> False], 
+    "Unit: kilotons of TNT"]& ),
+  InterpretationFunction->(RowBox[{"Quantity", "[", 
+     RowBox[{#, ",", "\"KilotonsOfTNT\""}], "]"}]& )]], "Output",
+ CellChangeTimes->{3.61984345850933*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 139, 2, 35, "Input"],
+Cell[CellGroupData[{
+Cell[722, 26, 134, 3, 321, "Title"],
+Cell[859, 31, 163, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[1047, 39, 512, 11, 141, "Input"],
+Cell[1562, 52, 1062, 27, 60, "Output"]
+}, Open  ]],
+Cell[2639, 82, 156, 4, 61, "Text"],
+Cell[CellGroupData[{
+Cell[2820, 90, 877, 22, 183, "Input"],
+Cell[3700, 114, 823, 20, 39, "Output"]
+}, Open  ]],
+Cell[4538, 137, 96, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4659, 142, 178, 3, 36, "Input"],
+Cell[4840, 147, 486, 12, 35, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
