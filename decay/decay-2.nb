@@ -1,0 +1,475 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17729,        466]
+NotebookOptionsPosition[     15846,        398]
+NotebookOutlinePosition[     16198,        414]
+CellTagsIndexPosition[     16155,        411]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.6276285847423697`*^9, 3.6276286334637547`*^9, {3.627641409792025*^9, 
+   3.62764141046657*^9}}],
+
+Cell["\<\
+Dim initial value problem (ivp) (using halflife as scaling quantity):\
+\>", "Text",
+ CellChangeTimes->{{3.627628729860221*^9, 3.6276287441638412`*^9}, {
+  3.6278315714222307`*^9, 3.62783158662602*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mdl", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"deqn", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"c", "'"}], "[", "t", "]"}], "\[Equal]", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Log", "[", "2", "]"}]}], 
+        RowBox[{"c", "[", "t", "]"}]}]}]}], ",", " ", 
+     RowBox[{"iv", "=", 
+      RowBox[{
+       RowBox[{"c", "[", "0", "]"}], "\[Equal]", "1"}]}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.627628649675612*^9, 3.6276286881410646`*^9}, {
+  3.627629836962315*^9, 3.627629847498301*^9}, {3.6276301621447268`*^9, 
+  3.6276301665238237`*^9}, {3.627636092423711*^9, 3.627636098135188*^9}, {
+  3.627637898733561*^9, 3.627637904786212*^9}, {3.627641786315881*^9, 
+  3.627641787160593*^9}, {3.627641843850561*^9, 3.627641845650157*^9}, {
+  3.627647678660302*^9, 3.6276476809387283`*^9}, {3.6278315950371847`*^9, 
+  3.6278315978192797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"c", "[", "t", "]"}], ">", "0"}], "&&", 
+    RowBox[{"t", ">", "0"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.627628697759864*^9, 3.627628719221263*^9}, {
+   3.627630811565435*^9, 3.627630814618773*^9}, 3.627636106894676*^9, {
+   3.6276480877192087`*^9, 3.627648089323278*^9}}],
+
+Cell["Solution:", "Text",
+ CellChangeTimes->{{3.627628723332543*^9, 3.6276287252842817`*^9}}],
+
+Cell["Find the scale factors and replace them into the model:", "Text",
+ CellChangeTimes->{{3.6276303312030163`*^9, 3.627630361620775*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sln", "=", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{"mdl", ",", 
+    RowBox[{"c", "[", "t", "]"}], ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6276308962735853`*^9, 3.627630938484375*^9}, {
+   3.627636155803034*^9, 3.627636159299285*^9}, 3.627636203059198*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"c", "[", "t", "]"}], "\[Rule]", 
+    SuperscriptBox["2", 
+     RowBox[{"-", "t"}]]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.627630939617725*^9, 3.6276309499267797`*^9}, 
+   3.627630994215214*^9, 3.627631049386259*^9, {3.627631090371189*^9, 
+   3.627631108524984*^9}, 3.627635873116167*^9, {3.627636160304934*^9, 
+   3.627636165482579*^9}, 3.627636205177483*^9, 3.627637036360754*^9, 
+   3.627637261639032*^9, 3.62763732028341*^9, 3.6276373504207287`*^9, 
+   3.627637923810042*^9, 3.6276410348966722`*^9, 3.627641417440619*^9, 
+   3.627641793773753*^9, 3.627641850610667*^9, 3.62764768787538*^9, 
+   3.627648094478848*^9, 3.627648189474114*^9, 3.627831606005374*^9}]
+}, Open  ]],
+
+Cell["Get the solution and assign it to c:", "Text",
+ CellChangeTimes->{{3.627636223447907*^9, 3.627636230677868*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"c", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"c", "[", "t", "]"}], "/.", 
+    RowBox[{"sln", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.627636234393618*^9, 3.6276362508471622`*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox["2", 
+  RowBox[{"-", "t"}]]], "Output",
+ CellChangeTimes->{3.6276362519442787`*^9, 3.627637036396521*^9, 
+  3.627637261672204*^9, 3.6276373203151817`*^9, 3.62763735067859*^9, 
+  3.627637923843288*^9, 3.627641034930242*^9, 3.627641417475952*^9, 
+  3.627641793808291*^9, 3.627641850643546*^9, 3.627647687912874*^9, 
+  3.627648094525096*^9, 3.627648189507956*^9, 3.627831606372903*^9}]
+}, Open  ]],
+
+Cell["Verify that the solution satisfies the ivp:", "Text",
+ CellChangeTimes->{{3.627636257246641*^9, 3.62763626992443*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deqn", "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.627636272068817*^9, 3.627636277642009*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.627636278255239*^9, 3.6276370364295263`*^9, 
+  3.627637261706396*^9, 3.627637320346107*^9, 3.627637350713245*^9, 
+  3.62763792387665*^9, 3.627641034963828*^9, 3.627641417507637*^9, 
+  3.627641793839243*^9, 3.627641850679392*^9, 3.627647687946855*^9, 
+  3.627648094560094*^9, 3.627648189541436*^9, 3.627831606422407*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"iv", "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.6276362815589733`*^9, 3.6276362853288383`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.627636285903872*^9, 3.627637036462648*^9, 
+  3.627637261738763*^9, 3.627637320383862*^9, 3.627637350746971*^9, 
+  3.6276379239100933`*^9, 3.6276410349997396`*^9, 3.627641417541459*^9, 
+  3.627641793875182*^9, 3.627641850711451*^9, 3.627647687980047*^9, 
+  3.627648094590283*^9, 3.627648189564259*^9, 3.6278316064895897`*^9}]
+}, Open  ]],
+
+Cell["Find limits:", "Text",
+ CellChangeTimes->{{3.6276363384664097`*^9, 3.627636346130052*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Limit", "[", 
+  RowBox[{
+   RowBox[{"c", "[", "t", "]"}], ",", 
+   RowBox[{"t", "\[Rule]", "0"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.627636357786272*^9, 3.627636371882593*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.627636374339517*^9, 3.627637036493991*^9, 
+  3.627637261774029*^9, 3.627637320418481*^9, 3.627637350781136*^9, 
+  3.627637923946295*^9, 3.6276410350311737`*^9, 3.627641417574893*^9, 
+  3.627641793908573*^9, 3.6276418507463713`*^9, 3.627647688013607*^9, 
+  3.627648094609914*^9, 3.62764818959111*^9, 3.627831606556467*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Limit", "[", 
+  RowBox[{
+   RowBox[{"c", "[", "t", "]"}], ",", 
+   RowBox[{"t", "\[Rule]", "Infinity"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.627636385880228*^9, 3.6276363988524733`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.627636399345463*^9, 3.6276370365306063`*^9, 
+  3.627637261805502*^9, 3.6276373204661818`*^9, 3.627637350813366*^9, 
+  3.627637923976221*^9, 3.627641035064144*^9, 3.6276414176080217`*^9, 
+  3.627641793939887*^9, 3.627641850777409*^9, 3.6276476880472727`*^9, 
+  3.6276480946399937`*^9, 3.6276481896107388`*^9, 3.627831606605579*^9}]
+}, Open  ]],
+
+Cell["Find the value for which c is nul:", "Text",
+ CellChangeTimes->{{3.6276365657629967`*^9, 3.6276365742586937`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"c", "[", "t", "]"}], "\[Equal]", "0"}], ",", "t"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.627636475691389*^9, 3.627636537245503*^9}, {
+  3.627636615795085*^9, 3.627636623418594*^9}, {3.627636771809206*^9, 
+  3.6276367719644547`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{
+  3.627636843136133*^9, {3.627636988437284*^9, 3.627637005711776*^9}, 
+   3.6276370365631742`*^9, 3.6276372618402367`*^9, 3.627637320496557*^9, 
+   3.627637350847389*^9, 3.627637924009852*^9, 3.627641035096632*^9, 
+   3.627641417643817*^9, 3.627641793975759*^9, 3.627641850810402*^9, 
+   3.627647688079245*^9, 3.627648094663282*^9, 3.627648189644232*^9, 
+   3.627831606676341*^9}]
+}, Open  ]],
+
+Cell["Find the max and min:", "Text",
+ CellChangeTimes->{{3.627636287912835*^9, 3.6276363041794977`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindMaximum", "[", 
+  RowBox[{
+   RowBox[{"c", "[", "t", "]"}], ",", "t"}], "]"}]], "Input",
+ CellChangeTimes->{{3.627636308707453*^9, 3.627636316835958*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "ovfl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Overflow occurred in computation. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/ovfl\\\", ButtonNote -> \
+\\\"General::ovfl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6276363182984858`*^9, 3.627637036646517*^9, 
+  3.627637261948778*^9, 3.6276373206352873`*^9, 3.627637351071493*^9, 
+  3.627637924154891*^9, 3.627641035205331*^9, 3.627641417747204*^9, 
+  3.627641794075713*^9, 3.62764185092019*^9, 3.627647688160735*^9, 
+  3.62764809474701*^9, 3.627648189745884*^9, 3.627831607480287*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindMaximum", "::", "nrnum"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The function value \[NoBreak]\\!\\(Overflow[]\\)\[NoBreak] \
+is not a real number at \[NoBreak]\\!\\({t}\\)\[NoBreak] = \
+\[NoBreak]\\!\\({\\(-7.594996671664819`*^15\\)}\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/FindMaximum\\\", ButtonNote -> \
+\\\"FindMaximum::nrnum\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6276363182984858`*^9, 3.627637036646517*^9, 
+  3.627637261948778*^9, 3.6276373206352873`*^9, 3.627637351071493*^9, 
+  3.627637924154891*^9, 3.627641035205331*^9, 3.627641417747204*^9, 
+  3.627641794075713*^9, 3.62764185092019*^9, 3.627647688160735*^9, 
+  3.62764809474701*^9, 3.627648189745884*^9, 3.6278316076017427`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.2491190956917871171535909144259768654845167607`15.954589770191005*^\
+207847437739928", ",", 
+   RowBox[{"{", 
+    RowBox[{"t", "\[Rule]", 
+     RowBox[{"-", "6.90454242878619`*^14"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.627636318379648*^9, 3.627637036724319*^9, 
+  3.627637262033635*^9, 3.627637320719178*^9, 3.627637351153689*^9, 
+  3.627637924235937*^9, 3.627641035287916*^9, 3.627641417827528*^9, 
+  3.627641794156005*^9, 3.627641850995227*^9, 3.6276476882444696`*^9, 
+  3.627648094820065*^9, 3.627648189821796*^9, 3.627831607606256*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindMinimum", "[", 
+  RowBox[{
+   RowBox[{"c", "[", "t", "]"}], ",", "t"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6276363204463263`*^9, 3.627636329483253*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindMinimum", "::", "cvmit"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Failed to converge to the requested accuracy or precision \
+within \[NoBreak]\\!\\(100\\)\[NoBreak] iterations. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/FindMinimum/cvmit\\\", ButtonNote -> \
+\\\"FindMinimum::cvmit\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6276363301754227`*^9, 3.627637036758827*^9, 
+  3.6276372620691757`*^9, 3.6276373207547007`*^9, 3.627637351194047*^9, 
+  3.627637924273464*^9, 3.627641035326221*^9, 3.627641417864665*^9, 
+  3.627641794190722*^9, 3.627641851029304*^9, 3.6276476882959642`*^9, 
+  3.627648094857252*^9, 3.627648189856288*^9, 3.627831607672123*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5.826230090537704`*^-31", ",", 
+   RowBox[{"{", 
+    RowBox[{"t", "\[Rule]", "100.43720826373013`"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.627636330177135*^9, 3.6276370367635813`*^9, 
+  3.6276372620738983`*^9, 3.627637320759507*^9, 3.6276373511994267`*^9, 
+  3.627637924278317*^9, 3.627641035332363*^9, 3.627641417869635*^9, 
+  3.62764179419559*^9, 3.627641851034141*^9, 3.62764768830352*^9, 
+  3.627648094862104*^9, 3.627648189861208*^9, 3.627831607678199*^9}]
+}, Open  ]],
+
+Cell["Plot the solution:", "Text",
+ CellChangeTimes->{{3.627636408393313*^9, 3.627636410983897*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"c", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "6"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.627636413162387*^9, 3.627636424808793*^9}, {
+  3.627636793113018*^9, 3.627636812316814*^9}, {3.627641352008307*^9, 
+  3.627641367783819*^9}, {3.6276414703301897`*^9, 3.627641503666936*^9}, {
+  3.627641647951342*^9, 3.6276416661903353`*^9}, {3.627648111609438*^9, 
+  3.627648112290722*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+    1.], LineBox[CompressedData["
+1:eJwVxX081HccAPCTx66Sp+6bxeTUvTItq3HU4vPBaipeHopTXTKheHFUIqzy
+mGbod55qmY5enVmjcmgoxzyX8tyEFLroAefyFJds++P9eht6B7v6LqPRaI7/
++f+P+3g5zsHR1uJnvM6lJSkcVInVbmN5wsD9WX7qjBRyKXBPYfGgUtxTsf69
+FOrcrocHss5DY9c2a6d/pOBW7qjGZaUCm2Oz0F0ohev+wvb9rOtQ2nnZPvaQ
+FGxtO0qdWLfhfh9c4ZZPQMaW0XxHlhgcKoKkXefGge45IXsT0AZqLw0nf/z8
+DhL1/M6UufeAisPHboe+N6DYsLdZ2PECpkQnG795PwLaDQzmqfBXMHVlRVPm
+ogTujeW6/42j0CNVPRbq/goKmbcEFoffA/sXNf3g4iEwYE+kJ3hLIa5DI0DG
+HgSXRN9qmzQZmNHqVd5KBqAqUhu6s6fAejRC18ezH4rbV1WKY2dAJP/W0tKs
+F3wyhfQ1XnPAmQklCdADOPTT68++87DccO3YOoenILycex/3yEEvz65eLugC
+swZFPYbbIgifV063zHRAjL+SK4ezBLJn7+azwtrBpLzA5mw2DSeGO3cSbiuY
+LPEEqQIF5I6MC02ftEBweP+Cc9oybKvTZT/Jfgj2JcfXHflVER0G7d8cDWqC
+6PxaliBbCY8dlB8JCG+AT4/qTFOSlfGCoscuxsM6WFUiWaznq2CIaktMrF4t
+eD/+82FBgirmioo1jItqgJFjE10bqoaXXl9dnVUrhqNb5+Qbzy7HhpEcg5rN
+D2B81vWMeQAdeUcqf/CbqYDV0a0lqSErcG2Zyt6mmr+AX7N2QP/USizY8Ymx
+qaEMONuWKx30XoX7lsVkTmuWgui47uSAnzrqx/uY7vcSgUtrW6/6odV4oTIz
+KXfsLmwK+6pnxwYN7Jw3GE7afgdkI5+M0oUauKW7pjUkuxC4ITeCbb7URMcT
+8WkL3FuQ1t+To5OniVr+HelKhgUQcHTwkdU6Lcxruh3dzM4HmbXzuEK6Fj4z
+nZr9EHUT7GjOH97paONd4xSL2NobYNHHnDVO1cZLzRaBuvZ5MJOZ8DxFUwcX
+VyqY7xQI4FiRU3lymg4ql+3o4i78BqcHxtKG6GvwdOPVE1r3roGjVNf5cMoa
+9MuyPEMPvQqPdL9YaaLKQDaNm5wRnwWzgpiqzPMMDA8SL8nqM2BcNcJlI41g
+xnpzWpxKOly8ZCehRxD08rtj0prIh7psfjkrimCbku6p4zF8oN15mWx7jmDL
+Hom6YhQfIp5GmUfGEBwibHsbHh8CmaUX3/5M8Evf6bzeA3xwebDBuPkawSQl
+R7MIJh/0JpV5CQ8Ifn2SfAyqpsBD8YBtnpjg5GYPf+cKCjIZNxhVNQRBbssw
+L6FA3cq6erqeoBOz20D5dwoUksI0fJ4Q1Ihn9lenUjBiNCqyfUGwI4ZjJfCk
+wMjCPNFzkGAjU0VN6EGB1964w5HDBP/ghSkUuVLQG2KgJBohKNoWeK5uNwWP
+qzhuhlKCLsNBcXRTCtQ6hMZWMoLbd78tMjSmYJdkatFjiqCeRSvtOyMKxHQq
+n5ojWLbltl4ooUCu/yKycJ5g302GJF2TAsutm52a5QSLLta1l62gIPT7SCPJ
+IsEou7GhXmUKijnNc0tLBGvTmxk0GgX/Au/tPEY=
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{"DefaultBoundaryStyle" -> Automatic, "ScalingFunctions" -> None},
+  PlotRange->{{0., 5.99999987755102}, {0, 1}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {0, 0}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.62763642560684*^9, {3.627636794264032*^9, 3.627636812754694*^9}, 
+   3.627637036805684*^9, 3.627637262118935*^9, 3.627637320800878*^9, 
+   3.627637351371654*^9, 3.627637924315596*^9, 3.6276410353689957`*^9, {
+   3.627641359120061*^9, 3.627641368446786*^9}, 3.6276414179420233`*^9, 
+   3.627641476105888*^9, 3.6276416668331223`*^9, 3.6276417942325983`*^9, 
+   3.62764185106917*^9, 3.627647688343725*^9, {3.627648094907813*^9, 
+   3.627648113011845*^9}, 3.627648189895672*^9, 3.6278316079717712`*^9}]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 277, 6, 46, "Input"],
+Cell[838, 28, 211, 4, 30, "Text"],
+Cell[1052, 34, 922, 23, 28, "Input"],
+Cell[1977, 59, 374, 9, 28, "Input"],
+Cell[2354, 70, 93, 1, 30, "Text"],
+Cell[2450, 73, 139, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2614, 78, 290, 6, 28, "Input"],
+Cell[2907, 86, 744, 14, 35, "Output"]
+}, Open  ]],
+Cell[3666, 103, 118, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3809, 108, 294, 8, 28, "Input"],
+Cell[4106, 118, 412, 7, 32, "Output"]
+}, Open  ]],
+Cell[4533, 128, 124, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4682, 133, 130, 2, 28, "Input"],
+Cell[4815, 137, 372, 5, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5224, 147, 132, 2, 28, "Input"],
+Cell[5359, 151, 377, 5, 28, "Output"]
+}, Open  ]],
+Cell[5751, 159, 96, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[5872, 164, 206, 5, 28, "Input"],
+Cell[6081, 171, 371, 5, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6489, 181, 215, 5, 28, "Input"],
+Cell[6707, 188, 380, 5, 28, "Output"]
+}, Open  ]],
+Cell[7102, 196, 120, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[7247, 201, 311, 8, 28, "Input"],
+Cell[7561, 211, 446, 8, 28, "Output"]
+}, Open  ]],
+Cell[8022, 222, 105, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[8152, 227, 182, 4, 28, "Input"],
+Cell[8337, 233, 713, 13, 24, "Message"],
+Cell[9053, 248, 866, 15, 30, "Message"],
+Cell[9922, 265, 599, 12, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10558, 282, 184, 4, 28, "Input"],
+Cell[10745, 288, 812, 14, 41, "Message"],
+Cell[11560, 304, 514, 10, 35, "Output"]
+}, Open  ]],
+Cell[12089, 317, 100, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[12214, 322, 579, 13, 28, "Input"],
+Cell[12796, 337, 3034, 58, 254, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
