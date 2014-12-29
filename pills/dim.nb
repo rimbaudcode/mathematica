@@ -1,0 +1,229 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      6659,        228]
+NotebookOptionsPosition[      5455,        180]
+NotebookOutlinePosition[      5807,        196]
+CellTagsIndexPosition[      5764,        193]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.627624319289535*^9, 3.627624343840651*^9}}],
+
+Cell["\<\
+Mathematical models with case studies. p.31. Dimensional model!\
+\>", "Text",
+ CellChangeTimes->{{3.627627046914373*^9, 3.627627057991157*^9}}],
+
+Cell["Data:", "Text",
+ CellChangeTimes->{{3.627624119764539*^9, 3.627624120860506*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mdl", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"deqn", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x", "'"}], "[", "t", "]"}], "\[Equal]", " ", 
+       RowBox[{"i", "-", 
+        RowBox[{"k", "*", " ", 
+         RowBox[{"x", "[", "t", "]"}]}]}]}]}], ",", " ", 
+     RowBox[{"iv", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"x", "[", "0", "]"}], "\[Equal]", "0"}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{"k", ">", "0"}], "&&", 
+    RowBox[{"i", ">", "0"}], "&&", 
+    RowBox[{"x", ">", "0"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6276240472057753`*^9, 3.6276241246058598`*^9}, {
+  3.627624198092771*^9, 3.627624198641259*^9}, {3.627626445067378*^9, 
+  3.6276264859197617`*^9}}],
+
+Cell["Solution:", "Text",
+ CellChangeTimes->{{3.627624127828102*^9, 3.627624144823071*^9}}],
+
+Cell["Solve the IVP:", "Text",
+ CellChangeTimes->{{3.627624249301798*^9, 3.627624262013521*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sln", "=", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{"mdl", ",", 
+    RowBox[{"x", "[", "t", "]"}], ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.627624149076008*^9, 3.6276241644767027`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "[", "t", "]"}], "\[Rule]", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "k"}], " ", "t"}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"k", " ", "t"}]]}], ")"}], " ", "i"}], "k"]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.627624167648712*^9, 3.6276242063363247`*^9, 3.627624349838072*^9, 
+   3.627624394906025*^9, 3.627626207571186*^9, {3.6276264895323267`*^9, 
+   3.627626498905066*^9}}]
+}, Open  ]],
+
+Cell["Extract the solution:", "Text",
+ CellChangeTimes->{{3.6276242395359383`*^9, 3.627624265477439*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "[", "t_", "]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "[", "t", "]"}], "/.", 
+    RowBox[{"sln", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.6276242756553717`*^9, 3.627624312908206*^9}, {
+  3.627624357783588*^9, 3.627624386146418*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"i", "-", 
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{
+      RowBox[{"-", "k"}], " ", "t"}]], " ", "i"}]}], "k"]], "Output",
+ CellChangeTimes->{{3.6276243873375607`*^9, 3.6276243949391212`*^9}, 
+   3.627626207606982*^9, 3.627626498960938*^9}]
+}, Open  ]],
+
+Cell["\<\
+Verify that the solution satisfies the diff eqn and the initial condition:\
+\>", "Text",
+ CellChangeTimes->{{3.627624532730195*^9, 3.627624538544167*^9}, {
+  3.6276245776034803`*^9, 3.6276245906349773`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deqn", "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.6276245481140413`*^9, 3.627624551540934*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.6276245537666492`*^9, 3.627626207642633*^9, 
+  3.627626498989599*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"iv", "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.627624562359123*^9, 3.6276245650459414`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.62762456607235*^9, 3.627626207669682*^9, 
+  3.627626499008078*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"x", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.627624601406993*^9, 3.6276246531141644`*^9}, 
+   3.6276265160860243`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{"DefaultBoundaryStyle" -> Automatic, "ScalingFunctions" -> None},
+  PlotRange->{{0, 100}, {0., 0.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.627624614017653*^9, 3.627624653560231*^9}, 
+   3.627626207709605*^9, {3.6276264990605288`*^9, 3.627626516427178*^9}}]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 139, 2, 28, "Input"],
+Cell[542, 17, 153, 3, 30, "Text"],
+Cell[698, 22, 87, 1, 30, "Text"],
+Cell[788, 25, 824, 24, 46, "Input"],
+Cell[1615, 51, 91, 1, 30, "Text"],
+Cell[1709, 54, 96, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1830, 59, 218, 5, 28, "Input"],
+Cell[2051, 66, 633, 19, 51, "Output"]
+}, Open  ]],
+Cell[2699, 88, 105, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2829, 93, 343, 9, 28, "Input"],
+Cell[3175, 104, 301, 8, 49, "Output"]
+}, Open  ]],
+Cell[3491, 115, 217, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3733, 123, 132, 2, 28, "Input"],
+Cell[3868, 127, 122, 2, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4027, 134, 130, 2, 28, "Input"],
+Cell[4160, 138, 119, 2, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4316, 145, 266, 7, 28, "Input"],
+Cell[4585, 154, 854, 23, 228, "Output"]
+}, Open  ]]
+}
+]
+*)
+
