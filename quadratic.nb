@@ -1,0 +1,306 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9128,        297]
+NotebookOptionsPosition[      7683,        240]
+NotebookOutlinePosition[      8035,        256]
+CellTagsIndexPosition[      7992,        253]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.632324148403035*^9, 3.632324151125008*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Quadratic eqn", "Title",
+ CellChangeTimes->{{3.6323241667976017`*^9, 3.6323241723242197`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Statement", "Chapter",
+ CellChangeTimes->{{3.632327342135785*^9, 3.6323273439996777`*^9}}],
+
+Cell["Objective: to solve a quadratic polynomial.", "Text",
+ CellChangeTimes->{{3.6323241742840548`*^9, 3.632324195739607*^9}, {
+  3.6323258091401253`*^9, 3.632325812035918*^9}, {3.632327325836216*^9, 
+  3.6323273281520777`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution:", "Chapter",
+ CellChangeTimes->{{3.6323273566875057`*^9, 3.63232735891122*^9}}],
+
+Cell["\<\
+Assume a, b, and c are real numbers, and assume that a is not zero:\
+\>", "Text",
+ CellChangeTimes->{{3.6323242345381308`*^9, 3.632324240986277*^9}, {
+  3.632326122136042*^9, 3.6323261393919983`*^9}, {3.632327366784223*^9, 
+  3.632327367415174*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"a", "\[Element]", "Reals"}], "&&", " ", 
+   RowBox[{"b", "\[Element]", "Reals"}], "&&", 
+   RowBox[{"c", "\[Element]", "Reals"}], "&&", 
+   RowBox[{"a", " ", "\[NotEqual]", "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.6323242431938953`*^9, 3.632324313172822*^9}, {
+  3.6323261477134733`*^9, 3.632326147857058*^9}, {3.632326185553546*^9, 
+  3.6323262098688173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "\[Element]", "Reals"}], "&&", 
+  RowBox[{"b", "\[Element]", "Reals"}], "&&", 
+  RowBox[{"c", "\[Element]", "Reals"}], "&&", 
+  RowBox[{"a", "\[NotEqual]", "0"}]}]], "Output",
+ CellChangeTimes->{{3.632324316631102*^9, 3.632324324729672*^9}, 
+   3.6323262116612787`*^9, 3.632326498880478*^9, 3.632327616286899*^9, 
+   3.632327672822348*^9, 3.6323313151742897`*^9}]
+}, Open  ]],
+
+Cell["Assign the polynomial to the eqn var:", "Text",
+ CellChangeTimes->{{3.632325789644745*^9, 3.6323258256760073`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqn", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"a", " ", 
+    RowBox[{"x", "^", "2"}]}], " ", "+", " ", 
+   RowBox[{"b", " ", "x"}], " ", "+", " ", "c", " "}]}]], "Input",
+ CellChangeTimes->{{3.632325640776606*^9, 3.632325662283698*^9}, 
+   3.632327293853052*^9}],
+
+Cell[BoxData[
+ RowBox[{"c", "+", 
+  RowBox[{"b", " ", "x"}], "+", 
+  RowBox[{"a", " ", 
+   SuperscriptBox["x", "2"]}]}]], "Output",
+ CellChangeTimes->{{3.632325643077325*^9, 3.6323256633110113`*^9}, 
+   3.632325828411447*^9, 3.632326215978978*^9, 3.632326498904427*^9, 
+   3.63232729483615*^9, 3.632327616318431*^9, 3.632327672843039*^9, 
+   3.6323313152116137`*^9}]
+}, Open  ]],
+
+Cell["Divide both sides of eqn by a:", "Text",
+ CellChangeTimes->{{3.632325831923974*^9, 3.632325841499701*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqn1", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"eqn", " ", "/", "a"}], "//", "Apart"}]}]], "Input",
+ CellChangeTimes->{{3.632325847472764*^9, 3.632325901945822*^9}, {
+   3.6323264509282637`*^9, 3.632326461882491*^9}, 3.632326664561243*^9, {
+   3.632326959135055*^9, 3.632326961596541*^9}, {3.632327663284601*^9, 
+   3.632327686907045*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["c", "a"], "+", 
+  FractionBox[
+   RowBox[{"b", " ", "x"}], "a"], "+", 
+  SuperscriptBox["x", "2"]}]], "Output",
+ CellChangeTimes->{{3.632325853047708*^9, 3.632325902651986*^9}, 
+   3.632326223492597*^9, 3.6323264627124863`*^9, 3.63232649893962*^9, 
+   3.632326665771411*^9, 3.6323269621539803`*^9, 3.632327299009941*^9, 
+   3.632327616350697*^9, {3.632327672872818*^9, 3.632327687722889*^9}, 
+   3.632331315241993*^9}]
+}, Open  ]],
+
+Cell["Substitute c/a by C and 2b/2a by 2B:", "Text",
+ CellChangeTimes->{{3.6323262272978573`*^9, 3.632326257389227*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqn2", "=", 
+  RowBox[{"eqn1", "//.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"c", "/", "a"}], ")"}], "\[Rule]", "C"}], ",", 
+     RowBox[{
+      RowBox[{"b", "/", "a"}], "\[Rule]", 
+      RowBox[{"2", " ", "B"}]}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.632326258907254*^9, 3.632326264439644*^9}, {
+   3.6323263194617033`*^9, 3.632326358161931*^9}, {3.632326409565996*^9, 
+   3.632326422493835*^9}, {3.632326679108788*^9, 3.6323266886651506`*^9}, 
+   3.6323267305746107`*^9, {3.6323270048980503`*^9, 3.632327006608623*^9}, {
+   3.632327666068116*^9, 3.632327667026396*^9}}],
+
+Cell[BoxData[
+ RowBox[{"C", "+", 
+  RowBox[{"2", " ", "B", " ", "x"}], "+", 
+  SuperscriptBox["x", "2"]}]], "Output",
+ CellChangeTimes->{
+  3.632326359213462*^9, {3.632326414670051*^9, 3.632326424073414*^9}, {
+   3.632326469194696*^9, 3.632326498962399*^9}, {3.632326668481956*^9, 
+   3.632326689209857*^9}, 3.6323267313146*^9, 3.63232700757156*^9, 
+   3.632327302586636*^9, 3.6323276163707027`*^9, {3.632327672895134*^9, 
+   3.63232769053144*^9}, 3.63233131527496*^9}]
+}, Open  ]],
+
+Cell["Solve the eqn for x1 and x2:", "Text",
+ CellChangeTimes->{{3.632327483520643*^9, 3.632327496920191*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"slns", "=", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"eqn2", "\[Equal]", "0"}], ",", "x"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.632327452949292*^9, 3.6323274681146593`*^9}, {
+  3.6323275504542933`*^9, 3.632327556882348*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "B"}], "-", 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["B", "2"], "-", "C"}]]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "B"}], "+", 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["B", "2"], "-", "C"}]]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.632327462414657*^9, 3.6323274686447773`*^9}, 
+   3.632327557575469*^9, {3.632327604527258*^9, 3.6323276164175663`*^9}, {
+   3.632327672932296*^9, 3.632327693481024*^9}, 3.632331315342265*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x1", " ", "=", 
+  RowBox[{"x", "/.", 
+   RowBox[{"slns", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.63232756365555*^9, 3.6323275925369*^9}, {
+  3.632327629144146*^9, 3.632327631641636*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "B"}], "-", 
+  SqrtBox[
+   RowBox[{
+    SuperscriptBox["B", "2"], "-", "C"}]]}]], "Output",
+ CellChangeTimes->{{3.632327572234728*^9, 3.632327632200508*^9}, {
+   3.632327672972927*^9, 3.632327695486041*^9}, 3.632331315373893*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x2", "=", 
+  RowBox[{"x", "/.", 
+   RowBox[{"slns", "[", 
+    RowBox[{"[", "2", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6323276347902193`*^9, 3.632327644069683*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "B"}], "+", 
+  SqrtBox[
+   RowBox[{
+    SuperscriptBox["B", "2"], "-", "C"}]]}]], "Output",
+ CellChangeTimes->{{3.6323276446973*^9, 3.6323276973406963`*^9}, 
+   3.632331315407366*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 206, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[789, 28, 100, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[914, 33, 96, 1, 65, "Chapter"],
+Cell[1013, 36, 229, 3, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1279, 44, 95, 1, 65, "Chapter"],
+Cell[1377, 47, 259, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1661, 56, 441, 9, 28, "Input"],
+Cell[2105, 67, 402, 8, 28, "Output"]
+}, Open  ]],
+Cell[2522, 78, 121, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2668, 83, 284, 7, 28, "Input"],
+Cell[2955, 92, 366, 8, 32, "Output"]
+}, Open  ]],
+Cell[3336, 103, 112, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3473, 108, 361, 7, 28, "Input"],
+Cell[3837, 117, 457, 10, 48, "Output"]
+}, Open  ]],
+Cell[4309, 130, 120, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4454, 135, 644, 15, 28, "Input"],
+Cell[5101, 152, 469, 9, 32, "Output"]
+}, Open  ]],
+Cell[5585, 164, 110, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[5720, 169, 262, 6, 28, "Input"],
+Cell[5985, 177, 641, 19, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6663, 201, 248, 6, 28, "Input"],
+Cell[6914, 209, 268, 7, 40, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7219, 221, 199, 5, 28, "Input"],
+Cell[7421, 228, 222, 7, 40, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
