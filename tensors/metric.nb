@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5226,        186]
-NotebookOptionsPosition[      4337,        149]
-NotebookOutlinePosition[      4720,        166]
-CellTagsIndexPosition[      4677,        163]
+NotebookDataLength[      5637,        194]
+NotebookOptionsPosition[      4746,        157]
+NotebookOutlinePosition[      5129,        174]
+CellTagsIndexPosition[      5086,        171]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -52,34 +52,38 @@ Cell[BoxData[
     RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.618670958855576*^9, 3.618670982302594*^9}}]
+ CellChangeTimes->{{3.618670958855576*^9, 3.618670982302594*^9}, 
+   3.646503552420556*^9, 3.646509577179614*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"TableForm", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.618670984465323*^9, 3.618670988735132*^9}}],
+ RowBox[{"MatrixForm", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.618670984465323*^9, 3.618670988735132*^9}, {
+  3.646509563804291*^9, 3.64650956555035*^9}}],
 
 Cell[BoxData[
- TagBox[GridBox[{
-    {"1", "0", "0"},
-    {"0", "1", "0"},
-    {"0", "0", "1"}
-   },
-   GridBoxAlignment->{
-    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-     "RowsIndexed" -> {}},
-   GridBoxSpacings->{"Columns" -> {
-       Offset[0.27999999999999997`], {
-        Offset[2.0999999999999996`]}, 
-       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-       Offset[0.2], {
-        Offset[0.4]}, 
-       Offset[0.2]}, "RowsIndexed" -> {}}],
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0"},
+     {"0", "1", "0"},
+     {"0", "0", "1"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
-   TableForm[BoxForm`e$]]]], "Output",
- CellChangeTimes->{3.61867098953347*^9}]
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.61867098953347*^9, 3.6465035524530277`*^9, 
+  3.6465095772029257`*^9}]
 }, Open  ]],
 
 Cell["Spherical metric:", "Text",
@@ -111,39 +115,43 @@ Cell[BoxData[
       SuperscriptBox[
        RowBox[{"Sin", "[", "theta", "]"}], "2"]}]}], "}"}]}], "}"}]], "Output",\
 
- CellChangeTimes->{3.6186710458186283`*^9}]
+ CellChangeTimes->{3.6186710458186283`*^9, 3.6465035524840097`*^9, 
+  3.6465095772368307`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"TableForm", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.61867104979254*^9, 3.6186710542311773`*^9}}],
+ RowBox[{"MatrixForm", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.61867104979254*^9, 3.6186710542311773`*^9}, {
+  3.646509569032815*^9, 3.6465095703429832`*^9}}],
 
 Cell[BoxData[
- TagBox[GridBox[{
-    {"1", "0", "0"},
-    {"0", 
-     SuperscriptBox["r", "2"], "0"},
-    {"0", "0", 
-     RowBox[{
-      SuperscriptBox["r", "2"], " ", 
-      SuperscriptBox[
-       RowBox[{"Sin", "[", "theta", "]"}], "2"]}]}
-   },
-   GridBoxAlignment->{
-    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
-     "RowsIndexed" -> {}},
-   GridBoxSpacings->{"Columns" -> {
-       Offset[0.27999999999999997`], {
-        Offset[2.0999999999999996`]}, 
-       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-       Offset[0.2], {
-        Offset[0.4]}, 
-       Offset[0.2]}, "RowsIndexed" -> {}}],
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0"},
+     {"0", 
+      SuperscriptBox["r", "2"], "0"},
+     {"0", "0", 
+      RowBox[{
+       SuperscriptBox["r", "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"Sin", "[", "theta", "]"}], "2"]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
-   TableForm[BoxForm`e$]]]], "Output",
- CellChangeTimes->{3.618671054841484*^9}]
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.618671054841484*^9, 3.646503552500695*^9, 
+  3.6465095772669773`*^9}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -172,20 +180,20 @@ Cell[817, 29, 111, 1, 37, "Text"],
 Cell[931, 32, 99, 1, 37, "Text"],
 Cell[CellGroupData[{
 Cell[1055, 37, 304, 6, 57, "Input"],
-Cell[1362, 45, 326, 9, 35, "Output"]
+Cell[1362, 45, 374, 10, 35, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1725, 59, 128, 2, 35, "Input"],
-Cell[1856, 63, 606, 18, 94, "Output"]
+Cell[1773, 60, 177, 3, 35, "Input"],
+Cell[1953, 65, 709, 20, 94, "Output"]
 }, Open  ]],
-Cell[2477, 84, 99, 1, 37, "Text"],
+Cell[2677, 88, 99, 1, 37, "Text"],
 Cell[CellGroupData[{
-Cell[2601, 89, 327, 7, 57, "Input"],
-Cell[2931, 98, 454, 15, 42, "Output"]
+Cell[2801, 93, 327, 7, 57, "Input"],
+Cell[3131, 102, 505, 16, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3422, 118, 129, 2, 35, "Input"],
-Cell[3554, 122, 755, 23, 100, "Output"]
+Cell[3673, 123, 181, 3, 35, "Input"],
+Cell[3857, 128, 861, 25, 100, "Output"]
 }, Open  ]]
 }, Open  ]]
 }

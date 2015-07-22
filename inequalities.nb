@@ -1,0 +1,342 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10868,        333]
+NotebookOptionsPosition[      9389,        279]
+NotebookOutlinePosition[      9741,        295]
+CellTagsIndexPosition[      9698,        292]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Chains of inequalities", "Title",
+ CellChangeTimes->{{3.6465556251113653`*^9, 3.6465556324055567`*^9}}],
+
+Cell["\<\
+Example: a cylinder circumscribing a nonempty ball. Find their volumetric \
+ratio.\
+\>", "Text",
+ CellChangeTimes->{{3.646549652509935*^9, 3.6465496910352983`*^9}, {
+  3.6465556345894747`*^9, 3.646555636373588*^9}}],
+
+Cell["Solution:", "Text",
+ CellChangeTimes->{{3.646549699116292*^9, 3.646549702210649*^9}}],
+
+Cell["\<\
+We know that volumes are nonnegative (definition of volume) and volumes are \
+nonzero (nonempty figures):\
+\>", "Text",
+ CellChangeTimes->{{3.646549704787127*^9, 3.6465497483136187`*^9}, {
+  3.646553653572462*^9, 3.6465537505813503`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ineq", "=", 
+  RowBox[{"Reduce", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"vball", ">=", "0"}], ",", 
+     RowBox[{"vcyl", ">=", "0"}], ",", 
+     RowBox[{"vball", ">", "0"}], ",", 
+     RowBox[{"vcyl", ">", "0"}], ",", 
+     RowBox[{"vcyl", ">", "vball"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6465475510316067`*^9, 3.646547606689733*^9}, {
+  3.646547638730378*^9, 3.646547640112949*^9}, {3.646549238283826*^9, 
+  3.646549245784968*^9}, {3.646549579256131*^9, 3.646549581801149*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vcyl", ">", "0"}], "&&", 
+  RowBox[{"0", "<", "vball", "<", "vcyl"}]}]], "Output",
+ CellChangeTimes->{
+  3.646547607713883*^9, 3.6465476412734528`*^9, {3.6465478073118067`*^9, 
+   3.64654782276768*^9}, 3.646549246425333*^9, 3.646549298781815*^9, {
+   3.646549345381186*^9, 3.646549367904388*^9}, 3.6465494200909643`*^9, 
+   3.646549583170484*^9, 3.646555073666037*^9, 3.646557147659895*^9}]
+}, Open  ]],
+
+Cell["We plot a cylinder circumscribing a nonempty ball:", "Text",
+ CellChangeTimes->{{3.646553961242195*^9, 3.6465539879517403`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Graphics3D", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Opacity", "[", "0.75", "]"}], ",", 
+    RowBox[{"Cylinder", "[", "]"}], ",", 
+    RowBox[{"Opacity", "[", "1", "]"}], ",", 
+    RowBox[{"Ball", "[", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.646553990374436*^9, 3.646554005794237*^9}, {
+  3.646554041790271*^9, 3.646554049009849*^9}, {3.646554163623301*^9, 
+  3.646554171407421*^9}, {3.646554441225709*^9, 3.646554500547598*^9}, {
+  3.646554734434772*^9, 3.6465547638534203`*^9}, {3.646554799481604*^9, 
+  3.646554890993948*^9}, {3.646554932070242*^9, 3.646554937027999*^9}, {
+  3.6465550069751167`*^9, 3.6465550206097107`*^9}, {3.646555054265007*^9, 
+  3.646555111076693*^9}, {3.646555432733741*^9, 3.646555460997982*^9}, {
+  3.646556812312079*^9, 3.646556812842184*^9}, {3.646556843023013*^9, 
+  3.64655686550756*^9}}],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   {Opacity[0.75], CylinderBox[{{0, 0, -1}, {0, 0, 1}}]}, 
+   {Opacity[1], 
+    TagBox[SphereBox[{0, 0, 0}],
+     "Ball"]}},
+  Method->{"ShrinkWrap" -> True},
+  ViewPoint->{1.3, -2.4, 2.},
+  ViewVertical->{0., 0., 1.}]], "Input",
+ CellChangeTimes->{3.646557499596129*^9}],
+
+Cell["Other view of the figure:", "Text",
+ CellChangeTimes->{{3.6465555880721493`*^9, 3.646555600598452*^9}, {
+  3.646557532776185*^9, 3.646557536550075*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Graphics3D", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Opacity", "[", "0.75", "]"}], ",", 
+    RowBox[{"Cylinder", "[", "]"}], ",", 
+    RowBox[{"Opacity", "[", "1", "]"}], ",", 
+    RowBox[{"Ball", "[", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.646555486145404*^9, 3.646555564198715*^9}, {
+   3.64655681969313*^9, 3.64655682037017*^9}, 3.64655754036613*^9}],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   {Opacity[0.75], CylinderBox[{{0, 0, -1}, {0, 0, 1}}]}, 
+   {Opacity[1], 
+    TagBox[SphereBox[{0, 0, 0}],
+     "Ball"]}},
+  ViewPoint->Front]], "Input",
+ CellChangeTimes->{3.646557545342134*^9}],
+
+Cell["\<\
+We notice in the plots that the ball volume seems to be greater than the half \
+of the cylinder volume:\
+\>", "Text",
+ CellChangeTimes->{{3.646553756273191*^9, 3.646553770887312*^9}, {
+  3.6465556064158487`*^9, 3.646555611750197*^9}, {3.6465556515287237`*^9, 
+  3.646555682380397*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ineq2", "=", 
+  RowBox[{"Reduce", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"ineq", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", 
+     RowBox[{"vball", ">", 
+      RowBox[{"vcyl", "/", "2"}]}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646549299970805*^9, 3.6465493284310083`*^9}, {
+  3.646549591880787*^9, 3.646549620582766*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vcyl", ">", "0"}], "&&", 
+  RowBox[{
+   FractionBox["vcyl", "2"], "<", "vball", "<", "vcyl"}]}]], "Output",
+ CellChangeTimes->{
+  3.646549447932585*^9, {3.646549588448151*^9, 3.6465496211012697`*^9}, 
+   3.6465550737852983`*^9, 3.6465571497498207`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Finally, we find the volumetric ratio (notice that we have a dimensionless \
+quantity that is also normalized: a scaled quantity):\
+\>", "Text",
+ CellChangeTimes->{{3.646553779348974*^9, 3.646553870915009*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"#", "/", "vcyl"}], "&"}], "/@", 
+  RowBox[{"(", 
+   RowBox[{
+    FractionBox["vcyl", "2"], "<", "vball", "<", "vcyl"}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.646548294012331*^9, 3.646548312064971*^9}, 
+   3.646549268965639*^9, 3.646549339123131*^9, {3.646549388897956*^9, 
+   3.646549389821335*^9}, {3.6465494294224*^9, 3.6465494584295464`*^9}, {
+   3.646549623634644*^9, 3.646549642778212*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], "<", 
+  FractionBox["vball", "vcyl"], "<", "1"}]], "Output",
+ CellChangeTimes->{
+  3.6465483126003313`*^9, {3.646549249676818*^9, 3.6465492702760563`*^9}, {
+   3.646549339799605*^9, 3.6465493904083433`*^9}, {3.6465494314784718`*^9, 
+   3.646549459220766*^9}, {3.646549632423214*^9, 3.646549643580357*^9}, 
+   3.646555073818692*^9, 3.6465571497647333`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The last estimation bounds the value of the volumetric ratio to the interval \
+[0.5 - 1].\
+\>", "Text",
+ CellChangeTimes->{{3.6465538765788317`*^9, 3.64655390420195*^9}}],
+
+Cell["Exact solution:", "Text",
+ CellChangeTimes->{{3.646555686261738*^9, 3.646555689596258*^9}, {
+  3.646557015770514*^9, 3.64655701829817*^9}}],
+
+Cell["Using the circumscription constraint:", "Text",
+ CellChangeTimes->{{3.6465570205379133`*^9, 3.646557030618143*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cylVol", "=", 
+  RowBox[{"Assuming", "[", 
+   RowBox[{
+    RowBox[{"r", ">", "0"}], ",", 
+    RowBox[{"Volume", "[", 
+     RowBox[{"Cylinder", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", 
+           RowBox[{"2", " ", "r"}]}], "}"}]}], "}"}], ",", "r"}], "]"}], 
+     "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6465563068205347`*^9, 3.6465563121990337`*^9}, {
+  3.6465569199859953`*^9, 3.6465569712930527`*^9}, {3.646557009420982*^9, 
+  3.646557009739914*^9}, {3.646557093393787*^9, 3.646557111208331*^9}}],
+
+Cell[BoxData[
+ RowBox[{"2", " ", "\[Pi]", " ", 
+  SuperscriptBox[
+   RowBox[{"(", 
+    SuperscriptBox["r", "2"], ")"}], 
+   RowBox[{"3", "/", "2"}]]}]], "Output",
+ CellChangeTimes->{
+  3.64655631271032*^9, {3.6465569381376457`*^9, 3.6465569814453773`*^9}, 
+   3.6465570357290487`*^9, 3.6465571122626553`*^9, 3.646557149782825*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ballVol", "=", 
+  RowBox[{"Volume", "[", 
+   RowBox[{"Ball", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "r"}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.64655634947742*^9, 3.646556353670005*^9}, {
+  3.6465563851402407`*^9, 3.646556399011251*^9}, {3.646556784959114*^9, 
+  3.646556789077241*^9}, {3.646556893937105*^9, 3.646556896423067*^9}, {
+  3.646556973877207*^9, 3.64655697722088*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"4", " ", "\[Pi]", " ", 
+   SuperscriptBox["r", "3"]}], "3"]], "Output",
+ CellChangeTimes->{
+  3.646556354221793*^9, {3.6465563858342247`*^9, 3.646556424945541*^9}, 
+   3.646556789744011*^9, 3.64655689713389*^9, 3.646556979107862*^9, 
+   3.646557037732759*^9, 3.646557116671585*^9, 3.646557149797677*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ratio", "=", 
+  RowBox[{
+   RowBox[{"ballVol", "/", "cylVol"}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.646556985847343*^9, 3.6465569975562563`*^9}, {
+  3.646557042275661*^9, 3.6465570430803547`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"2", " ", "r"}], 
+  RowBox[{"3", " ", 
+   SqrtBox[
+    SuperscriptBox["r", "2"]]}]]], "Output",
+ CellChangeTimes->{3.646557045689219*^9, 3.6465571179129057`*^9, 
+  3.6465571498812513`*^9, 3.646557193465437*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 109, 1, 92, "Title"],
+Cell[692, 25, 225, 5, 30, "Text"],
+Cell[920, 32, 91, 1, 30, "Text"],
+Cell[1014, 35, 248, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[1287, 44, 529, 12, 28, "Input"],
+Cell[1819, 58, 425, 8, 28, "Output"]
+}, Open  ]],
+Cell[2259, 69, 134, 1, 30, "Text"],
+Cell[2396, 72, 866, 16, 28, "Input"],
+Cell[3265, 90, 302, 9, 405, InheritFromParent],
+Cell[3570, 101, 158, 2, 30, "Text"],
+Cell[3731, 105, 400, 9, 28, "Input"],
+Cell[4134, 116, 228, 7, 375, InheritFromParent],
+Cell[4365, 125, 295, 6, 49, "Text"],
+Cell[CellGroupData[{
+Cell[4685, 135, 373, 10, 28, "Input"],
+Cell[5061, 147, 287, 7, 47, "Output"]
+}, Open  ]],
+Cell[5363, 157, 220, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[5608, 165, 445, 10, 48, "Input"],
+Cell[6056, 177, 404, 8, 50, "Output"]
+}, Open  ]],
+Cell[6475, 188, 180, 4, 30, "Text"],
+Cell[6658, 194, 145, 2, 30, "Text"],
+Cell[6806, 198, 121, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6952, 203, 693, 18, 46, "Input"],
+Cell[7648, 223, 330, 8, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8015, 236, 471, 11, 28, "Input"],
+Cell[8489, 249, 342, 7, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8868, 261, 242, 5, 28, "Input"],
+Cell[9113, 268, 248, 7, 59, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,676 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22415,        667]
+NotebookOptionsPosition[     19817,        572]
+NotebookOutlinePosition[     20169,        588]
+CellTagsIndexPosition[     20126,        585]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.646504019919405*^9, 3.6465040199207497`*^9}, {
+   3.6465075364989557`*^9, 3.646507563115746*^9}, {3.646508249944748*^9, 
+   3.646508257312057*^9}, 3.646508479188918*^9, {3.646509529244035*^9, 
+   3.646509529699071*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Tensor analysis", "Title",
+ CellChangeTimes->{{3.6465026845349407`*^9, 3.6465027078922987`*^9}, {
+  3.646504171104999*^9, 3.646504173622511*^9}, {3.646504432425929*^9, 
+  3.646504440911607*^9}, {3.646507004303348*^9, 3.646507008269302*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\[OpenCurlyDoubleQuote]Manual\[CloseCurlyDoubleQuote]", "Chapter",
+ CellChangeTimes->{{3.6465102663555613`*^9, 3.646510269105755*^9}}],
+
+Cell["We want to work with the position in polar coordinates:", "Text",
+ CellChangeTimes->{{3.646512040157524*^9, 3.646512061139707*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"posPol", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Theta]"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6465120803758173`*^9, 3.6465120950935*^9}, {
+   3.646512155471272*^9, 3.646512157653307*^9}, 3.646512382672868*^9}],
+
+Cell["\<\
+Transform the position from polar coordinates to the corresponding {x,y} in \
+rectangular coordinates\
+\>", "Text",
+ CellChangeTimes->{{3.646504490824532*^9, 3.6465045282452707`*^9}, {
+  3.646505501408524*^9, 3.6465055454673243`*^9}, {3.646510151686572*^9, 
+  3.646510160388505*^9}, {3.646512105337989*^9, 3.646512109354493*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"posRect", " ", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{"r", " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6465045516782*^9, 3.6465046104451647`*^9}, {
+   3.6465047139566174`*^9, 3.646504715234314*^9}, 3.646507086519166*^9, {
+   3.646509666351673*^9, 3.646509667583415*^9}, {3.6465102335124474`*^9, 
+   3.646510235420039*^9}, {3.646511944816617*^9, 3.646511946658922*^9}, {
+   3.6465121134871387`*^9, 3.646512114851755*^9}, 3.646512165009935*^9, 
+   3.646512387639062*^9}],
+
+Cell["\<\
+Find Jacobi\[CloseCurlyQuote]s matrix to transform from polar to rectangular \
+coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.646504737529779*^9, 3.646504773815287*^9}, {
+  3.646507518474585*^9, 3.6465075207601624`*^9}, {3.6465103183944798`*^9, 
+  3.6465103191284037`*^9}, {3.646512398436841*^9, 3.646512404642984*^9}, {
+  3.646540798161096*^9, 3.6465408002467833`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"jMatrix", " ", "=", " ", 
+   RowBox[{"D", "[", 
+    RowBox[{"posRect", ",", 
+     RowBox[{"{", "posPol", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"%", " ", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.6465079267490788`*^9, 3.64650793092023*^9}, {
+  3.646508271407887*^9, 3.64650831249603*^9}, {3.646509452163374*^9, 
+  3.6465094634234133`*^9}, {3.646509673946678*^9, 3.646509674338722*^9}, {
+  3.646509758068375*^9, 3.646509781303821*^9}, {3.646509864038965*^9, 
+  3.646509865605658*^9}, {3.646512127426602*^9, 3.64651213308357*^9}, {
+  3.646512186104566*^9, 3.646512192404463*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+      RowBox[{
+       RowBox[{"-", "r"}], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]},
+     {
+      RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+      RowBox[{"r", " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.646508306117083*^9, 3.646508313061708*^9}, 
+   3.646508483394683*^9, 3.646508675882238*^9, 3.646509594288691*^9, {
+   3.646509674976606*^9, 3.646509682457656*^9}, {3.6465097629302073`*^9, 
+   3.6465097817544603`*^9}, {3.646509846107246*^9, 3.646509867720716*^9}, {
+   3.646511951739887*^9, 3.646511968821691*^9}, 3.646512133790949*^9, {
+   3.646512168748088*^9, 3.646512194135643*^9}, 3.646512407237246*^9, 
+   3.646512469471868*^9, 3.646512680201847*^9, 3.6465408542788887`*^9}]
+}, Open  ]],
+
+Cell["Compute metric tensor coefficients:", "Text",
+ CellChangeTimes->{{3.646511780100806*^9, 3.646511791066622*^9}, 
+   3.646512296903936*^9, {3.646512424036407*^9, 3.6465124289143353`*^9}, 
+   3.646540820513082*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"metric", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Transpose", "[", "jMatrix", "]"}], ".", "jMatrix"}], " ", "//", 
+    "Simplify"}], "//", "MatrixForm"}]}]], "Input",
+ CellChangeTimes->{{3.646510826322115*^9, 3.646510858301675*^9}, {
+   3.646511117828714*^9, 3.646511131867364*^9}, {3.6465113830483637`*^9, 
+   3.646511413578782*^9}, {3.646511621115608*^9, 3.64651162161484*^9}, {
+   3.646511710453669*^9, 3.6465117312612457`*^9}, 3.6465123161946707`*^9, {
+   3.646512439170051*^9, 3.646512446563106*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0"},
+     {"0", 
+      SuperscriptBox["r", "2"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.64651244757473*^9, 3.646512469538938*^9}, 
+   3.646512680270846*^9, 3.646540854314335*^9}]
+}, Open  ]],
+
+Cell["Additionally, find Jacobi\[CloseCurlyQuote]s determinant:", "Text",
+ CellChangeTimes->{{3.6465048502548637`*^9, 3.6465048560931*^9}, {
+  3.6465124096747713`*^9, 3.6465124147386007`*^9}, {3.646540835047996*^9, 
+  3.646540837502042*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jDet", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"Det", "[", " ", "jMatrix", "]"}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.646508320668953*^9, 3.646508332985181*^9}, {
+  3.646509467696601*^9, 3.6465095005907183`*^9}, {3.646509731521288*^9, 
+  3.646509737575419*^9}, {3.646509788666046*^9, 3.646509826286134*^9}}],
+
+Cell[BoxData["r"], "Output",
+ CellChangeTimes->{
+  3.6465083346945763`*^9, 3.64650848344261*^9, 3.6465086759147663`*^9, 
+   3.6465095943202763`*^9, 3.6465096852157707`*^9, {3.6465097321638107`*^9, 
+   3.646509738144899*^9}, {3.646509776442795*^9, 3.64650978965207*^9}, {
+   3.646509820704502*^9, 3.6465098734479303`*^9}, {3.6465119547431393`*^9, 
+   3.646511968857634*^9}, {3.6465121820594597`*^9, 3.646512201967536*^9}, 
+   3.646512416943878*^9, 3.646512469505143*^9, 3.646512680236504*^9, {
+   3.64654084046916*^9, 3.64654085434901*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " functions"
+}], "Chapter",
+ CellChangeTimes->{{3.646510273243449*^9, 3.646510277377632*^9}}],
+
+Cell["We want to work with the position in polar coordinates:", "Text",
+ CellChangeTimes->{{3.646512040157524*^9, 3.646512061139707*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"posPol", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "\[Theta]"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CoordinateChartData", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\"\<Polar\>\"", ",", " ", "2"}], "}"}], ",", " ", 
+   "\"\<CoordinateRangeAssumptions\>\"", ",", "posPol"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6465120803758173`*^9, 3.6465120950935*^9}, {
+   3.646512155471272*^9, 3.646512157653307*^9}, 3.646512382672868*^9, {
+   3.646513345232328*^9, 3.646513374195614*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"r", ">", "0"}], "&&", 
+  RowBox[{
+   RowBox[{"-", "\[Pi]"}], "<", "\[Theta]", "\[LessEqual]", 
+   "\[Pi]"}]}]], "Output",
+ CellChangeTimes->{{3.646513350111719*^9, 3.646513375365438*^9}, 
+   3.646540854377742*^9}]
+}, Open  ]],
+
+Cell["\<\
+Transform the position {r,theta} in polar coordinates to the corresponding \
+{x,y} in rectangular coordinates\
+\>", "Text",
+ CellChangeTimes->{{3.646504490824532*^9, 3.6465045282452707`*^9}, {
+  3.646505501408524*^9, 3.6465055454673243`*^9}, {3.646510151686572*^9, 
+  3.646510160388505*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"posRect", " ", "=", 
+  RowBox[{"CoordinateTransformData", "[", 
+   RowBox[{
+    RowBox[{"\"\<Polar\>\"", "\[Rule]", "\"\<Cartesian\>\""}], ",", " ", 
+    "\"\<Mapping\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6465045516782*^9, 3.6465046104451647`*^9}, {
+   3.6465047139566174`*^9, 3.646504715234314*^9}, 3.646507086519166*^9, {
+   3.646509666351673*^9, 3.646509667583415*^9}, {3.6465102335124474`*^9, 
+   3.646510235420039*^9}, {3.6465125549478273`*^9, 3.6465125558052177`*^9}, {
+   3.646512643018959*^9, 3.6465126506579037`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"r", " ", 
+    RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+   RowBox[{"r", " ", 
+    RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.646512653713502*^9, 3.6465126803165092`*^9}, 
+   3.6465408544119864`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Obtain Jacobi\[CloseCurlyQuote]s transformation from cylindrical to \
+rectangular coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.64651028950703*^9, 3.646510310656619*^9}, {
+  3.646510342491345*^9, 3.64651035151964*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jMatrix", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"CoordinateTransformData", "[", 
+    RowBox[{
+     RowBox[{"\"\<Polar\>\"", "\[Rule]", "\"\<Cartesian\>\""}], ",", " ", 
+     "\"\<MappingJacobian\>\"", ",", "posPol"}], "]"}], "//", 
+   "MatrixForm"}]}]], "Input",
+ CellChangeTimes->{{3.646510354862797*^9, 3.646510372976075*^9}, {
+  3.646510440714407*^9, 3.646510442589957*^9}, {3.646511684633341*^9, 
+  3.6465116887987137`*^9}, {3.6465123451120777`*^9, 3.646512353980262*^9}, {
+  3.646512559665389*^9, 3.646512563455492*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+      RowBox[{
+       RowBox[{"-", "r"}], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]},
+     {
+      RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+      RowBox[{"r", " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.646510373596751*^9, 3.646510443526958*^9, 3.646511690564995*^9, 
+   3.646511969170966*^9, 3.646512182259795*^9, {3.646512347194757*^9, 
+   3.646512354793852*^9}, 3.646512469652946*^9, 3.646512566261641*^9, 
+   3.6465126803505783`*^9, 3.6465408544483356`*^9}]
+}, Open  ]],
+
+Cell["Determinant:", "Text",
+ CellChangeTimes->{{3.646510396872211*^9, 3.646510399534408*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jDet", " ", "=", " ", 
+  RowBox[{"CoordinateTransformData", "[", 
+   RowBox[{
+    RowBox[{"\"\<Polar\>\"", "\[Rule]", "\"\<Cartesian\>\""}], ",", " ", 
+    "\"\<MappingJacobianDeterminant\>\"", ",", "posPol"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6465104018814774`*^9, 3.646510410999667*^9}, {
+  3.64651257149822*^9, 3.646512573902898*^9}}],
+
+Cell[BoxData["r"], "Output",
+ CellChangeTimes->{3.646510411945388*^9, 3.646510453299374*^9, 
+  3.646511969203185*^9, 3.646512182291654*^9, 3.646512359805667*^9, 
+  3.6465124696866293`*^9, 3.646512574661879*^9, 3.646512680385614*^9, 
+  3.646540854478511*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"metric", " ", "=", 
+  RowBox[{
+   RowBox[{"CoordinateChartData", "[", 
+    RowBox[{"\"\<Polar\>\"", ",", " ", "\"\<Metric\>\"", ",", "posPol"}], 
+    "]"}], "//", "MatrixForm"}]}]], "Input",
+ CellChangeTimes->{{3.64651169761445*^9, 3.646511701462308*^9}, {
+  3.6465123621741333`*^9, 3.646512364036744*^9}, {3.6465125779613028`*^9, 
+  3.646512580615899*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0"},
+     {"0", 
+      SuperscriptBox["r", "2"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.646510429783001*^9, 3.646510455901804*^9}, 
+   3.6465117022894783`*^9, 3.6465119692379513`*^9, 3.646512182326367*^9, 
+   3.64651236496609*^9, 3.646512469719077*^9, 3.646512581359807*^9, 
+   3.646512680418108*^9, 3.646540854512518*^9}]
+}, Open  ]],
+
+Cell["Scale factors:", "Text",
+ CellChangeTimes->{{3.646508430555112*^9, 3.6465084342167597`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sfs", " ", "=", 
+  RowBox[{
+   RowBox[{"CoordinateChartData", "[", 
+    RowBox[{
+    "\"\<Polar\>\"", ",", " ", "\"\<ScaleFactors\>\"", ",", "posPol"}], "]"}],
+    "//", "MatrixForm"}]}]], "Input",
+ CellChangeTimes->{{3.646508438655493*^9, 3.6465084531552267`*^9}, {
+  3.646509886150363*^9, 3.646509890405055*^9}, {3.646510337917684*^9, 
+  3.646510338673579*^9}, {3.646512272969303*^9, 3.6465122799701347`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"1"},
+      {"r"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.646508446382674*^9, 3.646508483508123*^9}, 
+   3.646508675949422*^9, 3.646509594386011*^9, 3.64650969902824*^9, 
+   3.6465097765057583`*^9, 3.646509846205155*^9, 3.646509891069355*^9, 
+   3.646511969089313*^9, 3.646512182178298*^9, 3.64651228157135*^9, 
+   3.646512469751937*^9, 3.646512680451309*^9, 3.646540854546308*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Arc length", "Chapter",
+ CellChangeTimes->{{3.646511607113018*^9, 3.646511609535269*^9}}],
+
+Cell["\<\
+A function to compute the differential arc length of a curve in a particular \
+coordinate system:\
+\>", "Text",
+ CellChangeTimes->{{3.646511502691659*^9, 3.64651151815362*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ds", "[", 
+   RowBox[{"curve_List", ",", "t_", ",", "chart_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"metric", ",", " ", "tangent"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"metric", " ", "=", " ", 
+      RowBox[{"CoordinateChartData", "[", 
+       RowBox[{"chart", ",", " ", "\"\<Metric\>\"", ",", " ", "curve"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tangent", " ", "=", " ", 
+      RowBox[{"D", "[", 
+       RowBox[{"curve", ",", "t"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"tangent", " ", ".", " ", "metric", " ", ".", " ", "tangent"}],
+        "]"}], " ", 
+      RowBox[{"\[DifferentialD]", "t"}]}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellID->1300354825],
+
+Cell["\<\
+The differential arc length of a general curve in polar coordinates:\
+\>", "Text",
+ CellChangeTimes->{3.646511570420863*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ds", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", "[", "t", "]"}], ",", 
+     RowBox[{"\[Theta]", "[", "t", "]"}]}], "}"}], ",", "t", ",", " ", 
+   "\"\<Polar\>\""}], "]"}]], "Input",
+ CellID->122468256],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[DifferentialD]", "t"}], " ", 
+  SqrtBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["r", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "2"], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"r", "[", "t", "]"}], "2"], " ", 
+     SuperscriptBox[
+      RowBox[{
+       SuperscriptBox["\[Theta]", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}], "2"]}]}]]}]], "Output",
+ CellChangeTimes->{3.6465115322444277`*^9, 3.646511969368886*^9, 
+  3.6465121824426622`*^9, 3.646512469816152*^9, 3.646512680500259*^9, 
+  3.646540854595647*^9},
+ ImageSize->{164, 24},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell["\<\
+The differential arc length of a helix expressed in cylindrical coordinates:\
+\>", "Text",
+ CellChangeTimes->{3.646511582810144*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ds", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"R", ",", " ", "u", ",", " ", "u"}], "}"}], ",", " ", "u", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Cylindrical\>\"", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellID->218994880],
+
+Cell[BoxData[
+ RowBox[{
+  SqrtBox[
+   RowBox[{"1", "+", 
+    SuperscriptBox["R", "2"]}]], " ", 
+  RowBox[{"\[DifferentialD]", "u"}]}]], "Output",
+ CellChangeTimes->{3.646511535234035*^9, 3.646511969405026*^9, 
+  3.6465121824743557`*^9, 3.6465124698548203`*^9, 3.646512680533654*^9, 
+  3.646540854628355*^9},
+ ImageSize->{71, 24},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell["This can now be integrated:", "Text",
+ CellChangeTimes->{3.646511593011903*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubsuperscriptBox["\[Integral]", "0", 
+   RowBox[{"2", "\[Pi]"}]], 
+  RowBox[{
+   SqrtBox[
+    RowBox[{"1", "+", 
+     SuperscriptBox["R", "2"]}]], " ", 
+   RowBox[{"\[DifferentialD]", "u"}]}]}]], "Input",
+ CellID->821297499],
+
+Cell[BoxData[
+ RowBox[{"2", " ", "\[Pi]", " ", 
+  SqrtBox[
+   RowBox[{"1", "+", 
+    SuperscriptBox["R", "2"]}]]}]], "Output",
+ CellChangeTimes->{3.646511537520389*^9, 3.646511969437347*^9, 
+  3.646512182507537*^9, 3.646512469885291*^9, 3.646512680568273*^9, 
+  3.6465408546625957`*^9},
+ ImageSize->{73, 24},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 382, 7, 46, "Input"],
+Cell[CellGroupData[{
+Cell[965, 31, 246, 3, 92, "Title"],
+Cell[CellGroupData[{
+Cell[1236, 38, 140, 1, 65, "Chapter"],
+Cell[1379, 41, 137, 1, 30, "Text"],
+Cell[1519, 44, 276, 6, 28, "Input"],
+Cell[1798, 52, 339, 6, 49, "Text"],
+Cell[2140, 60, 649, 14, 28, "Input"],
+Cell[2792, 76, 382, 7, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3199, 87, 645, 12, 46, "Input"],
+Cell[3847, 101, 1330, 31, 58, "Output"]
+}, Open  ]],
+Cell[5192, 135, 217, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[5434, 142, 554, 11, 28, "Input"],
+Cell[5991, 155, 726, 20, 60, "Output"]
+}, Open  ]],
+Cell[6732, 178, 241, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6998, 185, 347, 6, 28, "Input"],
+Cell[7348, 193, 539, 8, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7936, 207, 159, 5, 65, "Chapter"],
+Cell[8098, 214, 137, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[8260, 219, 547, 12, 63, "Input"],
+Cell[8810, 233, 248, 7, 28, "Output"]
+}, Open  ]],
+Cell[9073, 243, 301, 6, 49, "Text"],
+Cell[CellGroupData[{
+Cell[9399, 253, 629, 12, 46, "Input"],
+Cell[10031, 267, 295, 8, 28, "Output"]
+}, Open  ]],
+Cell[10341, 278, 231, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[10597, 287, 549, 11, 63, "Input"],
+Cell[11149, 300, 1111, 29, 58, "Output"]
+}, Open  ]],
+Cell[12275, 332, 94, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[12394, 337, 369, 7, 46, "Input"],
+Cell[12766, 346, 257, 4, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13060, 355, 381, 8, 46, "Input"],
+Cell[13444, 365, 870, 22, 60, "Output"]
+}, Open  ]],
+Cell[14329, 390, 98, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[14452, 395, 435, 9, 46, "Input"],
+Cell[14890, 406, 973, 24, 56, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15912, 436, 95, 1, 65, "Chapter"],
+Cell[16010, 439, 186, 4, 49, "Text"],
+Cell[16199, 445, 874, 23, 97, "Input",
+ CellID->1300354825],
+Cell[17076, 470, 134, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[17235, 477, 247, 8, 28, "Input",
+ CellID->122468256],
+Cell[17485, 487, 712, 21, 40, "Output"]
+}, Open  ]],
+Cell[18212, 511, 142, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[18379, 518, 249, 7, 28, "Input",
+ CellID->218994880],
+Cell[18631, 527, 394, 11, 40, "Output"]
+}, Open  ]],
+Cell[19040, 541, 85, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[19150, 546, 251, 9, 49, "Input",
+ CellID->821297499],
+Cell[19404, 557, 373, 10, 40, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
