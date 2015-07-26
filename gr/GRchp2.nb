@@ -1,0 +1,5168 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    136078,       4429]*)
+(*NotebookOutlinePosition[    137639,       4477]*)
+(*  CellTagsIndexPosition[    137595,       4473]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[{
+  StyleBox["     Using ",
+    FontFamily->"Brush Script MT",
+    FontSize->16,
+    FontColor->GrayLevel[0]],
+  StyleBox["Mathematica  ",
+    FontFamily->"Brush Script MT",
+    FontSize->16,
+    FontSlant->"Italic",
+    FontColor->GrayLevel[0]],
+  StyleBox[" \n ",
+    FontFamily->"Brush Script MT",
+    FontSize->16,
+    FontColor->GrayLevel[0]],
+  StyleBox["Robert L. Zimmerman\n ",
+    FontFamily->"Monotype Corsiva",
+    FontColor->GrayLevel[0]],
+  StyleBox[" University of Oregon",
+    FontFamily->"Brush Script MT",
+    FontSize->16,
+    FontColor->GrayLevel[0]]
+}], "Title",
+  Evaluatable->False,
+  TextAlignment->Center,
+  TextJustification->0,
+  AspectRatioFixed->True,
+  FontColor->RGBColor[1, 0, 1]],
+
+Cell[TextData[StyleBox["Robert Zimmerman\nUniversity of Oregon\nInstitute of \
+Theoretical Science\nEugene, OR 97405\nbob@zim.uoregon.edu\n\
+http://darkwing.uoregon.edu/~phys600",
+  FontSize->9,
+  FontWeight->"Bold"]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  StyleBox["Reference  ",
+    FontFamily->"Times New Roman",
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox[" ",
+    FontFamily->"Times New Roman"]
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontFamily->"Arial"],
+
+Cell["\<\
+ Robert L Zimmerman, 2002:   Permission to copy and use the  \
+notebook on General Relativity for internal use is  granted, provided that \
+the work is properly referenced.  After these  notebooks have been  polished \
+and additional topics included and deletected they will be submitted for \
+publication. Please send remarks and observations on how to improve the notes \
+to the author Robert L. Zimmreman,  bob@zim.uoregon.edu.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  FontSize->10]
+}, Open  ]],
+
+Cell[BoxData[
+    \({Date[], {\ year, month, day\ , \ hour, minutes, seconds\ }} // 
+      Transpose\)], "Input"],
+
+Cell["REMARKS:", "Subsubsection"],
+
+Cell["\<\
+Before you start you must activate the section User-Defined \
+Procedures. This cell contains the user-defined commands that are used in the \
+rest of the note books. After that you activate any of the subsequent \
+sections and the calculations will be done.\
+\>", "Text"],
+
+Cell[TextData[{
+  "Chapter Two\n",
+  StyleBox["Tensors ",
+    FontWeight->"Bold"]
+}], "Subtitle",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell["User-Defined Procedures", "Subsection"],
+
+Cell["\<\
+   The user-defined procedures defined in the following cells are \
+needed for the calculations in this chapter. Activate the following cell \
+before you start reading this chapter. The programs are: Christoffel symbol, \
+non-zero Christoffel symbol, covariant derivative, commutator, Killing \
+equation, tensor transformations, and geodesic.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Activate the following procedures:", "Text"],
+
+Cell["Off[General::spell ]; Off[General::spell1]; ", "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Christoffel Symbol ",
+  StyleBox["\[CapitalGamma]",
+    FontFamily->"Symbol",
+    FontWeight->"Plain"],
+  StyleBox["\[Alpha]",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  StyleBox["\[Beta]\[Gamma]",
+    FontVariations->{"CompatibilityType"->"Subscript"}],
+  " "
+}], "Subsubsection"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(christ[met_, var_: {t, r, \[Theta], \[Phi]}]\  := \n\ 
+        Module[{\ \ temp1, imet}, \ \ \ \ \n\ \ \ temp1 = \ 
+            Outer[D, met, var]\ ; \n\ \ \ imet = \ 
+            Inverse[met] // Simplify; \n\ \ 1/2 \((\ 
+              Transpose[
+                  imet . temp1, {1, 3, 
+                    2}]\  + \n\ \ \ \ \ \ \ \ \ \ \ \ \ Transpose[
+                  imet . temp1, {1, 2, 
+                    3}]\ \  - \ \n\t\t\ \ \ \ \ \ \ \ \ imet . 
+                  Transpose[
+                    temp1, {3, 2, 1}]\ )\)\n\t\t\n\ \t];\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Non-Zero Christoffel Symbols ",
+  StyleBox["\[CapitalGamma]",
+    FontFamily->"Symbol",
+    FontWeight->"Plain"],
+  StyleBox["\[Alpha]",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  StyleBox["\[Beta]\[Gamma]",
+    FontVariations->{"CompatibilityType"->"Subscript"}],
+  " "
+}], "Subsubsection"],
+
+Cell["\<\
+ NonZchrist[gam_,ch_,var_] :=
+ Module[{dim,temp1,temp2,temp3,A$,B$,C1$},    
+  dim=Length[var]; 
+  temp1= (Array[gam,{dim,dim,dim}]//Flatten)/.
+  (#->var[[#]]&/@Range[dim]);    
+  temp2= ch//Flatten;
+  temp3=temp1->temp2//Thread; 
+  (temp3//Simplify)//.{A$___,B$_->0,C1$___}-> {A$,C1$}]\
+\>", "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Covariant Derivative", "Subsubsection"],
+
+Cell[BoxData[
+    \(coder[{1, U}, conV_, christ_, 
+        var_] := \ \n\t\ \ \ \ \ \ \ \ Outer[D, conV, 
+          var]\ \  + \ \ \(\(christ\  . conV\)\(\ \ \ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(coder[{1, L}, covV_, christ_, 
+        var_] := \ \n\t\n\ \ \ Outer[D, covV, 
+          var]\  - \(\(covV . \ \ christ\)\(\ \ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(coder[{2, U, U}, conT_, christ_, var_]\  := \n\t
+      Outer[D, conT, var] + \ \t\n\t
+        Transpose[
+          Inner[Times, christ, conT, Plus, 2], {1, 3, 
+            2}]\t + \n\t\t\n\t\ \ Transpose[
+          Inner[Times, christ, Transpose[conT, {2, 1}], Plus, 2], {2, 3, 
+            1}]\)], "Input"],
+
+Cell[BoxData[
+    \(coder[{2, L, L}, covT_, christ_, var_]\  := \n\t
+      Outer[D, covT, var] - \ \n\t\tTranspose[
+          Inner[Times, christ, covT, Plus, 1], {1, 3, 
+            2}] - \t\t\n\ \(\(covT . christ\)\(\ \ \)\(\n\)
+        \(\ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(coder[{2, U, L}, mixT_, christ_, var_]\  := \n\t
+      Outer[D, mixT, var] + \ \n\t\t\n\t\tTranspose[
+          Inner[Times, christ, mixT, Plus, 2], {1, 3, 2}]\n\t\t\n
+    \t\t\t\(-\t\ \(\(mixT\  . christ\)\(\ \ \)\)\)\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Commutator ", "Subsubsection",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+ commutator[x_List,y_List,var_List] := 
+  Module[ {dem,a,b},
+  dem=Length[var];
+  Table[Sum[ 
+  x[[b]] D[y[[a]],var[[b]]]- y[[b]]D[x[[a]],var[[b]]],
+                                    {b,dem}],{a,dem}]]\
+\>", "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Killing Equation", "Subsubsection"],
+
+Cell["\<\
+killingEq[ContraV_,metric_,christ_,var_:{t,r,\[Theta],\[Phi] }]:= 
+Module[{dem,temp1,temp2,temp3,i,j},
+     dem=Length[ContraV];
+     temp1=metric.ContraV;
+     temp2=coder[{1,L},temp1,christ,var];
+     temp3=temp2+Transpose[temp2]   ;
+   Select[Simplify[ 
+   Table[If[ i>j ,True,temp3[[i,j]]]==0  ,
+        {i,1,dem},{j,1,dem}]//Flatten ],FreeQ[#,True]&] ]              
+    \
+\>", "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{\(Tensor\ Transformations\), 
+        StyleBox[
+          StyleBox[
+            RowBox[{
+              StyleBox[" ",
+                FontColor->RGBColor[0, 0, 1]], "  "}]],
+          FontColor->GrayLevel[0]]}], TextForm]], "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Transformation of ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\_\[Mu]\)]],
+  ":"
+}], "Text"],
+
+Cell["\<\
+trans[{1,L}, covvecx_ ,ctranx_,xvar_,nvar_] :=
+     Module[{t1 },
+     t1= Outer[D, ctranx, nvar];
+      covvecx.t1/.(xvar  ->ctranx //Thread)]
+   \
+\>", "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Transformation of ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\^\[Mu]\)]],
+  ": "
+}], "Text"],
+
+Cell[BoxData[
+    \(trans[{1, U}, convecx_, ctranx_, xvar_, 
+        nvar_]\  := \n\ \ \ \ \ \ \ \ Module[\ {t1, 
+          t2\ \ \ }, \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t1 = \ \ xvar\  -> 
+              ctranx\  // Thread; \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t2 = \ 
+          Inverse[\ 
+            Outer[D, \ ctranx, \ 
+              nvar]]; \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\((convecx . Transpose[t2])\) /. t1\ \ ]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  " Transformation of ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\_\[Mu]\[Nu]\)]],
+  ":"
+}], "Text"],
+
+Cell["\<\
+ trans[{2,L,L},covtenx_,ctranx_,xvar_,yvar_] :=
+        Module[ {t1},
+          t1= Outer[D,ctranx, yvar];
+          Transpose[t1].covtenx.t1/.
+                 (xvar->ctranx //Thread)]
+   \
+\>", "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Transformation of ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\^\[Mu]\[Nu]\)]],
+  ":"
+}], "Text"],
+
+Cell["\<\
+ trans[{2,U,U},contenx_,ctranx_,xvar_,yvar_] :=
+     Module[ {t1 },
+     t1= Inverse[Outer[D,ctranx,yvar]];
+     contenx.t1.Transpose[t1]/.
+     (xvar->ctranx//Thread)]
+   \
+\>", "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    FormBox[
+      RowBox[{"Geodesic", 
+        StyleBox["  ",
+          FontColor->GrayLevel[0]]}], TextForm]], "Subsubsection"],
+
+Cell["\<\
+geodesic[ met_,var_,par_:s ] := 
+     Module[{vel1,var1,met1},
+     vel1=D[Through[var[par]],par];
+     var1= Through[var[par]];
+     met1=met/.Thread[var-> Through[var[par]]];
+     ( D[ met1.vel1,par] -  
+          (1/2 D[met1,#].vel1.vel1&/@ var1)==
+                          {0,0,0,0} )//Thread ]   \
+\>", "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.1 ",
+  StyleBox["Coordinates and Manifolds",
+    FontVariations->{"Underline"->True}],
+  " ",
+  StyleBox[" ",
+    FontColor->RGBColor[1, 0, 0]]
+}], "Section"],
+
+Cell[CellGroupData[{
+
+Cell["2.1.1 Coordinates and Manifolds", "Subsection"],
+
+Cell[TextData[{
+  "      In chapter one we introduced the concept of a tensor based on how \
+its components transformed between inertial frames. The behavior of how \
+quantities behave under coordinate transformations is the heart of tensor \
+calculus. In this chapter we pursue this topic in more detail. A tensor is an \
+object defined on a manifold. A manifold\[NonBreakingSpace]is like spacetime \
+where the collection of points in the manifold can be assigned coordinates. \
+Coordinates are simply a set of labels used to identify points. The number of \
+coordinates needed to specify the point is the dimension\[NonBreakingSpace]of \
+the manifold. For example, the surface of a sphere has only two dimensions so \
+only two coordinates are needed, e.g.,{\[Theta],\[Phi]}. In relativistic \
+spacetime we need four coordinates, e.g., {t,x,y,z}. A point can be \
+parameterized by many different coordinate systems. For example, {x,y,z} and \
+{r,\[Theta],\[Phi]} are the familiar Cartesian and spherical coordinates in \
+three-dimensional space. We can think of coordinates as distances or angles \
+that assign a set of numbers to each point. No particular coordinate system \
+is special from the point of view of the final result; however, some \
+coordinates are special with regard to the ease of computation. \n      For a \
+general n-dimensional manifold it may not be possible to cover the whole \
+manifold by one coordinate system that assigns a unique set of n coordinate \
+numbers to each point. For example, some coordinate systems may have a \
+degenerate point. An explicit example is plane polar coordinates {\[Rho], \
+\[CurlyPhi]} on the plane. They have a degenerate point at the origin because \
+the polar coordinates are indeterminate there. In this case, we could avoid \
+the degeneracy by using Cartesian coordinates.  \n   Consider a change of \
+coordinates, ",
+  Cell[BoxData[
+      \(TraditionalForm\`x'\^\(\ i\)\)]],
+  " = ",
+  Cell[BoxData[
+      \(TraditionalForm\`f\^i\)]],
+  "[",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{\(x\^1\), ",", 
+          FormBox[\(x\^2\),
+            "TraditionalForm"], " ", ",", 
+          FormBox[\(x\^3\),
+            "TraditionalForm"], ",", "..."}], TraditionalForm]]],
+  "]. The transformation passively assigns to a point that was described by \
+the coordinates {",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^i\)]],
+  "}={",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^1\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^2\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^3\)]],
+  ",...} a new description described by the coordinates {",
+  Cell[BoxData[
+      \(TraditionalForm\`x'\^\(\ i\)\)]],
+  "}={",
+  Cell[BoxData[
+      \(TraditionalForm\`x'\^1\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`x'\^2\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`x'\^3\)]],
+  ",...}. The indices run from 1 to n where n is the dimension of the \
+manifold. Take the derivative of the new coordinates with respect to ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^i\)]],
+  " and form the matrix  \n\n                      ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\[LeftBracketingBar]\[PartialD]x'\^\(\ i\)\/\[PartialD]x\^\(\ j
+              \)\[RightBracketingBar]\)]],
+  " =  ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{"(", GridBox[{
+              {\(\[PartialD]x'\^\(\ 1\)\/\[PartialD]x\^\(\ 1\)\ \ , \), 
+                \(\[PartialD]x'\^\(\ 1\)\/\[PartialD]x\^\(\ 2\), \), \(\ 
+                \[PartialD]x'\^1\/\[PartialD]x\^\(\ 3\)\ \ \  ... \)},
+              {\(\[PartialD]x'\^\(\ 2\)\/\[PartialD]x\^\(\ 1\), \), 
+                \(\[PartialD]x'\^\(\ 2\)\/\[PartialD]x\^\(\ 2\), \), 
+                \(\[PartialD]x'\^\(\ 2\)\/\(\[PartialD]x\^\(\ 3\)\ 
+                    \)\ \ \ \ \  ... \)},
+              {"..", \(\ \ \  .. \ \), \(\  .. \)}
+              }], ")"}], TraditionalForm]]]
+}], "Text"],
+
+Cell["\<\
+The determinant of this matrix is called the Jacobian of the \
+transformation. If the Jacobian is non-zero and finite then we can uniquely \
+find the inverse coordinate transformation and there is no ambiguity in the \
+coordinate assignment. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Example 2.1.1.1: Polar Coordinates {r, \[Phi]}  ",
+  FontWeight->"Bold"]], "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell[TextData[{
+  "   Consider the following two-dimensional coordinate transformation that \
+transforms Cartesian to polar coordinates:\n\n                r =    ",
+  Cell[BoxData[
+      \(\@\(x\^2 + y\^2\)\)],
+    FontFamily->"Times"],
+  "                 \[Phi]  =    ",
+  Cell[BoxData[
+      \(ArcTan[y\/x]\)],
+    FontFamily->"Times"],
+  " \n                \nSketch the lines of constant x and y in the {r, \
+\[Phi]} plane. Do the same for the inverse transformation. Calculate the \
+Jacobian and find the bad points.\n     The coordinates are related by"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(tranxTor = {\ r, \[Phi]} -> {Sqrt[x^2 + y^2], ArcTan[y/x]} // 
+          Thread;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["The graphics for a constant x-line follow from  ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(xcoord[x1_\ ] := \ 
+      ParametricPlot[
+        Evaluate[\({\ 
+                r, \[Phi]} /. \n\t\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ tranxTor\) /. x -> x1], {y,  .001, 
+          16}, \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ PlotStyle -> 
+          Hue[ .4], \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \tDisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["\<\
+where x1 is the value of the x coordinate. The graphics for an \
+array of constant x lines are \
+\>", "Text"],
+
+Cell[BoxData[
+    \(pt1 = 
+      Show[\(xcoord[#\ \ ] &\) /@ Range[ .001, 13.0001, 1], 
+        AxesLabel -> {r, \[Phi]\ }, \n\t\t\ Epilog -> 
+          Text["\< Constant x-lines\>", {10, 
+              1.5}], \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+DisplayFunction -> $DisplayFunction]\)], "Input"],
+
+Cell["The graphics for  constant y lines follow from  ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(ycoord[y1_\ \ ]\  := \ 
+      ParametricPlot[\t
+        Evaluate[\t\({\ 
+                r, \[Phi]} /. \n\t\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ttranxTor\) /. \ y -> y1], {x, 0, 
+          16}, \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ PlotStyle -> 
+          Hue[ .8], \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \t\tDisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["  The graphics for an array of constant y lines are ", "Text"],
+
+Cell[BoxData[
+    \(pt2 = 
+      Show[\(ycoord[#\ \ ] &\) /@ 
+          Range[ .001\ , 13.001, 
+            1], \n\t\t\t\ AxesLabel -> {r, \[Phi]\ }, \n\t\t\ Epilog -> 
+          Text["\< Constant y-lines\>", {10, 
+              1.5}], \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+DisplayFunction -> $DisplayFunction]\)], "Input"],
+
+Cell["Combining the constant x and y lines, we get  ", "Text"],
+
+Cell[BoxData[
+    \(Show[\ \n\t\(ycoord[#\ \ ] &\) /@ 
+        Range[ .001\ , 13.001, 1], \n\t\(xcoord[#\ \ ] &\) /@ 
+        Range[ .001, 13.0001, 1], \n\t
+      Graphics[{PointSize[ .02], 
+          Point[\({r, \[Phi]} /. \n\t\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \t\ttranxTor\) /. {x -> 2, y -> 2}]}], 
+      AxesLabel -> {r, \[Phi]\ }, PlotRange -> {{0, 13\ \ }, {0, 1.6}\ }, \n\t
+      Epilog -> Text["\< Constant x and y lines\>", {6, 
+            1.5}], \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ DisplayFunction -> $DisplayFunction\ ]\)], "Input"]
+}, Closed]],
+
+Cell[BoxData[
+    \(TextForm
+    \`\(where\ the\ point\ is\ located\ at
+        \ \ {x, y} = {2, 2} . \n\t\t\ \ \ \ \ To\ get\ the\ inverse\ 
+        coordinate\ plot\ we\ invert\ the\ coordinate\ transformation\ \)\)], 
+  "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"eq1", "=", 
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{\(r\  == Sqrt[x^2 + y^2\ ]\), ",", 
+                  RowBox[{"\[Phi]", " ", "==", 
+                    StyleBox[" ",
+                      FontFamily->"Times",
+                      FontWeight->"Plain"], \(ArcTan[y/x]\)}]}], "}"}], "//", 
+              "\n", "\t\t", \(Solve[#, {x\ , y\ \ }] &\)}], "//", 
+            "Simplify"}], "//", "PowerExpand"}]}], " "}]], "Input"],
+
+Cell[BoxData[
+    \(TextForm\`Consider\ \ the\ second\ solution\)], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(tranrTox = \ eq1[\([2]\)]\)\)\)], "Input"],
+
+Cell[TextData[
+"The graphics for constant r and \[Phi] lines as a function of x,y follow \
+from"], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(rcoord[r1_\ ]\  := \ \ ParametricPlot[\t
+        Evaluate[\t\({\ x, 
+                y} /. \n\t\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ttranrTox\) /. r -> r1], {\[Phi], 0, 
+          2\ Pi}, \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \tPlotStyle -> 
+          Hue[ .2], \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \tDisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["and", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\[Phi]coord[\[Phi]1_\ ]\  := \ \ ParametricPlot[
+        Evaluate[\t\({\ x, 
+                y} /. \n\t\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ tranrTox\) /. \[Phi] -> \ \[Phi]1], \ {r, 0, 
+          1}, \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ PlotStyle -> 
+          Hue[ .8], \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["\<\
+Combining the array of lines, we get the familiar polar plot,\
+\>", 
+  "Text"],
+
+Cell[BoxData[
+    \(Show[\(rcoord[#\ ] &\) /@ 
+        Range[0, 1,  .1], \n\ \ \ \ \ \ \ \ \ \t\(\[Phi]coord[#\ ] &\) /@ 
+        Range[0, 2\ Pi, 
+          2\ Pi/20], \n\t\ \ \ \ \ \ \ \ \ Graphics[{PointSize[ .02], \n\t\t\ \
+\ \ \ \ \tPoint[\({x, y} /. 
+                tranrTox\) /. {r ->  .5, \[Phi] -> 
+                  Pi/4}]}], \n\t\ \ \ \ \ \ \ \ \ \ AspectRatio -> Automatic, 
+      AxesLabel -> {x, 
+          y\ \ }, \n\ \ \ \ \ \ \ \ \ \ \tDisplayFunction -> \
+$DisplayFunction]\)], "Input"],
+
+Cell[BoxData[
+    \(TextForm
+    \`\(where\ the\ point\ is\ located\ at
+        \ {r, \[Phi]} = {1/2, Pi/4} . \n\ \ \ \ The\ partial\ derivatives\ of
+        \ the\ coordinates\ \ for\ this\ \ coordinate\ transformation\ \ \ are
+        \ \ \)\)], "Text"],
+
+Cell[BoxData[
+    \(\((jac\  = {{D[Sqrt[x^2 + y^2], x], 
+              D[Sqrt[x^2 + y^2], y]}, \n\ \ \ \ \ \ \ {D[ArcTan[y, x], x], 
+              D[ArcTan[y, x], y]}}\ )\) // MatrixForm\)], "Input"],
+
+Cell["or, equivalently,", "Text"],
+
+Cell[BoxData[
+    \(\((jac\  = \ 
+          Outer[D, {Sqrt[x^2 + y^2], 
+                ArcTan[y, 
+                  x]\ \ }, \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \t\t\t\ {x, y}] // Simplify)\) // MatrixForm\)], "Input"],
+
+Cell["The determinant of the partial derivatives is", "Text"],
+
+Cell[BoxData[
+    \(Det[jac] // Simplify\)], "Input"],
+
+Cell["There is a bad point at x=y=0  or r=0.", "Text"]
+}, Closed]],
+
+Cell["", "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.2 ",
+  StyleBox["Tensor Transformations",
+    FontVariations->{"Underline"->True}],
+  "  ",
+  StyleBox[" ",
+    FontColor->RGBColor[1, 0, 0]]
+}], "Section"],
+
+Cell[CellGroupData[{
+
+Cell["2.2.1 Scalars and Vectors", "Subsection"],
+
+Cell[TextData[{
+  "     The laws of physics must be written in a form that is not dependent \
+on the coordinate system. It follows that if a law is expressed as a tensor \
+equation it will have the same tensor form in all other coordinate system. An \
+equation written in a form independent manner is said to ",
+  StyleBox["be covariant.",
+    FontVariations->{"CompatibilityType"->0}],
+  " We introduce the concept of a tensor based on how their components \
+transform under a change of coordinate. Let us define various kinds of \
+tensors. \n      The simplest tensor is a scalar and it has one component \
+which is a function of the coordinates. If \[Phi] is a scalar in coordinates \
+",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " then in the coordinates ",
+  Cell[BoxData[
+      \(x'\^\(\(\ \)\(\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  " the scalar is \[Phi]'[x'], where \[Phi]'[x']=\[Phi][x]. A scalar is \
+called a tensor of rank zero. The next most elementary",
+  StyleBox[" tensor is a vector.",
+    FontVariations->{"CompatibilityType"->0}],
+  " In four-dimensional spacetime a vector has four components that can be \
+either contravariant or covariant. Any collection of four quantities ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\^\[Mu]\)]],
+  " that transform according to     \n              \n              ",
+  StyleBox[" ",
+    FontSize->14],
+  Cell[BoxData[
+      \(A\^\(\(\('\) \(\[Nu]\)\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "=",
+  Cell[BoxData[
+      FractionBox[
+        RowBox[{"\[PartialD]", 
+          FormBox[\(x'\^\(\(\ \)\(\[Nu]\)\)\),
+            "TraditionalForm"]}], \(\[PartialD]x\^\(\(\ \)\(\[Mu]\)\)\)]],
+    FontFamily->"Times",
+    FontSize->14],
+  Cell[BoxData[
+      \(A\^\[Mu]\)],
+    FontFamily->"Times"],
+  StyleBox["  ",
+    FontSize->14],
+  "  \n              \nis called a contravariant vector. The components of \
+contravariant vectors are denoted with superscripts. \n      To illustrate \
+the vector transformation consider the two dimensional, contravariant vector \
+in Cartesian coordinates"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \ \)\(V\  = \ {Vx, Vy\ };\)\)\)], "Input"],
+
+Cell["\<\
+and transform the vector to polar coordinates. The {x,y} \
+coordinates are related to polar coordinates by\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(tran\  = \ {r\ Cos[\ \[Phi]]\ , r\ Sin[\[Phi]]\ };\)\)], "Input"],
+
+Cell[TextData[{
+  "  The transformation law ",
+  Cell[BoxData[
+      \(V\^\(\(\('\) \(\[Nu]\)\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x'\^\(\(\ \)\(\[Nu]\)\)\/\[PartialD]x\^\(\(\ \)\(\[Mu]\)\)\
+\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^\[Mu]\)],
+    FontFamily->"Times"],
+  " relates the vectors in the two coordinate systems:   \n   \n              \
+   ",
+  Cell[BoxData[
+      \(TraditionalForm\`V'\^\(\(\ \)\(r\)\)\)]],
+  " = ",
+  Cell[BoxData[
+      FractionBox[
+        RowBox[{"\[PartialD]", 
+          FormBox["r",
+            "TraditionalForm"]}], \(\[PartialD]\(x\^\ \ \)\)]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^x\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      FractionBox[
+        RowBox[{"\[PartialD]", 
+          FormBox["r",
+            "TraditionalForm"]}], \(\[PartialD]y\)]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^y\)],
+    FontFamily->"Times"],
+  "   \n                 \n                 ",
+  Cell[BoxData[
+      \(TraditionalForm\`V'\^\(\(\ \)\(\[Phi]\)\)\)]],
+  " = ",
+  Cell[BoxData[
+      FractionBox[
+        RowBox[{"\[PartialD]", 
+          FormBox[
+            FormBox["\[Phi]",
+              "TraditionalForm"],
+            "TraditionalForm"]}], \(\[PartialD]\(x\^\ \ \)\)]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^x\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      FractionBox[
+        RowBox[{"\[PartialD]", 
+          FormBox["\[Phi]",
+            "TraditionalForm"]}], \(\[PartialD]y\)]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^y\)],
+    FontFamily->"Times"],
+  "\n               \n    The four coordinate differentials \n                \
+  ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{"(", GridBox[{
+              {\(\[PartialD]r\/\(\(\ \ \)\(\[PartialD]\(x\^\ \ \ \)\)\)\), \(\
+\[PartialD]r\/\[PartialD]\(y\^\ \)\), " "},
+              {
+                FractionBox[
+                  RowBox[{"\[PartialD]", 
+                    FormBox["\[Phi]",
+                      "TraditionalForm"]}], \(\[PartialD]x\)], 
+                FractionBox[
+                  RowBox[{"\[PartialD]", 
+                    FormBox["\[Phi]",
+                      "TraditionalForm"]}], \(\[PartialD]y\)], " "}
+              }], ")"}], TraditionalForm]]],
+  "    \nfollow from   "
+}], "Text"],
+
+Cell[BoxData[
+    \(\((coorDiff = Inverse[\ Outer[D, tran\ , {r, \[Phi]}]] // Simplify)\) // 
+      MatrixForm\)], "Input"],
+
+Cell[TextData[{
+  "The transformed vector {",
+  Cell[BoxData[
+      \(\[PartialD]r\/\(\ \ \[PartialD]x\^\(\ \[Mu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^\[Mu]\)],
+    FontFamily->"Times"],
+  ",",
+  Cell[BoxData[
+      \(\[PartialD]\[Phi]\/\(\ \[PartialD]x\^\(\ \[Mu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(V\^\[Mu]\)],
+    FontFamily->"Times"],
+  "} is "
+}], "Text"],
+
+Cell[BoxData[
+    \(coorDiff . V\  /. \(({x, y} -> tran // Thread)\) // Simplify\)], "Input"],
+
+Cell["\<\
+    A user-defined function that transforms a contravariant vector \
+is  \
+\>", "Text"],
+
+Cell[BoxData[
+    \(trans[{1, U}, convecx_, ctranx_, xvar_, 
+        nvar_]\  := \n\ \ \ \ \ \ \ \ Module[\ {t1, 
+          t2\ \ \ }, \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t1 = \ \ xvar\  -> 
+              ctranx\  // Thread; \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t2 = \ 
+          Inverse[\ 
+            Outer[D, \ ctranx, \ 
+              nvar]]; \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\((convecx . Transpose[t2])\) /. t1\ \ ]\)], "Input"],
+
+Cell["\<\
+where convecx is the vector, ctranx is the coordinate relation, \
+xvar are the original coordinates and nvar are the transformed variables. The \
+notation {1,U} means that the transformation is applied to a contravariant  \
+tensor of rank one. This proceedure is listed at the beginning of the \
+chapter.  Let us apply this user-defined function to the example above,  \
+\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\(trans[{1, U}, V\ , 
+        tran\ , {x, 
+          y}, {r, \[Phi]}]\)\(//\)\(Simplify\)\(\ \ \)\)\)\)], "Input"],
+
+Cell[TextData[{
+  "     Any collection of four quantities that transform according to \n\n    \
+           ",
+  Cell[BoxData[
+      RowBox[{" ", 
+        StyleBox[\(\(\(A'\)\(\ \)\)\_\[Mu]\),
+          FontSize->12]}]],
+    FontFamily->"Times",
+    FontSize->14],
+  StyleBox["=",
+    FontSize->14],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Nu]\/\(\(\ \ \)\(\[PartialD]x\^\(\('\) \
+\(\[Mu]\)\)\)\)\)],
+    FontFamily->"Times",
+    FontSize->14],
+  Cell[BoxData[
+      StyleBox[\(\(\(A\)\(\ \)\)\_\[Nu]\),
+        FontSize->12]],
+    FontFamily->"Times",
+    FontSize->14],
+  StyleBox[" \n               ",
+    FontSize->14],
+  "\nis called a covariant four-vector. To illustrate the transformation of a \
+covariant vector consider the covariant vector in Cartesian coordinates"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \ \)\(V\  = \ {Vx, Vy\ };\)\)\)], "Input"],
+
+Cell["\<\
+and find the covariant vector in polar coordinates. The {x,y} \
+coordinates are related to polar coordinates by\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(tran\  = {r\ Cos[\ \[Phi]], r\ Sin[\[Phi]]};\)\)], "Input"],
+
+Cell[TextData[{
+  "The partial derivatives in the transformation law ",
+  Cell[BoxData[
+      \(\(\ \(V'\ \)\_\[Mu]\)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Nu]\/\(\ \ \[PartialD]x\^\(' \[Mu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(V\ \)\_\[Nu]\)],
+    FontFamily->"Times"],
+  " follow from"
+}], "Text"],
+
+Cell[BoxData[
+    \(\((coorDiff = Transpose[\ Outer[D, tran\ , {r, \[Phi]}]])\) // 
+      MatrixForm\)], "Input"],
+
+Cell[TextData[{
+  "where the components of the matrix correspond to\n\n                ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{"(", GridBox[{
+              {\(\[PartialD]x\/\[PartialD]\(r\^\ \)\), \(\[PartialD]y\/\
+\[PartialD]r\), " "},
+              {
+                FractionBox[
+                  RowBox[{"\[PartialD]", 
+                    FormBox["x",
+                      "TraditionalForm"]}], \(\[PartialD]\[Phi]\)], 
+                FractionBox[
+                  RowBox[{"\[PartialD]", 
+                    FormBox["y",
+                      "TraditionalForm"]}], \(\[PartialD]\[Phi]\)], " "}
+              }], ")"}], TraditionalForm]]],
+  "   \n                                       \n The transformed vector {",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Nu]\/\(\(\ \ \)\(\[PartialD]r\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(V\)\(\ \)\)\_\(\(\(\[Nu]\)\(,\)\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Nu]\/\(\(\ \ \)\(\[PartialD]\[Phi]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(V\)\(\ \)\)\_\(\(\[Nu]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "} is"
+}], "Text"],
+
+Cell[BoxData[
+    \(coorDiff . V\  /. \(({x, y} -> tran // Thread)\) // Simplify\)], "Input"],
+
+Cell["\<\
+A user-defined function that transforms a covariant vector is \
+\
+\>", "Text"],
+
+Cell["\<\
+trans[{1,L}, covvecx_ ,ctranx_,xvar_,nvar_] :=
+     Module[{t1 },
+     t1= Outer[D, ctranx, nvar];
+      covvecx.t1/.(xvar  ->ctranx //Thread)]
+   \
+\>", "Input"],
+
+Cell["\<\
+Let us apply this user-defined function to the example above, \
+\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\(trans[{1, L}, V\ , 
+        tran, {x, y}, {r, \[Phi]}]\)\(//\)\(Simplify\)\(\ \ \)\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.2.2 Higher Rank Tensors", "Subsection"],
+
+Cell[TextData[{
+  "    The next tensor in order of complexity is a tensor of rank 2. The \
+metric tensor ",
+  Cell[BoxData[
+      \(g\_\[Mu]\[Nu]\)],
+    FontFamily->"Times"],
+  " is an example of a covariant tensor of rank 2. Like the metric tensor, a \
+general covariant tensor of rank two transforms according to \n\n             \
+   ",
+  Cell[BoxData[
+      StyleBox[\(\ \(A'\ \)\_\[Alpha]\[Beta]\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Mu]\/\(\ \[PartialD]\(x'\ \)\^\[Alpha]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      RowBox[{" ", 
+        RowBox[{
+        \(\[PartialD]x\^\[Nu]\/\(\ \[PartialD]\(x'\ \)\^\[Beta]\)\), " ", 
+          StyleBox[\(\(A\ \)\_\[Mu]\[Nu]\),
+            FontSize->12]}]}]],
+    FontFamily->"Times"],
+  "\n                \nThe user-defined function that transforms a covariant \
+tensor of rank two is "
+}], "Text"],
+
+Cell["\<\
+ trans[{2,L,L},covtenx_,ctranx_,xvar_,yvar_]:=
+        Module[ {t1},
+          t1= Outer[D,ctranx, yvar];
+          Transpose[t1].covtenx.t1/.
+                 (xvar->ctranx//Thread)]
+   \
+\>", "Input"],
+
+Cell[TextData[{
+  "where covtenx is the rank two tensor, ctranx is the coordinate relation, \
+xvar are the old coordinates, and yvar are the new coordinates. \n      For \
+example, consider transforming the Minkowski metric ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Eta]\_\[Alpha]\[Beta]\)]]
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\[Eta]met = DiagonalMatrix[{1, \(-1\), \(-1\), \(-1\)}];\)\)], "Input"],
+
+Cell[TextData[
+"to spherical coordinates. Expressing {t,x,y,z} in terms of the variables \
+{t,r,\[Theta],\[Phi]}, we find"], "Text"],
+
+Cell[BoxData[
+    \(\(tran = {t, r\ Cos[\ \[Phi]] Sin[\[Theta]]\ , 
+          r\ Sin[\[Phi]]\ Sin[\[Theta]], r\ Cos[\[Theta]]}\ ;\)\)], "Input"],
+
+Cell["\<\
+Applying the user-defined function trans[] to the Minkowski metric, \
+we get\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\(trans[{2, L, L}, \[Eta]met, \ 
+          tran\ , {t, x, y, z}, {t, 
+            r, \[Theta], \[Phi]}] // \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ Simplify\) // MatrixForm\)\)\)], "Input"],
+
+Cell[TextData[{
+  "    The inverse metric ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\^\[Alpha]\[Beta]\)]],
+  ", defined by  ",
+  Cell[BoxData[
+      \(g\^\[Alpha]\[Nu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(g\_\[Nu]\[Beta]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\(\ \[Delta]\_\[Beta]\%\[Alpha]\)\)],
+    FontFamily->"Times"],
+  " , is an example of a contravariant tensor of rank 2 where the Kronecker \
+delta  ",
+  Cell[BoxData[
+      \(\[Delta]\_\[Beta]\%\[Alpha]\)],
+    FontFamily->"Times"],
+  "  is a mixed tensor of rank 2.  A contravariant tensor of rank two \
+transforms as\n\n                ",
+  Cell[BoxData[
+      StyleBox[\(A\^\(\(' \[Alpha]\[Beta]\)\ \)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]\(x'\ \)\^\[Alpha]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      RowBox[{\(\[PartialD]x'\^\(\ \[Beta]\)\/\[PartialD]x\^\[Nu]\), 
+        StyleBox[\(A\^\[Mu]\[Nu]\),
+          FontSize->12]}]],
+    FontFamily->"Times"],
+  "\n                \nThe user-defined function that transforms a \
+contravariant tensor is   "
+}], "Text"],
+
+Cell["\<\
+ trans[{2,U,U},contenx_,ctranx_,xvar_,yvar_] :=
+     Module[ {t1 },
+     t1= Inverse[Outer[D,ctranx,yvar]];
+     contenx.t1.Transpose[t1]/.
+     (xvar->ctranx//Thread)]\
+\>", "Input"],
+
+Cell[TextData[{
+  "To illustrate the transformation of a contravariant tensor consider the \
+inverse Minkowski metric ",
+  Cell[BoxData[
+      \(TextForm\`\(\[Eta]\ \)\^\[Alpha]\[Beta]\)]],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(\((\[Eta]invmet = DiagonalMatrix[{1, \(-1\), \(-1\), \(-1\)}])\) // 
+      MatrixForm\)], "Input"],
+
+Cell["\<\
+and transform the inverse to spherical coordinates. The coordinates \
+are related by\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(tran = {t, r\ Cos[\ \[Phi]] Sin[\[Theta]], 
+          r\ Sin[\[Phi]]\ Sin[\[Theta]], r\ Cos[\[Theta]]}\ ;\)\)], "Input"],
+
+Cell["Applying the user-defined transformation, we get", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \)\(\(trans[{2, U, U}, \[Eta]met, \ 
+          tran\ , {t, x, y, z}, {t, r, \[Theta], \[Phi]}] // Simplify\) // 
+      MatrixForm\)\)\)], "Input"],
+
+Cell[TextData[{
+  "     A mixed tensor of rank two transforms as \n                           \
+                                                          \n                  \
+  ",
+  Cell[BoxData[
+      StyleBox[\(A\_\(\ \ \[Alpha]\ \ \ \ \)\%\('\ \ \ \[Gamma]\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      FractionBox[\(\[PartialD]x\^\[Mu]\), 
+        RowBox[{"\[PartialD]", 
+          FormBox[\(x'\^\[Alpha]\),
+            "TraditionalForm"]}]]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x'\^\(\ \[Gamma]\)\/\[PartialD]x\^\[Nu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\(\ \ \[Mu]\ \ \ \ \)\%\(\ \ \ \ \[Nu]\)\)],
+    FontFamily->"Times"],
+  "   \n                    \nThese transformation laws are generalized to \
+higher rank tensors by the transformation, \n\n                   ",
+  Cell[BoxData[
+      StyleBox[\(A\^\(\(\(' \[Alpha]\) ... \) \[Beta]\ \)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]\(x'\ \)\^\[Alpha]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  "..... ",
+  Cell[BoxData[
+      RowBox[{\(\[PartialD]x'\^\(\ \[Beta]\)\/\[PartialD]x\^\[Nu]\), 
+        StyleBox[\(A\^\(\(\[Mu] ... \) . \[Nu]\)\),
+          FontSize->12]}]],
+    FontFamily->"Times"],
+  "\n                   \nand    \n\n                 ",
+  Cell[BoxData[
+      StyleBox[\(\ \(A'\ \)\_\(\(\(\[Alpha] ... \) .. \) \[Beta]\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Mu]\/\(\ \[PartialD]\(x'\ \)\^\[Alpha]\)\)],
+    FontFamily->"Times"],
+  " ... ",
+  Cell[BoxData[
+      RowBox[{" ", 
+        RowBox[{
+        \(\[PartialD]x\^\[Nu]\/\(\ \[PartialD]x'\^\(\ \[Beta]\)\)\), " ", 
+          StyleBox[\(\(A\ \)\_\(\(\[Mu] ... \) \[Nu]\)\),
+            FontSize->12]}]}]],
+    FontFamily->"Times"],
+  "\n                 \n    The transformation of mixed tensors are defined \
+in the obvious manner. For example, a mixed tensor of rank three ",
+  Cell[BoxData[
+      \(A\_\(\[Alpha]\ \ \ \[Beta]\)\%\(\ \ \[Gamma]\)\)],
+    FontFamily->"Times"],
+  " transforms as   \n     \n                   ",
+  Cell[BoxData[
+      \(A\_\(\ \ \[Alpha]\ \ \ \[Beta]\)\%\('\ \ \ \[Gamma]\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Mu]\/\(\ \[PartialD]\(x'\ \)\^\[Alpha]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]\(x'\ \)\^\[Gamma]\/\[PartialD]x\^\[Nu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Eta]\/\(\ \[PartialD]\(x'\ \)\^\[Beta]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\(\ \ \[Mu]\ \ \ \[Eta]\)\%\(\ \ \ \ \[Nu]\)\)],
+    FontFamily->"Times"],
+  "   \n                   \nThe mixed tensor has covariant 1st and 3rd \
+indices and contravariant 2nd index. It is a mixed tensor of rank 3.  "
+}], "Text"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.3 ",
+  StyleBox["Tensor Properties",
+    FontVariations->{"Underline"->True}]
+}], "Section"],
+
+Cell[TextData[{
+  StyleBox["    Tensors have the following properties:\ni.  A linear \
+combinition of tensors with the same upper and lower indices is a tensor with \
+these same indices. For instance, let ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(A\_\(\(\ \)\(\[Mu]\ \ \[Eta]\)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  " and ",
+  Cell[BoxData[
+      \(B\_\(\(\ \)\(\[Mu]\ \ \[Eta]\)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  " be mixed tensors then",
+  StyleBox[" ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(C\_\(\(\ \)\(\[Mu]\ \[Eta]\)\)\%\(\(\ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  ", where\n",
+  StyleBox["\n               ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(C\_\(\(\ \)\(\[Mu]\ \ \[Eta]\)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  StyleBox["= a ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(A\_\(\(\ \)\(\[Mu]\ \ \[Eta]\)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  "  \[PlusMinus]",
+  StyleBox[" b ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(B\_\(\(\ \)\(\[Mu]\ \ \[Eta]\)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  "  \n              ",
+  StyleBox["\nis a tensor if a and b are scalars. \nii. The direct product of \
+the components of two tensors yields a tensor whose upper and lower indices \
+consist of all the upper and lower indices of the two original tensors. For \
+example,\n\n               ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(C\_\(\(\ \ \)\(\[Mu]\ \ \[Alpha]\[Beta]\)\)\%\(\(\ \ \ \ \
+\)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  StyleBox[" = ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(A\_\(\(\ \)\(\[Mu]\)\(\ \ \ \ \)\)\%\(\(\ \ \ \)\(\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " \n               ",
+  StyleBox["\nis a mixed tensor of rank four.\niii. Setting an upper and \
+lower indices equal and summing over the four values yields a new tensor with \
+these two indices absent. For instance, the following contraction of a fourth \
+ranked tensor \n\n                 ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(R\_\[Beta]\[Delta]\)\)\)]],
+  StyleBox[" = ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(TraditionalForm\`R\_\(\(\ \ \ \)\(\[Beta]\[Gamma]\[Delta]\)\)\%\
+\[Gamma]\)]],
+  "\n                 \nis a tensor of rank two. We have contracted over the \
+first and third indices.\n     The metric ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " plays a major role in both special and general relativity and leads to \
+the study of Riemannian geometry. The geometry of special relativity is based \
+on the line element\n     \n               d",
+  Cell[BoxData[
+      \(s\^2\)],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      \(\[Eta]\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  "d ",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "d ",
+  Cell[BoxData[
+      \(x\^\[Beta]\)],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      \(\(\(\ \)\(dt\^2 - dx\^2 - dy\^2 - dz\^2\)\)\)],
+    FontFamily->"Times"],
+  "\n               \nwhere the Minkowski metric is \n\n                ",
+  Cell[BoxData[
+      \(\[Eta]\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      FormBox[
+        TagBox[
+          RowBox[{"(", GridBox[{
+                {"1", "0", "0", "0"},
+                {"0", \(-1\), "0", "0"},
+                {"0", "0", \(-1\), "0"},
+                {"0", "0", "0", \(-1\)}
+                },
+              ColumnAlignments->{Decimal}], ")"}],
+          (MatrixForm[ #]&)], TraditionalForm]]],
+  "\n          \nSuch a simple metric structure as exists in special \
+relativity is not true in general relativity where energy-momentum curves the \
+spacetime. The line element for general relativity is \n\n                d",
+  Cell[BoxData[
+      \(s\^2\)],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  "d ",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "d ",
+  Cell[BoxData[
+      \(x\^\[Beta]\)],
+    FontFamily->"Times"],
+  "   \n              \nwhere the metric is determined by some set of field \
+equations, such as those that follow from general relativity. The inverse \
+metric ",
+  Cell[BoxData[
+      \(g\^\(\(\[Mu]\[Nu]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "is defined by ",
+  Cell[BoxData[
+      \(g\^\[Alpha]\[Nu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(g\_\[Nu]\[Beta]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\[Delta]\_\[Beta]\%\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  ", where ",
+  Cell[BoxData[
+      \(\[Delta]\_\[Beta]\%\[Alpha]\)],
+    FontFamily->"Times"],
+  " is the Kronecker delta. The metric and its inverse can be use to raise or \
+lower indices. For example, \n",
+  Cell[BoxData[
+      \(A\_\[Mu]\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(g\_\[Mu]\[Nu]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(A\^\[Nu]\)],
+    FontFamily->"Times"],
+  "  and   ",
+  Cell[BoxData[
+      \(A\^\[Mu]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(g\^\(\(\[Mu]\[Nu]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\[Nu]\)],
+    FontFamily->"Times"],
+  ". The metric and its inverse change one type of vector into the other. \n  \
+   We can also use the metric to define a scalar product between two vectors. \
+If ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\^\[Mu]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\^\[Mu]\)]],
+  " are two vectors then their scalar product is defined by  ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\^\(\(\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  ". The square of the magnitude of a vector ",
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "is ",
+  Cell[BoxData[
+      \(\(\(\ \)\(g\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  ". The vector ",
+  Cell[BoxData[
+      \(A\^\(\(\[Mu]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "is spacelike if ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Beta]\)\(\ \ \)\)\)],
+    FontFamily->"Times"],
+  "< 0, timelike if ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Beta]\)\(\ \ \)\)\)],
+    FontFamily->"Times"],
+  "> 0, and null  if ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "= 0.     "
+}], "Text",
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox[
+"Example 2.3.1: Product of  symmetric and antisymmetric tensors",
+  FontWeight->"Bold"]], "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "   Consider the following four-vectors: ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " is an antisymmetric tensor, ",
+  Cell[BoxData[
+      \(B\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " is a symmetric tensor, ",
+  Cell[BoxData[
+      \(C\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " an arbitrary tensor and ",
+  Cell[BoxData[
+      \(D\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " an arbitrary tensor.  Prove  ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\_\(\(\[Alpha]\[Beta]\)\(\ \ \)\)\)],
+    FontFamily->"Times"],
+  "= 0,     ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\ \)\(C\_\(\(\[Alpha]\[Beta]\)\(\ \)\)\)\)\)],
+    FontFamily->"Times"],
+  " =  ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(C\_\(\([\[Alpha]\[Beta]]\)\(\ \)\)\)\(,\)\)\)],
+    FontFamily->"Times"],
+  " and  ",
+  Cell[BoxData[
+      \(B\_\(\(\[Alpha]\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(D\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(B\_\(\(\[Alpha]\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(D\^\((\[Alpha]\[Beta])\)\)],
+    FontFamily->"Times"],
+  ", where  ",
+  Cell[BoxData[
+      \(C\_\([\[Alpha]\[Beta]]\)\)],
+    FontFamily->"Times"],
+  "= 1/2( ",
+  Cell[BoxData[
+      \(C\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  "- ",
+  Cell[BoxData[
+      \(C\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  ")  and ",
+  Cell[BoxData[
+      \(D\^\((\[Alpha]\[Beta])\)\)],
+    FontFamily->"Times"],
+  "= 1/2 ( ",
+  Cell[BoxData[
+      \(D\^\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      \(\(\(D\^\[Alpha]\[Beta]\)\()\)\)\)],
+    FontFamily->"Times"],
+  "."
+}], "Text"],
+
+Cell["\<\
+      First construct the four tensors A, B, Cg, and Dg:   
+i. antisymmetric tensor A:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+ A = Array[a,{4,4}]/.a[i_,j_] :>-a[j,i]/;i>j /.
+                                       a[i_,i_]:>0 ; \
+\>", "Input"],
+
+Cell["ii. symmetric tensor B: ", "Text",
+  Evaluatable->False],
+
+Cell["  B = Array[b, {4,4}]/. b[i_,j_]:> b[j,i]/;i>j;", "Input"],
+
+Cell["iii. and iv. general tensors Cg and Dg :  ", "Text",
+  Evaluatable->False],
+
+Cell[" Cg = Array[c,{4,4}]; Dg = Array[d,{4,4}]; ", "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    FormBox[
+      RowBox[{\(The\ proof\ \ of\ \(A\^\[Alpha]\[Beta]\) B\_\[Alpha]\[Beta]\),
+         "=", 
+        RowBox[{
+          RowBox[{
+          "0", "  ", "follows", " ", "from", " ", "interchanging", " ", "the",
+             " ", 
+            RowBox[{"indices", ":", "\n", 
+              StyleBox[
+                RowBox[{"             ", 
+                  StyleBox["   ",
+                    FontSize->14]}]], \(\(A\^\[Alpha]\[Beta]\) 
+                B\_\[Alpha]\[Beta]\)}]}], " ", "=", 
+          RowBox[{\(\(-\ A\^\[Beta]\[Alpha]\)\ B\_\[Alpha]\[Beta]\), "=", 
+            RowBox[{\(\(-\ A\^\[Beta]\[Alpha]\)\ B\_\[Beta]\[Alpha]\), "=", 
+              RowBox[{\(-\ A\^\[Alpha]\[Beta]\), \(B\_\[Alpha]\[Beta]\), 
+                StyleBox[
+                  RowBox[{
+                    StyleBox["  ",
+                      FontSize->12], "        "}]], "QED"}]}]}]}]}], 
+      TextForm], "\n", 
+    FormBox[\(The\ \ mathematica\ proof\ follows\ from\), TextForm]}], "Text"],
+
+Cell[BoxData[
+    \(Sum[\((\ A\  . \ Transpose[B]\ )\)[\([i, i]\)], {i, 4}]\)], "Input"]
+}, Closed]],
+
+Cell[TextData[{
+  "The rest of the proof will be done using mathematica. \n     The proof of  \
+ ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{"  ", 
+          
+          StyleBox[\(A\^\[Alpha]\[Beta]\ C\_\[Alpha]\[Beta]\  = \(A\^\[Alpha]\
+\[Beta]\) C\_\([\[Alpha]\[Beta]]\)\),
+            FontFamily->"Times"]}], TextForm]]],
+  " follows from writing the left-hand side, "
+}], "Text"],
+
+Cell[BoxData[
+    \(\(LHS = 
+        Sum[\((\ A . Transpose[Cg]\ )\)[\([i, i]\)], {i, 4}];\)\)], "Input"],
+
+Cell["and the right-hand side,", "Text"],
+
+Cell[BoxData[
+    \(\(RHS = 
+        Sum[\n\t\t1/
+              2 \((\ A\  . \ Transpose[Cg] - A . Cg\ )\)[\([i, i]\)], {i, 
+            4}];\)\)], "Input"],
+
+Cell["Equating the right and left sides, it follows that", "Text"],
+
+Cell[BoxData[
+    \(LHS == RHS // Simplify\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TextForm\`The\ proof\ of\ B\_\[Alpha]\[Beta]\ D\^\[Alpha]\[Beta] = 
+      B\_\[Alpha]\[Beta]\ D\^\((\[Alpha]\[Beta])\)\ \ follows\ in\ the\ same\ \
+\(\(manner\)\(:\)\)\)], "Text"],
+
+Cell[BoxData[
+    \(\(LHS = 
+        Sum[\((\ B\  . \ Transpose[Dg]\ )\)[\([i, i]\)], {i, 
+            4}];\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(RHS = 
+        Sum[\n\t\t1/
+              2 \((\ B\  . Transpose[Dg] + \ B . Dg\ )\)\ [\([i, i]\)], {i, 
+            4}];\)\n\ \), "\n", 
+    \(LHS == RHS // ExpandAll\)}], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell["", "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.4 ",
+  StyleBox["Parallel Transport and Christoffel Symbol",
+    FontVariations->{"Underline"->True}]
+}], "Section"],
+
+Cell[CellGroupData[{
+
+Cell["2.4.1 Parallel Transport ", "Subsection"],
+
+Cell[TextData[{
+  "      In Euclidean space it is easy to define what is meant by parallel \
+transporting a vector to a different point. It simply means that in a \
+Cartesian coordinate system the vector components do not change. Let us now \
+extend this idea to curved spaces and generalized coordinates. The simplest \
+ansatz for the change of a parallel transported vector is to assume that the \
+change in vector components is a linear function of the vector and of the \
+separation d",
+  Cell[BoxData[
+      \(x\^\[Beta]\)],
+    FontFamily->"Times"],
+  ",\n\n                    \[Delta]",
+  Cell[BoxData[
+      \(A\^\[Gamma]\)],
+    FontFamily->"Times"],
+  "= - ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "d",
+  Cell[BoxData[
+      \(x\^\[Beta]\)],
+    FontFamily->"Times"],
+  "\n                    \nThe symbol ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  ", called an affine connection, allows us to compare parallel transported \
+vectors. The connection accounts for the change due to both the coordinates \
+and curvature. No metric properties are used in this general definition of \
+parallel transport, only the components of the affine connection ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \)\(\[Gamma]\[Alpha]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  " are needed. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.4.2 Christoffel Symbol ", "Subsection"],
+
+Cell[TextData[{
+  "      A class of connections is singled out if we require the scalar \
+product of two vectors ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " and ",
+  Cell[BoxData[
+      \(B\^\[Beta]\)],
+    FontFamily->"Times"],
+  " to remain constant as they are parallel transported along a curve ",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "[s]. This determines ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \)\(\[Gamma]\[Alpha]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  " in terms of the metric tensor ",
+  Cell[BoxData[
+      \(g\_\(\(\ \)\(\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  " and its first derivatives ",
+  Cell[BoxData[
+      \(g\_\(\(\ \)\(\[Alpha]\[Beta], \[Gamma]\)\)\)],
+    FontFamily->"Times"],
+  ". Define the scalar product ",
+  Cell[BoxData[
+      \(g\_\(\(\ \)\(\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\^\[Beta]\)],
+    FontFamily->"Times"],
+  ", where ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " is the metric. The requirement that the product remains constant under \
+parallel transport means \n     \n               ",
+  Cell[BoxData[
+      \(d\/ds\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(g\_\(\(\ \)\(\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      StyleBox[\(A\^\[Alpha]\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      StyleBox[\(B\^\(\(\[Beta]\)\(\ \)\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  ")= 0 \n               \nExpanding the derivative, we get\n\n               \
+ ",
+  Cell[BoxData[
+      \(\[PartialD]g\_\(\(\ \)\(\[Alpha]\ \[Beta]\)\)\/\[PartialD]x\^\[Gamma]\
+\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ x\^\[Gamma]\)\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\(\[Alpha]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\^\(\(\[Beta]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      StyleBox[\(g\_\(\(\(\ \)\(\[Alpha]\ \[Beta]\)\)\(\ \)\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ A\^\[Alpha]\)\/\(\(ds\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      StyleBox[\(B\^\(\(\[Beta]\)\(\ \)\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      RowBox[{
+        StyleBox[\(g\_\(\(\ \)\(\[Alpha]\ \[Beta]\)\)\),
+          FontSize->12], " "}]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      StyleBox[\(A\^\(\(\[Alpha]\)\(\ \)\)\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ B\^\[Beta]\)\/\(\(ds\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "=0\n                \nTaking into account the transportation law for ",
+  Cell[BoxData[
+      \(d\ A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " and ",
+  Cell[BoxData[
+      \(d\ B\^\[Beta]\)],
+    FontFamily->"Times"],
+  ",\n\n                 ",
+  Cell[BoxData[
+      \(\(d\ A\^\[Gamma]\)\/ds\)],
+    FontFamily->"Times"],
+  "=- ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(\(d\ x\^\[Beta]\)\/ds\)],
+    FontFamily->"Times"],
+  " and  ",
+  Cell[BoxData[
+      \(\(d\ B\^\[Gamma]\)\/ds\)],
+    FontFamily->"Times"],
+  "=-",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(B\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(\(d\ x\^\[Beta]\)\/ds\)],
+    FontFamily->"Times"],
+  " \n                 \nIt follows that    \n      \n               ",
+  Cell[BoxData[
+      \(g\_\(\[Alpha]\[Beta], \[Gamma]\)\)],
+    FontFamily->"Times"],
+  " - ",
+  Cell[BoxData[
+      \(g\_\[Nu]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \)\(\[Alpha]\[Gamma]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  "- ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Nu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \)\(\[Beta]\[Gamma]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  "=0\n               \nBy renaming the dummy indices and using the symmetry \
+of ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Nu]\)],
+    FontFamily->"Times"],
+  ", it can be shown that\n\n              ",
+  Cell[BoxData[
+      \(g\_\(\[Alpha]\[Beta], \[Mu]\)\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      \(g\_\(\[Alpha]\[Mu], \[Beta]\)\)],
+    FontFamily->"Times"],
+  "- ",
+  Cell[BoxData[
+      \(g\_\(\[Beta]\[Mu], \[Alpha]\)\)],
+    FontFamily->"Times"],
+  "= 2 ",
+  Cell[BoxData[
+      \(g\_\(\(\[Alpha]\[Nu]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \)\(\[Beta]\[Mu]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  "\n              \nMultiplying by ",
+  Cell[BoxData[
+      \(1\/2\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(g\^\[Alpha]\[Gamma]\)],
+    FontFamily->"Times"],
+  " and summing, we find  \n\n             ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\[CapitalGamma]\_\(\(\ \ \ \ \)\(\[Alpha]\[Beta]\)\)\%\
+\[Gamma]\)\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(g\^\[Gamma]\[Mu]\/2\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Mu]\[Beta]\/\[PartialD]x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      \(\[PartialD]\ g\_\[Alpha]\[Mu]\/\[PartialD]x\^\[Beta]\)],
+    FontFamily->"Times"],
+  "- ",
+  Cell[BoxData[
+      \(\[PartialD]\ g\_\[Alpha]\[Beta]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  ")  \n             \n      If ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \)\(\[Gamma]\[Alpha]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  " is given by this relation then the scalar product of two vectors is \
+invariant under parallel transport and the connection is called the \
+Christoffel symbol. These symbols are important for formulating Einstein's \
+field equations. It will be understood that all the following connections are \
+Christoffel symbols. The Christoffel symbol is obviously symmetric ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \)\(\[Alpha]\[Beta]\)\)\%\[Gamma]\)],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \)\(\[Beta]\[Alpha]\)\)\%\[Gamma]\)],
+    FontFamily->"Times"],
+  ". Notice, the Christoffel symbol is not a tensor since it can be shown \
+that it transforms as \n      \n          ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\[CapitalGamma]\_\(\(\ \ \ \ \ \
+\)\(\[Alpha]\[Beta]\)\)\%\(\('\) \(\[Gamma]\)\)\)\)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\(\(\ \ \)\(\[PartialD]x\^\(\('\) \(\[Gamma]\)\)\)\)\/\[PartialD]x\^\
+\[Mu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Eta]\/\[PartialD]x\^\(\('\) \(\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Delta]\/\[PartialD]x\^\(\(\('\) \(\[Beta]\)\)\(\ \)\)\
+\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \ \ \)\(\[Eta]\[Delta]\)\)\%\[Mu]\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\[PartialD]\^2 x\^\(\(\[Gamma]\)\(\ \)\)\/\(\[PartialD]x\^\(\('\) \(\
+\[Eta]\)\) \[PartialD]x\^\(\('\) \(\[Delta]\)\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Eta]\/\[PartialD]x\^\(\('\) \(\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Delta]\/\[PartialD]x\^\(\('\) \(\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  " \n           \n       The Christoffel symbol can be defined in \
+Mathematica by the user-defined function"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\(\(\ \)\(christ[met_, var_: {t, r, \[Theta], \[Phi]}]\  := \n\ 
+        Module[{\ \ temp1, imet}, \ 
+          temp1 = \ Outer[D, met, var]\ ; \n\ \ \ imet = \ 
+            Inverse[met] // Simplify; \n\ \ \ 1/2 \((\ 
+              Transpose[
+                  imet . temp1, {1, 3, 
+                    2}]\  + \n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ Transpose[
+                  imet . temp1, {1, 2, 
+                    3}]\ \  - \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imet . 
+                  Transpose[temp1, {3, 2, 1}]\ )\)];\)\)\)], "Input"],
+
+Cell[TextData[{
+  "If the metric and variables are entered then the Christoffel symbol \
+follows. An individual Christoffel component follows from ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalGamma]\_\[Beta]\[Gamma]\%\[Alpha]\)]],
+  " =christ[met,var][[\[Alpha],\[Beta],\[Gamma]]]."
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox[
+"Example 2.4.2.1: Christoffel Symbol  for Two-dimensional Polar Coordinates",
+  FontWeight->"Bold"]], "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell[TextData[
+"Consider a polar coordinate system {r,\[Phi]} with metric  "], "Text"],
+
+Cell[BoxData[
+    \(\((\ pmet = DiagonalMatrix[{1, r^2}])\) // MatrixForm\)], "Input"],
+
+Cell["\<\
+and find the Christoffel symbol.
+   The Christoffel symbol follows from\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\((ch = christ[pmet, {r, \[Phi]}])\)\(\ \)\)\)], "Input"],
+
+Cell[TextData[{
+  "There are a total of 2*2*2=8 components. The three nonzero components are: \
+\ni. ",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \ \[Phi]\[Phi]\)\%r\)\)],
+    FontFamily->"Times"],
+  " "
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \)\(ch[\([1, 2, 2]\)]\)\)\)], "Input"],
+
+Cell[TextData[{
+  "and \nii.  {",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \ r\[Phi]\)\%\[Phi]\)\)],
+    FontFamily->"Times"],
+  ",",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \ \[Phi]r\)\%\[Phi]\)\)],
+    FontFamily->"Times"],
+  "},  "
+}], "Text"],
+
+Cell[BoxData[
+    \({ch[\([2, 1, 2]\)], ch[\([2, 2, 1]\)]}\)], "Input"],
+
+Cell["A user-defined function to return just the non-zero terms is", "Text"],
+
+Cell["\<\
+ NonZchrist[gam_,ch_,var_] :=
+ Module[{dim,temp1,temp2,temp3,A$,B$,C1$},    
+  dim=Length[var]; 
+  temp1= (Array[gam,{dim,dim,dim}]//Flatten)/.
+  (#->var[[#]]&/@Range[dim]);    
+  temp2= ch//Flatten;
+  temp3=temp1->temp2//Thread; 
+  (temp3//Simplify)//.{A$___,B$_->0,C1$___}-> {A$,C1$}]\
+\>", "Input"],
+
+Cell["Applying the command to the case at hand, we find", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(NonZchrist[\[CapitalGamma], 
+      ch, {r, \[Phi]}]\)\(\ \)\)\)], "Input"],
+
+Cell["which agrees with the previous result.", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox[
+"Example 2.4.2.2: Christoffel Symbol for Spherical Pseudo-Euclidean \
+Spacetime",
+  FontWeight->"Bold"]], "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell["\<\
+   Let us consider an example in 4-dimensional spacetime using \
+spherical coordinates. The metric for pseudo-Euclidean spacetime,  \
+\>", 
+  "Text"],
+
+Cell[BoxData[{
+    \(\(var = {t, r, \[Theta], \ \[Phi]\ };\)\), "\n", 
+    \(\(met = 
+        DiagonalMatrix[{1, \(-1\), \(-r^2\), \(-r^2\)\ \ Sin[\[Theta]]^2}];\)\
+\)}], "Input"],
+
+Cell["\<\
+Find the non-zero Christoffel components.
+      All the Christoffel symbols follow from \
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(ch = christ[met, var]\ ;\)\)], "Input"],
+
+Cell["The non-zero components are", "Text"],
+
+Cell[BoxData[
+    \(\(\(NonZchrist[\[CapitalGamma], ch, var] // Partition[#, 3] &\)\  // 
+        ColumnForm\) // TraditionalForm\)], "Input"]
+}, Closed]],
+
+Cell["", "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.5 ",
+  StyleBox["Covariant Derivatives ",
+    FontVariations->{"Underline"->True}]
+}], "Section"],
+
+Cell[CellGroupData[{
+
+Cell["2.5.1 Partial Derivatives", "Subsection"],
+
+Cell[TextData[{
+  "    In this section we consider some basic ideas about the derivatives of \
+tensors. We use the coordinate approach and emphasize the rules for \
+manipulation and calculation in tensor calculus. The coordinate approach is \
+adequate for many situations, but other techniques are sometimes more \
+effective. In the modern literature coordinate-free geometric concepts, such \
+as forms and exterior differentiation, are frequently used. The mathematical \
+structure often becomes more evident when expressed in coordinate-free terms. \
+Nevertheless, most numerical calculations are based on coordinates. Our aim \
+is to focus on the computational methods and the tools that are needed for \
+later chapters. \n        Let us begin by exploring the transformation \
+properties of partial derivatives. The partial derivative of a scalar \
+\[CurlyPhi] is a covariant tensor of rank one since\n        \n               \
+",
+  Cell[BoxData[
+      \(\(\ \[PartialD]\[Phi]'\/\(\ \ \[PartialD]x\^\(' \[Mu]\)\)\ \)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Nu]\/\(\ \ \[PartialD]x\^\(' \[Mu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\[PartialD]\[Phi]\/\[PartialD]x\^\[Nu]\ \)\)],
+    FontFamily->"Times"],
+  "\n               \nHowever, the partial derivative of a tensor\
+\[NonBreakingSpace]of higher rank is generally not a tensor. For example, \
+consider the partial derivative of a contravariant vector, i.e., ",
+  Cell[BoxData[
+      \(\[PartialD]A\^\[Nu]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  ". It can be shown that the partial derivative transforms as \n\n           \
+  ",
+  Cell[BoxData[
+      \(\(\ \[PartialD]A\^\(' \[Alpha]\)\/\[PartialD]x\^\(' \[Gamma]\)\ 
+      \)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\[PartialD]x\^\(' \[Alpha]\)\/\[PartialD]x\^\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Delta]\/\[PartialD]x\^\(' \[Gamma]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\[PartialD]A\^\[Beta]\/\[PartialD]x\^\[Delta]\ \)\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      \(\[PartialD]\^2 x\^\(' \[Alpha]\)\/\(\[PartialD]x\^\[Beta] 
+          \[PartialD]x\^\[Delta]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x\^\[Delta]\/\[PartialD]x\^\(' \[Gamma]\)\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      StyleBox[\(A\^\[Beta]\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  "\n             \nIf the second term on the right hand side is non-zero \
+then ",
+  Cell[BoxData[
+      \(\[PartialD]A\^\[Nu]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  " is not a tensor. Therefore ordinary partial derivatives can not, in \
+general, be used in constructing covariant equations. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.5.2 Covariant Derivative", "Subsection"],
+
+Cell[TextData[{
+  "       The reason for the failure of a partial derivative to be a tensor \
+is obvious. A partial derivative is defined by comparing a quantity evaluated \
+at a point ",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  " with the same quantity evaluated at ",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  "+d",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  ", subtracting, and then dividing by the increment d",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  ". The difference of two vectors defined at different points is not a \
+vector. To construct a covariant quantity that is analogues to a partial \
+derivative we must parallel translate the vector ",
+  Cell[BoxData[
+      \(A\^\[Nu]\)],
+    FontFamily->"Times"],
+  " to ",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  "+d",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  " and then do the subtraction. If this is done then the change in the \
+vector field going from ",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  " to ",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  "+d",
+  Cell[BoxData[
+      \(x\^\[Mu]\)],
+    FontFamily->"Times"],
+  " is given by a quantity called the covariant derivative. The resulting \
+covariant derivative of a contravariant vector ",
+  Cell[BoxData[
+      \(A\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " is \n      \n              ",
+  Cell[BoxData[
+      \(\[Del]\_\[Alpha]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(A\_\(\ \ \  \)\%\[Nu]\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(A\_\(\ \ \ \(; \[Alpha]\)\)\%\[Nu]\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\(\[PartialD]A\^\[Nu]\/\[PartialD]x\^\[Alpha]\ \)\)],
+    FontFamily->"Times"],
+  "+",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \[Gamma]\[Alpha]\)\%\[Nu]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\[Gamma]\)],
+    FontFamily->"Times"],
+  " \n              \nwhere \n\n                ",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \ \[Alpha]\[Beta]\)\%\[Gamma]\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(g\^\[Gamma]\[Mu]\/2\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Mu]\[Beta]\/\[PartialD]x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\[PartialD]\ g\_\[Alpha]\[Mu]\/\[PartialD]x\^\[Beta]\)],
+    FontFamily->"Times"],
+  " - ",
+  Cell[BoxData[
+      \(\[PartialD]\ g\_\[Alpha]\[Beta]\/\[PartialD]x\^\[Mu]\)],
+    FontFamily->"Times"],
+  ")  \n                \nThe notation ; and ",
+  Cell[BoxData[
+      \(\[Del]\_\[Alpha]\)]],
+  " means covariant derivative. The covariant derivative of a contravariant \
+vector is a mixed tensor of rank two. The user-defined function for the \
+covariant derivative of a contravariant vector is    "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(coder[{1, U}, conV_, christ_, 
+        var_] := \ \ \ Outer[D, conV, var]\ \  + \ \ \(\(christ\  . 
+          conV\)\(\ \ \ \)\)\)], "Input"],
+
+Cell[TextData[{
+  "where the notation {1,U} means that the derivative is applied to a rank \
+one contravariant tensor.\n     We can extend this argument to find the \
+covariant derivative of a covariant vector     \n                   \n        \
+        ",
+  Cell[BoxData[
+      \(A\_\(\[Nu]; \[Alpha]\)\)],
+    FontFamily->"Times"],
+  "= ",
+  Cell[BoxData[
+      \(\(\[PartialD]A\_\[Nu]\/\[PartialD]x\^\[Alpha]\ \)\)],
+    FontFamily->"Times"],
+  "-",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \[Nu]\[Alpha]\)\%\[Beta]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\[Beta]\)],
+    FontFamily->"Times"],
+  "\n                \nThe user-defined function is    "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(coder[{1, L}, covV_, christ_, 
+        var_] := \ \ \ Outer[D, covV, 
+          var]\  - \(\(covV . \ \ christ\)\(\ \ \)\)\)], "Input"],
+
+Cell[TextData[{
+  "The covariant derivative of a covariant vector is a covariant tensor of \
+rank two. \n     The covariant derivative of a rank two contravariant tensor \
+is \n             \n                  ",
+  Cell[BoxData[
+      \(A\_\(\ \ \ \(; \[Gamma]\)\)\%\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\[PartialD]A\^\[Alpha]\[Beta]\/\[PartialD]x\^\[Gamma]\)],
+    FontFamily->"Times"],
+  "+",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \[Delta]\[Gamma]\)\%\[Alpha]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\[Delta]\[Beta]\ \ \)\)],
+    FontFamily->"Times"],
+  "+ ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\ \ \ \[Delta]\[Gamma]\)\%\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\^\(\[Alpha]\[Delta]\ \ \)\)],
+    FontFamily->"Times"],
+  " \n                  \nThe user-defined function is      "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(coder[{2, U, U}, conT_, christ_, var_]\  := \n\t
+      Outer[D, conT, var] + \ \t\n\t
+        Transpose[
+          Inner[Times, christ, conT, Plus, 2], {1, 3, 
+            2}]\t + \t\t\n\t\ \ Transpose[
+          Inner[Times, christ, Transpose[conT, {2, 1}], Plus, 2], {2, 3, 
+            1}]\)], "Input"],
+
+Cell[TextData[{
+  "Likewise, the covariant derivative of a rank two covariant tensor is \n\n  \
+                ",
+  Cell[BoxData[
+      \(A\_\(\ \[Alpha]\[Beta]; \[Gamma]\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\(\[PartialD]A\_\[Alpha]\[Beta]\/\[PartialD]x\^\[Gamma]\ \)\)],
+    FontFamily->"Times"],
+  "-",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \[Alpha]\[Gamma]\)\%\[Delta]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\[Delta]\[Beta]\)],
+    FontFamily->"Times"],
+  " - ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\ \ \ \[Beta]\[Gamma]\)\%\[Delta]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(A\_\(\[Alpha]\[Delta]\ \)\)],
+    FontFamily->"Times"],
+  "  \n                  \nThe user-defined function is "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(coder[{2, L, L}, covT_, christ_, var_]\  := \n\t
+      Outer[D, covT, var] - \ \n\t
+        Transpose[
+          Inner[Times, christ, covT, Plus, 1], {1, 3, 
+            2}] - \t\t\n\ \ \(\(covT . christ\)\(\ \ \ \)\)\)], "Input"],
+
+Cell[TextData[{
+  "The covariant derivative of a rank two mixed tensor is \n\n                \
+ ",
+  Cell[BoxData[
+      \(A\_\(\ \ \ \[Beta]; \[Gamma]\)\%\[Alpha]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\(\[PartialD]A\_\(\ \ \ \[Beta]\)\%\[Alpha]\/\[PartialD]x\^\[Gamma]\ 
+      \)\)],
+    FontFamily->"Times"],
+  "-  ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\ \ \[Beta]\[Gamma]\)\%\[Delta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\(\ \ \ \[Delta]\)\%\[Alpha]\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\(\ \[CapitalGamma]\_\(\ \ \ \[Delta]\[Gamma]\)\%\[Alpha]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(A\_\(\ \ \ \[Beta]\)\%\[Delta]\)],
+    FontFamily->"Times"],
+  "    \n                 \nThe user-defined function follows from "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\(\(\ \)\(coder[{2, U, L}, mixT_, christ_, 
+        var_]\  := \n\ \ \tOuter[D, mixT, var] + \ \t\t\n\t\tTranspose[
+          Inner[Times, christ, mixT, Plus, 2], {1, 3, 
+            2}]\t\t\n\t\t - \ \(\(mixT\  . christ\)\(\ \ \)\)\)\)\)], "Input"],
+
+Cell[TextData[{
+  " This procedure can be extended to tensors of arbitrary rank .  \n      As \
+a consequence of the connection being a Christoffel symbol it follows that \
+the covariant derivative of the metric is zero,   ",
+  Cell[BoxData[
+      \(\[Del]\_\[Gamma]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " =0 . Hence, ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " can be pulled through the covariant derivative, i.e.,  ",
+  Cell[BoxData[
+      \(A\_\(\[Alpha]; \[Beta]\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Mu]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\ A\_\(\ \ \ \(; \[Beta]\)\)\%\[Mu]\)\)],
+    FontFamily->"Times"],
+  ". ",
+  StyleBox[" ",
+    FontSize->14]
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell["  Example 2.5.2.1", "Subsubsection",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell[TextData[{
+  "Consider the metric ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\[Mu]\[Nu]\)]]
+}], "Text"],
+
+Cell[BoxData[
+    \(\(g = 
+        DiagonalMatrix[{1, \(-1\), \(-r^2\), \(-r^2\)\ \
+Sin[\[Theta]]^2}];\)\)], "Input"],
+
+Cell[TextData[{
+  "and show the covariant derivatives of ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\[Mu]\[Nu]\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\^\[Mu]\[Nu]\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\(\ \ \ \[Nu]\)\%\[Mu]\)]],
+  " all vanish. The Christoffel symbol for the metric is  "
+}], "Text"],
+
+Cell[BoxData[
+    \(\(ch = christ[g, {t, r, \[Theta], \[Phi]}];\)\)], "Input"],
+
+Cell[TextData[{
+  "and the covariant derivatives follow from:\ni. covariant derivative of ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\[Mu]\[Nu]\)]],
+  ","
+}], "Text"],
+
+Cell[BoxData[
+    \(coder[{2, L, L}, g, ch\ , {t, r, \[Theta], \[Phi]}] == 
+      Table[0, {i, 4}, {j, 4}, {k, 4}]\)], "Input"],
+
+Cell[TextData[{
+  " ii. covariant derivative of ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\^\[Mu]\[Nu]\)]],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(coder[{2, U, U}, \ Inverse[g], 
+        ch\ , {t, r, \[Theta], \[Phi]}]\)\(==\)\(Table[
+        0, {i, 4}, {j, 4}, {k, 4}]\)\(\ \)\)\)], "Input"],
+
+Cell[TextData[{
+  " iii.   covariant derivative of  ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\(\ \ \ \ \[Nu]\)\%\[Mu]\)]],
+  " : "
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(coder[{2, U, L}, Inverse[g] . g, 
+        ch\ , {t, r, \[Theta], \[Phi]}]\)\(==\)\(Table[
+        0, {i, 4}, {j, 4}, {k, 4}]\)\(\ \)\)\)], "Input"]
+}, Closed]],
+
+Cell["", "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.6 ",
+  StyleBox["Geodesics ",
+    FontVariations->{"Underline"->True}],
+  "    "
+}], "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell["2.6.1 Geodesic Equation", "Subsection"],
+
+Cell[TextData[{
+  "     Einstein's theory replaces the effects of gravity with the curvature \
+of spacetime. The theory demands that particles and light in a gravitational \
+field follow geodesic curves. A geodesic is the generalization of a straight \
+line in flat space. Consider the curve ",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  "[\[Lambda]] parameterized by \[Lambda]. The arc length along the curve is  \
+\n \n                 d s = ",
+  Cell[BoxData[
+      \(\@\(g\_\[Alpha]\[Beta]\ d\ x\^\[Alpha]\ d\ x\^\[Beta]\)\)],
+    FontFamily->"Times"],
+  "\n                 \nDefine the Integral over the path  \n\n               \
+   A= ",
+  Cell[BoxData[
+      \(\[Integral]\_\[Lambda]0\%\[Lambda]1\ \(d\ s\)\/d\[Lambda]\
+\ \ \[DifferentialD]s\)],
+    FontFamily->"Times"],
+  " =",
+  Cell[BoxData[
+      \(\[Integral]\_\[Lambda]0\%\[Lambda]1\(\@\( g\_\[Alpha]\[Beta]\ \(d\ \
+x\^\[Alpha]\)\/d\[Lambda]\ \(d\ x\^\[Beta]\)\/d\[Lambda]\)\) \
+\[DifferentialD]s\)],
+    FontFamily->"Times"],
+  "\n                  \nwhere A is called the action. The generalization of \
+a straight line is the curve that makes the action an extremum. Varying the \
+action,\[NonBreakingSpace]we get the Euler-Lagrange equations,   \n \n        \
+              ",
+  Cell[BoxData[
+      \(\(\(d\)\(\ \)\)\/ds\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      FractionBox[\(\[PartialD]L\), 
+        RowBox[{"\[PartialD]", 
+          FormBox[\(\(\(x\&\[SmallCircle]\)\(\ \ \)\)\^\[Alpha]\),
+            "TraditionalForm"]}]]],
+    FontFamily->"Times"],
+  ") -",
+  Cell[BoxData[
+      \(\[PartialD]L\/\(\(\ \)\(\[PartialD]x\^\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  "=0\n                      \nwhere ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(x\&\[SmallCircle]\)\(\ \ \)\)\^\[Alpha]\)]],
+  " = ",
+  Cell[BoxData[
+      \(\(d\ x\^\[Alpha]\)\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  " and the Lagrangian is\n\n                    L= ",
+  Cell[BoxData[
+      \(ds\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(\@\(g\_\[Alpha]\[Beta]\ \(d\ x\^\[Alpha]\)\/d\[Lambda]\ \(d\ x\^\
+\[Beta]\)\/d\[Lambda]\)\)],
+    FontFamily->"Times"],
+  " \n                    \nTaking the appropriate derivatives of L, it \
+follows that\n\n                ",
+  Cell[BoxData[
+      \(\[PartialD]L\/\[PartialD]x\^\(\(\[Gamma]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(1\/\(2\ ds\/d\[Lambda]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Alpha]\[Beta]\/\[PartialD]x\^\(\(\[Gamma]\)\(\ \
+\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ x\^\[Alpha]\)\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  " ",
+  Cell[BoxData[
+      \(\(d\ x\^\[Beta]\)\/\(\(d\[Lambda]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  "\n                                          \nand\n\n                 ",
+  Cell[BoxData[
+      \(\[PartialD]L\/\[PartialD]\(\(x\&\[SmallCircle]\)\(\ \ \)\)\^\(\(\
+\[Gamma]\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  " = ",
+  Cell[BoxData[
+      \(1\/\(ds\/d\[Lambda]\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      StyleBox[\(g\_\[Gamma]\[Beta]\),
+        FontSize->12]],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ x\^\[Beta]\)\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  " \n                 \nSubstituting these equations into the Euler-Lagrange \
+equations, we get\n\n               ",
+  Cell[BoxData[
+      \(\(d\^\ \)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  ") -",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(1\)\(\ \ \ \)\)\/\(\(2\)\(\ \)\)\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Gamma]\[Delta]\/\[PartialD]x\^\(\(\[Alpha]\)\(\ \
+\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Gamma]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\(\(\[Delta]\)\(\ \)\)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  " =  ",
+  Cell[BoxData[
+      \(g\_\[Gamma]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(d\ x\^\[Beta]\)\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\ \)\(\(d\^2\ s\)\/d\[Lambda]\^2\)\)\/\(\(d\ s\)\/d\[Lambda]\)\)],
+    
+    FontFamily->"Times"],
+  "    \n               \n        If we use the arc length s to parameterize \
+the curve then ",
+  Cell[BoxData[
+      \(\(d\ s\)\/d\[Lambda]\)],
+    FontFamily->"Times"],
+  "=1 and ",
+  Cell[BoxData[
+      \(\(d\^2\ s\)\/d\[Lambda]\^2 = 0\)],
+    FontFamily->"Times"],
+  " and the geodesic equations become\n        \n               ",
+  Cell[BoxData[
+      \(\(d\^\ \)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  ") -",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(1\)\(\ \ \ \)\)\/\(\(2\)\(\ \)\)\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Gamma]\[Delta]\/\[PartialD]x\^\(\(\[Alpha]\)\(\ \
+\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Gamma]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\(\(\[Delta]\)\(\ \)\)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "  =0   \n        \nThe geodesic equation can also be written in the form   \
+ \n                      \n               ",
+  Cell[BoxData[
+      \(\ \)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\(\(d\)\(\ \)\)\^\(\(2\)\(\ \)\)\) x\^\[Gamma]\)\/\(d\ \(s\^\ \
+\)\^2\)\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\(\(\[CapitalGamma]\)\(\ \)\)\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Alpha]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  " =0    \n               \n where ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\[CapitalGamma]\_\(\(\ \ \ \ \)\(\[Alpha]\[Beta]\)\)\%\
+\[Gamma]\)\)\)],
+    FontFamily->"Times"],
+  " is the Christoffel symbol. We can distinguish three types of four-vectors \
+that are tangent to geodesics:\ni.   timelike\[NonBreakingSpace]if ",
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Alpha]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  " >0,\nii.  spacelike\[NonBreakingSpace]if ",
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Alpha]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "<0, and \niii. null if ",
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Alpha]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "=0.   "
+}], "Text"],
+
+Cell["\<\
+    The world lines of point-like test particles are time-like \
+geodesics of spacetime. A physical interpretation of the connection is that \
+it gives the gravitational acceleration of a test particle in a given \
+coordinate system. The connection, in turn, is expressed in terms of the \
+metric which is like a potential. What is still lacking  is a set of \
+equations determining the fields or potentials in terms of given sources \
+,like Maxwell's equations which allow one to compute the electromagnetic \
+field in term of charges and currents. General relativity provides such \
+equations; they are known as the Einstein equations and they determine the \
+gravitational fields arising from given distributions of mass-energy and \
+momentum.
+     The user-defined function to compute the four geodesic equations is      \
+\
+\>", "Text"],
+
+Cell["\<\
+geodesic[ met_,var_,par_:s ] := 
+     Module[{vel1,var1,met1},
+     vel1=D[Through[var[par]],par];
+     var1= Through[var[par]];
+     met1=met/.Thread[var-> Through[var[par]]];
+     ( D[ met1.vel1,par] -  
+          (1/2 D[met1,#].vel1.vel1&/@ var1)==
+                          {0,0,0,0} )//Thread ]   \
+\>", "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  StyleBox["Example 2.6.1.1: Geodesic in Spherical Coordinates",
+    FontWeight->"Bold"],
+  " "
+}], "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}],
+
+Cell[TextData[
+"    Consider a pseudo-Euclidean metric expressed in spherical coordinates \
+{t,r,\[Theta],\[Phi]}. The metric is"], "Text"],
+
+Cell["\<\
+met=DiagonalMatrix[{1,-1,-r^2,-r^2 Sin[\[Theta]]^2}];\
+\>", "Input"],
+
+Cell[" Applying geodesic to met, we obtain  ", "Text"],
+
+Cell["\<\
+geodesic[met,{t,r,\[Theta],\[Phi]}]//
+            Simplify//TableForm//TraditionalForm \
+\>", "Input"]
+}, Closed]],
+
+Cell["", "Text",
+  CellFrame->{{0, 0}, {0, 0.25}}]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.7 ",
+  StyleBox["Isometries and Killing Vectors",
+    FontVariations->{"Underline"->True}],
+  " "
+}], "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell["2.7.1 Killing Equations and Symmetries", "Subsection"],
+
+Cell[TextData[{
+  "    Often spacetimes of interest possess special symmetries. Such \
+symmetries are useful in picking the \"best\" coordinate system and for \
+finding solutions of the geodesic equations. This is the content of Noether's \
+theorem applied to the motion of text particles and its generalization to \
+spacetime curves. In Euclidean space there are transformations like \
+translations and rotations that are a consequence of the symmetries of the \
+Euclidean space. The metric ",
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " is defined to be spherically symmetric if it is formally invariant for \
+rotations; that is, the new components of ",
+  Cell[BoxData[
+      \(\(\(g'\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " are the same functions of the new coordinates x' as the old components of \
+",
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  " were of the old coordinates x for rotations. The symmetries are those \
+transformations that leave the metric form-invariant. How does one identify \
+the symmetries of the metric? In general, these symmetries can be described \
+by the so-called Killing vectors.\n    If the metric transforms as  \n\n      \
+            ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g'\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x']=",
+  Cell[BoxData[
+      \(\(\(\ \ \)\(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x']\n                  \nthen the metric is form-invariant. The \
+transformed metric ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g'\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x']  is the same function of its arguments as the original metric ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x'] is of its argument x'. A transformation leaving ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x] form-invariant is called an isometry. In Euclidean space the three \
+translations along the space axis and the three rotations around the space \
+axes leave the metric form-invariant. These transformations are a consequence \
+of the underlying symmetries of the Euclidean space. \n      Let us restrict \
+our attention to infinitesimal transformations because it is possible to \
+build up a finite transformation by an infinite sequence of infinitesimal \
+transformations. Consider the infinitesimal transform\n      \n              \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(x'\)\(\ \)\)\^\[Mu]\)]],
+  "= ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^\[Mu]\)]],
+  " +  \[CurlyEpsilon] ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\^\[Mu]\)]],
+  "[x]\n              \nwhere \[CurlyEpsilon] is small. The metric transforms \
+as\n\n              ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x]=",
+  Cell[BoxData[
+      \(\[PartialD]x'\^\(\(\ \)\(\[Mu]\)\)\/\(\(\ \)\(\[PartialD]\(\(x\)\(\ \
+\)\)\^\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      RowBox[{" ", 
+        RowBox[{\(\[PartialD]x'\^\[Nu]\/\(\(\ \)\(\[PartialD]x\^\(\(\ \)\(\
+\[Beta]\)\)\)\)\), " ", 
+          StyleBox[\(\(\(g'\)\(\ \)\)\_\[Mu]\[Nu]\),
+            FontSize->12]}]}]],
+    FontFamily->"Times"],
+  "[x']\n              \nIf the metric is form invariant then    \n           \
+   \n               ",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Alpha]\[Beta]\)\)\)],
+    FontFamily->"Times"],
+  "[x]=",
+  Cell[BoxData[
+      \(\[PartialD]x'\^\(\(\ \)\(\[Mu]\)\)\/\(\(\ \)\(\[PartialD]\(\(x\)\(\ \
+\)\)\^\[Alpha]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]x'\^\[Nu]\/\(\(\(\ \)\(\[PartialD]x\^\(\(\ \)\(\[Beta]\)\)\
+\)\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(g\)\(\ \)\)\_\[Mu]\[Nu]\)],
+    FontFamily->"Times"],
+  "[x']\n               \nEvaluating this equation to lowest order in \
+\[CurlyEpsilon], we find \n                           \n          0 = ",
+  Cell[BoxData[
+      \(\[PartialD]\ \(\(g\)\(\ \)\)\_\[CurlyRho]\[Sigma][x]\/\(\(\ \)\(\
+\[PartialD]\(\(x\)\(\ \)\)\^\[Mu]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\[Xi]\^\[Mu]\)[x]\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\[PartialD]\(\[Xi]\^\[Nu]\)[x]\/\(\(\ \)\(\[PartialD]\(\(x\)\(\ \
+\)\)\^\[Sigma]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Rho]\[Nu]\)\)\)],
+    FontFamily->"Times"],
+  "[x] + ",
+  Cell[BoxData[
+      \(\[PartialD]\(\[Xi]\^\[Mu]\)[x]\/\(\(\ \)\(\[PartialD]\(\(x\)\(\ \
+\)\)\^\[Rho]\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(g\)\(\ \)\)\_\[Mu]\[Sigma]\)\)\)],
+    FontFamily->"Times"],
+  "[x]   \n          \nThis is the condition for the metric to have an \
+infinitesimal isometry. With some algebra, these equations can be written in \
+the form\n\n              ",
+  Cell[BoxData[
+      \(\(\(\[Xi]\)\(\ \)\)\_\(\[Mu]; \[Nu]\)\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\(\(\[Xi]\)\(\ \)\)\_\(\[Nu]; \[Mu]\)\)],
+    FontFamily->"Times"],
+  " =0\n              \nThese equations are called Killing equations and any \
+solution of them is called a Killing vector. \n      Any linear combination \
+of Killing vectors with constant coefficients is a Killing vector. The \
+commutator of two Killing vectors is also a Killing vector. If we have \
+n-Killing vectors, ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\_\[Gamma]\)]],
+  " where \[Gamma]=1,...n , then the commutator is\n      \n                 \
+[",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\_\[Delta]\)]],
+  " , ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\_\[Gamma]\)]],
+  "]  = ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(C\)\(\ \ \)\)\_\(\(\ \ \ \ \
+\)\(\[Delta]\[Gamma]\)\)\%\[Sigma]\)]],
+  " ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\_\[Sigma]\)]],
+  "\n                 \nThe constants ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(C\)\(\ \ \)\)\_\(\(\ \ \ \ \
+\)\(\[Delta]\[Gamma]\)\)\%\[Sigma]\)]],
+  " are the structure constants for the group of transformations. In \
+principle, the symmetries of spacetime can be obtained by finding the Killing \
+vectors.  \n     ",
+  StyleBox[" A user-defined function that returns all non-trivial Killing \
+equations is  ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"]
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+killingEq[ContraV_,metric_,christ_,var_:{t,r,\[Theta],\[Phi] }]:= 
+Module[{dem,temp1,temp2,temp3,i,j},
+     dem=Length[ContraV];
+     temp1=metric.ContraV;
+     temp2=coder[{1,L},temp1,christ,var];
+     temp3=temp2+Transpose[temp2]   ;
+   Select[Simplify[ 
+   Table[If[ i>j ,True,temp3[[i,j]]]==0  ,
+        {i,1,dem},{j,1,dem}]//Flatten ],FreeQ[#,True]&] ]              
+    \
+\>", "Input"],
+
+Cell["\<\
+Killing's equations are returned when \
+killingEq[ContraV,metric,christ,var ] is applied to the contravariant vector \
+ContraV. The operator returns only the nontrivial equations. The Christoffel \
+symbol must be computed first. 
+       For example, consider the vector\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Clear[f, g]\)], "Input"],
+
+Cell[BoxData[
+    \(vec = {f[x, y], g[x, y], 0}\)], "Input"],
+
+Cell["\<\
+defined in a three-dimensional Euclidean space where the metric and \
+Christoffel symbol are,\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(met = DiagonalMatrix[{1, 1, 1}];\)\), "\n", 
+    \(\(ch = christ[met, {\ x, y, z}];\)\)}], "Input"],
+
+Cell["\<\
+For vec to be a Killing vector its components must satisfy the \
+three equations,\
+\>", "Text"],
+
+Cell[BoxData[
+    \(killingEq[vec, met\ , ch\ , {\ x, y, z}] // ColumnForm\)], "Input"],
+
+Cell["One solution is f[x,y]=1 and g[x,y]=0. If we define", "Text"],
+
+Cell[BoxData[
+    \(vec1 = \({f[x, y], g[x, y], 0} /. f[x, y] -> 1\) /. 
+        g[x, y] -> 0\)], "Input"],
+
+Cell["\<\
+then no equations are returned when killingEq is applied to the \
+vector,\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(killingEq[vec1, met\ , ch\ , {\ x, y, z}]\)\(\ \)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.7.2 Euclidean Symmetries", "Subsection"],
+
+Cell["\<\
+     Euclidean space has 6-Killing vectors and they correspond to \
+three translational and three rotational symmetries. They are\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(kx = {1, 0, 0}; \ ky = {0, 1, 0}; \ kz = {0, 0, 1};\n\), "\n", 
+    \(krx = {0, \(-z\), \ y}; \ \ kry = \ \ {z, 0, \(-x\)}; \ 
+    krz = {\(-y\), \ x, 0};\n\)}], "Input"],
+
+Cell["\<\
+To verify that they are Killing vectors we simply apply the \
+user-defined function killingEq[] to the six vectors, \
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(killingEq[#, met\ , 
+            ch\ , {\ x, y, 
+              z}] &\) /@ \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {kx, ky, kz, krx, kry, krz} // 
+      Flatten\)], "Input"],
+
+Cell["\<\
+     The three vectors kx, ky, kz correspond to the translational \
+invariance along the three coordinate axis and krx, kry, krz correspond to \
+the rotational invariance around the three axis. In general, there are at \
+most n(n+1)/2 independent Killing vectors in n-dimensions. For n=3 the \
+maximum number is six and for n=4 the maximum number is ten.  \
+\>", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.7.3 Minkowski Symmetries", "Subsection"],
+
+Cell[TextData[{
+  "       Another example is the Killing vectors for ",
+  StyleBox[
+  "Minkowski spacetime. It has the  maximum number of Killing vectors. Since \
+the space has four dimensions there are 10 Killing vectors. Some of the \
+Killing vectors can be identified from the fact that if the ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  "metric ",
+  Cell[BoxData[
+      \(g\_\[Mu]\[Nu]\)],
+    FontFamily->"Times"],
+  " with coordinates {t,x,y,z} is independent of one of the coordinates, for \
+example x, then  \[Xi]= {0,1,0,0} is a killing vector. The four obvious \
+Killing vectors are"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(\(kt = {1, 0, 0, 0}\) \)\(;\)\(\(kx = {0, 1, 0, 
+          0}\) \)\(;\)\(\ \ \)\(\(ky = {0, 1, 0, 
+          0}\) \)\(;\)\(\ \)\(\(kz = {0, 0, 0, 
+          1}\) \)\(;\)\(\ \)\)\)], "Input"],
+
+Cell[TextData[{
+  "These vectors correspond to the ",
+  StyleBox["four translational symmetries. ",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  "There are also three rotational Killing vectors"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(krx = {0, 0, \(-z\), \ y}; \ 
+    kry = \ \ {0, \ z, 0, \(-x\)}; \ \ \ krz = {0, \ y, \(-x\), 
+        0};\)\)\)], "Input"],
+
+Cell["\<\
+Finally, three more Killing vectors  follow from the boost \
+symmetries,\
+\>", "Text"],
+
+Cell[BoxData[
+    \(kbx = {x, \ t, 0, 0}; \ kby = \ \ {y, 0, \ t, 0}; \ 
+    kbz = {z, 0, 0, t};\)], "Input"],
+
+Cell["\<\
+We can verify that all ten vectors are Killing by applying the \
+user-defined function killingEq[].
+        The pseudo-Euclidean metric and Christoffel symbol are\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(var = {t, x, y, z};\)\), "\n", 
+    \(\(met = 
+        DiagonalMatrix[{\ 1, \ \(-1\), \ \(-1\), \ \(-1\)}];\)\), "\n", 
+    \(\(ch = christ[met, var];\)\)}], "Input"],
+
+Cell["\<\
+Applying the user-defined function to these 10 vectors, we get\
+\>",
+   "Text"],
+
+Cell[BoxData[
+    \(\(killingEq[#, met\ , 
+            ch\ , {\ t, x, y, 
+              z}] &\) /@ \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {kt, kx, ky, 
+          kz, \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ krx, kry, 
+          krz, \n\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \tkbx, kby, kbz} // 
+      Flatten\)], "Input"],
+
+Cell["\<\
+There are no equations to be solved so they are Killing vectors. 
+     The distinguishing characteristic of rotational Killing vectors is that \
+they satisfy the commutator relations [kx,ky]=kz, [kz,kx]=ky, and [ky,kz]=kx. \
+A user-defined function that calculates the commutator of two vectors is\
+\>",
+   "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+ commutator[x_List,y_List,var_List] := 
+  Module[ {dem,a,b},
+  dem=Length[var];
+  Table[Sum[ 
+  x[[b]] D[y[[a]],var[[b]]]- y[[b]]D[x[[a]],var[[b]]],
+                                    {b,dem}],{a,dem}]]\
+\>", "Input"],
+
+Cell["\<\
+Applying commutator[] to the rotational Killing vectors, we find \
+\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \({\((commutator[krx, kry, {t, x, y, z}] // Simplify)\) \[Equal] 
+        krz, \((commutator[krz, krx, {t, x, y, z}] // Simplify)\) \[Equal] 
+        kry, \((commutator[kry, krz, {t, x, y, z}] // Simplify)\) \[Equal] 
+        krx}\)], "Input"],
+
+Cell["\<\
+    Consider the expression for the rotational Killing vectors in \
+spherical coordinates where the coordinate transformation is,\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(tranxr = {t, r\ \ Cos[\[Phi]]\ \ Sin[\[Theta]], \ 
+          r\ Sin[\[Phi]]\ Sin[\[Theta]], r\ Cos[\[Theta]]};\)\)], "Input"],
+
+Cell["\<\
+Applying trans[] to the three rotational killing vectors, it \
+follows \
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(({ksrx, ksry, 
+              ksrz} = \ \(\(\(trans[{1, U}, #, \ 
+                        tranxr\ , \ {t, x, y, z}, {t, 
+                          r, \[Theta], \[Phi]}\ \ ]\  &\) /@ \n\t{\ krx, kry, 
+                      krz\ } // ExpandAll\) // PowerExpand\) // 
+              Simplify\ )\) // ColumnForm\) // TraditionalForm\)], "Input"]
+}, Closed]],
+
+Cell["The commutation relations remain unchanged", "Text"],
+
+Cell[BoxData[
+    \({\((commutator[ksrx, ksry, {t, r, \[Theta], \[Phi]}] // 
+            Simplify)\) \[Equal] 
+        ksrz, \((commutator[ksrz, ksrx, {t, r, \[Theta], \[Phi]}] // 
+            Simplify)\) \[Equal] 
+        ksry, \((commutator[ksry, ksrz, {t, r, \[Theta], \[Phi]}] // 
+            Simplify)\) \[Equal] ksrx}\)], "Input"],
+
+Cell["as well as they still satisfy the Killing equations:", "Text"],
+
+Cell[BoxData[{
+    \(\(var = {t, r, \[Theta], \[Phi]};\)\), "\n", 
+    \(\(met = 
+        DiagonalMatrix[{\ 
+            1, \ \(-1\), \(-r^2\), \ \(-r^2\)\ \ Sin[\[Theta]]^2\ }];\)\), "\n\
+", 
+    \(\(ch = christ[met, var];\)\), "\n", 
+    \(\(killingEq[#, met\ , ch\ , 
+            var] &\) /@ \ \n\t\t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {ksrx, ksry, ksrz} // Flatten\)}], "Input"],
+
+Cell[TextData[{
+  "    The symmetries in general relativity ",
+  StyleBox[
+  "do not usually have such a high degree of symmetry that exists in \
+Minkowski spacetime. But when a spacetime has a symmetry it can be used to \
+simplify the metric and make the solutions of Einstein's equations simpler. \
+In addition,",
+    AspectRatioFixed->True,
+    FontWeight->"Plain"],
+  " constants of motion for geodesics follow from Killing vectors. If ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\^\[Mu]\)]],
+  " is the tangent to the geodesic and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\^\[Mu]\)]],
+  " is a Killing vector then \n\n              ",
+  Cell[BoxData[
+      \(g\_\[Mu]\[Nu]\)]],
+  " ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\^\[Mu]\)]],
+  " ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Xi]\^\[Nu]\)]],
+  " ",
+  StyleBox["= c",
+    FontSize->14],
+  " \n                                            \ngives a constant of \
+motion. The symmetries of the geometry guarantee a conservation law for the \
+geodesic.  "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "2.8 ",
+  StyleBox["Problems",
+    FontVariations->{"Underline"->True}],
+  " "
+}], "Section"],
+
+Cell[CellGroupData[{
+
+Cell["2.8.1 Coordinate System  (Solution included) ", "Subsubsection"],
+
+Cell["\<\
+     Consider the following coordinate transformation \[Xi] = ln[x] \
+and \[Eta] = y .  Compute the Jacobian and find the points where the \
+transformation fails. 
+Part i.  Plot the constant x and y curves.
+Part ii. Do the same for the inverse transformations. \
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i.", "Subsubsection"],
+
+Cell[BoxData[
+    \(TextForm\`\(\(\ \ \ \ \)\(Consider\ the\ \ transformation\ of\ the\ \
+coordinates\ {\ \[Xi], \ \[Eta]}\ \ \ to\ coordinates\ {x, 
+        y}\ where\)\)\)], "Text"],
+
+Cell[BoxData[
+    RowBox[{" ", 
+      RowBox[{
+        RowBox[{"tran", "=", 
+          RowBox[{"{", 
+            RowBox[{\(\[Xi] -> \ Log[x]\), ",", 
+              RowBox[{"\[Eta]", "->", 
+                StyleBox[
+                  RowBox[{
+                    StyleBox[" ",
+                      FontFamily->"Times",
+                      FontWeight->"Plain"], " "}]], "y"}]}], " ", "}"}]}], 
+        ";"}]}]], "Input"],
+
+Cell[BoxData[{
+    FormBox[
+      RowBox[{\(Computing\ the\ \ matrix\), "  ", "\n"}], TextForm], "\n", 
+    FormBox[
+      RowBox[{"                      ", 
+        TagBox[
+          RowBox[{"(", GridBox[{
+                {
+                  RowBox[{
+                    SuperscriptBox["\[Xi]", 
+                      TagBox[\((1, 0)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(x, y\), "]"}], 
+                  RowBox[{
+                    SuperscriptBox["\[Xi]", 
+                      TagBox[\((0, 1)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(x, y\), "]"}]},
+                {
+                  RowBox[{
+                    SuperscriptBox["\[Eta]", 
+                      TagBox[\((1, 0)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(x, y\), "]"}], 
+                  RowBox[{
+                    SuperscriptBox["\[Eta]", 
+                      TagBox[\((0, 1)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(x, y\), "]"}]}
+                }], ")"}],
+          (MatrixForm[ #]&)], "\n"}], TextForm]}], "Text"],
+
+Cell[BoxData[
+    \(TextForm\`and\ taking\ its\ determinant, we\ get\)], "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"(", " ", 
+        RowBox[{"jac", "=", " ", 
+          RowBox[{"Det", "[", " ", 
+            RowBox[{"Outer", "[", 
+              RowBox[{"D", ",", 
+                RowBox[{
+                  RowBox[{"{", 
+                    RowBox[{"\[Xi]", ",", 
+                      StyleBox[" ",
+                        FontFamily->"Times",
+                        FontWeight->"Plain"], "\[Eta]"}], " ", "}"}], "/.", 
+                  "tran"}], ",", \({x, y}\)}], "]"}], "]"}]}], ")"}], 
+      " "}]], "Input"],
+
+Cell["\<\
+The coordinate transformation is ambiguous at x=0.
+       The plot for constant x as a function of {\[Xi],\[Eta]} follows from \
+\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(xcoord[x1_\ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ \[Xi], \[Eta]} /. tran\) /. 
+            x -> x1], \[IndentingNewLine]\ {y, \(-1\), 1}, 
+        PlotStyle \[Rule] Hue[ .9], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["\<\
+where y ranges from -1 to 1. Likewise, the plot for constant y \
+follows from\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(ycoord[y1_\ \ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ \[Xi], \[Eta]} /. tran\) /. \ y -> y1], \n\ {x, 0, 5}, 
+        PlotStyle \[Rule] Hue[ .6], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["\<\
+where x ranges from 0 to 5. Combining the constant x and y curves, \
+we get the coordinate grid\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Show[\(xcoord[#\ \ ] &\) /@ 
+        Range[0.02\ , \ 4.98\ ,  .2], \ \ \(ycoord[#\ \ ] &\) /@ 
+        Range[\(-1\), 1,  .2], \ 
+      AspectRatio -> 
+        Automatic\ , \n\ \ PlotRange -> {{\(-1.6\)\ , 1.7}, \ 
+          Automatic}\ \ , \[IndentingNewLine]\ 
+      AxesLabel \[Rule] {\ \[Xi], \[Eta]}, 
+      DisplayFunction -> $DisplayFunction\ ]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part ii.", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Consider the inverse coordinate transformation", "Text"],
+
+Cell[BoxData[
+    RowBox[{" ", 
+      RowBox[{"invtran", " ", "=", 
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{\(\[Xi]\  == Log[x]\), ",", 
+                  RowBox[{"\[Eta]", " ", "==", 
+                    StyleBox[" ",
+                      FontFamily->"Times",
+                      FontWeight->"Plain"], "y"}]}], " ", "}"}], "//", "\n", 
+              "\t\t", \(Solve[#, {x\ , y\ \ }] &\)}], "//", "Simplify"}], "//",
+           "Flatten"}]}]}]], "Input"]
+}, Closed]],
+
+Cell["\<\
+The constant \[Xi] curve as a function of x,y follows from\
+\>", \
+"Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\[Xi]coord[\[Xi]1_\ \ ]\  := \n\ 
+      ParametricPlot[\ 
+        Evaluate[\ \({\ x, y} /. 
+              invtran\) /. \[Xi] -> \[Xi]1], \n\ \ {\[Eta], \(-1\), 1}, \ 
+        PlotStyle -> Hue[ .9], \tDisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["and likewise for constant \[Eta]   ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\[Eta]coord[\[Eta]1_\ \ ]\  := \n\ 
+      ParametricPlot[\ 
+        Evaluate[\ \({\ x, y} /. 
+              invtran\) /. \[Eta] -> \ \[Eta]1], \n\ {\[Xi], \(-1.5\), 1.5}, 
+        PlotStyle -> Hue[ .6], DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["Combining the coordinate lines, we get", "Text"],
+
+Cell[BoxData[
+    \(\(Show[\(\[Xi]coord[#\ ] &\) /@ 
+          Range[\(-1\), 1,  .1], \n\t\(\[Eta]coord[#\ \ ] &\) /@ 
+          Range[\(-1\), 1,  .1], 
+        AspectRatio -> Automatic, \[IndentingNewLine]\ 
+        AxesLabel \[Rule] {\ x, y}, \n\t
+        PlotRange -> {{ .3, 2.8\ }, {\(-1\), 1\ }}, \n\t
+        DisplayFunction -> $DisplayFunction];\)\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.8.2 Coordinate Lines  (Solution included) ", "Subsubsection"],
+
+Cell[TextData[{
+  "Consider the following coordinate transformations: \n\ni                   \
+       ",
+  Cell[BoxData[
+      \(x -> \(\(p\)\(\ \)\(q\)\(\ \)\)\)],
+    FontFamily->"Times"],
+  ",  ",
+  Cell[BoxData[
+      \(\(\(\ \)\(y -> 1\/2\ \((p\^2 - q\^2)\)\)\)\)],
+    FontFamily->"Times"],
+  "                      (Parabolic)\nii.                        x-> Cosh[u] \
+Cos[v],   y->  Sinh[u] Sin[v]      (Elliptic)\n\nand plot the lines of \
+constant {p,q} and {u,v}. "
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i", "Subsubsection"],
+
+Cell[" Consider the coordinate relations", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(tran = {x -> p\ q, 
+          y -> 1\/2\ \((p\^2 - q\^2)\)\ \ };\)\)\)], "Input"],
+
+Cell["  The constant p  and q lines follow from ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(pcoord[p1_\ \ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ x, y} /. tran\) /. 
+            p \[Rule] p1], \[IndentingNewLine]\ {q, \(-5\), 5}, 
+        PlotStyle \[Rule] Hue[ .9], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["and ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(qcoord[q1_\ \ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ x, y} /. tran\) /. \ q \[Rule] q1], \n\ {p, \(-5\), 5}, 
+        PlotStyle \[Rule] Hue[ .6], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["  Combining the curves, we get ", "Text"],
+
+Cell[BoxData[
+    \(\(Show[\(pcoord[#\ ] &\) /@ 
+          Range[\(-5\), 5,  .2], \ \ \(qcoord[#\ ] &\) /@ 
+          Range[\(-5\), 5,  .2], \ 
+        AspectRatio -> 
+          Automatic\ \ , \n\ \ PlotRange -> {{\(-4\)\ , 4}, {\(-4\), 
+              4}}\ \ \ , \[IndentingNewLine]\ AxesLabel \[Rule] {\ x, y}, 
+        DisplayFunction -> $DisplayFunction\ ];\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part ii", "Subsubsection"],
+
+Cell[BoxData[
+    \(TextForm\`Consider\ the\ coordinate\ relations\)], "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(tran = {\ x -> Cosh[u]\ Cos[v], 
+          y -> \ Sinh[u]\ Sin[v]\ \ };\)\)\)], "Input"],
+
+Cell[" The  constant p  and q lines follow from ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(ucoord[u1_\ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ x, y} /. tran\) /. 
+            u \[Rule] u1], \[IndentingNewLine]\ {v, \(-5\), 5}, 
+        PlotStyle \[Rule] Hue[ .9], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell["and ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(vcoord[v1_\ ]\  := \ 
+      ParametricPlot[
+        Evaluate[\({\ x, y} /. tran\) /. \ v \[Rule] v1], \n\ {u, \(-5\), 5}, 
+        PlotStyle \[Rule] Hue[ .6], 
+        DisplayFunction -> Identity]\)\)\)], "Input"],
+
+Cell[" Combining the  curves, we get  ", "Text"],
+
+Cell[BoxData[
+    \(\(Show[\(ucoord[#\ ] &\) /@ 
+          Range[\(-5\), 5,  .2], \ \ \(vcoord[#\ ] &\) /@ 
+          Range[\(-5\), 5,  .2], \ 
+        AspectRatio -> 
+          Automatic\ \ , \n\ \ PlotRange -> {{\(-2\)\ , 2}, {\(-2\), 
+              2}}\ \ \ , \[IndentingNewLine]\ AxesLabel \[Rule] {\ x, y}, 
+        DisplayFunction -> $DisplayFunction\ ];\)\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.8.3  Metric in different Coordinates  (Solution included) ", \
+"Subsubsection"],
+
+Cell[TextData[{
+  " Consider the pseudo-Euclidean coordinates ",
+  Cell[BoxData[
+      \(x\^\[Alpha]\)],
+    FontFamily->"Times"],
+  " ={t,x, y,z}where the line element is ",
+  Cell[BoxData[
+      \(ds\^2 = dt\^2 - dx\^2 - dy\^2 - dz\^2\)],
+    FontFamily->"Times"],
+  ".  Find the metric in the following coordinate systems where the \
+coordinates and transformations are:\ni. cylindrical coordinates: {t, \[Rho], \
+\[Phi], z} where {t,x, y,z}->{t, \[Rho] Cos[\[Phi]], \[Rho] Sin[\[Phi]], z}\n\
+ii. elliptical cylindrical coordinates: {t,u,v,z} where {t,x, y,z}->{t, a \
+Cosh[u] Cos[v], a Sinh[u] Sin[v], z}\niii. parabolic cylindrical  \
+coordinates: {t,p,q,z} where {t,x, y,z}-> {t, p q, ",
+  Cell[BoxData[
+      \(1\/2\ \((p\^2 - q\^2)\)\)],
+    FontFamily->"Times"],
+  " ,z} \niv. accelerating coordinates: {T,X,Y,Z} where {t,x, y,z}->{((1+g \
+X)Sinh[g T])/g, -1/g+Cosh[g T]/g+XCosh[g  T], Y, Z} "
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i.", "Subsubsection"],
+
+Cell["The Cartesian coordinates and metric are ", "Text"],
+
+Cell["  varx= {t,x, y, z}; metx=DiagonalMatrix[{+1,-1,-1,-1}]; ", "Input"],
+
+Cell["The relationship to the new coordinates is  ", "Text"],
+
+Cell[BoxData[
+    \(Clear[tran, var, met]\)], "Input"],
+
+Cell[BoxData[
+    \(var[1] = \ {t, \[Rho], \ \[Phi], \ z}\ ; \ 
+    tran[1] = {t, \[Rho]\ \ Cos[\[Phi]], \[Rho]\ \ Sin[\[Phi]], 
+        z}\ ;\)], "Input"],
+
+Cell[TextData[{
+  "Applying  trans[{L,L,2},---] to the Cartesian metric, we get the metric ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\_\[Mu]\[Nu]\)]],
+  " in cylindrical coordinates,"
+}], "Text"],
+
+Cell[BoxData[
+    \(\((\ 
+        met[1] = \ 
+          trans[{2, L, L}, metx, tran[1], varx, var[1]]\  // Simplify\ )\) // 
+      MatrixForm\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part ii.", "Subsubsection"],
+
+Cell["\<\
+Consider the transformation to elliptical coordinates follows from \
+\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(var[2] = {t, u, v, z}; 
+    tran[2] = {t, a\ Cosh[u]\ Cos[v], a\ Sinh[u]\ Sin[v], z};\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\((\ 
+        met[2] = \ 
+          trans[{2, L, L}, metx, tran[2], varx, var[2]]\  // Simplify\ )\) // 
+      MatrixForm\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part iii.", "Subsubsection"],
+
+Cell["     Consider the transformation to parabolic coordinates", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(var[3] = {t, p, q, z}; 
+    tran[3] = {t, p\ q, 1\/2\ \((p\^2 - q\^2)\)\ , z}\ ;\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\((\ 
+        met[3] = \ 
+          trans[{2, L, L}, metx, tran[3], varx, var[3]]\  // Simplify\ )\) // 
+      MatrixForm\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part iv.", "Subsubsection"],
+
+Cell["     Consider the transformation to accelerating coordinates", "Text"],
+
+Cell[BoxData[
+    \(Clear[g]\)], "Input"],
+
+Cell[BoxData[
+    \(var[4] = {T, X, Y, Z}; 
+    tran[4] = \ {\((\((1 + g\ \ X)\)\ \ Sinh[g\ \ T])\)/g, \ \(-1\)/g + 
+          Cosh[g\ \ T]/g + X\ \ Cosh[g\ \ T], \ Y, \ Z}\ ;\)], "Input"],
+
+Cell[BoxData[
+    \(\((\ 
+        met[4] = \ 
+          trans[{2, L, L}, metx, tran[4], varx, var[4]]\  // Simplify\ )\) // 
+      MatrixForm\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2.8.4  Christoffel Symbols in various Coordinates  (Solution \
+included) \
+\>", "Subsubsection"],
+
+Cell["\<\
+   Find the nonzero Christoffel components for various coordinates \
+where the coordinates and  metrics are:
+i.  cylindrical {t,\[Rho],\[Phi],z};\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(metc\ \  = 
+        DiagonalMatrix[{1, \(-1\), \ \(-\[Rho]\^2\), \ \(-1\)}];\)\)], "Input"],
+
+Cell[" ii.elliptical cylindrical coordinates  {t,u,v,z}", "Text"],
+
+Cell[BoxData[
+    \(\(mete = 
+        DiagonalMatrix[{1\ \ , 1\/2\ a\^2\ \((Cos[2\ v] - Cosh[2\ u])\), \ 
+            1\/2\ a\^2\ \((Cos[2\ v] - 
+                  Cosh[2\ u])\)\ , \(-1\)}];\)\)], "Input"],
+
+Cell[" iii.parabolic cylindrical coordinates   {t,p,q,z}", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(metp\  = 
+        DiagonalMatrix[{1, \ \(-\((p\^2 + q\^2)\)\), \ \(-\((p\^2 + 
+                  q\^2)\)\), \ \(-1\)}];\)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[" Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i. ", "Subsubsection"],
+
+Cell["\<\
+You first evaluate all the Christoffel symbols for the cylindrical \
+coordinates  \
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[" ",
+        FontColor->GrayLevel[
+        0]], \(ch\  = christ[metc, {t, \[Rho], \[Phi], z}]\ ;\), 
+      " "}]], "Input"],
+
+Cell["The nonzero components are", "Text"],
+
+Cell[BoxData[
+    \(\(notation = \ {\ \ \ \[CapitalGamma][\[Rho], \[Phi], \[Phi]] \[Rule] \ \
+\ \[CapitalGamma]\_\[Phi]\[Phi]\%\[Rho]\ \ , \ \[CapitalGamma][\[Phi], \
+\[Rho], \[Phi]\ ] \[Rule] \ \ \[CapitalGamma]\_\[Rho]\[Phi]\%\[Phi]\ \ , \ \
+\[CapitalGamma][\[Phi], \[Phi], \ \[Rho]\ ] \[Rule] \ \ \[CapitalGamma]\_\
+\[Phi]\[Rho]\%\[Phi]\ \ \ };\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(NZlist = \(\(NonZchrist[\[CapitalGamma], \ 
+          ch\ , {t, \[Rho], \[Phi], 
+            z}]\)\(/.\)\(notation\)\(\ \)\)\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part  ii.", "Subsubsection"],
+
+Cell["\<\
+You first evaluate all the Christoffel symbols for the elliptical \
+cylindrical coordinates  \
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[" ",
+        FontColor->GrayLevel[0]], \(ch\  = christ[mete, {t, u, v, z}]\ ;\), 
+      " "}]], "Input"],
+
+Cell["The nonzero components are", "Text"],
+
+Cell[BoxData[
+    \(\(notation = \ {\ \ \[CapitalGamma][u, u, 
+              u] -> \ \ \[CapitalGamma]\_\(\(\ \ \ \)\(uu\)\(\ \ \ \)\)\%u, \ \
+\[CapitalGamma][u, u, 
+              v] -> \[CapitalGamma]\_\(\(\ \ \ \)\(uv\)\(\ \ \)\)\%u, \
+\[CapitalGamma][u, v, 
+              u] -> \[CapitalGamma]\_\(\(\ \ \ \)\(vu\)\(\ \ \ \ \)\)\%u, \ \
+\[CapitalGamma][u, v, 
+              v] -> \[CapitalGamma]\_\(\(\ \ \ \)\(vv\)\(\ \ \)\)\%u, \
+\[CapitalGamma][v, u, 
+              u] -> \[CapitalGamma]\_\(\(\ \ \ \)\(uu\)\(\ \ \ \)\)\%v, \ \
+\[CapitalGamma][v, u, 
+              v] -> \[CapitalGamma]\_\(\(\ \ \ \)\(uv\)\(\ \ \ \ \)\)\%v, \
+\[CapitalGamma][v, v, 
+              u] -> \[CapitalGamma]\_\(\(\ \ \ \)\(vu\)\(\ \ \ \ \)\)\%v, \ \
+\[CapitalGamma][v, v, 
+              v] -> \[CapitalGamma]\_\(\(\ \ \ \)\(vv\)\(\ \ \ \)\)\%v}\ \ \
+;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(NZlist = \(NonZchrist[\[CapitalGamma], \ ch\ , {t, u, v, z}] /. 
+            notation\  // Partition[#, 3] &\) // TableForm\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part  iii.", "Subsubsection"],
+
+Cell["\<\
+    You first evaluate all the Christoffel symbols parabolic \
+cylindrical coordinates \
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[" ",
+        FontColor->GrayLevel[0]], \(ch\  = christ[metp, {t, p, q, z}]\ ;\), 
+      " "}]], "Input"],
+
+Cell["The nonzero components are", "Text"],
+
+Cell[BoxData[
+    \(\(notation = \ {\ \ \[CapitalGamma][p, p, 
+              p] -> \ \ \[CapitalGamma]\_\(\(\ \ \ \)\(pp\)\(\ \ \)\)\%p, \ \
+\[CapitalGamma][p, p, 
+              q] -> \[CapitalGamma]\_\(\(\ \ \ \)\(pq\)\(\ \)\)\%p, \
+\[CapitalGamma][p, q, 
+              p] -> \[CapitalGamma]\_\(\(\ \ \ \)\(qp\)\(\ \)\)\%p, \ \
+\[CapitalGamma][p, q, 
+              q] -> \[CapitalGamma]\_\(\(\ \ \ \)\(qq\)\(\ \)\)\%p, \ \ \
+\[CapitalGamma][q, p, 
+              p] -> \[CapitalGamma]\_\(\(\ \ \ \)\(pp\)\(\ \ \)\)\%q, \
+\[CapitalGamma][q, p, 
+              q] -> \[CapitalGamma]\_\(\(\ \ \ \)\(pq\)\(\ \ \ \ \ \ \)\)\%q}\
+\ \ ;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(NZlist = \(NonZchrist[\[CapitalGamma], \ ch\ , {t, p, q, z}] /. 
+            notation\  // Partition[#, 3] &\) // TableForm\)\)\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2.8.5  Properties of Christoffel Symbols and Covariant Derivative  \
+\
+\>", "Subsubsection",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "    Verify the following properties of the Christoffel symbol ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \)\(\[Beta]\[Alpha]\)\)\%\[Gamma]\)]],
+  " and tensors:\ni.  Show that the Christoffel symbol ",
+  Cell[BoxData[
+      \(\[CapitalGamma]\_\(\(\ \ \)\(\[Beta]\[Alpha]\)\)\%\[Gamma]\)]],
+  " is not a tensor by finding how it transforms.\nii. Prove that the \
+Christoffel symbol is symmetric in \[Beta] and \[Alpha]. \niii. Prove that \
+the covariant derivative of a covariant vector is a rank two tensor.  "
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.8.6   Properties of  Covariant Derivatives and the Metric ", \
+"Subsubsection"],
+
+Cell[TextData[{
+  "  Prove the following identities: \n\ni.         ",
+  Cell[BoxData[
+      StyleBox[
+        RowBox[{\(V\_\(\(\ \ \ \)\(\(;\)\(\[Beta]\)\)\)\%\[Alpha]\), "=", " ",
+           
+          RowBox[{
+            FormBox[\(g\^\[Alpha]\[Delta]\),
+              "TraditionalForm"], " ", 
+            FormBox[\(V\_\(\[Delta]\ ; \[Beta]\)\),
+              "TraditionalForm"]}]}],
+        FontFamily->"Times",
+        FontSize->12]],
+    FontFamily->"Times"],
+  "                     ii.       ",
+  Cell[BoxData[
+      RowBox[{
+        StyleBox[\(\(\((\ \(\(A\)\(\ \)\)\^\[Alpha]\ B\_\[Alpha]\ )\)\(\ \)\)\
+\_\(\(;\)\(\[Gamma]\)\)\),
+          FontFamily->"Times",
+          FontSize->12], 
+        StyleBox[" ",
+          FontFamily->"Times",
+          FontSize->12], 
+        StyleBox["=",
+          FontFamily->"Times",
+          FontSize->12], 
+        RowBox[{
+          
+          StyleBox[\(\(\(A\)\(\ \)\)\_\(\(\ \)\(\(;\)\(\ \)\(\[Gamma]\)\)\)\%\
+\[Alpha]\ B\_\[Alpha]\),
+            FontFamily->"Times",
+            FontSize->12], 
+          StyleBox[" ",
+            FontFamily->"Times",
+            FontSize->12], 
+          StyleBox["+",
+            FontFamily->"Times",
+            FontSize->12], 
+          StyleBox[" ",
+            FontFamily->"Times",
+            FontSize->12], 
+          RowBox[{
+            StyleBox[\(\(\(A\)\(\ \)\)\^\[Alpha]\),
+              FontFamily->"Times",
+              FontSize->12], 
+            StyleBox[" ",
+              FontFamily->"Times",
+              FontSize->12], 
+            StyleBox[\(B\_\(\[Alpha]\ ; \ \[Gamma]\)\),
+              FontFamily->"Times",
+              FontSize->12], 
+            StyleBox[" ",
+              FontFamily->"Times"]}]}]}]],
+    FontFamily->"Times"],
+  "\niii.  ",
+  Cell[BoxData[
+      RowBox[{"    ", 
+        RowBox[{\(V\_\(\(\ \ \)\(\(;\)\(\[Mu]\)\)\)\%\[Mu]\), "=", 
+          RowBox[{\(1\/\@\(-g\)\), 
+            FormBox[
+              
+              FractionBox[\(\[PartialD]\((\(\@\(-g\)\) 
+                      V\^\[Mu])\)\), \(\[PartialD]x\^\[Mu]\),
+                MultilineFunction->None],
+              "TraditionalForm"]}]}]}]],
+    FontFamily->"Times"],
+  "            iv.   ",
+  Cell[BoxData[
+      RowBox[{"  ", 
+        RowBox[{\(T\_\(\(\ \ \ \)\(\(;\)\(\[Mu]\)\)\)\%\[Mu]\[Nu]\), "=", 
+          RowBox[{
+            RowBox[{\(1\/\@\(-g\)\), 
+              FormBox[
+                
+                FractionBox[\(\[PartialD]\((\@\(-g\)\ T\^\[Mu]\[Nu])\)\), \(\
+\[PartialD]x\^\[Mu]\),
+                  MultilineFunction->None],
+                "TraditionalForm"]}], " ", "+", 
+            " ", \(\(\[CapitalGamma]\_\(\(\ \ \)\(\[Mu]\[Lambda]\)\)\%\[Nu]\) 
+              T\^\[Mu]\[Lambda]\)}]}]}]],
+    FontFamily->"Times"]
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.8.7  Geodesic Equations", "Subsubsection"],
+
+Cell[TextData[{
+  "     Show that the two expressions for a geodesic are equivalent:   \n  \n \
+  ",
+  Cell[BoxData[
+      \(d\^\(\(\ \) \)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  ") -",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(1\)\(\ \ \ \)\)\/\(\(2\)\(\ \)\)\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Gamma]\[Delta]\/\[PartialD]x\^\(\(\[Alpha]\)\(\ \
+\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Gamma]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\(\(\[Delta]\)\(\ \)\)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "=0   &     ",
+  Cell[BoxData[
+      \(\ \)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\(\(\(\(d\)\(\ \)\)\^\(\(2\)\(\ \)\)\) x\^\[Gamma]\)\/\(d\ \(s\^\ \
+\)\^2\)\)],
+    FontFamily->"Times"],
+  " + ",
+  Cell[BoxData[
+      \(\(\(\[CapitalGamma]\)\(\ \)\)\_\[Alpha]\[Beta]\%\[Gamma]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Alpha]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  " =0     "
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2.8.8 Geodesics in different Coordinates  (Solution included) \
+\
+\>", "Subsubsection"],
+
+Cell[TextData[{
+  "  Evaluate the geodesic equation \n\n                         ",
+  Cell[BoxData[
+      \(d\^\(\(\ \) \)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "(",
+  Cell[BoxData[
+      \(g\_\[Alpha]\[Beta]\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Beta]\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  ") -",
+  Cell[BoxData[
+      \(\(\(\ \)\(\(\(1\)\(\ \ \ \)\)\/\(\(2\)\(\ \)\)\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(\[PartialD]g\_\[Gamma]\[Delta]\/\[PartialD]x\^\(\(\[Alpha]\)\(\ \
+\)\)\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\[Gamma]\/ds\)],
+    FontFamily->"Times"],
+  Cell[BoxData[
+      \(dx\^\(\(\[Delta]\)\(\ \)\)\/\(ds\^\ \)\)],
+    FontFamily->"Times"],
+  "=0 \n  \n for the following coordinates and metrics:\ni. cylindrical {t,\
+\[Rho],\[Phi],z};"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(metc\ \  = 
+        DiagonalMatrix[{1, \(-1\), \ \(-\[Rho]\^2\), \ \(-1\)}]\ ;\)\)], \
+"Input"],
+
+Cell[" ii. elliptical cylindrical coordinates  {t,u,v,z}", "Text"],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell[BoxData[
+    \(\(mete = 
+        DiagonalMatrix[{1\ \ , 1\/2\ a\^2\ \((Cos[2\ v] - Cosh[2\ u])\), \ 
+            1\/2\ a\^2\ \((Cos[2\ v] - 
+                  Cosh[2\ u])\)\ , \(-1\)}]\ ;\)\)], "Input"],
+
+Cell[" iii. parabolic cylindrical coordinates   {t,p,q,z}", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(metp\  = 
+        DiagonalMatrix[{1, \ \(-\((p\^2 + q\^2)\)\), \ \(-\((p\^2 + 
+                  q\^2)\)\), \ \(-1\)}];\)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i.  ", "Subsubsection"],
+
+Cell["The cylindrical coordinates are  ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(var = {t, \[Rho], \ \[Phi]\ , z};\)\(\ \)\)\)], "Input"],
+
+Cell["and the geodesic equations follow from", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \ \ \ \ \ \ \ \)\(\(geodesic[\ metc\ , var\ ] // 
+        ColumnForm\)\  // TraditionalForm\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part ii.  ", "Subsubsection"],
+
+Cell["The elliptical cylindrical coordinates are  ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(var = {t, u, v, z};\)\(\ \)\)\)], "Input"],
+
+Cell["and the geodesic equations follow from", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \ \ \ \ \ \ \ \)\(\(geodesic[\ mete\ , 
+        var\ ]\)\(\ \ \)\(//\)\(TraditionalForm\)\(\ \)\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part iii.  ", "Subsubsection"],
+
+Cell["The parabolic cylindrical coordinates are  ", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(var = {t, p, q, z};\)\(\ \)\)\)], "Input"],
+
+Cell["and the geodesic equations follow from", "Text"],
+
+Cell[BoxData[
+    \(\(\(\ \ \ \ \ \ \ \ \ \)\(\(geodesic[\ metp\ , 
+        var\ ]\)\(\ \)\(//\)\(TraditionalForm\)\(\ \)\)\)\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["2.8.9 Properties of  Killing Vectors ", "Subsubsection"],
+
+Cell[TextData[{
+  "     If ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\^\[Mu]\)]],
+  " is the tangent to a geodesic and ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{
+          FormBox[\(\[Xi]\^\[Mu]\),
+            "TraditionalForm"], " "}], TextForm]]],
+  "is a Killing vector then show:\ni.  ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{
+          RowBox[{\(g\_\[Mu]\[Nu]\), " ", 
+            FormBox[\(V\^\[Mu]\),
+              "TraditionalForm"], " ", 
+            FormBox[\(\[Xi]\^\[Nu]\),
+              "TraditionalForm"]}], " "}], TextForm]]],
+  "=constant,\nii.  any linear combination of Killing vectors with constant \
+coefficients is a Killing vector, and\niii. the commutator of two Killing \
+vectors is also a Killing vector.",
+  "\n"
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2.8.10 Plane Symmetric  Killing Vectors and the Pseudo-Euclidean \
+Killing Vectors (Solution included) \
+\>", "Subsubsection",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["Consider the metric", "Text"],
+
+Cell[BoxData[{
+    \(\ \(var = {t, x, y, z\ };\)\), "\[IndentingNewLine]", 
+    \(\(\((\ 
+        met = DiagonalMatrix[{1/
+                F[z], \(-F[z]^2\)\ \ \ , \(-F[z]^2\)\ \ \ , \(-F[
+                    z]^2\)}])\)\(//\)\(MatrixForm\)\(\ \)\)\)}], "Input"],
+
+Cell["\<\
+where F[z] is an arbitrary function of z.  The ten contravariant \
+Killing vectors in pseudo-Euclidean space are:
+i. four translational vectors:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(KT[1] = {1, 0, 0, 0}; \ KT[2] = {0, \ 1, 0, 0}; \ 
+    KT[3] = {0, 0, \ 1, 0}; KT[4] = {0, 0, 0, \ 1};\)], "Input"],
+
+Cell["ii. three rotational vectors:", "Text"],
+
+Cell[BoxData[
+    \(KR[1] = {0, 0, \ \(-z\), \ y}; \ KR[2] = {0, z, 0, \(-x\)}; \ 
+    KR[3] = {0, \ y, \(-x\), 0};\)], "Input"],
+
+Cell["iii. three boosts: ", "Text"],
+
+Cell[BoxData[
+    \(KB[1] = {x, t, 0, 0}; \ KB[2] = {y, 0, t, 0}; \ 
+    KB[3] = {z, 0, 0, t};\)], "Input"],
+
+Cell["\<\
+How many Killing vectors are still symmetries in the new \
+metric?\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsubsection"],
+
+Cell["The Christoffel symbol for the metric is", "Text"],
+
+Cell[BoxData[
+    \(\(ch = christ[\ met, var];\)\)], "Input"],
+
+Cell[" The Killing equations for the translational vectors are", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(killingEq[KT[#], \ met, ch, var] &\) /@ Range[4]\)], "Input"],
+
+Cell["\<\
+so KT[1], KT[2], KT[3] are still symmetries in the new metric but \
+the  z-translational Killing vector is, in general, not a symmetry.  
+      Killings equations for the rotational vectors are\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\(killingEq[KR[#], \ met, ch, var] &\) /@ Range[3]\  // 
+          Simplify\)\  // ColumnForm\) // TraditionalForm\)], "Input"],
+
+Cell["\<\
+The only rotational Killing vector that is still a symmetry for the \
+new metric is KR[3]
+      None of the boost Killing vectors are symmetries for the new \
+metric:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(\(\(killingEq[KB[#], \ met, ch, var] &\) /@ Range[3] // Simplify\)\  // 
+        ColumnForm\) // TraditionalForm\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2.8.11   Killing Vectors for Special Metrics (Solution included) \
+\
+\>", "Subsubsection"],
+
+Cell["\<\
+Consider the metrics and Killing vectors: 
+i. First metric and three Killing vectors:\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\ \(cvar = {t, x, y, z\ };\)\), "\[IndentingNewLine]", 
+    \(\ \ \(cmet = 
+        DiagonalMatrix[{\[IndentingNewLine]\ 
+            Cos[z\ Sqrt[\ \ 3/4\ \ \[Lambda]]]^\((2)\)/
+              Sin[\ Sqrt[\ \ 3/4\ \ \[Lambda]] z]^\((2/3)\), \ \(-Sin[\ 
+                  Sqrt[\ \ 3/4\ \ \[Lambda]]\ z]^\((4/3)\)\), \(-Sin[\ 
+                  Sqrt[\ \ 3/4\ \ \[Lambda]]\ z]^\((4/
+                    3)\)\), \(-1\)}]\ \ \ ;\)\)}], "Input"],
+
+Cell[BoxData[
+    \(KTc[1] = {1, 0, 0, 0}; \ KTc[2] = {0, 1, 0, 0}; \ 
+    KTc[3] = {0, 1, 0, 0}; KRc[1] = {0, y, \(-\ x\), 0};\)], "Input"],
+
+Cell["ii. Second metric and two Killing vectors:", "Text"],
+
+Cell[BoxData[{
+    \(\ \(mvar = {u, r, x, y\ };\)\), "\[IndentingNewLine]", 
+    \(\ \(mmet = {{3/2\ x\ , \(-1\), 0, 0}, {\(-1\), 0, 0, 0}, {0, 
+            0, \(-r^2\)/x^3, 0}, \[IndentingNewLine]{0, 0, 
+            0, \(-r^2\)/x^3}}\ ;\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(KTm[1] = {1, 0, 0, 0}; \ 
+    KTm[2]\  = {0, 0, 0, \ 1}; \ \ KRm[1] = {\(-u\), r, 2\ x, 
+        2\ y};\)\)\)], "Input"],
+
+Cell["Verify the Killing vectors for each metric.  ", "Text"],
+
+Cell["Solution", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell["Part i", "Subsubsection"],
+
+Cell["The Christoffel symbol for cmet is", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[
+        RowBox[{
+          StyleBox[" ",
+            FontColor->GrayLevel[0]], " "}]], \(cch\  = 
+          christ[\ cmet, \ cvar]\ ;\), " "}]], "Input"],
+
+Cell["The Killing equations are all satisfied:", "Text"],
+
+Cell[BoxData[{
+    \(\(killingEq[#, cmet, cch, cvar] &\) /@ {\ KTc[1], KTc[2], 
+        KTc[3]}\ \), "\[IndentingNewLine]", 
+    \(\(killingEq[#, cmet, cch, cvar] &\) /@ {\ KRc[1]\ }\ \ \ \)}], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Part ii", "Subsubsection"],
+
+Cell["The Christoffel symbol for mmet is", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[
+        RowBox[{
+          StyleBox[" ",
+            FontColor->GrayLevel[0]], " "}]], \(mch\  = 
+          christ[\ mmet, \ mvar]\ ;\), " "}]], "Input"],
+
+Cell["All the Killing equations are satisfied:", "Text"],
+
+Cell[BoxData[{
+    \(\(killingEq[#, mmet, mch, mvar] &\) /@ {\ KTm[1], 
+        KTm[2]\ }\ \), "\[IndentingNewLine]", 
+    \(\(killingEq[#, mmet, mch, mvar] &\) /@ {\ KRm[1]\ }\ \ \ \)}], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+},
+FrontEndVersion->"4.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1024}, {0, 670}},
+AutoGeneratedPackage->None,
+WindowToolbars->{"RulerBar", "EditBar"},
+CellGrouping->Manual,
+WindowSize->{764, 577},
+WindowMargins->{{51, Automatic}, {-56, Automatic}},
+PrintingCopies->1,
+PrintingStartingPageNumber->28,
+PrintingPageRange->{1, Automatic},
+PageHeaders->{{Cell[ 
+        TextData[ {
+          CounterBox[ "Page"]}], "PageNumber"], Inherited, Cell[ 
+        TextData[ {
+          ValueBox[ "FileName"]}], "Header"]}, {Cell[ 
+        TextData[ {
+          ValueBox[ "FileName"]}], "Header"], Inherited, Cell[ 
+        TextData[ {
+          CounterBox[ "Page"]}], "PageNumber"]}},
+PrintingOptions->{"PrintingMargins"->{{54, 54}, {72, 72}},
+"PrintCellBrackets"->False,
+"PrintRegistrationMarks"->False,
+"PrintMultipleHorizontalPages"->False},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding",
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 725, 26, 303, "Title",
+  Evaluatable->False],
+Cell[2482, 79, 226, 4, 159, "Text"],
+
+Cell[CellGroupData[{
+Cell[2733, 87, 257, 9, 47, "Text",
+  Evaluatable->False],
+Cell[2993, 98, 518, 10, 113, "Text",
+  Evaluatable->False]
+}, Open  ]],
+Cell[3526, 111, 113, 2, 68, "Input"],
+Cell[3642, 115, 33, 0, 61, "Subsubsection"],
+Cell[3678, 117, 281, 5, 99, "Text"],
+Cell[3962, 124, 145, 6, 140, "Subtitle",
+  Evaluatable->False],
+
+Cell[CellGroupData[{
+Cell[4132, 134, 45, 0, 68, "Subsection"],
+Cell[4180, 136, 366, 6, 125, "Text"],
+
+Cell[CellGroupData[{
+Cell[4571, 146, 50, 0, 47, "Text"],
+Cell[4624, 148, 89, 1, 38, "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[4738, 153, 318, 10, 74, "Subsubsection"],
+Cell[5059, 165, 590, 11, 223, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5686, 181, 328, 10, 74, "Subsubsection"],
+Cell[6017, 193, 311, 9, 178, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6365, 207, 45, 0, 62, "Subsubsection"],
+Cell[6413, 209, 177, 3, 62, "Input"],
+Cell[6593, 214, 163, 3, 85, "Input"],
+Cell[6759, 219, 327, 7, 177, "Input"],
+Cell[7089, 228, 260, 5, 154, "Input"],
+Cell[7352, 235, 265, 4, 177, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7654, 244, 84, 2, 62, "Subsubsection",
+  Evaluatable->False],
+Cell[7741, 248, 228, 7, 138, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8006, 260, 41, 0, 62, "Subsubsection"],
+Cell[8050, 262, 401, 11, 238, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8488, 278, 280, 8, 63, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[8793, 290, 112, 5, 45, "Text"],
+Cell[8908, 297, 172, 6, 118, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9117, 308, 113, 5, 45, "Text"],
+Cell[9233, 315, 447, 8, 131, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9717, 328, 118, 5, 45, "Text"],
+Cell[9838, 335, 214, 7, 138, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10089, 347, 117, 5, 45, "Text"],
+Cell[10209, 354, 197, 7, 138, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10455, 367, 143, 4, 63, "Subsubsection"],
+Cell[10601, 373, 327, 9, 178, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10989, 389, 179, 7, 57, "Section"],
+
+Cell[CellGroupData[{
+Cell[11193, 400, 53, 0, 65, "Subsection"],
+Cell[11249, 402, 3905, 86, 748, "Text"],
+Cell[15157, 490, 314, 7, 93, "Text",
+  Evaluatable->False]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15508, 502, 140, 2, 60, "Text"],
+Cell[15651, 506, 573, 13, 219, "Text"],
+Cell[16227, 521, 117, 2, 62, "Input"],
+
+Cell[CellGroupData[{
+Cell[16369, 527, 64, 0, 45, "Text"],
+Cell[16436, 529, 461, 9, 131, "Input"],
+Cell[16900, 540, 119, 3, 45, "Text"],
+Cell[17022, 545, 305, 6, 108, "Input"],
+Cell[17330, 553, 64, 0, 45, "Text"],
+Cell[17397, 555, 473, 9, 154, "Input"],
+Cell[17873, 566, 68, 0, 45, "Text"],
+Cell[17944, 568, 331, 7, 131, "Input"],
+Cell[18278, 577, 62, 0, 45, "Text"],
+Cell[18343, 579, 602, 10, 246, "Input"]
+}, Closed]],
+Cell[18960, 592, 230, 5, 65, "Text"],
+Cell[19193, 599, 537, 13, 62, "Input"],
+Cell[19733, 614, 75, 1, 42, "Text"],
+Cell[19811, 617, 72, 1, 39, "Input"],
+Cell[19886, 620, 106, 2, 45, "Text"],
+Cell[19995, 624, 471, 8, 131, "Input"],
+Cell[20469, 634, 19, 0, 45, "Text"],
+Cell[20491, 636, 488, 8, 108, "Input"],
+Cell[20982, 646, 88, 3, 45, "Text"],
+Cell[21073, 651, 504, 10, 177, "Input"],
+Cell[21580, 663, 255, 5, 65, "Text"],
+Cell[21838, 670, 199, 3, 85, "Input"],
+Cell[22040, 675, 33, 0, 45, "Text"],
+Cell[22076, 677, 241, 5, 85, "Input"],
+Cell[22320, 684, 61, 0, 45, "Text"],
+Cell[22384, 686, 53, 1, 39, "Input"],
+Cell[22440, 689, 54, 0, 45, "Text"]
+}, Closed]],
+Cell[22509, 692, 50, 1, 57, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[22596, 698, 177, 7, 57, "Section"],
+
+Cell[CellGroupData[{
+Cell[22798, 709, 47, 0, 65, "Subsection"],
+Cell[22848, 711, 2088, 50, 437, "Text"],
+Cell[24939, 763, 70, 1, 39, "Input"],
+Cell[25012, 766, 130, 3, 69, "Text"],
+Cell[25145, 771, 87, 1, 39, "Input"],
+Cell[25235, 774, 2355, 80, 315, "Text"],
+Cell[27593, 856, 123, 2, 62, "Input"],
+Cell[27719, 860, 407, 16, 52, "Text"],
+Cell[28129, 878, 93, 1, 39, "Input"],
+Cell[28225, 881, 97, 3, 45, "Text"],
+Cell[28325, 886, 447, 8, 131, "Input"],
+Cell[28775, 896, 395, 7, 117, "Text"],
+Cell[29173, 905, 144, 3, 39, "Input"],
+Cell[29320, 910, 787, 25, 177, "Text"],
+Cell[30110, 937, 70, 1, 39, "Input"],
+Cell[30183, 940, 135, 3, 69, "Text"],
+Cell[30321, 945, 81, 1, 39, "Input"],
+Cell[30405, 948, 362, 13, 54, "Text"],
+Cell[30770, 963, 113, 2, 62, "Input"],
+Cell[30886, 967, 1159, 31, 202, "Text"],
+Cell[32048, 1000, 93, 1, 39, "Input"],
+Cell[32144, 1003, 88, 3, 45, "Text"],
+Cell[32235, 1008, 172, 6, 118, "Input"],
+Cell[32410, 1016, 88, 3, 45, "Text"],
+Cell[32501, 1021, 131, 2, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[32669, 1028, 47, 0, 65, "Subsection"],
+Cell[32719, 1030, 918, 26, 198, "Text"],
+Cell[33640, 1058, 212, 7, 138, "Input"],
+Cell[33855, 1067, 307, 6, 93, "Text"],
+Cell[34165, 1075, 93, 1, 39, "Input"],
+Cell[34261, 1078, 132, 2, 45, "Text"],
+Cell[34396, 1082, 144, 2, 39, "Input"],
+Cell[34543, 1086, 100, 3, 45, "Text"],
+Cell[34646, 1091, 242, 4, 62, "Input"],
+Cell[34891, 1097, 1160, 37, 205, "Text"],
+Cell[36054, 1136, 193, 6, 118, "Input"],
+Cell[36250, 1144, 207, 6, 69, "Text"],
+Cell[36460, 1152, 118, 2, 62, "Input"],
+Cell[36581, 1156, 108, 3, 45, "Text"],
+Cell[36692, 1161, 142, 2, 39, "Input"],
+Cell[36837, 1165, 64, 0, 45, "Text"],
+Cell[36904, 1167, 174, 3, 62, "Input"],
+Cell[37081, 1172, 2875, 78, 518, "Text"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[40005, 1256, 113, 4, 57, "Section"],
+Cell[40121, 1262, 7520, 249, 1128, "Text"],
+
+Cell[CellGroupData[{
+Cell[47666, 1515, 155, 3, 60, "Text"],
+
+Cell[CellGroupData[{
+Cell[47846, 1522, 1927, 78, 117, "Text"],
+Cell[49776, 1602, 158, 5, 69, "Text",
+  Evaluatable->False],
+Cell[49937, 1609, 126, 3, 58, "Input"],
+Cell[50066, 1614, 62, 1, 45, "Text",
+  Evaluatable->False],
+Cell[50131, 1617, 64, 0, 38, "Input"],
+Cell[50198, 1619, 80, 1, 45, "Text",
+  Evaluatable->False],
+Cell[50281, 1622, 60, 0, 38, "Input"],
+
+Cell[CellGroupData[{
+Cell[50366, 1626, 1002, 22, 99, "Text"],
+Cell[51371, 1650, 88, 1, 39, "Input"]
+}, Closed]],
+Cell[51474, 1654, 389, 11, 69, "Text"],
+Cell[51866, 1667, 105, 2, 39, "Input"],
+Cell[51974, 1671, 40, 0, 45, "Text"],
+Cell[52017, 1673, 156, 4, 62, "Input"],
+Cell[52176, 1679, 66, 0, 45, "Text"],
+Cell[52245, 1681, 55, 1, 39, "Input"],
+
+Cell[CellGroupData[{
+Cell[52325, 1686, 199, 3, 49, "Text"],
+Cell[52527, 1691, 122, 3, 39, "Input"],
+Cell[52652, 1696, 204, 5, 131, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+Cell[52895, 1706, 50, 1, 57, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[52982, 1712, 137, 4, 57, "Section"],
+
+Cell[CellGroupData[{
+Cell[53144, 1720, 47, 0, 65, "Subsection"],
+Cell[53194, 1722, 1535, 40, 315, "Text",
+  Evaluatable->False]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[54766, 1767, 47, 0, 39, "Subsection"],
+Cell[54816, 1769, 7782, 258, 1005, "Text",
+  Evaluatable->False],
+Cell[62601, 2029, 629, 12, 177, "Input"],
+Cell[63233, 2043, 302, 6, 71, "Text"],
+
+Cell[CellGroupData[{
+Cell[63560, 2053, 167, 3, 60, "Text"],
+Cell[63730, 2058, 86, 1, 45, "Text"],
+Cell[63819, 2061, 86, 1, 39, "Input"],
+Cell[63908, 2064, 95, 3, 69, "Text"],
+Cell[64006, 2069, 79, 1, 39, "Input"],
+Cell[64088, 2072, 226, 7, 71, "Text"],
+Cell[64317, 2081, 66, 1, 39, "Input"],
+Cell[64386, 2084, 271, 10, 72, "Text"],
+Cell[64660, 2096, 71, 1, 39, "Input"],
+Cell[64734, 2099, 76, 0, 45, "Text"],
+Cell[64813, 2101, 311, 9, 178, "Input"],
+Cell[65127, 2112, 65, 0, 45, "Text"],
+Cell[65195, 2114, 104, 2, 39, "Input"],
+Cell[65302, 2118, 54, 0, 45, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[65393, 2123, 171, 4, 60, "Text"],
+Cell[65567, 2129, 159, 4, 69, "Text"],
+Cell[65729, 2135, 179, 4, 62, "Input"],
+Cell[65911, 2141, 112, 3, 69, "Text"],
+Cell[66026, 2146, 61, 1, 39, "Input"],
+Cell[66090, 2149, 43, 0, 45, "Text"],
+Cell[66136, 2151, 142, 2, 62, "Input"]
+}, Closed]],
+Cell[66293, 2156, 50, 1, 57, "Text"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[66392, 2163, 118, 4, 57, "Section"],
+
+Cell[CellGroupData[{
+Cell[66535, 2171, 47, 0, 65, "Subsection"],
+Cell[66585, 2173, 2849, 68, 564, "Text",
+  Evaluatable->False]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[69471, 2246, 48, 0, 65, "Subsection"],
+Cell[69522, 2248, 2990, 102, 474, "Text",
+  Evaluatable->False],
+Cell[72515, 2352, 161, 3, 62, "Input"],
+Cell[72679, 2357, 743, 22, 197, "Text",
+  Evaluatable->False],
+Cell[73425, 2381, 155, 3, 62, "Input"],
+Cell[73583, 2386, 949, 28, 177, "Text",
+  Evaluatable->False],
+Cell[74535, 2416, 325, 7, 154, "Input"],
+Cell[74863, 2425, 841, 28, 153, "Text",
+  Evaluatable->False],
+Cell[75707, 2455, 250, 5, 131, "Input"],
+Cell[75960, 2462, 873, 28, 157, "Text",
+  Evaluatable->False],
+Cell[76836, 2492, 269, 4, 131, "Input"],
+Cell[77108, 2498, 878, 30, 121, "Text",
+  Evaluatable->False],
+
+Cell[CellGroupData[{
+Cell[78011, 2532, 76, 1, 74, "Subsubsection"],
+Cell[78090, 2535, 112, 4, 45, "Text"],
+Cell[78205, 2541, 117, 3, 39, "Input"],
+Cell[78325, 2546, 343, 11, 69, "Text"],
+Cell[78671, 2559, 78, 1, 39, "Input"],
+Cell[78752, 2562, 170, 5, 69, "Text"],
+Cell[78925, 2569, 127, 2, 62, "Input"],
+Cell[79055, 2573, 128, 5, 45, "Text"],
+Cell[79186, 2580, 169, 3, 62, "Input"],
+Cell[79358, 2585, 148, 5, 45, "Text"],
+Cell[79509, 2592, 171, 3, 62, "Input"]
+}, Closed]],
+Cell[79695, 2598, 50, 1, 57, "Text"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[79794, 2605, 164, 7, 57, "Section",
+  Evaluatable->False],
+
+Cell[CellGroupData[{
+Cell[79983, 2616, 45, 0, 68, "Subsection"],
+Cell[80031, 2618, 7020, 222, 1440, "Text"],
+Cell[87054, 2842, 851, 14, 255, "Text"],
+Cell[87908, 2858, 327, 9, 202, "Input"],
+
+Cell[CellGroupData[{
+Cell[88260, 2871, 157, 5, 59, "Text"],
+Cell[88420, 2878, 139, 2, 73, "Text"],
+Cell[88562, 2882, 78, 2, 41, "Input"],
+Cell[88643, 2886, 54, 0, 47, "Text"],
+Cell[88700, 2888, 112, 3, 64, "Input"]
+}, Closed]],
+Cell[88827, 2894, 50, 1, 59, "Text"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[88926, 2901, 181, 7, 57, "Section",
+  Evaluatable->False],
+
+Cell[CellGroupData[{
+Cell[89132, 2912, 60, 0, 65, "Subsection"],
+Cell[89195, 2914, 6550, 165, 1367, "Text",
+  Evaluatable->False],
+Cell[95748, 3081, 401, 11, 218, "Input"],
+Cell[96152, 3094, 293, 6, 117, "Text"],
+Cell[96448, 3102, 44, 1, 39, "Input"],
+Cell[96495, 3105, 60, 1, 39, "Input"],
+Cell[96558, 3108, 117, 3, 45, "Text"],
+Cell[96678, 3113, 122, 2, 62, "Input"],
+Cell[96803, 3117, 105, 3, 45, "Text"],
+Cell[96911, 3122, 87, 1, 39, "Input"],
+Cell[97001, 3125, 67, 0, 45, "Text"],
+Cell[97071, 3127, 106, 2, 39, "Input"],
+Cell[97180, 3131, 97, 3, 45, "Text"],
+Cell[97280, 3136, 88, 1, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[97405, 3142, 48, 0, 65, "Subsection"],
+Cell[97456, 3144, 153, 3, 69, "Text"],
+Cell[97612, 3149, 191, 3, 131, "Input"],
+Cell[97806, 3154, 140, 3, 69, "Text"],
+Cell[97949, 3159, 246, 5, 85, "Input"],
+Cell[98198, 3166, 380, 6, 117, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[98615, 3177, 48, 0, 65, "Subsection"],
+Cell[98666, 3179, 620, 15, 141, "Text"],
+Cell[99289, 3196, 214, 4, 62, "Input"],
+Cell[99506, 3202, 217, 6, 69, "Text"],
+Cell[99726, 3210, 153, 3, 62, "Input"],
+Cell[99882, 3215, 96, 3, 45, "Text"],
+Cell[99981, 3220, 109, 2, 62, "Input"],
+Cell[100093, 3224, 186, 4, 93, "Text"],
+Cell[100282, 3230, 189, 4, 85, "Input"],
+Cell[100474, 3236, 89, 3, 45, "Text"],
+Cell[100566, 3241, 512, 9, 131, "Input"],
+Cell[101081, 3252, 372, 8, 117, "Text",
+  Evaluatable->False],
+Cell[101456, 3262, 228, 7, 138, "Input"],
+Cell[101687, 3271, 139, 5, 45, "Text",
+  Evaluatable->False],
+Cell[101829, 3278, 261, 4, 85, "Input"],
+Cell[102093, 3284, 153, 3, 69, "Text"],
+
+Cell[CellGroupData[{
+Cell[102271, 3291, 147, 2, 39, "Input"],
+Cell[102421, 3295, 95, 3, 45, "Text"],
+Cell[102519, 3300, 363, 6, 131, "Input"]
+}, Closed]],
+Cell[102897, 3309, 58, 0, 45, "Text"],
+Cell[102958, 3311, 336, 6, 85, "Input"],
+Cell[103297, 3319, 68, 0, 45, "Text"],
+Cell[103368, 3321, 424, 9, 154, "Input"],
+Cell[103795, 3332, 1088, 32, 264, "Text",
+  Evaluatable->False]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[104932, 3370, 111, 5, 57, "Section"],
+
+Cell[CellGroupData[{
+Cell[105068, 3379, 70, 0, 61, "Subsubsection"],
+Cell[105141, 3381, 285, 6, 125, "Text"],
+
+Cell[CellGroupData[{
+Cell[105451, 3391, 33, 0, 61, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[105509, 3395, 32, 0, 61, "Subsubsection"],
+Cell[105544, 3397, 183, 3, 44, "Text"],
+Cell[105730, 3402, 421, 12, 42, "Input"],
+Cell[106154, 3416, 1213, 30, 148, "Text"],
+Cell[107370, 3448, 80, 1, 44, "Text"],
+Cell[107453, 3451, 541, 14, 42, "Input"],
+Cell[107997, 3467, 153, 4, 73, "Text"],
+Cell[108153, 3473, 275, 6, 120, "Input"],
+Cell[108431, 3481, 101, 3, 45, "Text"],
+Cell[108535, 3486, 244, 5, 108, "Input"],
+Cell[108782, 3493, 119, 3, 69, "Text"],
+Cell[108904, 3498, 383, 8, 131, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[109324, 3511, 33, 0, 62, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[109382, 3515, 62, 0, 45, "Text"],
+Cell[109447, 3517, 526, 13, 62, "Input"]
+}, Closed]],
+Cell[109988, 3533, 84, 3, 45, "Text"],
+Cell[110075, 3538, 275, 5, 108, "Input"],
+Cell[110353, 3545, 51, 0, 45, "Text"],
+Cell[110407, 3547, 278, 5, 108, "Input"],
+Cell[110688, 3554, 54, 0, 45, "Text"],
+Cell[110745, 3556, 367, 7, 154, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[111173, 3570, 69, 0, 62, "Subsubsection"],
+Cell[111245, 3572, 489, 13, 171, "Text"],
+
+Cell[CellGroupData[{
+Cell[111759, 3589, 33, 0, 62, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[111817, 3593, 31, 0, 62, "Subsubsection"],
+Cell[111851, 3595, 50, 0, 45, "Text"],
+Cell[111904, 3597, 111, 2, 64, "Input"],
+Cell[112018, 3601, 58, 0, 45, "Text"],
+Cell[112079, 3603, 273, 6, 108, "Input"],
+Cell[112355, 3611, 20, 0, 45, "Text"],
+Cell[112378, 3613, 245, 5, 108, "Input"],
+Cell[112626, 3620, 47, 0, 45, "Text"],
+Cell[112676, 3622, 375, 7, 154, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[113088, 3634, 32, 0, 62, "Subsubsection"],
+Cell[113123, 3636, 78, 1, 42, "Text"],
+Cell[113204, 3639, 118, 2, 39, "Input"],
+Cell[113325, 3643, 58, 0, 45, "Text"],
+Cell[113386, 3645, 271, 6, 108, "Input"],
+Cell[113660, 3653, 20, 0, 45, "Text"],
+Cell[113683, 3655, 243, 5, 108, "Input"],
+Cell[113929, 3662, 48, 0, 45, "Text"],
+Cell[113980, 3664, 375, 7, 154, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[114416, 3678, 87, 1, 62, "Subsubsection"],
+Cell[114506, 3681, 914, 20, 243, "Text"],
+
+Cell[CellGroupData[{
+Cell[115445, 3705, 33, 0, 62, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[115503, 3709, 32, 0, 62, "Subsubsection"],
+Cell[115538, 3711, 57, 0, 45, "Text"],
+Cell[115598, 3713, 74, 0, 38, "Input"],
+Cell[115675, 3715, 60, 0, 45, "Text"],
+Cell[115738, 3717, 54, 1, 39, "Input"],
+Cell[115795, 3720, 155, 3, 62, "Input"],
+Cell[115953, 3725, 198, 5, 69, "Text"],
+Cell[116154, 3732, 154, 4, 62, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[116345, 3741, 33, 0, 62, "Subsubsection"],
+Cell[116381, 3743, 93, 3, 45, "Text"],
+Cell[116477, 3748, 132, 2, 62, "Input"],
+Cell[116612, 3752, 154, 4, 62, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[116803, 3761, 34, 0, 62, "Subsubsection"],
+Cell[116840, 3763, 73, 0, 45, "Text"],
+Cell[116916, 3765, 127, 2, 89, "Input"],
+Cell[117046, 3769, 154, 4, 62, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[117237, 3778, 33, 0, 62, "Subsubsection"],
+Cell[117273, 3780, 76, 0, 45, "Text"],
+Cell[117352, 3782, 41, 1, 39, "Input"],
+Cell[117396, 3785, 188, 3, 85, "Input"],
+Cell[117587, 3790, 154, 4, 62, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[117802, 3801, 106, 3, 62, "Subsubsection"],
+Cell[117911, 3806, 169, 4, 93, "Text"],
+Cell[118083, 3812, 113, 2, 42, "Input"],
+Cell[118199, 3816, 65, 0, 45, "Text"],
+Cell[118267, 3818, 205, 4, 147, "Input"],
+Cell[118475, 3824, 66, 0, 45, "Text"],
+Cell[118544, 3826, 166, 3, 42, "Input"],
+
+Cell[CellGroupData[{
+Cell[118735, 3833, 34, 0, 62, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[118794, 3837, 33, 0, 62, "Subsubsection"],
+Cell[118830, 3839, 106, 3, 45, "Text"],
+Cell[118939, 3844, 165, 5, 39, "Input"],
+Cell[119107, 3851, 42, 0, 45, "Text"],
+Cell[119152, 3853, 362, 5, 76, "Input"],
+Cell[119517, 3860, 171, 3, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[119725, 3868, 34, 0, 62, "Subsubsection"],
+Cell[119762, 3870, 117, 3, 45, "Text"],
+Cell[119882, 3875, 146, 4, 39, "Input"],
+Cell[120031, 3881, 42, 0, 45, "Text"],
+Cell[120076, 3883, 849, 17, 114, "Input"],
+Cell[120928, 3902, 170, 2, 85, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[121135, 3909, 35, 0, 62, "Subsubsection"],
+Cell[121173, 3911, 111, 3, 45, "Text"],
+Cell[121287, 3916, 146, 4, 39, "Input"],
+Cell[121436, 3922, 42, 0, 45, "Text"],
+Cell[121481, 3924, 643, 13, 101, "Input"],
+Cell[122127, 3939, 170, 2, 85, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[122358, 3948, 150, 5, 62, "Subsubsection",
+  Evaluatable->False],
+Cell[122511, 3955, 550, 10, 117, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[123098, 3970, 87, 1, 62, "Subsubsection"],
+Cell[123188, 3973, 2751, 82, 135, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[125976, 4060, 50, 0, 62, "Subsubsection"],
+Cell[126029, 4062, 1240, 46, 105, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[127306, 4113, 97, 3, 62, "Subsubsection"],
+Cell[127406, 4118, 833, 28, 177, "Text"],
+Cell[128242, 4148, 117, 3, 42, "Input"],
+Cell[128362, 4153, 66, 0, 45, "Text"],
+Cell[128431, 4155, 41, 1, 39, "Input"],
+Cell[128475, 4158, 207, 4, 147, "Input"],
+Cell[128685, 4164, 67, 0, 45, "Text"],
+Cell[128755, 4166, 166, 3, 42, "Input"],
+
+Cell[CellGroupData[{
+Cell[128946, 4173, 33, 0, 62, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[129004, 4177, 34, 0, 62, "Subsubsection"],
+Cell[129041, 4179, 49, 0, 45, "Text"],
+Cell[129093, 4181, 86, 1, 39, "Input"],
+Cell[129182, 4184, 54, 0, 45, "Text"],
+Cell[129239, 4186, 136, 2, 62, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[129412, 4193, 35, 0, 62, "Subsubsection"],
+Cell[129450, 4195, 60, 0, 45, "Text"],
+Cell[129513, 4197, 72, 1, 39, "Input"],
+Cell[129588, 4200, 54, 0, 45, "Text"],
+Cell[129645, 4202, 140, 2, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[129822, 4209, 36, 0, 62, "Subsubsection"],
+Cell[129861, 4211, 59, 0, 45, "Text"],
+Cell[129923, 4213, 72, 1, 39, "Input"],
+Cell[129998, 4216, 54, 0, 45, "Text"],
+Cell[130055, 4218, 138, 2, 39, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[130254, 4227, 62, 0, 62, "Subsubsection"],
+Cell[130319, 4229, 770, 23, 141, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[131126, 4257, 184, 5, 62, "Subsubsection",
+  Evaluatable->False],
+Cell[131313, 4264, 35, 0, 45, "Text"],
+Cell[131351, 4266, 262, 5, 108, "Input"],
+Cell[131616, 4273, 168, 4, 93, "Text"],
+Cell[131787, 4279, 135, 2, 85, "Input"],
+Cell[131925, 4283, 45, 0, 45, "Text"],
+Cell[131973, 4285, 128, 2, 62, "Input"],
+Cell[132104, 4289, 35, 0, 45, "Text"],
+Cell[132142, 4291, 107, 2, 62, "Input"],
+Cell[132252, 4295, 90, 3, 45, "Text"],
+
+Cell[CellGroupData[{
+Cell[132367, 4302, 33, 0, 62, "Subsubsection"],
+Cell[132403, 4304, 56, 0, 45, "Text"],
+Cell[132462, 4306, 61, 1, 39, "Input"],
+Cell[132526, 4309, 72, 0, 45, "Text"],
+
+Cell[CellGroupData[{
+Cell[132623, 4313, 83, 1, 39, "Input"],
+Cell[132709, 4316, 217, 4, 93, "Text"],
+Cell[132929, 4322, 151, 2, 62, "Input"],
+Cell[133083, 4326, 190, 5, 69, "Text"],
+Cell[133276, 4333, 147, 2, 62, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[133484, 4342, 100, 3, 62, "Subsubsection"],
+Cell[133587, 4347, 109, 3, 69, "Text"],
+Cell[133699, 4352, 458, 8, 131, "Input"],
+Cell[134160, 4362, 140, 2, 85, "Input"],
+Cell[134303, 4366, 58, 0, 45, "Text"],
+Cell[134364, 4368, 253, 4, 108, "Input"],
+Cell[134620, 4374, 167, 3, 85, "Input"],
+Cell[134790, 4379, 61, 0, 45, "Text"],
+Cell[134854, 4381, 33, 0, 61, "Subsubsection"],
+
+Cell[CellGroupData[{
+Cell[134912, 4385, 31, 0, 61, "Subsubsection"],
+Cell[134946, 4387, 50, 0, 47, "Text"],
+Cell[134999, 4389, 196, 6, 42, "Input"],
+Cell[135198, 4397, 56, 0, 47, "Text"],
+Cell[135257, 4399, 202, 3, 68, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[135496, 4407, 32, 0, 61, "Subsubsection"],
+Cell[135531, 4409, 50, 0, 47, "Text"],
+Cell[135584, 4411, 196, 6, 42, "Input"],
+Cell[135783, 4419, 56, 0, 47, "Text"],
+Cell[135842, 4421, 196, 3, 68, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
