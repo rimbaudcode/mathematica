@@ -1,0 +1,508 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15332,        499]
+NotebookOptionsPosition[     13094,        411]
+NotebookOutlinePosition[     13447,        427]
+CellTagsIndexPosition[     13404,        424]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.646938164436878*^9, 3.646938191254078*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Volume of a ball", "Title",
+ CellChangeTimes->{{3.646937471809794*^9, 3.646937479126733*^9}}],
+
+Cell["\<\
+Consider a ball of radius r. Calculate its volume using rectangular \
+coordinates and in spherical coordinates.\
+\>", "Text",
+ CellChangeTimes->{{3.6469374820467978`*^9, 3.646937514190962*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["General assumption", "Chapter",
+ CellChangeTimes->{{3.6469387964358273`*^9, 3.646938801801124*^9}}],
+
+Cell["Hereafter:", "Text",
+ CellChangeTimes->{{3.6469388092490387`*^9, 3.646938829680602*^9}, {
+  3.64694071663067*^9, 3.646940729284151*^9}, {3.646940883841872*^9, 
+  3.646940892137258*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{"r", ">=", "0"}]}]], "Input",
+ CellChangeTimes->{{3.646938835360723*^9, 3.646938858904546*^9}, {
+  3.646939019225746*^9, 3.646939059350359*^9}, {3.646939806625189*^9, 
+  3.6469398114708242`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"r", "\[GreaterEqual]", "0"}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.646938853234304*^9, 3.646938867372116*^9}, 
+   3.6469388988143682`*^9, {3.646939046033764*^9, 3.646939069770032*^9}, 
+   3.646939685855774*^9, 3.646939812329185*^9, 3.6469403920297527`*^9, 
+   3.646940442401866*^9, 3.6469451307248573`*^9, 3.646945181425441*^9, 
+   3.6469455185315733`*^9, 3.6469457947638893`*^9}]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Rectangular coordinates", "Chapter",
+ CellChangeTimes->{{3.6469375403842*^9, 3.646937546365938*^9}, {
+  3.646937707066227*^9, 3.646937709513195*^9}}],
+
+Cell["\<\
+In rectangular coordinates, a ball is given by the inequality\
+\>", "Text",
+ CellChangeTimes->{{3.6469376922912903`*^9, 3.64693772816074*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ineq", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "+", 
+    RowBox[{"y", "^", "2"}], "+", 
+    RowBox[{"z", "^", "2"}]}], "\[LessEqual]", " ", 
+   RowBox[{"r", "^", "2"}]}]}]], "Input",
+ CellChangeTimes->{{3.646937568340859*^9, 3.6469375881170263`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["x", "2"], "+", 
+    SuperscriptBox["y", "2"], "+", 
+    SuperscriptBox["z", "2"]}], "\[LessEqual]", 
+   SuperscriptBox["r", "2"]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.646937589324052*^9, 3.646938715817677*^9, 
+  3.6469388674063683`*^9, 3.6469388988406677`*^9, 3.6469390697928762`*^9, 
+  3.646939685897196*^9, 3.646939815979937*^9, 3.646940444774445*^9}]
+}, {2}]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Boole", "[", "ineq", "]"}], "\[IndentingNewLine]", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "Infinity"}], ",", "Infinity"}], "}"}], 
+   "\[IndentingNewLine]", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "Infinity"}], ",", "Infinity"}], "}"}], 
+   "\[IndentingNewLine]", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"z", ",", 
+     RowBox[{"-", "Infinity"}], ",", "Infinity"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.646937602731781*^9, 3.646937646683647*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.6469376687337303`*^9, 3.6469387165695972`*^9, {3.6469388874701653`*^9, 
+   3.6469388993793917`*^9}, 3.64693908944704*^9, 3.646939686604126*^9, 
+   3.646939838834589*^9}]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spherical coordinates", "Chapter",
+ CellChangeTimes->{{3.646937904613474*^9, 3.646937908667385*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coordSph", "=", 
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.646939710037794*^9, 3.646939728551159*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646939729657143*^9, 3.6469398388784018`*^9, 
+  3.646940449817603*^9, 3.646945641699931*^9}]
+}, {2}]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{"$Assumptions", "&&", 
+   RowBox[{"CoordinateChartData", "[", "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<Spherical\>\"", "\[IndentingNewLine]", ",", 
+     "\"\<CoordinateRangeAssumptions\>\"", "\[IndentingNewLine]", ",", 
+     "coordSph"}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.646939540227189*^9, 3.646939546222619*^9}, 
+   3.646939670754549*^9, {3.6469398677531433`*^9, 3.646939879685522*^9}, {
+   3.646940422617154*^9, 3.646940427630497*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"r", "\[GreaterEqual]", "0"}], "\[And]", 
+   RowBox[{"\[Rho]", ">", "0"}], "\[And]", 
+   RowBox[{"0", "<", "\[Theta]", "<", "\[Pi]"}], "\[And]", 
+   RowBox[{
+    RowBox[{"-", "\[Pi]"}], "<", "\[Phi]", "\[LessEqual]", "\[Pi]"}], 
+   "\[And]", 
+   RowBox[{"\[Rho]", ">", "0"}], "\[And]", 
+   RowBox[{"0", "<", "\[Theta]", "<", "\[Pi]"}], "\[And]", 
+   RowBox[{
+    RowBox[{"-", "\[Pi]"}], "<", "\[Phi]", "\[LessEqual]", "\[Pi]"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646939547072835*^9, {3.646939671676412*^9, 3.646939686720201*^9}, 
+   3.646939760876318*^9, 3.6469398389543*^9, {3.646940405381876*^9, 
+   3.6469404522444973`*^9}, {3.646945637944268*^9, 3.646945644850646*^9}}]
+}, {2}]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scaleFactors", "=", 
+  RowBox[{
+   RowBox[{"Sqrt", "[", "\[IndentingNewLine]", 
+    RowBox[{"Det", "[", "\[IndentingNewLine]", 
+     RowBox[{"CoordinateChartData", "[", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<Spherical\>\"", "\[IndentingNewLine]", ",", " ", "\"\<Metric\>\"", 
+       "\[IndentingNewLine]", ",", "coordSph"}], "\[IndentingNewLine]", "]"}],
+      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.646937957899906*^9, 3.6469380183607283`*^9}, {
+  3.646938135429742*^9, 3.646938136707754*^9}, {3.6469391115297403`*^9, 
+  3.646939140040455*^9}, {3.6469395279326897`*^9, 3.646939559439571*^9}, {
+  3.646939887769691*^9, 3.646939921764188*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Rho]", "2"], " ", 
+   RowBox[{"sin", "(", "\[Theta]", ")"}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.646937967233045*^9, 3.646938019238257*^9}, 
+   3.6469381375587807`*^9, 3.646938224013412*^9, 3.646938302055751*^9, 
+   3.64693871669165*^9, {3.646938887639698*^9, 3.646938899474803*^9}, {
+   3.6469390896180763`*^9, 3.6469391405621967`*^9}, {3.646939516801058*^9, 
+   3.646939559989916*^9}, 3.6469396867857847`*^9, 3.646939762549161*^9, 
+   3.6469398389931993`*^9, 3.64694045876088*^9}]
+}, {2}]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", "\[IndentingNewLine]", 
+  RowBox[{"scaleFactors", "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]", ",", "0", ",", "r"}], "}"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", "\[Pi]"}], "}"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", 
+     RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.646938238440955*^9, 3.646938379273353*^9}, {
+  3.646938509605422*^9, 3.64693857241667*^9}, {3.646939604759399*^9, 
+  3.646939652613605*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646938317503504*^9, 3.646938380274432*^9, {3.646938535627195*^9, 
+   3.6469385739294863`*^9}, 3.646938716928537*^9, {3.646938887906893*^9, 
+   3.64693889968285*^9}, 3.6469390898849573`*^9, 3.646939144798563*^9, 
+   3.646939567923251*^9, 3.646939653483961*^9, 3.6469396868351717`*^9, 
+   3.64693976494328*^9, 3.64693983938943*^9, 3.646940460718349*^9}]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Using ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " regions"
+}], "Chapter",
+ CellChangeTimes->{{3.646945019650669*^9, 3.646945025624591*^9}}],
+
+Cell["\<\
+In rectangular coordinates, a ball can be specified by the inequality:\
+\>", "Text",
+ CellChangeTimes->{{3.646945042050334*^9, 3.646945048551899*^9}, {
+  3.64694522223*^9, 3.646945238835216*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ballRect", "=", 
+  RowBox[{"ImplicitRegion", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", 
+      RowBox[{"y", "^", "2"}], "+", 
+      RowBox[{"z", "^", "2"}]}], "\[LessEqual]", 
+     RowBox[{"r", "^", "2"}]}], "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6469450512568617`*^9, 3.646945105066558*^9}, {
+   3.646945201502789*^9, 3.646945210829076*^9}, 3.646945400928811*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"ImplicitRegion", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"], "+", 
+      SuperscriptBox["z", "2"]}], "\[LessEqual]", 
+     SuperscriptBox["r", "2"]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.646945079938344*^9, 3.6469451055881*^9}, 
+   3.6469451359748163`*^9, {3.6469451854451447`*^9, 3.6469452123745193`*^9}, 
+   3.646945525165164*^9}]
+}, {2}]],
+
+Cell["\<\
+Then, calculate the volume of the region (it may take a while!):\
+\>", "Text",
+ CellChangeTimes->{{3.646945247779039*^9, 3.6469452625226593`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"volBall", "=", 
+  RowBox[{"Volume", "[", "ballRect", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6469451402962847`*^9, 3.646945150317388*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{3.646945150859064*^9, 3.646945188980343*^9, 
+  3.6469452342978077`*^9}]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Using ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " integration and regions"
+}], "Chapter",
+ CellChangeTimes->{{3.646984160736*^9, 3.646984172806066*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "\[Element]", 
+    
+    RowBox[{"Ball", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "r"}], "]"}]}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{3.646984181358103*^9}]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " built-in function"
+}], "Chapter",
+ CellChangeTimes->{{3.6469385790656633`*^9, 3.6469386004380302`*^9}, {
+  3.6469387027444267`*^9, 3.646938703540156*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"center", "=", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.646938663539205*^9, 3.646938667901445*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "0"}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646938669066175*^9, {3.64693870721842*^9, 3.6469387170372953`*^9}, {
+   3.6469388879527607`*^9, 3.646938899704666*^9}, 3.646939089931243*^9, 
+   3.646939686913124*^9, 3.6469398394399157`*^9, 3.646940465102766*^9}]
+}, {2}]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Volume", "[", 
+  RowBox[{"Ball", "[", 
+   RowBox[{"center", ",", "r"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.646938645849059*^9, 3.646938676397147*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646938676982931*^9, {3.646938708794519*^9, 3.646938717069757*^9}, {
+   3.64693888798228*^9, 3.646938899746303*^9}, 3.6469390899645844`*^9, 
+   3.646939686936673*^9, 3.646939839498272*^9, 3.6469404664407988`*^9}]
+}, {2}]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 217, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[800, 28, 99, 1, 92, "Title"],
+Cell[902, 31, 203, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1130, 39, 105, 1, 65, "Chapter"],
+Cell[1238, 42, 191, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1454, 49, 250, 5, 28, "Input"],
+Cell[1707, 56, 429, 7, 28, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2182, 69, 155, 2, 65, "Chapter"],
+Cell[2340, 73, 152, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2517, 80, 292, 8, 28, "Input"],
+Cell[2812, 90, 435, 10, 33, "Output"]
+}, {2}]],
+Cell[CellGroupData[{
+Cell[3281, 105, 630, 16, 114, "Input"],
+Cell[3914, 123, 335, 8, 50, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4295, 137, 106, 1, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[4426, 142, 196, 4, 28, "Input"],
+Cell[4625, 148, 246, 6, 28, "Output"]
+}, {2}]],
+Cell[CellGroupData[{
+Cell[4905, 159, 532, 10, 97, "Input"],
+Cell[5440, 171, 743, 17, 28, "Output"]
+}, {2}]],
+Cell[CellGroupData[{
+Cell[6217, 193, 760, 14, 165, "Input"],
+Cell[6980, 209, 555, 10, 33, "Output"]
+}, {2}]],
+Cell[CellGroupData[{
+Cell[7569, 224, 628, 14, 114, "Input"],
+Cell[8200, 240, 517, 10, 50, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8763, 256, 168, 6, 65, "Chapter"],
+Cell[8934, 264, 205, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[9164, 272, 574, 14, 80, "Input"],
+Cell[9741, 288, 536, 15, 35, "Output"]
+}, {2}]],
+Cell[10289, 306, 156, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[10470, 313, 163, 3, 28, "Input"],
+Cell[10636, 318, 232, 6, 50, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10914, 330, 181, 6, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[11120, 340, 328, 11, 28, "Input"],
+Cell[11451, 353, 183, 5, 50, "Output"]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11680, 364, 222, 6, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[11927, 374, 177, 4, 28, "Input"],
+Cell[12107, 380, 351, 7, 28, "Output"]
+}, {2}]],
+Cell[CellGroupData[{
+Cell[12492, 392, 185, 4, 28, "Input"],
+Cell[12680, 398, 377, 8, 50, "Output"]
+}, {2}]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,344 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10322,        335]
+NotebookOptionsPosition[      8732,        273]
+NotebookOutlinePosition[      9083,        289]
+CellTagsIndexPosition[      9040,        286]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6467317308555613`*^9, 3.6467317308569393`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Volume of a 3D-ball in Spherical Coordinates", "Title",
+ CellChangeTimes->{3.6467321640536947`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Statement", "Chapter",
+ CellChangeTimes->{{3.646732353246928*^9, 3.6467323552047443`*^9}}],
+
+Cell["Consider a ball of radius r. Then, calculate its volume.", "Text",
+ CellChangeTimes->{{3.64673146010542*^9, 3.646731468703113*^9}, {
+  3.6467322735468683`*^9, 3.646732316678165*^9}, {3.646732360232128*^9, 
+  3.64673236162241*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution:", "Chapter",
+ CellChangeTimes->{{3.646732365959586*^9, 3.646732369868623*^9}}],
+
+Cell["Set the coordinate names (symbols):", "Text",
+ CellChangeTimes->{{3.646933445264154*^9, 3.64693345779779*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coord", "=", 
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.646933463707386*^9, 3.646933477053602*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646933478381113*^9, 3.646934080583028*^9}]
+}, Open  ]],
+
+Cell["Set the coordinate ranges:", "Text",
+ CellChangeTimes->{{3.646933484333054*^9, 3.646933489669096*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coordRanges", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{
+   "\"\<Spherical\>\"", ",", "\"\<CoordinateRangeAssumptions\>\"", ",", 
+    "coord"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646933687506185*^9, 3.646933689367832*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", ">", "0"}], "\[And]", 
+   RowBox[{"0", "<", "\[Theta]", "<", "\[Pi]"}], "\[And]", 
+   RowBox[{
+    RowBox[{"-", "\[Pi]"}], "<", "\[Phi]", "\[LessEqual]", "\[Pi]"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646933509392618*^9, 3.646933690599741*^9, 
+  3.6469340806263742`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Then, calculate the metric tensor coefficients in spherical coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.646732372828771*^9, 3.646732398051578*^9}, {
+  3.646933512536518*^9, 3.6469335134040623`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"metric", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Spherical\>\"", ",", "\"\<Metric\>\"", ",", "coord"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.646933525172627*^9, 3.6469335469805813`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0"},
+     {"0", 
+      SuperscriptBox["\[Rho]", "2"], "0"},
+     {"0", "0", 
+      RowBox[{
+       SuperscriptBox["\[Rho]", "2"], " ", 
+       RowBox[{
+        SuperscriptBox["sin", "2"], "(", "\[Theta]", ")"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646933547495495*^9, 3.6469336937718782`*^9, 
+  3.646934080658181*^9}]
+}, Open  ]],
+
+Cell["\<\
+Then, calculate the square root of the metric determinant to have the volume \
+scale value (because not all of the spherical coordinates measure lengths):\
+\>", "Text",
+ CellChangeTimes->{{3.646732405883349*^9, 3.646732464513447*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "=", 
+  RowBox[{"Sqrt", "[", 
+   RowBox[{"Det", "[", "metric", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646731603977087*^9, 3.646731654598143*^9}, {
+  3.6469335640269003`*^9, 3.646933567803515*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  SqrtBox[
+   RowBox[{
+    SuperscriptBox["\[Rho]", "4"], " ", 
+    RowBox[{
+     SuperscriptBox["sin", "2"], "(", "\[Theta]", ")"}]}]], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646933568324321*^9, 3.6469336963429193`*^9, 
+  3.646934080691265*^9}]
+}, Open  ]],
+
+Cell["\<\
+Finally, calculate the ball volume as the integration of a region:\
+\>", "Text",
+ CellChangeTimes->{{3.646732469601468*^9, 3.6467325014241323`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"volball", "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{"f", ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Rho]", ",", "0", ",", "r"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Theta]", ",", "0", ",", "\[Pi]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", 
+      RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646731160811039*^9, 3.6467311643292847`*^9}, {
+  3.64673121157775*^9, 3.6467312875835857`*^9}, {3.646731506076597*^9, 
+  3.646731586524127*^9}, {3.646731672438285*^9, 3.646731672938415*^9}, {
+  3.646933584036121*^9, 3.646933587898127*^9}, {3.646933705168953*^9, 
+  3.646933734302393*^9}, {3.6469338089913683`*^9, 3.6469339050889397`*^9}, {
+  3.646933948080269*^9, 3.646933995648652*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646731288586434*^9, 3.646731537626266*^9, 3.6467315883617487`*^9, 
+   3.646731673605358*^9, 3.646731736238842*^9, 3.646736248785904*^9, 
+   3.646933623056306*^9, {3.646933710170624*^9, 3.646933735091022*^9}, 
+   3.646933810277225*^9, 3.6469338623427896`*^9, {3.646933894507036*^9, 
+   3.646933905980029*^9}, 3.646933996639495*^9, 3.6469340808128777`*^9}]
+}, Open  ]],
+
+Cell["\<\
+As a side note, the last integration limit can be changed to make all the \
+integration limits look more symmetrical (they all run from 0):\
+\>", "Text",
+ CellChangeTimes->{{3.646736270390306*^9, 3.646736346068351*^9}, {
+  3.6469340721435347`*^9, 3.646934073668028*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"volball", "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{"f", ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Rho]", ",", "0", ",", "r"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Theta]", ",", "0", ",", "\[Pi]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", " ", "0", ",", 
+      RowBox[{"2", " ", "\[Pi]"}]}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646736257600556*^9, 3.6467362606163893`*^9}, {
+  3.646934004889329*^9, 3.646934012376039*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    SuperscriptBox["r", "3"]}], "3"], TraditionalForm]], "Output",
+ CellChangeTimes->{3.646736261245969*^9, 3.646934013241477*^9, 
+  3.646934080884242*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Convention", "Chapter",
+ CellChangeTimes->{{3.64673233756746*^9, 3.646732339358366*^9}}],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " uses the ISO-2:2009 (physics) convention for spherical coordinates: \
+(rho,theta,phi): rho: radial distance, theta: inclination (aka, \
+zenith/colatitude/polar angle), and phi: azimuth (aka, longitude):"
+}], "Text",
+ CellChangeTimes->{{3.646731327139357*^9, 3.646731418288818*^9}, {
+  3.646732179012789*^9, 3.646732194081773*^9}, {3.646732231610545*^9, 
+  3.646732264239678*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CoordinateChartData", "[", 
+  RowBox[{
+   RowBox[{"{", "\"\<Spherical\>\"", "}"}], ",", 
+   "\"\<CoordinateRangeAssumptions\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6467280028873873`*^9, 3.646728062716723*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", ">", "0"}], "\[And]", 
+   RowBox[{"0", "<", "\[Theta]", "<", "\[Pi]"}], "\[And]", 
+   RowBox[{
+    RowBox[{"-", "\[Pi]"}], "<", "\[Phi]", "\[LessEqual]", "\[Pi]"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646731143480199*^9, 3.646731736157628*^9, 
+  3.6467362488154917`*^9, 3.646934080925104*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 210, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[793, 28, 105, 1, 148, "Title"],
+Cell[CellGroupData[{
+Cell[923, 33, 96, 1, 65, "Chapter"],
+Cell[1022, 36, 236, 3, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1295, 44, 94, 1, 65, "Chapter"],
+Cell[1392, 47, 116, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1533, 52, 193, 4, 28, "Input"],
+Cell[1729, 58, 197, 5, 28, "Output"]
+}, Open  ]],
+Cell[1941, 66, 108, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2074, 71, 267, 6, 46, "Input"],
+Cell[2344, 79, 345, 9, 28, "Output"]
+}, Open  ]],
+Cell[2704, 91, 213, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2942, 99, 239, 5, 28, "Input"],
+Cell[3184, 106, 843, 24, 70, "Output"]
+}, Open  ]],
+Cell[4042, 133, 244, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[4311, 141, 233, 5, 28, "Input"],
+Cell[4547, 148, 283, 9, 40, "Output"]
+}, Open  ]],
+Cell[4845, 160, 158, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[5028, 167, 779, 16, 28, "Input"],
+Cell[5810, 185, 520, 10, 50, "Output"]
+}, Open  ]],
+Cell[6345, 198, 280, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[6650, 207, 492, 12, 28, "Input"],
+Cell[7145, 221, 230, 6, 50, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7424, 233, 94, 1, 65, "Chapter"],
+Cell[7521, 236, 447, 9, 68, "Text"],
+Cell[CellGroupData[{
+Cell[7993, 249, 329, 8, 46, "Input"],
+Cell[8325, 259, 367, 9, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

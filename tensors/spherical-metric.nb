@@ -1,0 +1,216 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6145,        207]
+NotebookOptionsPosition[      5119,        165]
+NotebookOutlinePosition[      5470,        181]
+CellTagsIndexPosition[      5427,        178]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.646934146083396*^9, 3.6469341460846443`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Metric tensor coefficients", "Title",
+ CellChangeTimes->{{3.646933249957746*^9, 3.646933260923791*^9}}],
+
+Cell["Set the coordinate names:", "Text",
+ CellChangeTimes->{{3.646933263787743*^9, 3.646933268011416*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coord", "=", 
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6469329200186653`*^9, 3.646932931629826*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.646932932407713*^9, 3.646934153857252*^9}]
+}, {2}]],
+
+Cell["Set the coordinate ranges:", "Text",
+ CellChangeTimes->{{3.6469332724190197`*^9, 3.646933277147295*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{
+   "\"\<Spherical\>\"", ",", "\"\<CoordinateRangeAssumptions\>\"", ",", 
+    "coord"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.646932723387042*^9, 3.646932773075892*^9}, {
+   3.6469328754518757`*^9, 3.6469329367173233`*^9}, 3.646933159066553*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Rho]", ">", "0"}], "\[And]", 
+   RowBox[{"0", "<", "\[Theta]", "<", "\[Pi]"}], "\[And]", 
+   RowBox[{
+    RowBox[{"-", "\[Pi]"}], "<", "\[Phi]", "\[LessEqual]", "\[Pi]"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.6469327740663*^9, 3.6469329098969593`*^9, 
+  3.646933159812395*^9, 3.646934153897642*^9}]
+}, {2}]],
+
+Cell["Compute the metric coefficients:", "Text",
+ CellChangeTimes->{{3.6469332819626217`*^9, 3.646933287074869*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"metric", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Spherical\>\"", ",", "\"\<Metric\>\"", ",", "coord"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.646932781110861*^9, 3.646932829985683*^9}, {
+  3.6469328851228657`*^9, 3.646932887775092*^9}, {3.646933148349922*^9, 
+  3.646933166718794*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0", "0"},
+     {"0", 
+      SuperscriptBox["\[Rho]", "2"], "0"},
+     {"0", "0", 
+      RowBox[{
+       SuperscriptBox["\[Rho]", "2"], " ", 
+       RowBox[{
+        SuperscriptBox["sin", "2"], "(", "\[Theta]", ")"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.646932813166985*^9, 3.646932830717314*^9}, {
+   3.646933149247958*^9, 3.6469331678693323`*^9}, 3.6469341539321327`*^9}]
+}, {2}]],
+
+Cell["Compute Jacobi\[CloseCurlyQuote]s determinant:", "Text",
+ CellChangeTimes->{{3.646933290459138*^9, 3.646933299042481*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"jacobiDet", "=", 
+  RowBox[{"Det", "[", "metric", "]"}]}]], "Input",
+ CellChangeTimes->{{3.646932836313105*^9, 3.646932841585235*^9}, {
+  3.646933190246369*^9, 3.646933193813813*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Rho]", "4"], " ", 
+   RowBox[{
+    SuperscriptBox["sin", "2"], "(", "\[Theta]", ")"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.646932841892295*^9, {3.646933171332429*^9, 3.646933194671191*^9}, 
+   3.646934153961608*^9}]
+}, {2}]],
+
+Cell["Compute the square root of Jacobi\[CloseCurlyQuote]s determinant:", \
+"Text",
+ CellChangeTimes->{{3.646933302970355*^9, 3.6469333175457153`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"element", "=", 
+  RowBox[{
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"Det", "[", "metric", "]"}], "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.646932848079218*^9, 3.646932868025597*^9}, {
+  3.646933208320713*^9, 3.646933210077448*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Rho]", "2"], " ", 
+   RowBox[{"sin", "(", "\[Theta]", ")"}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.646932855588257*^9, 3.64693286855584*^9}, 
+   3.64693317559803*^9, 3.646933210471911*^9, 3.646934153997045*^9}]
+}, {2}]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 208, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[791, 28, 109, 1, 92, "Title"],
+Cell[903, 31, 107, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1035, 36, 195, 4, 28, "Input"],
+Cell[1233, 42, 197, 5, 28, "Output"]
+}, {2}]],
+Cell[1442, 50, 110, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1577, 55, 344, 7, 46, "Input"],
+Cell[1924, 64, 365, 9, 28, "Output"]
+}, {2}]],
+Cell[2301, 76, 116, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2442, 81, 337, 7, 28, "Input"],
+Cell[2782, 90, 894, 24, 70, "Output"]
+}, {2}]],
+Cell[3688, 117, 128, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3841, 122, 207, 4, 28, "Input"],
+Cell[4051, 128, 293, 9, 33, "Output"]
+}, {2}]],
+Cell[4356, 140, 151, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4532, 146, 278, 7, 28, "Input"],
+Cell[4813, 155, 281, 6, 33, "Output"]
+}, {2}]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
