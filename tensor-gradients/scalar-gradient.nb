@@ -1,0 +1,227 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6699,        218]
+NotebookOptionsPosition[      5655,        176]
+NotebookOutlinePosition[      6006,        192]
+CellTagsIndexPosition[      5963,        189]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", "=", "True"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6474237498249617`*^9, 3.647423764881509*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Gradient of scalar field", "Title",
+ CellChangeTimes->{{3.647423626300926*^9, 3.647423631148028*^9}, {
+  3.6474319777877083`*^9, 3.6474319783039293`*^9}}],
+
+Cell["Consider a scalar field", "Text",
+ CellChangeTimes->{{3.647423638356875*^9, 3.647423642684062*^9}, {
+  3.647431981824129*^9, 3.647431982424365*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{"Sin", "[", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "+", 
+    RowBox[{"y", "^", "2"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.647423645378976*^9, 3.647423658556267*^9}}],
+
+Cell["Find its gradient in rectangular and polar coordinates.", "Text",
+ CellChangeTimes->{{3.647423662003265*^9, 3.6474236685393543`*^9}, {
+  3.64742457924403*^9, 3.647424588418255*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Rectangular", "Chapter",
+ CellChangeTimes->{{3.647423677931212*^9, 3.6474236807649527`*^9}, {
+  3.647424590563286*^9, 3.647424592713705*^9}}],
+
+Cell["In rectangular coordinates, grad f is", "Text",
+ CellChangeTimes->{{3.64742368373884*^9, 3.647423696609954*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grad", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6474232162814493`*^9, 3.647423246491066*^9}, {
+  3.647423739467822*^9, 3.64742374198525*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"2", " ", "x", " ", 
+     RowBox[{"cos", "(", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"]}], ")"}]}], ",", 
+    RowBox[{"2", " ", "y", " ", 
+     RowBox[{"cos", "(", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"]}], ")"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.6474232470899763`*^9, 3.647423743119845*^9, 3.647423773868577*^9, 
+   3.647424067298079*^9, 3.6474245631862*^9, 3.647431675748712*^9, 
+   3.6474317230636*^9, {3.6474318311979628`*^9, 3.6474318561322517`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Polar", "Chapter",
+ CellChangeTimes->{{3.647423703402067*^9, 3.6474237047458878`*^9}}],
+
+Cell["\<\
+In polar coordinates, to find grad f, first we need to compute f in polar \
+coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.6474237089857683`*^9, 3.647423717561895*^9}, {
+  3.647423833685259*^9, 3.647423854540792*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fpolar", "[", 
+   RowBox[{"r_", ",", "\[Theta]_"}], "]"}], ":=", " ", 
+  RowBox[{"TransformedField", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\"\<Cartesian\>\"", "\[Rule]", "\"\<Polar\>\""}], 
+    "\[IndentingNewLine]", ",", 
+    RowBox[{"f", "[", 
+     RowBox[{"x", ",", "y"}], "]"}], "\[IndentingNewLine]", ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y"}], "}"}], "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "\[Theta]"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6474240205646677`*^9, 3.6474240387611027`*^9}, {
+  3.647431670009768*^9, 3.647431711510695*^9}, {3.647431818208912*^9, 
+  3.647431842149172*^9}}],
+
+Cell["Then, grad f becomes", "Text",
+ CellChangeTimes->{{3.647423876219859*^9, 3.647423887035568*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Grad", "[", 
+   RowBox[{
+    RowBox[{"fpolar", "[", 
+     RowBox[{"r", ",", "\[Theta]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]"}], "}"}], ",", " ", "\"\<Polar\>\""}], 
+   "]"}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.647423261490472*^9, 3.6474232752641277`*^9}, {
+  3.647423402175915*^9, 3.647423432765922*^9}, {3.647423783401662*^9, 
+  3.647423816184416*^9}, {3.647423894411956*^9, 3.647423895163707*^9}, {
+  3.647424046558778*^9, 3.647424051792059*^9}, {3.64743182228729*^9, 
+  3.647431849828594*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"2", " ", "r", " ", 
+     RowBox[{"cos", "(", 
+      SuperscriptBox["r", "2"], ")"}]}], ",", "0"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.647423276198988*^9, {3.647423406239498*^9, 3.647423433604662*^9}, 
+   3.6474237865780354`*^9, 3.647423817876626*^9, 3.647423896008095*^9, {
+   3.647424052702936*^9, 3.6474240673540573`*^9}, 3.64742456324111*^9, 
+   3.6474316758012733`*^9, 3.6474317231167717`*^9, {3.64743183136454*^9, 
+   3.647431856186962*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Notes", "Chapter",
+ CellChangeTimes->{{3.647424477343783*^9, 3.64742447794189*^9}}],
+
+Cell["\<\
+For both coordinate systems, the results of grad f is presented in their \
+respective coordinate bases, but with unit vectors (physical form).\
+\>", "Text",
+ CellChangeTimes->{{3.647424481149755*^9, 3.647424535099419*^9}, {
+  3.647431743121545*^9, 3.64743175375318*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 755},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 222, 4, 46, "Input"],
+Cell[CellGroupData[{
+Cell[805, 28, 160, 2, 92, "Title"],
+Cell[968, 32, 154, 2, 30, "Text"],
+Cell[1125, 36, 274, 8, 28, "Input"],
+Cell[1402, 46, 187, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1614, 52, 147, 2, 65, "Chapter"],
+Cell[1764, 56, 118, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1907, 61, 299, 8, 28, "Input"],
+Cell[2209, 71, 645, 18, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2903, 95, 92, 1, 65, "Chapter"],
+Cell[2998, 98, 229, 5, 30, "Text"],
+Cell[3230, 105, 726, 18, 97, "Input"],
+Cell[3959, 125, 102, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4086, 130, 578, 13, 28, "Input"],
+Cell[4667, 145, 539, 13, 35, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5255, 164, 89, 1, 65, "Chapter"],
+Cell[5347, 167, 280, 5, 49, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
