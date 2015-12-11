@@ -1,0 +1,123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3094,        114]
+NotebookOptionsPosition[      2420,         84]
+NotebookOutlinePosition[      2771,        100]
+CellTagsIndexPosition[      2728,         97]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6583131691864767`*^9, 3.6583131752612343`*^9}, {
+  3.65831320572478*^9, 3.658313220323159*^9}, {3.658313393189395*^9, 
+  3.658313408715603*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Integer roots", "Title",
+ CellChangeTimes->{{3.6583134831848288`*^9, 3.6583134850094223`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Statement", "Chapter",
+ CellChangeTimes->{{3.6583134960243797`*^9, 3.658313500391466*^9}}],
+
+Cell["Find the integer roots of the equation", "Text",
+ CellChangeTimes->{{3.6583134310513477`*^9, 3.65831346708178*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"eqn", "[", "x_", "]"}], " ", ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "-", 
+    RowBox[{
+     RowBox[{"5", "/", "2"}], " ", "x"}], " ", "+", " ", 
+    RowBox[{"3", "/", "2"}]}], " ", "\[Equal]", "0"}]}]], "Input",
+ CellChangeTimes->{3.658313524130065*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Chapter",
+ CellChangeTimes->{{3.658313489648547*^9, 3.658313491152773*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{"x", "\[Element]", "Integers"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.658313046287324*^9, 3.6583131049948673`*^9}, 
+   3.658313527208685*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Roots", "[", 
+  RowBox[{
+   RowBox[{"eqn", "[", "x", "]"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.658313121222332*^9, 3.658313152573403*^9}, {
+  3.658313234042869*^9, 3.658313234218754*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "\[Equal]", 
+   FractionBox["3", "2"]}], "||", 
+  RowBox[{"x", "\[Equal]", "1"}]}]], "Output",
+ CellChangeTimes->{{3.6583131316464243`*^9, 3.658313148535346*^9}, {
+  3.658313226700189*^9, 3.658313234708954*^9}, {3.658313514451556*^9, 
+  3.6583135289069653`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 240, 4, 28, "Input"],
+Cell[CellGroupData[{
+Cell[823, 28, 100, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[948, 33, 96, 1, 65, "Chapter"],
+Cell[1047, 36, 121, 1, 30, "Text"],
+Cell[1171, 39, 308, 9, 28, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1516, 53, 93, 1, 65, "Chapter"],
+Cell[1612, 56, 212, 5, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1849, 65, 227, 5, 28, "Input"],
+Cell[2079, 72, 301, 7, 47, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
