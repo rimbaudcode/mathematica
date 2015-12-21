@@ -1,0 +1,191 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5349,        182]
+NotebookOptionsPosition[      4380,        143]
+NotebookOutlinePosition[      4731,        159]
+CellTagsIndexPosition[      4688,        156]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6595547896686974`*^9, 3.659554797503789*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Quantifiers", "Title",
+ CellChangeTimes->{{3.6595549332497787`*^9, 3.659554936282344*^9}}],
+
+Cell["Consider three natural numbers x,y,z", "Text",
+ CellChangeTimes->{{3.659554843447955*^9, 3.659554854069642*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{"x", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"x", "\[GreaterEqual]", "0"}], "&&", 
+    RowBox[{"y", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"y", "\[GreaterEqual]", "0"}], "&&", 
+    RowBox[{"z", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"z", "\[GreaterEqual]", "0"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659554047275573*^9, 3.659554065107938*^9}, {
+   3.659554097299788*^9, 3.6595541384582243`*^9}, 3.659554806265437*^9, {
+   3.6595549476057177`*^9, 3.659554957482373*^9}}],
+
+Cell["Consider the following proposition:", "Text",
+ CellChangeTimes->{{3.659554858365389*^9, 3.659554864892606*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"a", "=", 
+  RowBox[{"ForAll", "[", 
+   RowBox[{"x", ",", 
+    RowBox[{"ForAll", "[", 
+     RowBox[{"y", ",", 
+      RowBox[{"Exists", "[", 
+       RowBox[{"z", ",", 
+        RowBox[{
+         RowBox[{"z", ">", "x"}], "&&", 
+         RowBox[{"z", ">", "y"}]}]}], "]"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.659553942877109*^9, 3.659553998839066*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[ForAll]", "x"], 
+  RowBox[{
+   SubscriptBox["\[ForAll]", "y"], 
+   RowBox[{
+    SubscriptBox["\[Exists]", "z"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"z", ">", "x"}], "&&", 
+      RowBox[{"z", ">", "y"}]}], ")"}]}]}]}]], "Output",
+ CellChangeTimes->{
+  3.659553999762684*^9, 3.659554140750557*^9, 3.65955446766626*^9, 
+   3.659554499026312*^9, {3.659554801475505*^9, 3.659554808699346*^9}, 
+   3.659554960951832*^9}]
+}, Open  ]],
+
+Cell["\<\
+Is the proposition true in the assumed domain (set of naturals)?\
+\>", "Text",
+ CellChangeTimes->{{3.659554870268757*^9, 3.659554901467684*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Resolve", "[", "a", "]"}]], "Input",
+ CellChangeTimes->{{3.6595548256460447`*^9, 3.659554829952194*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.659554830377668*^9, 3.659554962823328*^9}]
+}, Open  ]],
+
+Cell["What is the negation of the proposition?", "Text",
+ CellChangeTimes->{{3.659554905419361*^9, 3.65955491564262*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "=", 
+  RowBox[{"Not", "[", "a", "]"}]}]], "Input",
+ CellChangeTimes->{{3.659554520449189*^9, 3.659554525740172*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[Exists]", "x"], 
+  RowBox[{
+   SubscriptBox["\[Exists]", "y"], 
+   RowBox[{
+    SubscriptBox["\[ForAll]", "z"], 
+    RowBox[{"!", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"z", ">", "x"}], "&&", 
+       RowBox[{"z", ">", "y"}]}], ")"}]}]}]}]}]], "Output",
+ CellChangeTimes->{
+  3.659554526251891*^9, {3.659554802432666*^9, 3.659554809781536*^9}, 
+   3.659554964482361*^9}]
+}, Open  ]],
+
+Cell["Is the negation true?", "Text",
+ CellChangeTimes->{{3.659554919731141*^9, 3.6595549234829807`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Resolve", "[", "b", "]"}]], "Input",
+ CellChangeTimes->{{3.6595540054793243`*^9, 3.659554041780427*^9}, {
+   3.659554151099524*^9, 3.659554166215158*^9}, {3.6595544873493433`*^9, 
+   3.659554488925087*^9}, 3.65955453051518*^9, {3.6595546925099154`*^9, 
+   3.659554784064587*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{
+  3.659554167276918*^9, {3.659554467685903*^9, 3.65955449906114*^9}, 
+   3.6595545309417953`*^9, {3.659554695709318*^9, 3.6595548107687607`*^9}, 
+   3.659554965725236*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 141, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[724, 26, 96, 1, 92, "Title"],
+Cell[823, 29, 118, 1, 30, "Text"],
+Cell[944, 32, 579, 12, 46, "Input"],
+Cell[1526, 46, 117, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1668, 51, 388, 11, 28, "Input"],
+Cell[2059, 64, 467, 14, 32, "Output"]
+}, Open  ]],
+Cell[2541, 81, 154, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2720, 88, 128, 2, 28, "Input"],
+Cell[2851, 92, 95, 1, 28, "Output"]
+}, Open  ]],
+Cell[2961, 96, 121, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3107, 101, 145, 3, 28, "Input"],
+Cell[3255, 106, 422, 14, 32, "Output"]
+}, Open  ]],
+Cell[3692, 123, 105, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3822, 128, 303, 5, 28, "Input"],
+Cell[4128, 135, 224, 4, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
