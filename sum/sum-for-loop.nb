@@ -1,0 +1,361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9939,        352]
+NotebookOptionsPosition[      7827,        278]
+NotebookOutlinePosition[      8180,        294]
+CellTagsIndexPosition[      8137,        291]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6598142166407623`*^9, 3.659814254409778*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Summations - for loop", "Title",
+ CellChangeTimes->{{3.659814124878233*^9, 3.659814131892927*^9}}],
+
+Cell["Find the sum of the first n = 10 odds.", "Text",
+ CellChangeTimes->{{3.6598141364606113`*^9, 3.65981416798*^9}, {
+  3.659814211598352*^9, 3.659814212564097*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"s", "=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"2", "i"}], "+", "1"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "n"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659813570536043*^9, 3.659813608074649*^9}, {
+  3.659813654001906*^9, 3.659813659201682*^9}, {3.65981389240563*^9, 
+  3.659813893067615*^9}, {3.6598140092109756`*^9, 3.659814009506207*^9}, {
+  3.6598141725647173`*^9, 3.659814187931362*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "0"}], ",", 
+   RowBox[{"n", "<", "10"}], ",", 
+   RowBox[{"n", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "i"}], "+", "1"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "n"}], "}"}]}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659814012525443*^9, 3.659814082950354*^9}, {
+  3.659814190436963*^9, 3.6598142043396463`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259335011*^9}],
+
+Cell[BoxData["4"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259340542*^9}],
+
+Cell[BoxData["9"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259346465*^9}],
+
+Cell[BoxData["16"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259348563*^9}],
+
+Cell[BoxData["25"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259350762*^9}],
+
+Cell[BoxData["36"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259352933*^9}],
+
+Cell[BoxData["49"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259355142*^9}],
+
+Cell[BoxData["64"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.6598142593573523`*^9}],
+
+Cell[BoxData["81"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.6598142593595457`*^9}],
+
+Cell[BoxData["100"], "Print",
+ CellChangeTimes->{
+  3.659814083563184*^9, {3.659814201058317*^9, 3.65981420531956*^9}, 
+   3.659814259361738*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "i"}], "+", "1"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "0", ",", 
+     RowBox[{"k", "+", "1"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.659814274591522*^9, 3.6598143007362833`*^9}, {
+   3.659815079286512*^9, 3.659815080996414*^9}, 3.6598159184370813`*^9}],
+
+Cell[BoxData[
+ SuperscriptBox[
+  RowBox[{"(", 
+   RowBox[{"2", "+", "k"}], ")"}], "2"]], "Output",
+ CellChangeTimes->{3.6598143019973392`*^9, 3.6598150816359253`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"k", "+", "1"}], ")"}], "^", "2"}], "+", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{"k", "+", "1"}], ")"}]}], "+", "1"}], ")"}]}], "//", 
+  "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.65981467006791*^9, 3.659814682848668*^9}, {
+  3.659815213417363*^9, 3.659815220936481*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox[
+  RowBox[{"(", 
+   RowBox[{"2", "+", "k"}], ")"}], "2"]], "Output",
+ CellChangeTimes->{3.659814683340064*^9, 3.6598152222650013`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Sum of the first n=10 naturals (note: the index begins at 1 but n <= 10):\
+\>", "Text",
+ CellChangeTimes->{{3.659856173721713*^9, 3.6598561839046707`*^9}, {
+  3.659856445200577*^9, 3.659856454369475*^9}, {3.659856502871397*^9, 
+  3.6598565089437733`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "1"}], ",", 
+   RowBox[{"n", "\[LessEqual]", "10"}], ",", 
+   RowBox[{"n", "++"}], ",", " ", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Sum", "[", 
+     RowBox[{"i", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659856061795163*^9, 3.659856088396978*^9}, {
+  3.659856438388489*^9, 3.659856441408843*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442199327*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442203268*^9}],
+
+Cell[BoxData["6"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442208404*^9}],
+
+Cell[BoxData["10"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442210289*^9}],
+
+Cell[BoxData["15"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.6598564422130823`*^9}],
+
+Cell[BoxData["21"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442216269*^9}],
+
+Cell[BoxData["28"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.6598564422190123`*^9}],
+
+Cell[BoxData["36"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442221161*^9}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.659856442223226*^9}],
+
+Cell[BoxData["55"], "Print",
+ CellChangeTimes->{3.659856089418589*^9, 3.6598564422257957`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Sum of the first n=10 naturals (note: the index begins at 0 but n < 10):\
+\>", "Text",
+ CellChangeTimes->{{3.659856470632578*^9, 3.659856499703825*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "0"}], ",", 
+   RowBox[{"n", "<", "10"}], ",", 
+   RowBox[{"n", "++"}], ",", " ", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Sum", "[", 
+     RowBox[{"i", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "n"}], "}"}]}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659856482208951*^9, 3.6598564886809063`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{3.659856513739356*^9}],
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.6598565137412663`*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.659856513745697*^9}],
+
+Cell[BoxData["6"], "Print",
+ CellChangeTimes->{3.6598565137475863`*^9}],
+
+Cell[BoxData["10"], "Print",
+ CellChangeTimes->{3.659856513749613*^9}],
+
+Cell[BoxData["15"], "Print",
+ CellChangeTimes->{3.659856513751655*^9}],
+
+Cell[BoxData["21"], "Print",
+ CellChangeTimes->{3.659856513753683*^9}],
+
+Cell[BoxData["28"], "Print",
+ CellChangeTimes->{3.659856513755645*^9}],
+
+Cell[BoxData["36"], "Print",
+ CellChangeTimes->{3.659856513757572*^9}],
+
+Cell[BoxData["45"], "Print",
+ CellChangeTimes->{3.659856513759585*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 141, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[724, 26, 104, 1, 92, "Title"],
+Cell[831, 29, 167, 2, 30, "Text"],
+Cell[1001, 33, 496, 12, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1522, 49, 494, 15, 28, "Input"],
+Cell[CellGroupData[{
+Cell[2041, 68, 143, 3, 21, "Print"],
+Cell[2187, 73, 143, 3, 21, "Print"],
+Cell[2333, 78, 143, 3, 21, "Print"],
+Cell[2479, 83, 144, 3, 21, "Print"],
+Cell[2626, 88, 144, 3, 21, "Print"],
+Cell[2773, 93, 144, 3, 21, "Print"],
+Cell[2920, 98, 144, 3, 21, "Print"],
+Cell[3067, 103, 146, 3, 21, "Print"],
+Cell[3216, 108, 146, 3, 21, "Print"],
+Cell[3365, 113, 145, 3, 21, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3559, 122, 350, 9, 28, "Input"],
+Cell[3912, 133, 166, 4, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4115, 142, 401, 13, 28, "Input"],
+Cell[4519, 157, 164, 4, 32, "Output"]
+}, Open  ]],
+Cell[4698, 164, 265, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4988, 173, 458, 13, 28, "Input"],
+Cell[CellGroupData[{
+Cell[5471, 190, 91, 1, 21, "Print"],
+Cell[5565, 193, 91, 1, 21, "Print"],
+Cell[5659, 196, 91, 1, 21, "Print"],
+Cell[5753, 199, 92, 1, 21, "Print"],
+Cell[5848, 202, 94, 1, 21, "Print"],
+Cell[5945, 205, 92, 1, 21, "Print"],
+Cell[6040, 208, 94, 1, 21, "Print"],
+Cell[6137, 211, 92, 1, 21, "Print"],
+Cell[6232, 214, 92, 1, 21, "Print"],
+Cell[6327, 217, 94, 1, 21, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[6448, 222, 162, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6635, 229, 400, 12, 28, "Input"],
+Cell[CellGroupData[{
+Cell[7060, 245, 69, 1, 21, "Print"],
+Cell[7132, 248, 71, 1, 21, "Print"],
+Cell[7206, 251, 69, 1, 21, "Print"],
+Cell[7278, 254, 71, 1, 21, "Print"],
+Cell[7352, 257, 70, 1, 21, "Print"],
+Cell[7425, 260, 70, 1, 21, "Print"],
+Cell[7498, 263, 70, 1, 21, "Print"],
+Cell[7571, 266, 70, 1, 21, "Print"],
+Cell[7644, 269, 70, 1, 21, "Print"],
+Cell[7717, 272, 70, 1, 21, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,171 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4474,        162]
+NotebookOptionsPosition[      3540,        125]
+NotebookOutlinePosition[      3891,        141]
+CellTagsIndexPosition[      3848,        138]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["For loops", "Title",
+ CellChangeTimes->{{3.659818429101161*^9, 3.659818431027854*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{"n", "\[Element]", "Integers"}], " ", "&&", " ", 
+    RowBox[{"n", ">", "0"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659818323000629*^9, 3.6598183452545033`*^9}}],
+
+Cell["Show that n^2 \[Minus]1 is divisible by 8 when n is an odd.", "Text",
+ CellChangeTimes->{{3.659818447139464*^9, 3.659818508379725*^9}, {
+  3.659818540460093*^9, 3.659818545048802*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pred", "[", "x_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"2", "x"}], "-", "1"}], ")"}], "^", "2"}], "-", 
+   "1"}]}]], "Input",
+ CellChangeTimes->{{3.659818546757492*^9, 3.659818568640472*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"n", "=", "1"}], ",", 
+   RowBox[{"n", "<", "10"}], ",", 
+   RowBox[{"n", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"Divisible", "[", 
+     RowBox[{
+      RowBox[{"pred", "[", "n", "]"}], ",", "8"}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659818278914612*^9, 3.659818318302855*^9}, {
+  3.659818368527254*^9, 3.659818399677039*^9}, {3.659818574954015*^9, 
+  3.659818579576663*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.6598185862204647`*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.659818586226231*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.6598185862323513`*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.6598185862343817`*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.659818586236617*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.659818586238789*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.6598185862408953`*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.659818586243113*^9}}],
+
+Cell[BoxData["True"], "Print",
+ CellChangeTimes->{
+  3.659818400612405*^9, 3.659818519924417*^9, {3.659818580273923*^9, 
+   3.6598185862451887`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pred", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.659818598074779*^9, 3.659818604903324*^9}}],
+
+Cell[BoxData["360"], "Output",
+ CellChangeTimes->{3.659818605379445*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 92, 1, 92, "Title"],
+Cell[675, 25, 247, 6, 28, "Input"],
+Cell[925, 33, 190, 2, 30, "Text"],
+Cell[1118, 37, 272, 9, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1415, 50, 467, 13, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1907, 67, 149, 3, 21, "Print"],
+Cell[2059, 72, 147, 3, 21, "Print"],
+Cell[2209, 77, 149, 3, 21, "Print"],
+Cell[2361, 82, 149, 3, 21, "Print"],
+Cell[2513, 87, 147, 3, 21, "Print"],
+Cell[2663, 92, 147, 3, 21, "Print"],
+Cell[2813, 97, 149, 3, 21, "Print"],
+Cell[2965, 102, 147, 3, 21, "Print"],
+Cell[3115, 107, 149, 3, 21, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3313, 116, 124, 2, 28, "Input"],
+Cell[3440, 120, 72, 1, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

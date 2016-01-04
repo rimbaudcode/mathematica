@@ -1,0 +1,147 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4228,        138]
+NotebookOptionsPosition[      3370,        103]
+NotebookOutlinePosition[      3721,        119]
+CellTagsIndexPosition[      3678,        116]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6600855075795813`*^9, 3.6600855166133833`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Inequalities with quantifiers", "Title",
+ CellChangeTimes->{{3.660086406916326*^9, 3.6600864127961693`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Conjecture", "Chapter",
+ CellChangeTimes->{{3.6600864681465816`*^9, 3.660086470498528*^9}, {
+  3.6600877551664762`*^9, 3.660087756366248*^9}}],
+
+Cell["Prove that for all x > 2, x^2 > x + 1.", "Text",
+ CellChangeTimes->{{3.660086416907783*^9, 3.6600864645815573`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Analysis", "Chapter",
+ CellChangeTimes->{{3.660086473410618*^9, 3.660086474386262*^9}, {
+  3.660087760689279*^9, 3.660087762022025*^9}}],
+
+Cell["Suppose x is a real greater than 2.", "Text",
+ CellChangeTimes->{{3.660087863876156*^9, 3.660087880010416*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"asmp", "=", 
+   RowBox[{"x", ">", "2"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.660087894088233*^9, 3.6600879042984056`*^9}}],
+
+Cell["The goal is the inequality", "Text",
+ CellChangeTimes->{{3.660087656458372*^9, 3.660087752838317*^9}, {
+  3.660087913705605*^9, 3.66008795387274*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ineq", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], ">", 
+    RowBox[{"x", "+", "1"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.660086220002657*^9, 3.660086234201232*^9}, {
+  3.660086339205319*^9, 3.660086339293016*^9}, {3.660086485293682*^9, 
+  3.6600865118256807`*^9}, {3.660087627525444*^9, 3.660087644161723*^9}, {
+  3.660087691076062*^9, 3.660087726360614*^9}}],
+
+Cell["The conjucture can then be written as", "Text",
+ CellChangeTimes->{{3.66008778882936*^9, 3.660087795956993*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"conj", "=", 
+   RowBox[{"ForAll", "[", 
+    RowBox[{"x", ",", "asmp", ",", 
+     RowBox[{"ineq", "[", "x", "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.660086238160982*^9, 3.660086254952682*^9}, {
+  3.6600863337903757`*^9, 3.660086382541191*^9}, {3.660086496203053*^9, 
+  3.6600865146496983`*^9}, {3.6600877074739122`*^9, 3.660087707759767*^9}, {
+  3.660087971218492*^9, 3.660087972747074*^9}}],
+
+Cell["whose resolution is", "Text",
+ CellChangeTimes->{{3.660087802364797*^9, 3.6600878155484037`*^9}, {
+  3.660087978874054*^9, 3.6600880079991617`*^9}, {3.6600880438317823`*^9, 
+  3.660088063485187*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Resolve", "[", "conj", "]"}]], "Input",
+ CellChangeTimes->{{3.660086327912918*^9, 3.660086386957131*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6600863597812138`*^9, 3.660086387460799*^9}, {
+   3.6600865172097607`*^9, 3.66008652547578*^9}, 3.660087829611493*^9, 
+   3.6600880004305553`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 143, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[726, 26, 114, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[865, 31, 148, 2, 65, "Chapter"],
+Cell[1016, 35, 122, 1, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1175, 41, 142, 2, 65, "Chapter"],
+Cell[1320, 45, 117, 1, 30, "Text"],
+Cell[1440, 48, 162, 4, 28, "Input"],
+Cell[1605, 54, 156, 2, 30, "Text"],
+Cell[1764, 58, 436, 10, 28, "Input"],
+Cell[2203, 70, 118, 1, 30, "Text"],
+Cell[2324, 73, 441, 9, 28, "Input"],
+Cell[2768, 84, 205, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2998, 91, 129, 2, 28, "Input"],
+Cell[3130, 95, 200, 3, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
