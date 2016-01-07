@@ -1,0 +1,202 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5745,        193]
+NotebookOptionsPosition[      4813,        155]
+NotebookOutlinePosition[      5164,        171]
+CellTagsIndexPosition[      5121,        168]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*'\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.661021369172358*^9, 3.6610213795527678`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Volume elements - factors", "Title",
+ CellChangeTimes->{{3.661021393295779*^9, 3.661021406567*^9}}],
+
+Cell["\<\
+The volume factor for a coordinate system is the scaling factor that goes \
+into a volumetric integral, to go from a differential form into a volume form \
+into a volume element that can be integrated via multiple integration:\
+\>", "Text",
+ CellChangeTimes->{{3.661021469557427*^9, 3.6610215505600023`*^9}}],
+
+Cell["For a 3D spherical coordinate system:", "Text",
+ CellChangeTimes->{{3.661021410303133*^9, 3.66102142179047*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"volfactor", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Spherical\>\"", ",", "\"\<VolumeFactor\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}]}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.6610211508062696`*^9, 3.661021165483673*^9}, {
+  3.6610212939444323`*^9, 3.6610213185871*^9}, {3.661021429630559*^9, 
+  3.66102143618216*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["r", "2"], " ", 
+  RowBox[{"Sin", "[", "\[Theta]", "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.661021319621503*^9, {3.661021437822465*^9, 3.661021459162582*^9}}]
+}, Open  ]],
+
+Cell["For a 3D cylindrical coordinate system:", "Text",
+ CellChangeTimes->{{3.661021440261314*^9, 3.661021450804846*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"volfactor", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Cylindrical\>\"", ",", "\"\<VolumeFactor\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]", ",", "z"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.661021333324031*^9, 3.6610213397789993`*^9}, {
+  3.6610214534616423`*^9, 3.661021455606481*^9}}],
+
+Cell[BoxData["r"], "Output",
+ CellChangeTimes->{3.661021340544312*^9, 3.661021461044753*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "However, for known regions, ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " can compute the volume itself. Say, the volume of a ball of radius r \
+centered at point (0,0,0}:"
+}], "Text",
+ CellChangeTimes->{{3.66102175774358*^9, 3.661021791210904*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "\[Element]", 
+    RowBox[{"Ball", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "r"}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.661021571878235*^9, 3.661021697742564*^9}, {
+  3.661021850906323*^9, 3.661021858207279*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ConditionalExpression", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"4", " ", "\[Pi]", " ", 
+     SuperscriptBox["r", "3"]}], "3"], ",", 
+   RowBox[{"r", ">", "0"}]}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.661021611882365*^9, {3.661021650996304*^9, 3.661021664751615*^9}, 
+   3.661021698793892*^9, 3.66102185906601*^9}]
+}, Open  ]],
+
+Cell["\<\
+Now, for a cylinder of radius r and height z (specified as the distance \
+between two points) centered at the origin:\
+\>", "Text",
+ CellChangeTimes->{{3.661021864736602*^9, 3.661021929683345*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"r", ",", "\[Theta]", ",", "z"}], "}"}], "\[Element]", 
+    RowBox[{"Cylinder", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "h"}], "}"}]}], "}"}], ",", "r"}], 
+     "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.661021931577442*^9, 3.661021972265678*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ConditionalExpression", "[", 
+  RowBox[{
+   RowBox[{"\[Pi]", " ", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"h", " ", 
+      SuperscriptBox["r", "2"]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"h", "\[Element]", "Reals"}], "&&", 
+    RowBox[{"r", ">", "0"}], "&&", 
+    RowBox[{"h", "\[NotEqual]", "0"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{3.6610219733064213`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 142, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[725, 26, 105, 1, 92, "Title"],
+Cell[833, 29, 318, 5, 68, "Text"],
+Cell[1154, 36, 118, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1297, 41, 412, 9, 46, "Input"],
+Cell[1712, 52, 202, 5, 32, "Output"]
+}, Open  ]],
+Cell[1929, 60, 121, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2075, 65, 361, 7, 46, "Input"],
+Cell[2439, 74, 92, 1, 28, "Output"]
+}, Open  ]],
+Cell[2546, 78, 276, 7, 49, "Text"],
+Cell[CellGroupData[{
+Cell[2847, 89, 433, 12, 28, "Input"],
+Cell[3283, 103, 348, 9, 50, "Output"]
+}, Open  ]],
+Cell[3646, 115, 207, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[3878, 123, 514, 15, 28, "Input"],
+Cell[4395, 140, 390, 11, 34, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

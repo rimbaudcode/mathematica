@@ -1,0 +1,148 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3849,        139]
+NotebookOptionsPosition[      3134,        109]
+NotebookOutlinePosition[      3485,        125]
+CellTagsIndexPosition[      3442,        122]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.661111468827469*^9, 3.661111485505982*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Domains of real functions of one variable", "Title",
+ CellChangeTimes->{{3.661111490225412*^9, 3.6611115057279167`*^9}, 
+   3.661111884647249*^9}],
+
+Cell["Find the domain of the following real function:", "Text",
+ CellChangeTimes->{{3.661111508360569*^9, 3.661111527255557*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "x_", "]"}], ":=", 
+  RowBox[{"x", "/", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "^", "4"}], "-", "1"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.661111535983636*^9, 3.661111547272132*^9}, {
+  3.66111157799719*^9, 3.6611115860208073`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionDomain", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6611115291388817`*^9, 3.6611115581337852`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x", "<", 
+   RowBox[{"-", "1"}]}], "||", 
+  RowBox[{
+   RowBox[{"-", "1"}], "<", "x", "<", "1"}], "||", 
+  RowBox[{"x", ">", "1"}]}]], "Output",
+ CellChangeTimes->{3.66111155873798*^9, 3.6611115903143167`*^9}]
+}, Open  ]],
+
+Cell["A function restricted by a constraint:", "Text",
+ CellChangeTimes->{{3.661111671577488*^9, 3.661111688062706*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "x_", "]"}], ":=", 
+  RowBox[{"Log", "[", 
+   RowBox[{
+    RowBox[{"Tan", "[", "x", "]"}], "-", "1"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.661111691593745*^9, 3.661111711397587*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cons", "=", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "<", "1"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.661111713404051*^9, 3.661111722556878*^9}, {
+  3.661111783220723*^9, 3.661111783874099*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionDomain", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ",", "cons"}], "}"}], ",", "x"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.661111607356213*^9, 3.6611116205943213`*^9}, {
+  3.6611117268455353`*^9, 3.661111765099297*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], "+", 
+    FractionBox["x", "\[Pi]"]}], "\[NotElement]", "Integers"}], "&&", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "2"}], " ", 
+    RowBox[{"ArcTan", "[", 
+     RowBox[{"1", "-", 
+      SqrtBox["2"]}], "]"}]}], "<", "x", "<", "1"}]}]], "Output",
+ CellChangeTimes->{
+  3.6611116210900383`*^9, {3.661111731892108*^9, 3.661111786461885*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 139, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[722, 26, 152, 2, 148, "Title"],
+Cell[877, 30, 129, 1, 30, "Text"],
+Cell[1009, 33, 293, 8, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1327, 45, 189, 4, 28, "Input"],
+Cell[1519, 51, 244, 7, 28, "Output"]
+}, Open  ]],
+Cell[1778, 61, 120, 1, 30, "Text"],
+Cell[1901, 64, 231, 6, 28, "Input"],
+Cell[2135, 72, 234, 6, 28, "Input"],
+Cell[CellGroupData[{
+Cell[2394, 82, 295, 8, 28, "Input"],
+Cell[2692, 92, 414, 13, 48, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
