@@ -1,0 +1,308 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9269,        299]
+NotebookOptionsPosition[      7558,        238]
+NotebookOutlinePosition[      8213,        260]
+CellTagsIndexPosition[      8170,        257]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.661203377687059*^9, 3.661203384525784*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Multivariable functions", "Title",
+ CellChangeTimes->{{3.661203872025975*^9, 3.661203879185224*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Problem", "Chapter",
+ CellChangeTimes->{{3.66120412205849*^9, 3.661204123834515*^9}}],
+
+Cell["\<\
+A spaceship is launched to a site near a cold, irregularly shaped, blackhole \
+in the universe. Upon opening the door of the spaceship, the astronaut find \
+that the outside temperature is at 30, which is too cold for him and his \
+ship. He quickly closes the door and finds that his location is at\
+\>", "Text",
+ CellChangeTimes->{{3.661203907728221*^9, 3.6612040046779547`*^9}, 
+   3.66120629157162*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pos", "=", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1", ",", "1"}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "1", ",", "1"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.66120448185485*^9, 3.6612045593035917`*^9, {3.661204615199751*^9, 
+   3.661204648325265*^9}, 3.661204684547678*^9}]
+}, Open  ]],
+
+Cell["and that the temperature distribution is", "Text",
+ CellChangeTimes->{{3.661204023876854*^9, 3.6612040299010983`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Phi]", "[", 
+   RowBox[{"{", 
+    RowBox[{"x1_", ",", "x2_", ",", "x3_"}], "}"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"4", 
+    RowBox[{"x1", "^", "2"}]}], "+", 
+   RowBox[{"x2", "^", "2"}], "+", 
+   RowBox[{"25", 
+    RowBox[{"x3", "^", "2"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.661203388564548*^9, 3.661203452540577*^9}, {
+  3.661203843292141*^9, 3.661203845250332*^9}}],
+
+Cell["(you can quickly verify that indeed", "Text",
+ CellChangeTimes->{{3.661204047438223*^9, 3.6612040604444523`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Phi]", "[", "pos", "]"}], "\[Equal]", "30"}]], "Input",
+ CellChangeTimes->{{3.6612034581507587`*^9, 3.661203516419038*^9}, {
+  3.6612037482055283`*^9, 3.6612037497445*^9}, {3.661204064788608*^9, 
+  3.661204066035461*^9}, {3.6612046068012333`*^9, 3.6612046073419447`*^9}, {
+  3.661204639575667*^9, 3.661204641572094*^9}, {3.661204675311922*^9, 
+  3.6612046780199003`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.66120467868324*^9, 3.6612046845953712`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Help the astronaut find the best direction in which he should direct his ship \
+to get to the warmer region.\
+\>", "Text",
+ CellChangeTimes->{{3.6612040765160093`*^9, 3.6612041075790663`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Chapter",
+ CellChangeTimes->{{3.6612041169562607`*^9, 3.661204117922092*^9}}],
+
+Cell["\<\
+The set {(x1,x2,x3): phi = constant} is a level surface. Our surface phi = 30 \
+is one of the level surfaces. To move quickly away from temperature 30, one \
+definitely needs to move away from the level set of 30. In fact, he needs to \
+move in the direction which is perpendicular to the level set. Fortunately, \
+the gradient\
+\>", "Text",
+ CellChangeTimes->{{3.661204255680561*^9, 3.661204359652719*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"grad", "[", 
+   RowBox[{"{", 
+    RowBox[{"x1_", ",", "x2_", ",", "x3_"}], "}"}], "]"}], "=", 
+  RowBox[{"Grad", "[", 
+   RowBox[{
+    RowBox[{"\[Phi]", "[", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.661203524637631*^9, 3.661203562515647*^9}, {
+  3.661204381428701*^9, 3.6612043860519667`*^9}, {3.661204438716494*^9, 
+  3.661204470337771*^9}, {3.661204522218133*^9, 3.6612045482876787`*^9}, {
+  3.661204663936137*^9, 3.661204702381134*^9}, {3.661205764706687*^9, 
+  3.661205786822825*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"8", " ", "x1"}], ",", 
+   RowBox[{"2", " ", "x2"}], ",", 
+   RowBox[{"50", " ", "x3"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6612045492742968`*^9, 3.6612045593816032`*^9}, {
+  3.661204598236166*^9, 3.661204703127494*^9}, {3.661205773533342*^9, 
+  3.661205787880371*^9}}]
+}, Open  ]],
+
+Cell["\<\
+is a normal to the level surface. A normal to our surface at the point \
+(1,1,1) is\
+\>", "Text",
+ CellChangeTimes->{{3.661204364245286*^9, 3.661204427698539*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"grad", "[", "pos", "]"}]], "Input",
+ CellChangeTimes->{{3.66120441158729*^9, 3.6612044127489223`*^9}, {
+  3.661204497338978*^9, 3.661204503608728*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8", ",", "2", ",", "50"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.661204413117714*^9, {3.6612044819597673`*^9, 3.6612045264679832`*^9}, 
+   3.6612045594097137`*^9, {3.66120461535118*^9, 3.66120470536239*^9}, {
+   3.661205779324535*^9, 3.6612057896933117`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+This direction is such that the temperature increases most rapidly. The \
+opposite direction is such that the temperature decreases most rapidly.\
+\>", "Text",
+ CellChangeTimes->{{3.661204718220387*^9, 3.6612047509055023`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TransformedField", "[", 
+   RowBox[{
+    RowBox[{"\"\<Cartesian\>\"", "\[Rule]", "\"\<Spherical\>\""}], ",", 
+    RowBox[{
+     RowBox[{"4", 
+      RowBox[{"x", "^", "2"}]}], "+", 
+     RowBox[{"y", "^", "2"}], "+", 
+     RowBox[{"25", 
+      RowBox[{"z", "^", "2"}]}]}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "z"}], "}"}], "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\[Rho]", ",", "\[Theta]", ",", "\[Psi]"}], "}"}]}]}], "]"}], "//",
+   "Simplify"}]], "Input",
+ CellChangeTimes->{{3.661210021959339*^9, 3.6612101018591967`*^9}, {
+  3.6612101817880096`*^9, 3.661210188769332*^9}, {3.6612111293621817`*^9, 
+  3.661211133271652*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["\[Rho]", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"25", " ", 
+     SuperscriptBox[
+      RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{"5", "+", 
+       RowBox[{"3", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"2", " ", "\[Psi]"}], "]"}]}]}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.6612101024865513`*^9, 3.661210190015985*^9, 
+  3.6612111394753723`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CoordinateTransformData", "[", 
+  RowBox[{
+   RowBox[{"\"\<Cartesian\>\"", "\[Rule]", "\"\<Spherical\>\""}], ",", " ", 
+   "\"\<Mapping\>\"", ",", " ", "pos"}], "]"}]], "Input",
+ CellChangeTimes->{{3.661210250830947*^9, 3.66121025114462*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   SqrtBox["3"], ",", 
+   RowBox[{"ArcTan", "[", 
+    SqrtBox["2"], "]"}], ",", 
+   FractionBox["\[Pi]", "4"]}], "}"}]], "Output",
+ CellChangeTimes->{3.661210251705193*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]]}, WindowSize -> {808, 678}, 
+  WindowMargins -> {{12, Automatic}, {Automatic, 24}}, Visible -> False, 
+  FrontEndVersion -> 
+  "10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, 2015)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 139, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[722, 26, 106, 1, 92, "Title"],
+Cell[CellGroupData[{
+Cell[853, 31, 91, 1, 65, "Chapter"],
+Cell[947, 34, 415, 7, 87, "Text"],
+Cell[CellGroupData[{
+Cell[1387, 45, 108, 3, 28, "Input"],
+Cell[1498, 50, 223, 5, 28, "Output"]
+}, Open  ]],
+Cell[1736, 58, 124, 1, 30, "Text"],
+Cell[1863, 61, 412, 12, 28, "Input"],
+Cell[2278, 75, 119, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2422, 80, 408, 7, 28, "Input"],
+Cell[2833, 89, 98, 1, 28, "Output"]
+}, Open  ]],
+Cell[2946, 93, 202, 4, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3185, 102, 95, 1, 65, "Chapter"],
+Cell[3283, 105, 417, 7, 87, "Text"],
+Cell[CellGroupData[{
+Cell[3725, 116, 677, 16, 28, "Input"],
+Cell[4405, 134, 327, 8, 28, "Output"]
+}, Open  ]],
+Cell[4747, 145, 173, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4945, 153, 175, 3, 28, "Input"],
+Cell[5123, 158, 303, 6, 28, "Output"]
+}, Open  ]],
+Cell[5441, 167, 237, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[5703, 175, 702, 19, 46, "Input"],
+Cell[6408, 196, 592, 18, 48, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7037, 219, 266, 5, 46, "Input"],
+Cell[7306, 226, 212, 7, 44, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,514 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16249,        505]
+NotebookOptionsPosition[     14213,        432]
+NotebookOutlinePosition[     14564,        448]
+CellTagsIndexPosition[     14521,        445]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.661253569415637*^9, 3.661253575658815*^9}}],
+
+Cell["Position in rectangular coordinates:", "Text",
+ CellChangeTimes->{{3.661254686882798*^9, 3.6612546955284357`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"rpos", ":=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", "y"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.661254587136891*^9, 3.661254598212027*^9}, {
+   3.6612546318528147`*^9, 3.661254637770586*^9}, 3.66125481381586*^9}],
+
+Cell["Consider a temperature distribution in rectangulars:", "Text",
+ CellChangeTimes->{{3.661254698792347*^9, 3.66125471069597*^9}, {
+  3.6612621687459993`*^9, 3.661262171210784*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fr", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], "-", 
+     RowBox[{"y", "^", "2"}]}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], "+", 
+     RowBox[{"y", "^", "2"}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.661253317353181*^9, 3.661253339193007*^9}, {
+   3.661253644305257*^9, 3.661253646000928*^9}, 3.661254809279437*^9, 
+   3.661258518724688*^9}],
+
+Cell["Then, the gradient of the distribution in rectangulars:", "Text",
+ CellChangeTimes->{{3.661254713983759*^9, 3.661254722735738*^9}, {
+  3.661262174057703*^9, 3.661262184013855*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"grad", "=", 
+  RowBox[{
+   RowBox[{"Grad", "[", 
+    RowBox[{
+     RowBox[{"fr", "[", "rpos", "]"}], ",", "rpos"}], "]"}], "//", 
+   "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.661254577055749*^9, 3.6612546076849413`*^9}, {
+   3.661254646418482*^9, 3.661254649202093*^9}, {3.6612560322798147`*^9, 
+   3.6612560339737463`*^9}, 3.661258522090334*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"4", " ", "x", " ", 
+     SuperscriptBox["y", "2"]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"]}], ")"}], "2"]], ",", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"4", " ", 
+      SuperscriptBox["x", "2"], " ", "y"}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["x", "2"], "+", 
+        SuperscriptBox["y", "2"]}], ")"}], "2"]]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.661254568222807*^9, 3.66125460833423*^9, 3.661254649575951*^9, 
+   3.661254759225192*^9, {3.6612560344358397`*^9, 3.661256044685216*^9}, 
+   3.661258069073586*^9, {3.6612585387882*^9, 3.661258550513825*^9}, 
+   3.661261749851445*^9, 3.661262058263693*^9, 3.661262115817832*^9, {
+   3.6612625143765783`*^9, 3.661262535101028*^9}, 3.661262594642477*^9, 
+   3.661267151980454*^9, 3.661267224525845*^9}]
+}, Open  ]],
+
+Cell["Let\[CloseCurlyQuote]s factor out common terms in the gradient:", "Text",
+ CellChangeTimes->{{3.661267167323903*^9, 3.661267176475683*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gcd", "=", 
+   RowBox[{"PolynomialGCD", "@@", 
+    RowBox[{"Flatten", "[", "grad", "]"}]}]}], ";"}], "\n", 
+ RowBox[{"grad", "=", 
+  RowBox[{
+   RowBox[{"Row", "[", 
+    RowBox[{"{", 
+     RowBox[{"gcd", ",", 
+      RowBox[{"grad", "/", "gcd"}]}], "}"}], "]"}], "//", 
+   "FullSimplify"}]}]}], "Input",
+ CellChangeTimes->{{3.661267134461441*^9, 3.6612671633245897`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{FractionBox[
+    RowBox[{"4", " ", "x", " ", "y"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+       RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}], ")"}], "2"]],RowBox[{"{", 
+     RowBox[{"y", ",", 
+       RowBox[{"-", "x"}]}], "}"}]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.661267141724678*^9, 3.661267153909388*^9}, 
+   3.661267224557049*^9}]
+}, Open  ]],
+
+Cell["Now let\[CloseCurlyQuote]s work with polar coordinates. The position \
+is", "Text",
+ CellChangeTimes->{{3.661254725551671*^9, 3.661254731063593*^9}, {
+  3.66126218786508*^9, 3.661262205742682*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ppos", ":=", 
+  RowBox[{"{", 
+   RowBox[{"\[Rho]", ",", "\[Theta]"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.661254613860249*^9, 3.661254642394442*^9}, 
+   3.6612548220376253`*^9}],
+
+Cell["Then, the temperature distribution in polars:", "Text",
+ CellChangeTimes->{{3.661254735735165*^9, 3.661254742559112*^9}, {
+  3.661262208432846*^9, 3.661262210542872*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fp", "[", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]_", ",", "\[Theta]_"}], "}"}], "]"}], "=", 
+  RowBox[{
+   RowBox[{"TransformedField", "[", 
+    RowBox[{
+     RowBox[{"\"\<Cartesian\>\"", "\[Rule]", "\"\<Polar\>\""}], ",", 
+     RowBox[{"fr", "[", "rpos", "]"}], ",", 
+     RowBox[{"rpos", "\[Rule]", "ppos"}]}], "]"}], "//", 
+   "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.661253344019023*^9, 3.661253381953713*^9}, {
+   3.661253592134664*^9, 3.661253651393334*^9}, 3.6612543015569563`*^9, {
+   3.6612543534378967`*^9, 3.661254373449985*^9}, {3.661254655546731*^9, 
+   3.661254665834044*^9}, {3.6612585258747063`*^9, 3.661258545211651*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Cos", "[", 
+  RowBox[{"2", " ", "\[Theta]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.6612533823304787`*^9, 3.66125365223094*^9, 3.661254302252614*^9, 
+   3.661254374225689*^9, 3.6612546663423*^9, 3.661254759301324*^9, 
+   3.661254831481759*^9, 3.6612560447416887`*^9, 3.6612580691296263`*^9, {
+   3.661258539004157*^9, 3.6612585507197866`*^9}, 3.661261749958263*^9, 
+   3.661262058321536*^9, 3.661262115874073*^9, {3.661262514438765*^9, 
+   3.661262535155314*^9}, 3.661262594699409*^9, 3.661267224608364*^9}]
+}, Open  ]],
+
+Cell["Finally, the gradient of temperature in polars:", "Text",
+ CellChangeTimes->{{3.661254745935059*^9, 3.661254752422811*^9}, {
+  3.661262214096438*^9, 3.661262216510714*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"grad", "=", 
+  RowBox[{"Grad", "[", 
+   RowBox[{
+    RowBox[{"fp", "[", "ppos", "]"}], ",", "ppos"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6612545049313393`*^9, 3.6612545478612003`*^9}, {
+   3.661254671563261*^9, 3.6612546761212187`*^9}, 3.661258528362842*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{
+    RowBox[{"-", "2"}], " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"2", " ", "\[Theta]"}], "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.661254535519167*^9, 3.661254548228962*^9}, 
+   3.6612546764722643`*^9, 3.6612547593211308`*^9, 3.661254834221925*^9, 
+   3.6612560447603273`*^9, 3.661258069156123*^9, {3.661258539039577*^9, 
+   3.661258550766431*^9}, 3.661261749986971*^9, 3.6612620583480453`*^9, 
+   3.661262115911003*^9, 3.661262479048284*^9, {3.6612625144742203`*^9, 
+   3.661262535178166*^9}, 3.661262594743528*^9, 3.661267224641178*^9}]
+}, Open  ]],
+
+Cell["\<\
+See that the last gradient in written in coordinate components; ie, using \
+polar basis vectors but *not* polar unit basis vectors. \
+Let\[CloseCurlyQuote]s express the gradient in terms of polar unit basis \
+vectors. For that, we need to first work out the metric tensor in polar \
+coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.661262226519927*^9, 3.66126237634902*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pmetric", "=", 
+  RowBox[{"CoordinateChartData", "[", 
+   RowBox[{"\"\<Polar\>\"", ",", "\"\<Metric\>\"", ",", "ppos"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.661261777576189*^9, 3.66126182817489*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     SuperscriptBox["\[Rho]", "2"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6612618285846987`*^9, 3.6612620583913937`*^9, 3.6612621159465103`*^9, {
+   3.661262514507353*^9, 3.661262535218541*^9}, 3.6612625947775393`*^9, 
+   3.661267224675604*^9}]
+}, Open  ]],
+
+Cell["Then find the term to \[OpenCurlyDoubleQuote]correct\
+\[CloseCurlyDoubleQuote] the gradient:", "Text",
+ CellChangeTimes->{{3.6612623860385036`*^9, 3.6612624061397676`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"metric\[Theta]\[Theta]", "=", 
+  RowBox[{"pmetric", "[", 
+   RowBox[{"[", 
+    RowBox[{"2", ",", "2"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.661261835546505*^9, 3.66126183983202*^9}, {
+  3.661261929866428*^9, 3.6612619722027693`*^9}}],
+
+Cell[BoxData[
+ SuperscriptBox["\[Rho]", "2"]], "Output",
+ CellChangeTimes->{
+  3.661261935851637*^9, 3.661261972811254*^9, 3.661262058422654*^9, 
+   3.661262115977364*^9, {3.661262514540928*^9, 3.661262535250592*^9}, 
+   3.661262594811603*^9, 3.661267224706753*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{"\[Rho]", ">", "0"}]}]], "Input",
+ CellChangeTimes->{{3.661261991852367*^9, 3.661261998288351*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[Rho]", ">", "0"}]], "Output",
+ CellChangeTimes->{
+  3.661261998668363*^9, 3.661262058456881*^9, 3.6612621160104103`*^9, {
+   3.6612625145755367`*^9, 3.6612625352834272`*^9}, 3.661262594832243*^9, 
+   3.66126722475898*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sqrt", "=", 
+  RowBox[{
+   RowBox[{"Sqrt", "[", "metric\[Theta]\[Theta]", "]"}], "//", 
+   "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.661261937900949*^9, 3.66126194245166*^9}, {
+  3.66126197647515*^9, 3.6612619853698807`*^9}, {3.66126256096462*^9, 
+  3.661262562442504*^9}}],
+
+Cell[BoxData["\[Rho]"], "Output",
+ CellChangeTimes->{
+  3.661261942722827*^9, {3.661261979485179*^9, 3.661262000885541*^9}, 
+   3.6612620584776793`*^9, 3.661262116032095*^9, {3.661262514599826*^9, 
+   3.661262564584716*^9}, 3.661262594860969*^9, 3.661267224791011*^9}]
+}, Open  ]],
+
+Cell["\<\
+Now, we can express the gradient in terms of unit basis vectors:\
+\>", "Text",
+ CellChangeTimes->{{3.661262412027812*^9, 3.661262464766685*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"grad2", "=", 
+  RowBox[{
+   RowBox[{"grad", "/", "sqrt"}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.661262014208274*^9, 3.661262038979924*^9}, 
+   3.661262081628846*^9, {3.661262138800679*^9, 3.661262146435306*^9}, {
+   3.661262490890552*^9, 3.661262529300734*^9}, {3.6612625681341257`*^9, 
+   3.6612625684904337`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"2", " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"2", " ", "\[Theta]"}], "]"}]}], "\[Rho]"]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6612620425747433`*^9, 3.6612620823260717`*^9}, {
+   3.6612621160624638`*^9, 3.66126214687401*^9}, {3.661262502185034*^9, 
+   3.661262535351304*^9}, {3.661262568977048*^9, 3.661262594882725*^9}, 
+   3.661262805884351*^9, 3.661267224829052*^9}]
+}, Open  ]],
+
+Cell["\<\
+To test if this value for the gradient is correct, let\[CloseCurlyQuote]s \
+transform its components back to rectangular coordinates:\
+\>", "Text",
+ CellChangeTimes->{{3.661262814668564*^9, 3.661262852107445*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TransformedField", "[", 
+   RowBox[{
+    RowBox[{"\"\<Polar\>\"", "\[Rule]", "\"\<Cartesian\>\""}], ",", "grad2", 
+    ",", 
+    RowBox[{"ppos", "\[Rule]", " ", "rpos"}]}], "]"}], "//", 
+  "Simplify"}]], "Input",
+ CellChangeTimes->{{3.661261713387538*^9, 3.6612617429155207`*^9}, 
+   3.661262584459899*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"2", " ", "y", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", 
+       RowBox[{"ArcTan", "[", 
+        RowBox[{"x", ",", "y"}], "]"}]}], "]"}]}], 
+    RowBox[{
+     SuperscriptBox["x", "2"], "+", 
+     SuperscriptBox["y", "2"]}]], ",", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"2", " ", "x", " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"2", " ", 
+        RowBox[{"ArcTan", "[", 
+         RowBox[{"x", ",", "y"}], "]"}]}], "]"}]}], 
+     RowBox[{
+      SuperscriptBox["x", "2"], "+", 
+      SuperscriptBox["y", "2"]}]]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.661267224880747*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"grad", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"4", " ", "x", " ", 
+       SuperscriptBox["y", "2"]}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}], ")"}], "2"]], ",", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        SuperscriptBox["x", "2"], " ", "y"}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["x", "2"], "+", 
+          SuperscriptBox["y", "2"]}], ")"}], "2"]]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gcd", "=", 
+   RowBox[{"PolynomialGCD", "@@", 
+    RowBox[{"Flatten", "[", "grad", "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Row", "[", 
+   RowBox[{"{", 
+    RowBox[{"gcd", ",", 
+     RowBox[{"grad", "/", "gcd"}]}], "}"}], "]"}], "//", "FullSimplify"}]}], \
+"Input",
+ CellChangeTimes->{{3.6612671916382713`*^9, 3.6612672186588907`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{FractionBox[
+    RowBox[{"4", " ", "x", " ", "y"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+       RowBox[{
+         SuperscriptBox["x", "2"], "+", 
+         SuperscriptBox["y", "2"]}], ")"}], "2"]],RowBox[{"{", 
+     RowBox[{"y", ",", 
+       RowBox[{"-", "x"}]}], "}"}]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.661267207926506*^9, 3.661267224925044*^9}}]
+}, Open  ]],
+
+Cell["\<\
+The last formula nicely agrees with the gradient of the distribution we found \
+using rectangular coordinates directly.\
+\>", "Text",
+ CellChangeTimes->{{3.661262856257443*^9, 3.6612628715290203`*^9}, {
+  3.661262964962537*^9, 3.661262987966476*^9}}]
+},
+WindowSize->{638, 778},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 139, 2, 28, "Input"],
+Cell[700, 24, 120, 1, 30, "Text"],
+Cell[823, 27, 239, 5, 28, "Input"],
+Cell[1065, 34, 184, 2, 30, "Text"],
+Cell[1252, 38, 519, 16, 28, "Input"],
+Cell[1774, 56, 186, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1985, 62, 380, 9, 28, "Input"],
+Cell[2368, 73, 966, 26, 57, "Output"]
+}, Open  ]],
+Cell[3349, 102, 145, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3519, 107, 406, 12, 46, "Input"],
+Cell[3928, 121, 421, 12, 55, "Output"]
+}, Open  ]],
+Cell[4364, 136, 203, 3, 30, "Text"],
+Cell[4570, 141, 206, 5, 28, "Input"],
+Cell[4779, 148, 176, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4980, 154, 678, 15, 63, "Input"],
+Cell[5661, 171, 535, 9, 28, "Output"]
+}, Open  ]],
+Cell[6211, 183, 178, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[6414, 189, 288, 6, 28, "Input"],
+Cell[6705, 197, 612, 12, 28, "Output"]
+}, Open  ]],
+Cell[7332, 212, 384, 7, 87, "Text"],
+Cell[CellGroupData[{
+Cell[7741, 223, 232, 5, 28, "Input"],
+Cell[7976, 230, 398, 11, 35, "Output"]
+}, Open  ]],
+Cell[8389, 244, 178, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[8592, 250, 269, 6, 28, "Input"],
+Cell[8864, 258, 265, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9166, 268, 154, 3, 28, "Input"],
+Cell[9323, 273, 247, 5, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9607, 283, 303, 7, 28, "Input"],
+Cell[9913, 292, 268, 4, 28, "Output"]
+}, Open  ]],
+Cell[10196, 299, 154, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[10375, 306, 360, 7, 28, "Input"],
+Cell[10738, 315, 483, 12, 49, "Output"]
+}, Open  ]],
+Cell[11236, 330, 223, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[11484, 338, 341, 9, 46, "Input"],
+Cell[11828, 349, 669, 22, 51, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12534, 376, 1002, 33, 96, InheritFromParent],
+Cell[13539, 411, 395, 11, 55, "Output"]
+}, Open  ]],
+Cell[13949, 425, 260, 5, 49, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
